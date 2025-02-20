@@ -12,6 +12,19 @@
     "sections": {
       "announcement": {
         "type": "announcement",
+        "blocks": {
+          "announcement_cUhLLF": {
+            "type": "announcement",
+            "settings": {
+              "announcement": "<p>FREE STANDARD SHIPPING ON US ORDERS $35+<a href=\"https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fsummerfridays.com%2Fpages%2Ffree-standard-shipping&data=05%7C01%7Channah.harris%40summerfridays.com%7C272a4229880f4b69585608dab85561a9%7C5c95f68a6594444da932880a29ac1421%7C0%7C0%7C638024974125500944%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=dEHFjpzVMHbl1uWCcuMiKtoQyvKRQWFy8uPNq0pbIAI%3D&reserved=0\" title=\"Original URL:\nhttps://summerfridays.com/pages/free-standard-shipping\n\nClick to follow link.\">LEARN MORE</a></p>",
+              "background_color": "morning-sky",
+              "text_color": "black"
+            }
+          }
+        },
+        "block_order": [
+          "announcement_cUhLLF"
+        ],
         "settings": {}
       },
       "header": {
