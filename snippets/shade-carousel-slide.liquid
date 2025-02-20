@@ -1,0 +1,49 @@
+<li class="swiper-slide">
+    <div class="shade-carousel__image">
+        <img 
+            src="{{- image | image_url: width: 700 -}}"
+            width="300"
+            height="300"
+            alt="{{- image.alt | default: 'Image gallery image' -}}"
+            class="absolute-img"
+            loading="lazy"
+        >
+        {%- if toggle_image -%}
+            <img 
+                src="{{- toggle_image | image_url: width: 700 -}}"
+                width="300"
+                height="300"
+                alt="{{- toggle_image.alt | default: 'Image gallery image' -}}"
+                class="absolute-img shade-carousel__image-toggle"
+                loading="lazy"
+                :class="toggle === true && 'shade-carousel__image-toggle--visible'"
+            >
+        {%- endif -%}
+        {%- if hover_media_type == 'image' -%}
+            {%- if hover_image -%}
+                <img 
+                    src="{{- hover_image | image_url: width: 700 -}}"
+                    width="300"
+                    height="300"
+                    alt="{{- hover_image.alt | default: 'Image gallery image' -}}"
+                    class="absolute-img shade-carousel__image-hover"
+                    loading="lazy"
+                >
+            {%- endif -%}
+        {%- elsif hover_media_type == 'video' -%}
+            {%- if hover_video -%}
+                {%- render 'video', 
+                    video: hover_video,
+                    poster: hover_image,
+                    play_control: false,
+                    sound_control: false
+                -%}
+            {%- endif -%}
+        {%- endif -%}
+    </div>
+    {%- if title != blank -%}
+        <div class="shade-carousel__text p-normal">
+            <span class="cta-textlink">{{- title -}}</span>{{- text -}}
+        </div>
+    {%- endif -%}
+</li>

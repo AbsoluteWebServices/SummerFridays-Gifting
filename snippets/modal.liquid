@@ -1,0 +1,34 @@
+{%- assign style = style | default: 'ink' -%}
+{%- assign generatedId = "now" | date: "%N" | modulo: 1000 -%}
+{%- assign id = id | default: generatedId -%}
+
+<div 
+    x-data="modal('{{- id -}}')"
+    x-show="opened"
+    class="modal"
+    style="display: none;"
+    x-transition:enter="default-transition"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-1"
+    x-transition:leave="default-transition"
+    x-transition:leave-start="opacity-1"
+    x-transition:leave-end="opacity-0"
+    @click="handleClose"
+>
+    <div 
+        class="modal__container modal__container--{{ style }} scrollbar" 
+        data-modal-container
+        data-allow-scroll
+    >
+        <button
+            class="modal__close hover-opacity"
+            aria-label="Close popup"
+            type="button"
+            @click.prevent="close"
+        >
+            {%- render 'icon', name: 'times'-%}
+        </button>    
+
+        {{- content -}}
+    </div>
+</div>

@@ -1,0 +1,99 @@
+{%- liquid
+    assign current_variant = item.variant
+    assign variant_title = ''
+    assign hide_variant_title = current_variant.metafields.variant.hide_variant_title | default: false
+    if current_variant.title != 'Default Title' and hide_variant_title == false
+        assign variant_title = current_variant.metafields.variant.variant_title_override | escape | default: ''
+        if variant_title == ''
+            assign variant_title = current_variant.title
+        endif
+    endif
+
+    assign product_image = item.image 
+    assign image_plp = item.product.metafields.custom.main_image_on_plp.value 
+    if image_plp != blank and image_plp.media_type == 'image'
+        assign product_image = image_plp
+    endif
+
+    assign product_title = item.product.title
+    if item.product.metafields.accentuate.plp_title != blank
+        assign product_title = item.product.metafields.accentuate.plp_title | escape
+    endif
+
+    assign tags = item.product.tags | join: '%%%'
+
+    assign max_qty = 6 
+    if product.tags.size > 0
+        for tag in product.tags
+            unless tag contains 'max_qty:'
+                continue
+            endunless
+
+            assign tagArr = tag | split: ':'
+            unless tagArr.size == 2
+                continue
+            endunless
+
+            assign max_qty = tagArr[1] | times: 1
+        endfor
+    endif  
+-%}
+"id": {{- item.variant_id | json -}},
+"image": {%- if product_image -%}{{- product_image | image_url | json -}}{%- else -%}null{%- endif -%},
+"key": {{- item.key | json -}},
+"options_with_values": {{- item.options_with_values | json -}},
+"final_line_price": {{- item.final_line_price | json -}},
+"final_price": {{- item.final_price | json -}},
+"original_line_price": {{- item.original_line_price | json -}},
+"original_price": {{- item.original_price | json -}},
+"productId": {{- item.product_id | json -}},
+"properties": {
+    {%- for property in item.properties -%}
+        "{{- property[0] -}}": {{- property[1] | json -}}{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+},
+"quantity": {{- item.quantity | json -}},
+"requires_shipping": {{- item.requires_shipping -}},
+"selling_plan":
+    {%- if item.selling_plan_allocation.selling_plan != blank -%}
+        {
+            "id": {{- item.selling_plan_allocation.selling_plan.id | json -}},
+            "name": {{- item.selling_plan_allocation.selling_plan.name | json -}}
+        }
+    {%- else -%}
+        null
+    {%- endif -%},
+"sku": {{- item.sku | json -}},
+"title": {{- item.product.metafields.accentuate.plp_title | default: item.product.title | json -}},
+"title_html": {{- item.product.metafields.accentuate.plp_title | default: item.product.title | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>' | split: ' - ' | first | strip | json -}},
+"type": {{- item.product.type | default: '' | json -}},
+"url": {{- item.url | json -}},
+"variant": {
+    "title": {{- variant_title | json -}}
+},
+"free_sample": {%- if tags contains 'sample' -%}true{%- else -%}false{%- endif -%},
+"product": {
+    "collections": [
+        {%- for collection in item.product.collections -%}
+            {{- collection.handle | json -}}{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+    ],
+    "selling_plans": 
+        {%- if item.product.selling_plan_groups.size > 0 -%}
+            [
+                {%- for selling_plan_group in item.product.selling_plan_groups -%}
+                    {%- assign selling_plan_group_first = forloop.first -%}
+                    {%- for selling_plan in selling_plan_group.selling_plans -%}
+                        {%- unless selling_plan_group_first and forloop.first -%},{%- endunless -%}
+                        {
+                            "id": {{- selling_plan.id | json -}},
+                            "name": {{- selling_plan.name | json -}}
+                        }
+                    {%- endfor -%}
+                {%- endfor -%}
+            ]
+        {%- else -%}
+            null
+        {%- endif -%}
+},
+"max_qty": {{- max_qty -}}

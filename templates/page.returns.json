@@ -1,0 +1,138 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "page_header_RiX6ai": {
+      "type": "page-header",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 1.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 5.4,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/SST-HP-Desktop-V2.jpg",
+        "overlay_opacity": 0,
+        "gradient_direction": "gradient-t",
+        "gradient_percent": 25,
+        "content": "<h1>Returns + Exchanges</h1>",
+        "vertical_alignment": "bottom",
+        "horizontal_alignment": "left",
+        "container": "none",
+        "button_label": "get started",
+        "button_url": "https://summerfridays.happyreturns.com/",
+        "link_appearance": "button",
+        "arrow_direction": "right"
+      }
+    },
+    "accordions_GwixER": {
+      "type": "accordions",
+      "blocks": {
+        "accordion_PE9D4T": {
+          "type": "accordion",
+          "settings": {
+            "title": "what is your return policy?",
+            "content": "<p>We hope you love your Summer Fridays products, however we understand that sometimes things don’t work out. We accept returns on new or gently used items purchased from www.SummerFridays.com within 30 days purchase. </p><p>If you have purchased a product from one of our authorized retail partners, please follow that retailer’s return policy. </p><p>Please note, all gift cards and select merchandise purchased on <a href=\"https://summerfridays.com/\" title=\"https://summerfridays.com/\">SummerFridays.com</a> are final sale.</p>"
+          }
+        },
+        "accordion_R6Gwje": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I place a return?",
+            "content": "<p>To return an item, click <a href=\"https://summerfridays.happyreturns.com/\">here</a> (note that by clicking on the link you agree to have your personal information relating to the order shared with our third-party vendor, Happy Returns, whose privacy policy is located here) and enter the email address that you used when you made your purchase along with your shipping zip code and click “Start Your Return”. Once you access the Return Portal, please choose which item you would like to return and select the reason for return.</p><p>Note: For returns from Canada, United Kingdom, Germany or France please reach out to our Customer Care team here, Monday through Friday, 7 a.m. to 4 p.m. PT to have a return label issued.</p>"
+          }
+        },
+        "accordion_yKhzbK": {
+          "type": "accordion",
+          "settings": {
+            "title": "How long does it take to process a return?",
+            "content": "<p>Please allow 5–8 business days for your refund to process once your items have been received by our team. All refunds will be issued to the original payment method. </p><p>Please note: original shipping fees will not be refunded.</p>"
+          }
+        },
+        "accordion_nrKneK": {
+          "type": "accordion",
+          "settings": {
+            "title": "What should I do if I receive the wrong product?",
+            "content": "<p>Please contact our Customer Care Team <a href=\"https://help.summerfridays.com/hc/en-us/requests/new\"><span style=\"text-decoration:underline\">here</span></a> and we’d be happy to exchange, refund or help you order the correct product.</p>"
+          }
+        },
+        "accordion_Jtgfwp": {
+          "type": "accordion",
+          "settings": {
+            "title": "What should I do if I receive a damaged product?",
+            "content": "<p>Please contact our Customer Care Team <a href=\"https://help.summerfridays.com/hc/en-us/requests/new\"><span style=\"text-decoration:underline\">here</span></a> along with an image of your damage to be reviewed by our team.</p>"
+          }
+        },
+        "accordion_t49HeD": {
+          "type": "accordion",
+          "settings": {
+            "title": "Can I return part of a set?",
+            "content": "<p>We are not able to partially refund or credit a single item from a set or kit. All kits, gift sets and duos must be returned with all items in the kit in order to receive refund or credit. </p>"
+          }
+        },
+        "accordion_cbCcfW": {
+          "type": "accordion",
+          "settings": {
+            "title": "Can I make an exchange?",
+            "content": "<p>We allow exchanges on select items on SummerFridays.com. To check if your item is eligible for an exchange, click <a href=\"https://summerfridays.happyreturns.com/\" title=\"https://summerfridays.happyreturns.com/\"><span style=\"text-decoration:underline\">here</span></a>, enter the email address that you used when you made your purchase along with your shipping zip code and click “Start Your Return”.  </p><p>Once you access the Return Portal, please choose which item you would like to exchange and select the reason for return. If your product is eligible, you will see the option to exchange for a similar item. </p>"
+          }
+        },
+        "accordion_xDbbgc": {
+          "type": "accordion",
+          "settings": {
+            "title": "What if I purchased my item from another retailer?",
+            "content": "<p>If you purchase your item from one of our authorized retailers, please contact them directly for assistance. Our Customer Care Team is unable to refund or replace any items sold through other authorized retailers.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_PE9D4T",
+        "accordion_R6Gwje",
+        "accordion_yKhzbK",
+        "accordion_nrKneK",
+        "accordion_Jtgfwp",
+        "accordion_t49HeD",
+        "accordion_cbCcfW",
+        "accordion_xDbbgc"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "",
+        "open_first": true,
+        "bg_color": "white",
+        "container": "page"
+      }
+    },
+    "content_6NmYn8": {
+      "type": "content",
+      "settings": {
+        "padding_top": 3,
+        "padding_bottom": 3,
+        "padding_top_desktop": 6,
+        "padding_bottom_desktop": 6,
+        "content": "<h3>For more information, please see <a href=\"https://summerfridays.com/pages/faqs?hcUrl=%2Fen-US%2Farticles%2Fshipping-and-returns-165596\" target=\"_blank\" title=\"https://summerfridays.com/pages/faqs?hcUrl=%2Fen-US%2Farticles%2Fshipping-and-returns-165596\">here</a>.</h3>",
+        "font_size": "normal",
+        "container": "page",
+        "paragraph_margins": "normal",
+        "heading_alignment": "center",
+        "text_alignment": "center",
+        "text_wrap": "normal"
+      }
+    }
+  },
+  "order": [
+    "page_header_RiX6ai",
+    "accordions_GwixER",
+    "content_6NmYn8"
+  ]
+}

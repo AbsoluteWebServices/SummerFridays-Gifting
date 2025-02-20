@@ -1,0 +1,44 @@
+{%- liquid 
+    assign accentuate = product.metafields.accentuate
+
+    assign product_title = accentuate.title | default: product.title | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>'
+    if accentuate.title_secondary != blank
+        assign secondary_title = accentuate.title_secondary | escape | strip_html | strip
+        if secondary_title != blank
+            assign product_title = product_title | append: ' ' | append: secondary_title
+        endif
+    endif
+
+    assign product_description = product.description
+    if product.metafields.product.custom_description != blank
+        assign product_description = product.metafields.product.custom_description | metafield_tag
+    endif
+-%}
+
+<div 
+    class="product__info-inner"
+>
+    <h1 class="h2">
+        {{- product_title -}}
+    </h1>
+
+    {%- render 'product-reviews-meta' -%}
+
+    <div class="product-info__description-wrapper">
+        {%- render 'product-skin-types' -%}
+
+        {%- if product_description != blank -%}
+            <div class="product-info__description rte rte--smaller">
+                {{- product_description -}}
+            </div>
+        {%- endif -%}
+    </div>
+
+    {%- render 'product-custom-variants' -%}
+
+    <div class="product__info-form-wrapper">
+        {%- render 'product-form' -%}
+    </div>
+
+    {%- render 'product-cross-sells' -%}
+</div>

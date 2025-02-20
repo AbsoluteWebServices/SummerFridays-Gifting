@@ -1,0 +1,24 @@
+{%- render 'adastra' with 'styles/sections/product.scss' -%}
+
+<section
+    x-data="product('{{ product.handle }}')"
+    data-split-load-section
+>
+    <div class="product__wrapper">
+        <div class="product__media">
+            {%- render 'product-media' -%}
+        </div>
+
+        <div class="product__info">
+            {%- render 'product-info' -%}
+        </div>
+    </div>
+
+    {%- render 'product-nm-cs' -%}
+</section>
+
+{% schema %}
+{
+    "name": "Product"
+}
+{% endschema %}

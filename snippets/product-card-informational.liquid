@@ -1,0 +1,106 @@
+{%- liquid 
+    # Product Media
+    assign main_media = product.media | first
+    if product.metafields.custom.main_image_on_plp != blank
+        assign main_media = product.metafields.custom.main_image_on_plp.value
+    endif
+
+    assign hover_media = product.media[1] 
+    if product.metafields.custom.hover_media_on_plp != blank
+        assign hover_media = product.metafields.custom.hover_media_on_plp.value
+    endif
+ 
+    # Product Title
+    assign product_title = product.title
+    if product.metafields.accentuate.plp_title != blank
+        assign product_title = product.metafields.accentuate.plp_title | escape
+    endif
+    assign product_title_html = product_title | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>'
+
+    # Product Subtitle
+    assign product_subtitle = product.metafields.accentuate.product_type | escape
+-%}
+
+<div 
+    class="product-card product-card--informational"
+>
+    <div class="product-card__top">
+        <a 
+            href="{{- product.url -}}" 
+            class="product-card__media-wrapper {% if hover_media != blank %}product-card__media-wrapper--with-hover{% endif %}" 
+            aria-label="Go to {{ product_title }}"
+        >
+            {%- render 'product-card-seal', product: product -%}
+
+            {%- render 'badge', product: product -%}
+
+            <div x-ref="mainMedia" class="product-card__media-main">
+                {%- if main_media != blank -%}
+                    {%- if main_media.media_type == 'video' -%}
+                        {%- render 'video', video: main_media -%}
+                    {%- else -%}
+                        <picture>
+                            <source srcset="{{ main_media | image_url: width: 1000 }}" media="(min-width: 1024px)" data-source-desktop>
+                            <source srcset="{{ main_media | image_url: width: 658 }}" media="(min-width: 576px)" data-source-tablet>
+                            <source srcset="{{ main_media | image_url: width: 568 }}" data-source-mobile>
+                            
+                            <img
+                                class="absolute-img"
+                                src="{{ main_media | image_url: width: 568 }}"
+                                height="300"
+                                width="300"
+                                loading="{%- if lazyload -%}lazy{%- else -%}eager{%- endif -%}"
+                                alt="{{ main_media.alt | default: product.title }}">
+                        </picture>
+                    {%- endif -%}
+                {%- endif -%}
+            </div>
+
+            <div x-ref="hoverMedia" class="product-card__media-hover">
+                {%- if hover_media != blank -%}
+                    {%- if hover_media.media_type == 'video' -%}
+                        {%- render 'video', video: hover_media -%}
+                    {%- else -%}
+                        <picture>
+                            <source srcset="{{ hover_media | image_url: width: 1000 }}" media="(min-width: 1024px)">
+                            <source srcset="{{ hover_media | image_url: width: 658 }}" media="(min-width: 576px)">
+                            <source srcset="{{ hover_media | image_url: width: 568 }}">
+                            
+                            <img
+                                class="absolute-img"
+                                src="{{ hover_media | image_url: width: 568 }}"
+                                height="300"
+                                width="300"
+                                loading="{%- if lazyload -%}lazy{%- else -%}eager{%- endif -%}"
+                                alt="{{ hover_media.alt | default: product.title }}">
+                        </picture>
+                    {%- endif -%}
+                {%- endif -%}
+            </div>
+        </a>
+    </div>
+
+    <div class="product-card__bottom">
+        <div class="product-card__title-wrapper">
+            <h3 class="product-card__title">
+                <a 
+                    href="{{- product.url -}}" 
+                    class="hover-opacity" 
+                    aria-label="Go to {{ product_title }}"
+                >
+                    {{- product_title_html -}}
+                </a>
+            </h3>
+
+            {%- render 'product-card-custom-badge', product: product -%}
+        </div>
+
+        {% if product_subtitle != blank %}
+            <p 
+                class="product-card__subtitle a-underline-wrapper a-underline-style-2"
+            >
+                {{- product_subtitle }}. <a href="{{- product.url -}}" aria-label="Go to {{ product_title }}">{{- 'products.product.more_details' | t -}}</a>
+            </p>
+        {%- endif -%}
+    </div>
+</div>

@@ -1,0 +1,129 @@
+<div class="form form--register">
+  {% form 'create_customer' %}
+    <h1 class="form__title h2">{{ 'customer.register.title' | t }}</h1>
+
+    {{ form.errors | default_errors }}
+
+    <div class="form__group">
+      <input
+        type="text"
+        name="customer[first_name]"
+        id="FirstName"
+        class="form__field"
+        autofocus
+        placeholder="{{ 'customer.register.first_name' | t }}"
+        aria-label="{{ 'customer.register.first_name' | t }}"
+        {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
+      >
+    </div>
+
+    <div class="form__group">
+      <input
+        type="text"
+        name="customer[last_name]"
+        id="LastName"
+        class="form__field"
+        placeholder="{{ 'customer.register.last_name' | t }}"
+        aria-label="{{ 'customer.register.last_name' | t }}"
+        {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
+      >
+    </div>
+
+    <div class="form__group">
+      <input
+        type="email"
+        name="customer[email]"
+        id="Email"
+        class="form__field {% if form.errors contains 'email' %}input-error{% endif %}"
+        value="{% if form.email %}{{ form.email }}{% endif %}"
+        spellcheck="false"
+        autocomplete="off"
+        autocapitalize="off"
+        placeholder="{{ 'customer.register.email' | t }}"
+        aria-label="{{- 'customer.register.email' | t -}}"
+        required
+      >
+    </div>
+
+    <div class="form__group" data-form-password>
+      <input
+        type="password"
+        name="customer[password]"
+        id="CreatePassword"
+        data-form-password-input
+        class="form__field {% if form.errors contains 'password' %}input-error{% endif %}"
+        placeholder="{{ 'customer.register.password' | t }}"
+        aria-label="{{ 'customer.register.password' | t }}"
+      >
+    </div>
+
+    <div class="form__group" data-form-phone>
+      <input
+        type="tel"
+        name="customer[phone]"
+        id="Phone"
+        name="phone"
+        class="form__field {% if form.errors contains 'phone' %}input-error{% endif %}"
+        placeholder="Phone"
+        aria-label="Phone"
+      >
+    </div>
+
+    <div class="form__group form__group--checkbox form__group--email-marketing">
+      <input
+        type="checkbox"
+        name="customer[accepts_marketing]"
+        id="EmailMarketing"
+        class="visually-hidden{% if form.errors contains 'accepts_marketing' %} input-error{% endif %}"
+      >
+      <label for="EmailMarketing" class="checkbox-default p-small">
+        {{ 'shopify.checkout.marketing.accept_marketing_checkbox_label' | t }}
+        {% render 'icon', name: 'checkmark' %}
+      </label>
+    </div>
+
+    <div class="form__group form__group--checkbox">
+      <input
+        type="checkbox"
+        name="customer[buyer_accepts_marketing_attentive]"
+        id="SMSMarketing"
+        class="visually-hidden{% if form.errors contains 'sms' %} input-error{% endif %}"
+      >
+      <label for="SMSMarketing" class="checkbox-default p-small">
+        {{ 'shopify.checkout.marketing.accept_sms_checkbox_label' | t }}
+        <div class="form__terms richtext a-underline-wrapper a-underline-style-2">
+          {{ 'shopify.checkout.marketing.sms.disclaimer.description_html' | t }}
+        </div>
+        {% render 'icon', name: 'checkmark' %}
+      </label>
+    </div>
+
+    {% comment %}
+    <div class="form__group form__group--checkbox">
+      <input type="checkbox"
+        name="customer[receive_marketing]"
+        id="LoyaltyProgram"
+        class="{% if form.errors contains 'password' %}input-error{% endif %}"
+      >
+      <label for="LoyaltyProgram">Join our <a href="/pages/loyalty-program">Loyalty Program</a></label>
+    </div>
+    {% endcomment %}
+
+    {% comment %}
+    <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn">
+    {% endcomment %}
+
+    <button class="form__button btn btn--chalk btn--full btn--center">{{ 'customer.register.submit' | t }}</button>
+
+    {%- if settings.account_register_terms != blank -%}
+      <div class="form__terms a-underline-wrapper a-underline-style-2 p-small">{{ settings.account_register_terms }}</div>
+    {%- endif -%}
+
+    <div class="form__return">
+      <a href="{{ routes.account_login_url }}" class="back-to-login cta-textlink hover-opacity" title="{{- 'customer.register.back_to_login' | t -}}">
+        {% render 'icon', name: 'swiper-arrow-left' %}
+        {{- 'customer.register.back_to_login' | t -}}
+      </a>
+    </div>
+  {% endform %}
+</div>

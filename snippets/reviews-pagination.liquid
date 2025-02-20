@@ -1,0 +1,23 @@
+<ul class="reviews__pagination">
+    <li
+        :class="{ 'reviews__pagination-item--disabled': pagination.current === 1 }"
+        class="reviews__pagination-item reviews__pagination-item--prev"
+        @click="setPage(pagination.current - 1)"
+    >
+        {% render 'icon', name: 'chevron-down' %}
+    </li>
+    <template x-for="item in pagination.items">
+        <li
+            :class="{ 'reviews__pagination-item--active': pagination.current === item }"
+            class="reviews__pagination-item"
+            x-text="item"
+            @click="setPage(item)"></li>
+    </template>
+    <li
+        :class="{ 'reviews__pagination-item--disabled': pagination.current === pagination.items.length }"
+        class="reviews__pagination-item reviews__pagination-item--next"
+        @click="setPage(pagination.current + 1)"
+    >
+        {% render 'icon', name: 'chevron-down' %}
+    </li>
+</ul>

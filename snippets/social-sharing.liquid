@@ -1,0 +1,23 @@
+{% assign ns = 'social-sharing' %}
+
+<div class="{{ ns }}">
+  <div class="{{ ns }}__buttons addthis_toolbox">
+    <a class="{{ ns }}__button {{ ns }}__button--facebook addthis_button_facebook" aria-label="Facebook">
+      {% render 'icon-facebook' %}
+    </a>
+    <a class="{{ ns }}__button {{ ns }}__button--twitter addthis_button_twitter" aria-label="Twitter">
+      {% render 'icon-twitter' %}
+    </a>
+    <a class="{{ ns }}__button {{ ns }}__button--share addthis_button_compact" aria-label="Share">
+      {% render 'icon-share' %}
+    </a>
+  </div>
+</div>
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6026eb336352803b"></script>
+<script type="text/javascript">
+  var addthis_config = {
+    data_track_clickback: true,
+    ui_disable: true
+  }
+</script>

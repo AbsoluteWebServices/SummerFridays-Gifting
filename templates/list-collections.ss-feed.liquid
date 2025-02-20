@@ -1,0 +1,4 @@
+{%- layout none -%}
+{%- for collection in collections -%}
+{"id":{{ collection.id | json }},"handle":{{ collection.handle | json }},"url":{{ collection.url | json }},"title":{{ collection.title | json }},"image":{{ collection.featured_image | img_url: '480x' | json }},"count":{{ collection.products_count | json }}}
+{% endfor %}

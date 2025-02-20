@@ -1,0 +1,182 @@
+{%- if section.blocks.size > 0 -%}
+    {%- liquid
+        assign padding_top = section.settings.padding_top | default: 0
+        assign padding_bottom = section.settings.padding_bottom | default: 0
+        assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+        assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+        assign content = section.settings.content
+        assign open_first = section.settings.open_first | default: true, allow_false: true
+        assign bg_color = section.settings.bg_color | default: 'white'
+        assign container = section.settings.container | default: 'page'
+    -%}
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/accordions.scss' -%}
+
+    <section id='section-{{- section.id -}}'>
+        <div class="accordions-wrapper accordions-wrapper--{{- bg_color -}}">
+            <div class='container container--{{- container -}}'>
+                <div class="accordions__container" style="background-color: var(--{{- bg_color -}});">
+                    {%- if content != blank -%}
+                        <div class='rte accordions__content'>
+                            {{- content -}}
+                        </div>
+                    {%- endif -%}
+
+                    <ul 
+                        x-data="{ open: {% if open_first %}1{% else %}0{% endif %} }"
+                        class="accordions__items list-reset"
+                    >
+                        {%- for block in section.blocks -%}
+                            {%- liquid 
+                                assign title = block.settings.title | escape | strip_html
+                                assign accordion_content = block.settings.content 
+                            -%}
+                            <li
+                                class="accordions__item"
+                            >
+                                <button
+                                    id="accordion-toggle-btn-{{ forloop.index }}-{{ section.id }}"
+                                    class="subheader-small accordions__item-btn"
+                                    type="button"
+                                    aria-controls="accordion-{{ forloop.index }}-{{ section.id }}"
+                                    {% if forloop.first and open_first %}
+                                        aria-expanded="true"
+                                    {% endif %}
+                                    :aria-expanded="open === {{ forloop.index }}"
+                                    @click.prevent="open = open === {{ forloop.index }} ? 0 : {{ forloop.index }}"
+                                >
+                                    {{- title -}}
+                                    {%- render 'plus-icon', size: 12 -%}
+                                </button>
+
+                                <div
+                                    id="accordion-{{ forloop.index }}-{{ section.id }}"
+                                    class="accordions__item-content dropdown-content rte list-reset"
+                                    aria-labelledby="accordion-toggle-btn-{{ forloop.index }}-{{ section.id }}"
+                                    {% if forloop.first and open_first %}
+                                        data-open="true"
+                                        style="height: auto;"
+                                    {% endif %}
+                                    :data-open="open === {{ forloop.index }}"
+                                    :style="open === {{ forloop.index }} && { height: $el.scrollHeight + 'px' }"
+                                    @resize.window="if (open !== {{ forloop.index }}) { return; } $el.style.height = 'auto'"
+                                >
+                                    {{ accordion_content }}   
+                                </div>
+                            </li>
+                        {%- endfor -%}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Accordions | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Settings"
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_first",
+          "label": "First accordion open?",
+          "default": true
+        },
+        {
+            "type": "select",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "white",
+            "options": [
+                { "value": "white", "label": "White" },
+                { "value": "chalk", "label": "Chalk" },
+                { "value": "morning-sky", "label": "Morning Sky" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "container",
+            "label": "Container",
+            "default": "page",
+            "options": [
+                { "value": "page", "label": "Page" },
+                { "value": "blog", "label": "Blog" },
+                { "value": "small", "label": "Small" },
+                { "value": "medium", "label": "Medium" }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Accordions | AW"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Accordion",
+            "type": "accordion",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "content",
+                    "label": "Content"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

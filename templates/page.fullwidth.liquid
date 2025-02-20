@@ -1,0 +1,9 @@
+{%- assign hide_the_default_title = page.metafields.custom.hide_the_default_title | default: false -%}
+
+{%- unless hide_the_default_title -%}
+    <h1{% if page.metafields.custom.title_sans_serif %} style="font-family: var(--font-family-sans-serif)"{% endif %}>
+    {{ page.title }}
+    </h1>
+{%- endunless -%}
+
+{{ page.content }}

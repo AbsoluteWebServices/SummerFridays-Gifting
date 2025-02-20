@@ -1,0 +1,56 @@
+
+name: Build Dev Theme
+on:
+    pull_request:
+        branches:
+            - build/**
+            - Build/**
+    push:
+        branches:
+            - build/**
+            - Build/**
+        paths-ignore:
+            - README.md
+jobs:
+    build:
+        if: endsWith(github.actor, '[bot]') == false && contains(github.ref, 'build/redesign') == false
+        runs-on: ubuntu-latest
+        environment: master
+        steps:
+            -   uses: actions/checkout@v3
+            -   uses: actions/setup-node@v3
+                with:
+                    node-version: '20.x'
+            -   uses: pnpm/action-setup@v3
+                with:
+                  version: 8
+                  run_install: false
+            -   uses: actions/cache@v3
+                with:
+                    path: ~/.npm
+                    key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
+                    restore-keys: |
+                        ${{ runner.os }}-node-
+            -   run: pnpm install
+            -   run: pnpm build
+            -   name: Extract branch name
+                id: extract_branch
+                shell: bash
+                run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+            -   name: Add -build branch
+                run: |
+                    git checkout -b "${{ steps.extract_branch.outputs.branch }}-build" || true
+            -   run: |
+                    git config user.name "GitHub Action"
+                    git config user.email "action@github.com"
+                    git add .
+                    git commit --amend --no-edit
+                    git add -f assets/adastra.manifest.json
+                    git add -f assets/sf-*
+                    git add -f snippets/adastra.liquid
+                    git commit -m "Shopify git-busting commit: `date`"
+            - name: Push changes to development-build subtree
+              run: |
+                  git config --global --add --bool push.autoSetupRemote true
+                  git push --force
+

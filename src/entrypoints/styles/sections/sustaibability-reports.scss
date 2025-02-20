@@ -1,0 +1,77 @@
+.sustaibability-reports__content {
+    margin-bottom: 2.4rem;
+}
+
+.sustaibability-reports__image {
+    display: block;
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: .3rem;
+    overflow: hidden;
+    margin-bottom: .6rem;
+
+    @media only screen and (min-width: 1280px) {
+        margin-bottom: 0;
+    }
+}
+
+.sustaibability-reports__report-report {
+    @media only screen and (min-width: 1280px) {
+        flex-grow: 1;
+    }
+}
+
+
+.sustaibability-reports__report {
+    @media only screen and (min-width: 1280px) {
+        display: grid;
+        grid-template-columns: 39.15% 1fr;
+        gap: 1.2rem;
+    }
+}
+
+.sustaibability-reports__slider {
+    padding: 0 1.8rem;
+
+    @media only screen and (min-width: 1280px) {
+        padding: 0 6rem;
+    }
+
+    .swiper-slide {
+        margin-right: 1.8rem;
+        width: 86.26%;
+        height: auto;
+
+        @media only screen and (min-width: 576px) {
+            width: 72.7%;
+        }
+
+        @media only screen and (min-width: 768px) {
+            width: 46.33%;
+        }
+
+        @media only screen and (min-width: 1024px) {
+            width: 41.58%;
+        }
+
+        @media only screen and (min-width: 1280px) {
+            width: 90.77%;
+        }
+
+        @media only screen and (min-width: 1280px) {
+            width: 90.77%;
+        }
+
+        @media only screen and (min-width: 1536px) {
+            width: 59.73%;
+        }
+    }
+
+    .swiper-nav-btn {
+        display: none;
+
+        @media only screen and (min-width: 1280px) {
+            display: flex;
+        }
+    }
+}

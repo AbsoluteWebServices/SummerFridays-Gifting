@@ -1,0 +1,264 @@
+{%- liquid
+    assign padding_top = section.settings.padding_top | default: 0
+    assign padding_bottom = section.settings.padding_bottom | default: 0
+    assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+    assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+    assign id = section.settings.id | escape | strip_html | strip | handleize
+
+    assign content = section.settings.content
+    assign layout = section.settings.layout | default: 'slider'
+    assign source = section.settings.source | default: 'complementary'
+    assign subscription_mode = section.settings.subscription_mode | default: false
+    assign content = section.settings.content 
+    assign button_label = section.settings.button_label | escape | strip_html
+    assign button_url = section.settings.button_url
+    assign limit = section.settings.limit | default: 8
+    assign fetch_required = false
+
+    case source
+        when 'complementary'
+            assign products = product.metafields['shopify--discovery--product_recommendation'].complementary_products.value
+            if products == blank
+                assign content = section.settings.content_related
+                assign products = product.metafields['shopify--discovery--product_recommendation'].related_products.value
+            endif
+            if products == blank
+                assign fetch_required = true
+                if recommendations.performed? and recommendations.products_count > 0
+                    assign products = recommendations.products
+                endif
+            endif
+
+        when 'related'
+            assign content = section.settings.content_related
+            assign products = product.metafields['shopify--discovery--product_recommendation'].related_products.value
+            if products == blank
+                assign fetch_required = true
+                if recommendations.performed? and recommendations.products_count > 0
+                    assign products = recommendations.products
+                endif
+            endif
+
+        when 'custom'
+            assign products = section.settings.products
+    endcase
+-%}
+
+{%- render 'offset',
+    id: section.id,
+    padding_top: padding_top,
+    padding_bottom: padding_bottom,
+    padding_top_desktop: padding_top_desktop,
+    padding_bottom_desktop: padding_bottom_desktop
+-%}
+
+{%- render 'adastra' with 'styles/sections/pairs-well-with.scss' -%}
+
+{%- if id != blank -%}
+    <div id="{{- id -}}"></div>
+{%- endif -%}
+
+<section 
+    id="section-{{- section.id -}}"
+    x-data="pairsWellWith({{- fetch_required -}}, {{- product.id | default: 0 -}}, {{- limit -}})"
+    data-split-load-section
+>
+    {%- if content != blank -%}
+        <div class="container">
+            <div class="pww__content-wrapper">
+                <div class="rte pww__content">
+                    {{- content -}}
+                </div>
+
+                {%- if button_label != blank and button_url != blank -%}
+                    <a href="{{- button_url -}}" aria-label="{{- button_label -}}" class="btn btn-w-min btn--center btn--chalk">
+                        {{- button_label -}}
+                        {%- render 'icon', name: 'arrow-right' -%}
+                    </a>
+                {%- endif -%}
+            </div>
+        </div>
+    {%- endif -%}
+
+    <div
+        class="swiper pww__slider pww__slider-{{- layout -}}"
+        {% if layout == 'slider' %}
+            x-ref="slider"
+            x-intersect.once="initSlider"
+        {% endif %}
+    >
+        {%- if fetch_required -%}
+            <div x-show="!fetched" class="swiper-wrapper swiper-wrapper--placeholder">
+                {%- for i in (1..limit) -%}
+                    <div class="swiper-slide">
+                        {%- render 'product-card-placeholder' -%}
+                    </div>
+                {%- endfor -%}
+            </div>
+        {%- endif -%}
+
+        <div 
+            x-show="fetched || !{{ fetch_required }}" 
+            class="swiper-wrapper swiper-wrapper--main"
+            {% if fetch_required %}
+                style="display: none;"
+            {% endif  %}
+        >
+            {%- for prod in products limit: limit -%}
+                {%- assign remove_from_recommendations = prod.metafields.product.remove_from_recommendations | default: false -%}
+                {%- if remove_from_recommendations -%}
+                    {%- continue -%}
+                {%- endif -%}
+                
+                <div class="swiper-slide">
+                    {%- render 'product-card', 
+                        product: prod, 
+                        lazyload: true,
+                        disableLandscape: true,
+                        top: true,
+                        subscription_mode: subscription_mode
+                    -%}
+                </div>
+            {%- endfor -%}
+        </div>
+
+        <button
+            class="swiper-nav-btn swiper-nav-btn--prev swiper-button-disabled hover-opacity"
+            type="button"
+            aria-label="Go to the previous slide"
+            data-swiper-prev
+        >
+            {%- render 'icon', name: 'swiper-chevron' -%}
+        </button>
+
+        <button
+            class="swiper-nav-btn swiper-nav-btn--next swiper-button-disabled hover-opacity"
+            type="button"
+            aria-label="Go to the next slide"
+            data-swiper-next
+        >
+            {%- render 'icon', name: 'swiper-chevron' -%}
+        </button>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Recommendations | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Main Settings"
+        },
+        {
+            "type": "text",
+            "id": "id",
+            "label": "ID",
+            "info": "Use this id to link to this section. Only lowercase letters without spaces."
+        },
+        {
+            "type": "select",
+            "id": "layout",
+            "label": "Layout",
+            "default": "slider",
+            "options": [
+                { "value": "slider", "label": "Slider" },
+                { "value": "grid", "label": "Grid" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "source",
+            "label": "Source",
+            "default": "complementary",
+            "options": [
+                { "value": "complementary", "label": "Complementary" },
+                { "value": "related", "label": "Related" },
+                { "value": "custom", "label": "Custom" }
+            ]
+        },
+        {
+           "type": "checkbox",
+           "id": "subscription_mode",
+           "label": "Subscription mode",
+           "default": false
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content: complementary/custom",
+            "info": "Hint: use Heading 2 for title, and paragraph for body"
+        },
+        {
+            "type": "richtext",
+            "id": "content_related",
+            "label": "Content: related",
+            "info": "Hint: use Heading 2 for title, and paragraph for body"
+        },
+        {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+        },
+        {
+            "type": "text",
+            "id": "button_url",
+            "label": "Button URL"
+        },
+        {
+            "id": "limit",
+            "label": "Limit",
+            "type": "range",
+            "info": "Recommended amount: 6-10",
+            "min": 1,
+            "max": 10,
+            "step": 1,
+            "default": 8
+        },
+        {
+          "type": "product_list",
+          "id": "products",
+          "label": "Products",
+          "limit": 10
+        }
+    ],
+    "presets": [
+        {
+            "name": "Recommendations | AW"
+        }
+    ]
+}
+{% endschema %}

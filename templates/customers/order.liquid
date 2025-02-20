@@ -1,0 +1,13 @@
+{%- liquid
+  render 'adastra' with 'styles/sections/account.scss'
+-%}
+
+<div class="container">
+  <section class="account">
+    {%- render 'account-menu' -%}
+
+    <div class="account__content account__content--wide">
+      {%- render 'account-order-detail', order: order -%}
+    </div>
+  </section>
+</div>

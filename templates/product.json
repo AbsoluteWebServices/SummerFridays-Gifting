@@ -1,0 +1,134 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product-sf",
+      "settings": {
+      }
+    },
+    "recommendations_WxdKaz": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4,
+        "id": "",
+        "layout": "slider",
+        "source": "complementary",
+        "subscription_mode": false,
+        "content": "<h2>Pairs Well With</h2>",
+        "content_related": "<h2>Related Products</h2>",
+        "button_label": "",
+        "button_url": "",
+        "limit": 8,
+        "products": [
+
+        ]
+      }
+    },
+    "product_reviews_KXKNcg": {
+      "type": "product-reviews",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "cta_text": "Write a Review",
+        "verified_buyer_text": "Verified Buyer",
+        "filters_text": "Filters",
+        "clear_filters_text": "Clear Filters"
+      }
+    },
+    "image_gallery_JECmdJ": {
+      "type": "image-gallery",
+      "blocks": {
+        "image_fPbKXF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i1.jpg",
+            "url": "#"
+          }
+        },
+        "image_T8FAhK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i2.jpg",
+            "url": ""
+          }
+        },
+        "image_XaNWiR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i3.jpg",
+            "url": "#"
+          }
+        },
+        "image_fVhwhy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i4.jpg",
+            "url": "#"
+          }
+        },
+        "image_zVJiYB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i5.jpg",
+            "url": "#"
+          }
+        },
+        "image_XkNCzn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i6.jpg",
+            "url": "#"
+          }
+        },
+        "image_DUK8r8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i7.jpg",
+            "url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "image_fPbKXF",
+        "image_T8FAhK",
+        "image_XaNWiR",
+        "image_fVhwhy",
+        "image_zVJiYB",
+        "image_XkNCzn",
+        "image_DUK8r8"
+      ],
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "background_color": "morning-sky",
+        "content": "<h2>Follow us on Instagram <a href=\"#\" title=\"#\">@summerfridays</a></h2><p>Effortless Beauty. Inspired by California.</p>",
+        "images_type": "spirit-gallery-api",
+        "embed": "<script src=\"https://cdn.dashhudson.com/web/js/board-embed.js\" type=\"text/javascript\" data-name=\"dhboard\" data-gallery-id=\"62141\" data-row-size=\"4\" data-gap-size=\"1\" data-row-limit=\"1\" data-mobile-row-size=\"4\" data-mobile-gap-size=\"1\"></script>",
+        "spirit_gallery_id": "3794955",
+        "limit": 8,
+        "spirit_gallery_image_url": "https://www.instagram.com/summerfridays/"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "recommendations_WxdKaz",
+    "product_reviews_KXKNcg",
+    "image_gallery_JECmdJ"
+  ]
+}

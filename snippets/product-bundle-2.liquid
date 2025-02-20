@@ -1,0 +1,331 @@
+{%- if steps.size > 0 -%}
+    {%- liquid
+        assign available = available | default: false
+        assign bundle_url = request.origin | append: request.path
+    -%}
+
+    <script x-ref="settings" type="application/json">
+        {
+          "available": {{- available -}},
+          "image": {%- if bundle_image -%}{{- bundle_image | image_url | json -}}{%- else -%}null{%- endif -%},
+          "url": {{- bundle_url | json -}},
+          "title": {{- bundle_title | json -}},
+          "steps": [
+            {%- for step in steps -%}
+                {%- assign collection = collections[step.settings.collection] -%}
+                {
+                    "select_your_text": {{ step.settings.select_your_text | default: '' | json }},
+                    "custom_link_title": {{ step.settings.custom_link_title | default: 'Not sure? Learn more.' | json }},
+                    "custom_link": {%- if step.settings.custom_link != blank -%}{{ step.settings.custom_link | json }}{%- else -%}null{%- endif -%},
+                    "products": [
+                        {%- for product in collection.products -%}
+                            {
+                                {%- render 'bundle-product-object',
+                                    product: product
+                                -%}
+                            }{%- unless forloop.last -%},{%- endunless -%}
+                        {%- endfor -%}
+                    ]
+                }{%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+          ]
+        }
+    </script>
+
+    <div
+        class="bundle-builder"
+    >
+        <template x-if="settings?.steps?.length">
+            <ul
+                class="bundle-builder__items list-reset"
+            >
+                <template
+                    x-for="(step, index) in settings.steps"
+                    :key="`bundle-step-${index}`"
+                >
+                    <template x-if="step.products?.length">
+                        <li
+                            class="bundle-builder__item"
+                        >
+                            <div
+                                class="bundle-builder__item-inner"
+                            >
+                                <a
+                                    :href="getSelectedVariant(index).url"
+                                    class="bundle-builder__item-img scale-img"
+                                >
+                                    <img
+                                        :src="getSelectedVariant(index).image_url"
+                                        :alt="getSelectedVariant(index).title"
+                                        width="144"
+                                        height="144"
+                                        class="absolute-img"
+                                        loading="lazy"
+                                    >
+                                </a>
+
+                                <div class="bundle-builder__item-content">
+                                    <h4 class="bundle-builder__item-title">
+                                        <a
+                                            :href="getSelectedVariant(index).url"
+                                            class="hover-opacity"
+                                            x-html="getSelectedVariant(index).product_title"
+                                            :aria-label="getSelectedVariant(index).product_title"
+                                        ></a>
+                                    </h4>
+
+                                    <div class="bundle-builder__item-body">
+                                        <p
+                                            class="bundle-builder__item-selector-label superscript-normal"
+                                            x-text="step.select_your_text"
+                                        ></p>
+
+                                        <template x-if="getAllVariantsInStep(index)?.length > 1">
+                                            <div
+                                                x-data="
+                                                    {
+                                                        open: false
+                                                    }
+                                                "
+                                                class="superscript-normal select-wrapper select-wrapper--absolute select-wrapper--bordered"
+                                                @click.outside="open = false"
+                                            >
+                                                <button
+                                                    :id="`bundle-selector-btn-${ index }`"
+                                                    class="bundle-builder__selector-btn p-normal select-toggle-btn"
+                                                    type="button"
+                                                    aria-haspopup="true"
+                                                    :aria-controls="`bundle-selector-${ index }`"
+                                                    :aria-expanded="open"
+                                                    @click.prevent="open = ! open"
+                                                >
+                                                    <div class="bundle-builder__selector-btn-inner">
+                                                        <template x-if="getSelectedVariant(index).thumbnail_url">
+                                                            <span
+                                                                class="bundle-builder__item-selector-toggle-thumbnail-wrapper"
+                                                            >
+                                                                <img
+                                                                    :src="getSelectedVariant(index).thumbnail_url"
+                                                                    :alt="getSelectedVariant(index).title"
+                                                                    width="32"
+                                                                    height="32"
+                                                                    class="absolute-img"
+                                                                    loading="lazy"
+                                                                >
+                                                            </span>
+                                                        </template>
+
+                                                        <span
+                                                            class="bundle-builder__item-selector-toggle-text text-overflow"
+                                                            x-html="optionTitle(getSelectedVariant(index).title)"
+                                                        ></span>
+                                                    </div>
+                                                    {%- render 'icon', name: 'chevron-down' -%}
+                                                </button>
+
+                                                <ul
+                                                    :id="`bundle-selector-${ index }`"
+                                                    class="dropdown-content bundle-builder__item-selector-dropdown-content scrollbar list-reset"
+                                                    :data-open="open"
+                                                    :aria-labelledby="`bundle-selector-btn-${ index }`"
+                                                    :style="open && { height: ($el.scrollHeight + 1) + 'px' }"
+                                                    @resize.window="if (!open) { return; } $el.style.height = 'auto'"
+                                                >
+                                                    <template
+                                                        x-for="(variant, i) in getAllVariantsInStep(index)"
+                                                        :key="`step-${ index }-variant-${ i }`"
+                                                    >
+                                                        <template x-if="variant.id !== getSelectedVariant(index).id && !variant.draft">
+                                                            <li>
+                                                                <button
+                                                                    class="bundle-builder__item-selector-option hover-opacity"
+                                                                    @click.prevent="selectVariant(index, variant.id); open = false"
+                                                                >
+                                                                    <div class="bundle-builder__item-selector-toggle-title">
+                                                                        <template x-if="variant.thumbnail_url">
+                                                                            <span
+                                                                                class="bundle-builder__item-selector-toggle-thumbnail-wrapper"
+                                                                            >
+                                                                                <img
+                                                                                    :src="variant.thumbnail_url"
+                                                                                    :alt="variant.title"
+                                                                                    width="32"
+                                                                                    height="32"
+                                                                                    class="absolute-img"
+                                                                                    loading="lazy"
+                                                                                >
+                                                                            </span>
+                                                                        </template>
+                                                                        <span
+                                                                            class="bundle-builder__item-selector-toggle-text text-overflow"
+                                                                            x-html="optionTitle(variant.title)"
+                                                                        ></span>
+                                                                    </div>
+                                                                </button>
+                                                            </li>
+                                                        </template>
+                                                    </template>
+                                                </ul>
+                                            </div>
+                                        </template>
+
+                                        <template x-if="getSelectedVariant(index).shade_finder_url">
+                                            <div
+                                                class="bundle-builder__shade-url-wrapper a-underline-wrapper a-underline-style-2"
+                                            >
+                                                <a
+                                                    class="superscript-normal"
+                                                    :href="getSelectedVariant(index).shade_finder_url"
+                                                    target="_blank"
+                                                >
+                                                    Shade Finder
+                                                </a>
+                                            </div>
+                                        </template>
+
+                                        <template x-if="step.custom_link">
+                                            <div
+                                                class="bundle-builder__shade-url-wrapper"
+                                            >
+                                                <a
+                                                    :href="step.custom_link"
+                                                    target="_blank"
+                                                    x-text="step.custom_link_title || 'Not sure? Learn more.'"
+                                                ></a>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+
+                                <template x-if="typeof getSelectedVariant(index).discounted_price === 'number'">
+                                    <div
+                                        class="bundle-builder__item-price h4"
+                                    >
+                                        <span class="sale-price">
+                                            <s
+                                                x-text="window.Shopify.formatMoney(getSelectedVariant(index).price)"
+                                            ></s>
+                                        </span>
+                                        <span
+                                            x-text="getSelectedVariant(index).discounted_price > 0 ? (window.Shopify.formatMoney(getSelectedVariant(index).discounted_price)) : 'FREE'"
+                                        ></span>
+                                    </div>
+                                </template>
+
+                                <template x-if="getSelectedVariant(index).discounted_price <= 0">
+                                    <div
+                                        class="bundle-builder__item-price h4"
+                                        x-text="window.Shopify.formatMoney(getSelectedVariant(index).price)"
+                                    >
+                                    </div>
+                                </template>
+                            </div>
+                        </li>
+                    </template>
+                </template>
+            </ul>
+        </template>
+
+        {%- if custom_link_label != blank and custom_link_url != blank -%}
+            <a 
+                href="{{- custom_link_url -}}"
+                class="bundle-builder__custom-link superscript-normal cta-link-with-arrow cta-link-with-arrow--right"
+                aria-label="{{- custom_link_label -}}"
+            >
+                {{- custom_link_label -}}
+                {%- render 'icon', name: 'arrow-right' -%}
+            </a>
+        {%- endif -%}
+
+        {%- if bundle_discount_text != blank -%}
+            <p class="bundle-builder__discount">
+                {{- bundle_discount_text -}}
+            </p>
+        {%- endif -%}
+
+        <div class="bundle-builder__atc-wrapper">
+            <button
+                class="btn btn--full btn--between btn--morning-sky"
+                aria-label="{{ 'products.product.add_to_cart' | t }}"
+                @click.prevent="addToBag"
+                :disabled="!available"
+            >
+                <span x-text="available ? '{{ 'products.product.add_to_cart' | t }}' : '{{ 'products.product.sold_out' | t }}'"></span>
+                <span class="bundle-builder__totals">
+                    <template x-if="total_price > total_price_discounted">
+                        <s x-text="window.Shopify.formatMoney(total_price)"></s>
+                    </template>
+                    <span x-text="window.Shopify.formatMoney(total_price_discounted)"></span>
+                </span>
+            </button>
+        </div>
+
+        <div class="bundle-builder__placements">
+            <afterpay-placement
+                id="afterpay-placement-pdp"
+                class="superscript-normal afterpay-placement"
+                data-locale="{{- shop_locale.iso_code -}}"
+                data-currency="{{- cart.currency.iso_code -}}"
+                :data-amount="total_price_discounted / 100"
+                data-badge-theme="white-on-black"
+                data-size="xs"
+            ></afterpay-placement>
+
+            <catch-callout 
+                :price="total_price_discounted"
+                class="superscript-normal catch-callout"
+                page-type="product"
+                or-prefix
+                theme="light-mono"
+                border-style="none-no-padding" 
+            />
+        </div>
+    </div>
+
+    {%- liquid
+        for step in steps
+            assign collection = collections[step.settings.collection]
+            for product in collection.products
+                assign main_product = product
+                break
+            endfor
+        endfor
+
+        assign price = 0
+        assign compare_at_price = 0
+
+        for step in steps
+            assign collection = collections[step.settings.collection]
+            assign product = collection.products[0]
+            assign discounted_price = product.price
+            for tag in product.tags
+                if tag contains 'bundle_price:'
+                    assign bundle_price_tag = tag | split: ':'
+                    assign discounted_price = bundle_price_tag[1] | times: 1
+                endif
+            endfor
+            assign price = price | plus: discounted_price
+            assign compare_at_price = compare_at_price | plus: product.price
+        endfor
+    -%}
+
+    <script
+        text="text/javascript"
+    >
+        window.item = {
+            Name: "{{ bundle_title }}",
+            ProductID: {{ main_product.id }},
+            Categories: [
+                {% for step in steps %}
+                    {% assign collection = collections[step.settings.collection] %}
+                    "{{ collection.title | default: 'All Products' }}"{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+            ],
+            Brand: "{{ main_product.vendor }}",
+            Price: "{{ price | money }}",
+            CompareAtPrice: "{{ compare_at_price | money }}",
+            ImageURL: "https:{{ bundle_image | image_url: width: bundle_image.width }}",
+            URL: "{{ bundle_url }}"
+        };
+    </script>
+{%- endif -%}

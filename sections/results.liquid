@@ -1,0 +1,280 @@
+{%- liquid
+    assign padding_top = section.settings.padding_top | default: 0
+    assign padding_bottom = section.settings.padding_bottom | default: 0
+    assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+    assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+    assign media_type = section.settings.media_type | default: 'image'
+    assign image = section.settings.image
+    assign video = section.settings.video
+    assign media_fit = section.settings.media_fit | default: 'cover'
+    assign content_mobile = section.settings.content_mobile
+    assign content = section.settings.content
+    assign note = section.settings.note 
+    assign content_below_results = section.settings.content_below_results
+    assign facts = section.blocks | where: 'type', 'result'
+    assign ingredients = section.blocks | where: 'type', 'ingredient'
+    assign key_ingredients_title = section.settings.key_ingredients_title
+-%}
+
+{%- render 'offset',
+    id: section.id,
+    padding_top: padding_top,
+    padding_bottom: padding_bottom,
+    padding_top_desktop: padding_top_desktop,
+    padding_bottom_desktop: padding_bottom_desktop
+-%}
+
+{%- render 'adastra' with 'styles/sections/results.scss' -%}
+
+<section id="section-{{- section.id -}}">
+    <div class="container">
+        {%- if content_mobile != blank -%}
+            <div class="results__content-mobile rte rte--smaller">{{- content_mobile -}}</div>
+        {%- endif -%}
+
+        <div class="results__inner">
+            <div class="results__media results__media--{{ media_fit }}">
+                {%- if media_type == 'image' -%}
+                    {%- if image -%}
+                        {%- render 'img', image: image -%}
+                    {%- endif -%}
+                {%- elsif media_type == 'video' -%}
+                    {%- if video -%}
+                        {%- render 'video', 
+                            video: video,
+                            poster: image
+                        -%}
+                    {%- endif -%}
+                {%- endif -%}
+            </div>
+
+            <div class="results__body">
+                {%- if content != blank -%}
+                    <div class="results__title rte">{{- content -}}</div>
+                {%- endif -%}
+
+                <ul class="list-reset results__facts">
+                    {%- for block in facts -%}
+                        {%- liquid 
+                            assign result = block.settings.result | default: 100
+                            assign fact = block.settings.fact
+                            if fact == blank
+                                continue
+                            endif
+
+                            assign dashoffset = result | divided_by: 100.00 | times: 252 | round
+                        -%}
+                        <li class="results__fact">
+                            <div class="results__fact-result h3">
+                                {{- result -}}%
+
+                                <svg class="results__circle" xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="-8.75 -8.75 87.5 87.5" version="1.1" aria-label="Before / After progress circle bar">
+                                    <circle r="40" cx="35" cy="35" fill="transparent" stroke="var(--chalk)" stroke-width="3" stroke-dasharray="252" stroke-dashoffset="0"/>
+                                    <circle r="40" cx="35" cy="35" stroke="var(--accent-blue)" stroke-width="3" stroke-linecap="butt" stroke-dashoffset="{{- 252 | minus: dashoffset -}}" fill="transparent" stroke-dasharray="252"/>
+                                </svg>
+                            </div>
+
+                            <div class="results__fact-content rte">
+                                {{- fact -}}
+                            </div>
+                        </li>
+                    {%- endfor -%}
+                </ul>
+
+                {%- if note != blank -%}
+                    <div class="results__note p-small rte">
+                        {{- note -}}
+                    </div>
+                {%- endif -%}
+
+                {%- if ingredients.size > 0 -%}
+                    <div class="results__ingredients">
+                        {%- if key_ingredients_title != blank -%}
+                            <div class="rte results__ingredients-title">
+                                {{- key_ingredients_title -}}
+                            </div>
+                        {%- endif -%}
+
+                        <ul class="results__ingredients-items list-reset">
+                            {%- for block in ingredients -%}
+                                {%- liquid 
+                                    assign ingredient_title = block.settings.title | escape | strip_html
+                                    assign ingredient_content = block.settings.content
+                                    if ingredient_content == blank
+                                        continue
+                                    endif
+                                -%}
+                                <li class="results__ingredients-item">
+                                    {%- if ingredient_title != blank -%}
+                                        <p class="subheader-small results__ingredients-item-title">
+                                            {{- ingredient_title -}}
+                                        </p>
+                                    {%- endif -%}
+
+                                    <div class="rte rte--smaller">
+                                        {{- ingredient_content -}}
+                                    </div>
+                                </li>
+                            {%- endfor -%}
+                        </ul>
+                    </div>
+                {%- endif -%}
+
+                {%- if content_below_results != blank -%}
+                    <div class="results__content-below-results rte">{{- content_below_results -}}</div>
+                {%- endif -%}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Results | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Section Settings"
+        },
+        {
+            "type": "richtext",
+            "id": "content_mobile",
+            "label": "Content (mobile)",
+            "info": "Use H2 for title; Paragraph for regular text."
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content (results)",
+            "info": "Use H2 for title; Paragraph for regular text."
+        },
+        {
+            "type": "richtext",
+            "id": "note",
+            "label": "Note"
+        },
+        {
+            "type": "richtext",
+            "id": "key_ingredients_title",
+            "label": "Key Ingredients title"
+        },
+        {
+            "type": "richtext",
+            "id": "content_below_results",
+            "label": "Content (below results)",
+            "info": "Use H2 for title; Paragraph for regular text."
+        },
+        {
+            "type": "select",
+            "id": "media_type",
+            "label": "Media type",
+            "default": "video",
+            "options": [
+                { "value": "image", "label": "Image" },
+                { "value": "video", "label": "Video" }
+            ]
+        },
+        {
+            "type": "video",
+            "id": "video",
+            "label": "Video",
+            "info": "Format: .mp4; Aspect ratio: 1 / 1"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "With the video type, the image is used as a poster (first frame); Aspect ratio: 1 / 1"
+        },
+        {
+            "type": "select",
+            "id": "media_fit",
+            "label": "Media fit",
+            "default": "cover",
+            "info": "Cover: media occupies the whole container, the edges may be cut; Contain: the whole media is shown within container, the media may be scaled down.",
+            "options": [
+                { "value": "cover", "label": "Cover" },
+                { "value": "contain", "label": "Contain" }
+            ]
+        }
+    ],
+    "blocks": [
+        {
+            "type": "result",
+            "name": "Result",
+            "settings": [
+                {
+                    "type": "range",
+                    "id": "result",
+                    "label": "Result",
+                    "unit": "%",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "default": 100
+                },
+                {
+                    "type": "richtext",
+                    "id": "fact",
+                    "label": "Fact"
+                }
+            ]
+        },
+        {
+            "type": "ingredient",
+            "name": "Ingredient",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "content",
+                    "label": "Content"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Results | AW"
+        }
+    ]
+}
+{% endschema %}
+ 

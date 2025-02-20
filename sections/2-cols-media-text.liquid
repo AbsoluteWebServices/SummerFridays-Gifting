@@ -1,0 +1,389 @@
+{%- liquid
+    assign padding_top = section.settings.padding_top | default: 0
+    assign padding_bottom = section.settings.padding_bottom | default: 0
+    assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+    assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+    assign container = section.settings.container | default: 'blog'
+    assign paddings_tablet = section.settings.paddings_tablet | default: true, allow_false: true
+    assign media_type = section.settings.media_type | default: 'image'
+    assign lazyload = section.settings.lazyload | default: false
+    assign image = section.settings.image
+    assign video = section.settings.video
+    assign eyebrow = section.settings.eyebrow | escape | strip_html
+    assign content = section.settings.content | default: "<h1>404. Not Found.</h1>"
+    assign signature = section.settings.signature
+    assign custom_signature = section.settings.custom_signature | escape | strip_html
+    assign custom_signature_size_mobile = section.settings.custom_signature_size_mobile | default: 45.0 | divided_by: 10.0
+    assign custom_signature_size_desktop = section.settings.custom_signature_size_desktop | default: 55.0 | divided_by: 10.0
+    assign font_size = section.settings.font_size | default: 'normal'
+    assign text_alignment = section.settings.text_alignment | default: 'center'
+    assign button_label = section.settings.button_label | escape | strip_html
+    assign button_url = section.settings.button_url
+    assign loading = 'eager'
+    if lazyload == true 
+        assign loading = 'lazy'
+    endif
+-%}
+
+{%- render 'offset',
+    id: section.id,
+    padding_top: padding_top,
+    padding_bottom: padding_bottom,
+    padding_top_desktop: padding_top_desktop,
+    padding_bottom_desktop: padding_bottom_desktop
+-%}
+
+{%- render 'adastra' with 'styles/sections/two-cols-media-text.scss' -%}
+
+{%- capture arrow_right -%}
+    {%- render 'icon', name: 'arrow-right' -%}
+{%- endcapture -%}
+
+<style>
+    #section-{{ section.id }} .two-cols-media-text__custom-signature.hero-title-pinyon {
+        font-size: {{ custom_signature_size_mobile }}rem;
+    }
+
+    @media only screen and (min-width: 768px) {
+        #section-{{ section.id }} .two-cols-media-text__custom-signature.hero-title-pinyon {
+            font-size: {{ custom_signature_size_desktop }}rem;
+        }
+    }
+</style>
+ 
+<section id="section-{{- section.id -}}">
+    <div class="container container--{{ container }} {% if paddings_tablet %}container--padding-tablet{% endif %}">
+        <div class="two-cols-wrapper">
+            <div class="media-col">
+                {%- if media_type == 'image' -%}
+                    {%- if image -%}
+                        {%- render 'img', image: image, loading: loading -%}
+                    {%- endif -%}
+                {%- elsif media_type == 'video' -%}
+                    {%- if video -%}
+                        {%- render 'video', 
+                            video: video,
+                            poster: image
+                        -%}
+                    {%- endif -%}
+                {%- endif -%}
+            </div>
+
+            <div class="content-col content-col--{{- text_alignment -}}">
+                {%- if eyebrow != blank -%}
+                  <div class="two-cols-media-text__eyebrow subheader-small">{{- eyebrow -}}</div>
+                {%- endif -%}
+              
+                <div class="rte {% if font_size == 'larger' %}p-large rte--larger{% endif %} two-cols-media-text__content">{{- content -}}</div>
+
+                {%- if signature or custom_signature != blank -%}
+                    {%- if custom_signature != blank -%}
+                        <div class="two-cols-media-text__custom-signature hero-title-pinyon">
+                            {{- custom_signature -}}
+                        </div>
+                    {%- else -%}
+                        <div class="two-cols-media-text__signature">
+                            <img 
+                                class="relative-img"
+                                src="{{- signature | image_url -}}" 
+                                alt="{{- signature.alt | default: 'Influencer signature' -}}"
+                                width="{{- signature.width -}}"
+                                height="{{- signature.height -}}"
+                                loading="{{- loading -}}"
+                            >
+                        </div>
+                    {%- endif -%}
+                {%- endif -%}
+
+                {%- if section.blocks.size > 0 -%}
+                    <div class="two-cols-media-text__table">
+                        {%- for block in section.blocks -%}
+                            {%- liquid
+                                assign title = block.settings.title | escape | strip_html
+                                assign content = block.settings.content | replace: '%arrow%', arrow_right
+                                if title == blank or content == blank
+                                    continue
+                                endif
+
+                                assign tiktok_url = block.settings.tiktok_url 
+                                assign instagram_url = block.settings.instagram_url
+                            -%}
+                            <div class="two-cols-media-text__table-row">
+                                <div class="cta-textlink">
+                                    {{- title -}}
+                                </div>
+
+                                <div class="two-cols-media-text__table-col-body">
+                                    <div class="rte rte--smaller">
+                                        {{- content -}}
+                                    </div>
+
+                                    {%- if tiktok_url != blank or instagram_url != blank -%}
+                                        {%- assign social_accounts = 'X, TikTok, Instagram, Facebook, Pinterest, Snapchat, Tumblr, YouTube, Vimeo' | split: ', ' -%}
+                                        <ul class="list-reset two-cols-media-text__table-socials">
+                                            {%- for social in social_accounts -%}
+                                                {%- liquid 
+                                                    assign social_handle = social | handleize 
+                                                    assign social_link_handle = social_handle | append: '_url'
+                                                    assign social_link = block.settings[social_link_handle]
+                                                    if social_link == blank
+                                                        continue
+                                                    endif
+                                                -%}
+                                                <li>
+                                                    <a
+                                                        href="{{ social_link }}"
+                                                        class="hover-opacity"
+                                                        title="{{- social -}}"
+                                                        aria-label="{{- social -}}"
+                                                        target="_blank"
+                                                    >
+                                                        {%- render 'icon', name: social_handle -%}
+                                                        <span class="visually-hidden">{{ social }}</span>
+                                                    </a>
+                                                </li>
+                                            {%- endfor -%}
+                                        </ul>
+                                    {%- endif -%}
+                                </div>
+                            </div>
+                        {%- endfor -%}
+                    </div>
+                {%- endif -%}
+
+                {%- if button_label != blank and button_url != blank -%}
+                    <a href="{{- button_url -}}" aria-label="{{- button_label -}}" class="two-cols-media-text__btn btn btn--full btn--chalk btn--center hover-arrow">
+                        {{- button_label -}}
+                        {%- render 'icon', name: 'arrow-right' -%}
+                    </a>
+                {%- endif -%}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "2 cols: Media & Text | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Settings"
+        },
+        {
+            "type": "select",
+            "id": "container",
+            "label": "Container",
+            "default": "blog",
+            "options": [
+                { "value": "page", "label": "Page" },
+                { "value": "blog", "label": "Blog" },
+                { "value": "small", "label": "Small" },
+                { "value": "medium", "label": "Medium" }
+            ]
+        },
+        {
+          "type": "checkbox",
+          "id": "paddings_tablet",
+          "label": "Add additional paddings on tablet",
+          "default": true
+        },
+        {
+            "type": "select",
+            "id": "media_type",
+            "label": "Media type",
+            "default": "video",
+            "options": [
+                { "value": "image", "label": "Image" },
+                { "value": "video", "label": "Video" }
+            ]
+        },
+        {
+          "type": "checkbox",
+          "id": "lazyload",
+          "label": "Lazyload",
+          "default": false,
+          "info": "Enable if the media is below the fold."
+        },
+        {
+            "type": "video",
+            "id": "video",
+            "label": "Video",
+            "info": "Format: .mp4"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "With the video type, the image is used as a poster (first frame)"
+        },
+        {
+            "type": "text",
+            "id": "eyebrow",
+            "label": "Eyebrow"
+        },
+        {
+            "type": "select",
+            "id": "bg_color",
+            "label": "Content background color",
+            "default": "white",
+            "options": [
+                {
+                    "label": "White",
+                    "value": "white"
+                },
+                {
+                    "label": "Chalk",
+                    "value": "chalk"
+                },
+                {
+                    "label": "Morning Sky",
+                    "value": "morning-sky"
+                }
+            ]
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content"
+        },
+        {
+            "type": "select",
+            "id": "font_size",
+            "label": "Font size",
+            "default": "normal",
+            "options": [
+                { "value": "normal", "label": "Normal" },
+                { "value": "larger", "label": "Larger" }
+            ]
+        },
+        {
+          "type": "image_picker",
+          "id": "signature",
+          "label": "Signature"
+        },
+        {
+          "type": "text",
+          "id": "custom_signature",
+          "label": "Custom signature"
+        },
+        {
+            "type": "number",
+            "id": "custom_signature_size_mobile",
+            "label": "Custom signature size (mobile)",
+            "default": 45
+        },
+        {
+            "type": "number",
+            "id": "custom_signature_size_desktop",
+            "label": "Custom signature size (desktop)",
+            "default": 55
+        },
+        {
+            "type": "select",
+            "id": "text_alignment",
+            "label": "Text alignment",
+            "default": "center",
+            "options": [
+                { "value": "left", "label": "Left" },
+                { "value": "center", "label": "Center" },
+                { "value": "right", "label": "Right" }
+            ]
+        },
+        {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+        },
+        {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+        }
+    ],
+    "blocks": [
+      {
+        "name": "Table row",
+        "type": "table_row",
+        "settings": [
+           {
+             "type": "text",
+             "id": "title",
+             "label": "Title"
+           },
+           {
+             "type": "richtext",
+             "id": "content",
+             "label": "Content",
+             "info": "Add %arrow% to insert an arrow."
+           }
+        ]
+      },
+      {
+        "name": "Table row with socials",
+        "type": "table_row_with_socials",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "richtext",
+                "id": "content",
+                "label": "Content",
+                "info": "Add %arrow% to insert an arrow."
+            },
+            {
+                "type": "url",
+                "id": "tiktok_url",
+                "label": "TikTok URL"
+            },
+            {
+              "type": "url",
+              "id": "instagram_url",
+              "label": "Instagram URL"
+            }
+        ]
+      }
+    ],
+    "presets": [
+        {
+            "name": "2 cols: Media & Text | AW"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,465 @@
+{%- if section.blocks.size > 0 -%}
+    {%- liquid
+        assign padding_top = section.settings.padding_top | default: 0
+        assign padding_bottom = section.settings.padding_bottom | default: 0
+        assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+        assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+        assign slider_type = section.settings.slider_type | default: 'all'
+        assign bg_color = section.settings.bg_color | default: 'chalk'
+        assign text_color = section.settings.text_color | default: 'ink'
+    -%}
+
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/how-to-use.scss' -%}
+
+    <style>
+        #section-{{- section.id }}.how-to-use__wrapper {
+            background-color: var(--{{- bg_color -}});
+        }
+
+        @media only screen and (min-width: 768px) {
+            #section-{{- section.id }} .how-to-use__card-content {
+                background-color: var(--{{- bg_color -}});
+            }
+        }
+
+        @media only screen and (min-width: 768px) {
+            #section-{{- section.id }}.how-to-use__wrapper {
+                background-color: transparent;
+            }
+        }
+    </style>
+    
+    <section 
+        id="section-{{- section.id -}}"
+        class="how-to-use__wrapper"
+        {% if section.blocks.size > 1 %}
+            x-data="howToUse"
+            data-split-load-section
+        {% endif %}
+        style="--text-color: var(--{{ text_color }});"
+    >
+        <div class="container">
+            {%- case slider_type -%}
+                {%- when 'content' -%}
+                    {%- liquid 
+                        assign title = section.blocks[0].settings.title
+                        assign content = section.blocks[0].settings.content
+                        if title == blank or content == blank
+                            continue
+                        endif
+
+                        assign subtitle = section.blocks[0].settings.subtitle | escape
+                        assign main_media_type = section.blocks[0].settings.main_media_type | default: 'video'
+                        assign main_image = section.blocks[0].settings.main_image
+                        assign main_video = section.blocks[0].settings.main_video
+                        assign secondary_media_type = section.blocks[0].settings.secondary_media_type | default: 'video'
+                        assign secondary_image = section.blocks[0].settings.secondary_image
+                        assign secondary_video = section.blocks[0].settings.secondary_video
+                    -%}
+                    <div class="how-to-use__card">
+                        <div class="how-to-use__card-col how-to-use__card-secondary-media">
+                            {%- if secondary_media_type == 'image' -%}
+                                {%- if secondary_image -%}
+                                    {%- render 'img', image: secondary_image -%}
+                                {%- endif -%}
+                            {%- elsif secondary_media_type == 'video' -%}
+                                {%- if secondary_video -%}
+                                    {%- render 'video', 
+                                        video: secondary_video,
+                                        poster: secondary_image,
+                                        play_control: true,
+                                        sound_control: true
+                                    -%}
+                                {%- endif -%}
+                            {%- endif -%}
+                        </div>
+
+                        <div class="how-to-use__card-col how-to-use__card-main-media">
+                            {%- if main_media_type == 'image' -%}
+                                {%- if main_image -%}
+                                    {%- render 'img', image: main_image -%}
+                                {%- endif -%}
+                            {%- elsif main_media_type == 'video' -%}
+                                {%- if main_video -%}
+                                    {%- render 'video', 
+                                        video: main_video,
+                                        poster: main_image,
+                                        play_control: true,
+                                        sound_control: true
+                                    -%}
+                                {%- endif -%}
+                            {%- endif -%}
+                        </div>
+                        
+                        <div 
+                            class="swiper"
+                            {% if section.blocks.size > 1 %}
+                                x-ref="slider"
+                                x-intersect.once="initSlider"
+                            {% endif %}
+                        >
+                            <div class="swiper-wrapper">
+                                {%- for block in section.blocks -%}
+                                    {%- liquid 
+                                        assign title = block.settings.title
+                                        assign content = block.settings.content
+                                        if title == blank or content == blank
+                                            continue
+                                        endif
+
+                                        assign subtitle = block.settings.subtitle | escape
+                                        assign main_media_type = block.settings.main_media_type | default: 'video'
+                                        assign main_image = block.settings.main_image
+                                        assign main_video = block.settings.main_video
+                                        assign secondary_media_type = block.settings.secondary_media_type | default: 'video'
+                                        assign secondary_image = block.settings.secondary_image
+                                        assign secondary_video = block.settings.secondary_video
+                                    -%}
+                                    <div class="swiper-slide">
+                                        <div class="how-to-use__card-col how-to-use__card-content {% if section.blocks.size > 1 or subtitle != blank %}how-to-use__card-content--with-nav{% endif %}">
+                                            <div>
+                                                <div class="rte">
+                                                    {{- title -}}
+                                                </div>
+
+                                                {%- if section.blocks.size > 1 or subtitle != blank -%}
+                                                    <div class="how-to-use__card-nav-subtitle-wrapper">
+                                                        {%- if section.blocks.size > 1 -%}
+                                                            <button
+                                                                class="how-to-use__card-nav-btn hover-opacity"
+                                                                type="button"
+                                                                aria-label="Go to the previous slide"
+                                                                data-swiper-prev
+                                                            >
+                                                                {%- render 'icon', name: 'swiper-arrow-left' -%}
+                                                            </button>
+                                                        {%- endif -%}
+
+                                                        {%- if subtitle != blank -%}
+                                                            <p class="cta-textlink">{{- subtitle -}}</p>
+                                                        {%- endif -%}
+
+                                                        {%- if section.blocks.size > 1 -%}
+                                                            <button
+                                                                class="how-to-use__card-nav-btn hover-opacity"
+                                                                type="button"
+                                                                aria-label="Go to the next slide"
+                                                                data-swiper-next
+                                                            >
+                                                                {%- render 'icon', name: 'swiper-arrow-right' -%}
+                                                            </button>
+                                                        {%- endif -%}
+                                                    </div>
+                                                {%- endif -%}
+
+                                                <div class="rte how-to-use__card-body">
+                                                    {{- content -}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {%- endfor -%}
+                            </div>
+                        </div>
+                    </div>
+
+                {%- else -%}
+                    <div 
+                        class="swiper"
+                        {% if section.blocks.size > 1 %}
+                            x-ref="slider"
+                            x-intersect.once="initSlider"
+                        {% endif %}
+                    >
+                        <div class="swiper-wrapper">
+                            {%- for block in section.blocks -%}
+                                {%- liquid 
+                                    assign title = block.settings.title
+                                    assign content = block.settings.content
+                                    if title == blank or content == blank
+                                        continue
+                                    endif
+
+                                    assign subtitle = block.settings.subtitle | escape
+                                    assign main_media_type = block.settings.main_media_type | default: 'video'
+                                    assign main_image = block.settings.main_image
+                                    assign main_video = block.settings.main_video
+                                    assign secondary_media_type = block.settings.secondary_media_type | default: 'video'
+                                    assign secondary_image = block.settings.secondary_image
+                                    assign secondary_video = block.settings.secondary_video
+                                -%}
+
+                                <div class="swiper-slide">
+                                    <div class="how-to-use__card">
+                                        <div class="how-to-use__card-col how-to-use__card-secondary-media">
+                                            {%- if secondary_media_type == 'image' -%}
+                                                {%- if secondary_image -%}
+                                                    {%- render 'img', image: secondary_image -%}
+                                                {%- endif -%}
+                                            {%- elsif secondary_media_type == 'video' -%}
+                                                {%- if secondary_video -%}
+                                                    {%- render 'video', 
+                                                        video: secondary_video,
+                                                        poster: secondary_image,
+                                                        play_control: true,
+                                                        sound_control: true
+                                                    -%}
+                                                {%- endif -%}
+                                            {%- endif -%}
+                                        </div>
+
+                                        <div class="how-to-use__card-col how-to-use__card-main-media">
+                                            {%- if main_media_type == 'image' -%}
+                                                {%- if main_image -%}
+                                                    {%- render 'img', image: main_image -%}
+                                                {%- endif -%}
+                                            {%- elsif main_media_type == 'video' -%}
+                                                {%- if main_video -%}
+                                                    {%- render 'video', 
+                                                        video: main_video,
+                                                        poster: main_image,
+                                                        play_control: true,
+                                                        sound_control: true
+                                                    -%}
+                                                {%- endif -%}
+                                            {%- endif -%}
+                                        </div>
+
+                                        <div class="how-to-use__card-col how-to-use__card-content {% if section.blocks.size > 1 or subtitle != blank %}how-to-use__card-content--with-nav{% endif %}">
+                                            <div>
+                                                <div class="rte">
+                                                    {{- title -}}
+                                                </div>
+
+                                                {%- if section.blocks.size > 1 or subtitle != blank -%}
+                                                    <div class="how-to-use__card-nav-subtitle-wrapper">
+                                                        {%- if section.blocks.size > 1 -%}
+                                                            <button
+                                                                class="how-to-use__card-nav-btn hover-opacity"
+                                                                type="button"
+                                                                aria-label="Go to the previous slide"
+                                                                data-swiper-prev
+                                                            >
+                                                                {%- render 'icon', name: 'swiper-arrow-left' -%}
+                                                            </button>
+                                                        {%- endif -%}
+
+                                                        {%- if subtitle != blank -%}
+                                                            <p class="cta-textlink">{{- subtitle -}}</p>
+                                                        {%- endif -%}
+
+                                                        {%- if section.blocks.size > 1 -%}
+                                                            <button
+                                                                class="how-to-use__card-nav-btn hover-opacity"
+                                                                type="button"
+                                                                aria-label="Go to the next slide"
+                                                                data-swiper-next
+                                                            >
+                                                                {%- render 'icon', name: 'swiper-arrow-right' -%}
+                                                            </button>
+                                                        {%- endif -%}
+                                                    </div>
+                                                {%- endif -%}
+
+                                                <div class="rte how-to-use__card-body">
+                                                    {{- content -}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {%- endfor -%}
+                        </div>
+                    </div>
+            {%- endcase -%}
+        </div>
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "How To Use | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "select",
+            "id": "slider_type",
+            "label": "Slider type",
+            "default": "all",
+            "options": [
+                {
+                    "label": "All",
+                    "value": "all"
+                },
+                {
+                    "label": "Content",
+                    "value": "content"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "chalk",
+            "options": [
+                {
+                    "label": "Chalk",
+                    "value": "chalk"
+                },
+                {
+                    "label": "Morning Sky",
+                    "value": "morning-sky"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "text_color",
+            "label": "Content color",
+            "default": "ink",
+            "options": [
+                {
+                    "label": "Ink",
+                    "value": "ink"
+                },
+                {
+                    "label": "White",
+                    "value": "white"
+                }
+            ]
+        }
+    ],
+    "blocks": [
+        {
+            "type": "cards",
+            "name": "Cards",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "Main media"
+                },
+                {
+                    "type": "select",
+                    "id": "main_media_type",
+                    "label": "Media type",
+                    "default": "video",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "image_picker",
+                    "id": "main_image",
+                    "label": "Image",
+                    "info": "With the video type, the image is used as a poster (first frame)"
+                },
+                {
+                    "type": "video",
+                    "id": "main_video",
+                    "label": "Video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "header",
+                    "content": "Secondary media"
+                },
+                {
+                    "type": "paragraph",
+                    "content": "The secondary media appears in the 1st column on desktop and is hidden on mobile & tablet."
+                },
+                {
+                    "type": "select",
+                    "id": "secondary_media_type",
+                    "label": "Media type",
+                    "default": "video",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "image_picker",
+                    "id": "secondary_image",
+                    "label": "Image",
+                    "info": "With the video type, the image is used as a poster (first frame)"
+                },
+                {
+                    "type": "video",
+                    "id": "secondary_video",
+                    "label": "Video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "header",
+                    "content": "Content"
+                },
+                {
+                    "type": "richtext",
+                    "id": "title",
+                    "label": "Title",
+                    "info": "Select Heading 2 in the editor."
+                },
+                {
+                    "type": "text",
+                    "id": "subtitle",
+                    "label": "Subtitle",
+                    "info": "Keep it short: ~45 characters (2-3 words)."
+                },
+                {
+                    "type": "richtext",
+                    "id": "content",
+                    "label": "Content",
+                    "info": "Recommended amount of content: ~250 characters (30-40 words)."
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "How To Use | AW"
+        }
+    ]
+}
+{% endschema %}

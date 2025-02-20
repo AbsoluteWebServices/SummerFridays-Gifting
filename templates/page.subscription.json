@@ -1,0 +1,372 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "page_header_kWmwQq": {
+      "type": "page-header",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/Subscribe-Save-Hero-Desktop.jpg",
+        "image_mobile": "shopify://shop_images/Subscribe-Save-Hero-Mobile.jpg",
+        "overlay_opacity": 8,
+        "gradient_direction": "gradient-none",
+        "gradient_percent": 0,
+        "content": "<h1>Subscribe + Save</h1><h3>15% Off + Free Shipping on Recurring Orders</h3>",
+        "vertical_alignment": "center",
+        "horizontal_alignment": "center",
+        "container": "none",
+        "button_label": "",
+        "button_url": "#",
+        "link_appearance": "link",
+        "arrow_direction": "right"
+      }
+    },
+    "how_it_works_kYHBXd": {
+      "type": "how-it-works",
+      "blocks": {
+        "step_gV6tD7": {
+          "type": "step",
+          "settings": {
+            "icon": "<svg aria-label=\"Savings\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewbox=\"0 0 100 100\" fill=\"none\">\n  <circle cx=\"50\" cy=\"50\" r=\"49\" stroke=\"#41B7FF\" stroke-width=\"2\"></circle>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M54.9174 36.1263C55.3679 35.8663 55.9439 36.0206 56.204 36.4711L59.1002 41.4874C59.2685 41.7789 59.2684 42.1382 59.0999 42.4297C58.9314 42.7212 58.6202 42.9005 58.2835 42.9002L46.7206 42.8876C46.2945 42.8871 45.9218 42.6007 45.8117 42.189C45.7016 41.7774 45.8817 41.3431 46.2507 41.1301L54.9174 36.1263ZM50.2301 41.0077L56.6521 41.0147L55.0436 38.2286L50.2301 41.0077Z\" fill=\"#000418\"></path>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M39.1977 42.9071C39.0243 42.9071 38.8837 43.0477 38.8837 43.2211V60.8025C38.8837 60.9759 39.0243 61.1164 39.1977 61.1164H61.8023C61.9757 61.1164 62.1163 60.9759 62.1163 60.8025V43.2211C62.1163 43.0477 61.9757 42.9071 61.8023 42.9071H39.1977ZM37 43.2211C37 42.0073 37.9839 41.0234 39.1977 41.0234H61.8023C63.0161 41.0234 64 42.0073 64 43.2211V60.8025C64 62.0162 63.0161 63.0002 61.8023 63.0002H39.1977C37.9839 63.0002 37 62.0163 37 60.8025V43.2211Z\" fill=\"#000418\"></path>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M53.3256 52.0118C53.3256 49.7149 55.267 47.9304 57.564 47.9304H63.0581C63.5783 47.9304 64 48.3521 64 48.8722V55.1513C64 55.6715 63.5783 56.0932 63.0581 56.0932H57.564C55.267 56.0932 53.3256 54.3086 53.3256 52.0118ZM57.564 49.8141C56.2197 49.8141 55.2093 50.8408 55.2093 52.0118C55.2093 53.1827 56.2197 54.2095 57.564 54.2095H62.1163V49.8141H57.564Z\" fill=\"#000418\"></path>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M63.0581 43.849C63.5783 43.849 64 44.2707 64 44.7909V59.8606C64 60.3808 63.5783 60.8025 63.0581 60.8025C62.538 60.8025 62.1163 60.3808 62.1163 59.8606V44.7909C62.1163 44.2707 62.538 43.849 63.0581 43.849Z\" fill=\"#000418\"></path>\n</svg>",
+            "title": "Savings",
+            "content": "<p>Get 15% off every<br/>subscription order.</p>"
+          }
+        },
+        "step_jWGT9K": {
+          "type": "step",
+          "settings": {
+            "icon": "<svg aria-label=\"Free Shipping\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewbox=\"0 0 100 100\" fill=\"none\">\n  <circle cx=\"50\" cy=\"50\" r=\"49\" stroke=\"#41B7FF\" stroke-width=\"2\"></circle>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M37.2581 57.0968C37.2581 54.9411 39.0056 53.1935 41.1613 53.1935C43.317 53.1935 45.0645 54.9411 45.0645 57.0968C45.0645 59.2524 43.317 61 41.1613 61C39.0056 61 37.2581 59.2524 37.2581 57.0968ZM41.1613 55.3226C40.1814 55.3226 39.3871 56.1169 39.3871 57.0968C39.3871 58.0766 40.1814 58.871 41.1613 58.871C42.1411 58.871 42.9355 58.0766 42.9355 57.0968C42.9355 56.1169 42.1411 55.3226 41.1613 55.3226Z\" fill=\"#000418\"></path>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M53.5806 57.0968C53.5806 54.9411 55.3282 53.1935 57.4839 53.1935C59.6395 53.1935 61.3871 54.9411 61.3871 57.0968C61.3871 59.2524 59.6395 61 57.4839 61C55.3282 61 53.5806 59.2524 53.5806 57.0968ZM57.4839 55.3226C56.504 55.3226 55.7097 56.1169 55.7097 57.0968C55.7097 58.0766 56.504 58.871 57.4839 58.871C58.4637 58.871 59.2581 58.0766 59.2581 57.0968C59.2581 56.1169 58.4637 55.3226 57.4839 55.3226Z\" fill=\"#000418\"></path>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M33 40.0645C33 39.4766 33.4766 39 34.0645 39H54.6452C55.2331 39 55.7097 39.4766 55.7097 40.0645V57.0968C55.7097 57.6847 55.2331 58.1613 54.6452 58.1613H44C43.4121 58.1613 42.9355 57.6847 42.9355 57.0968C42.9355 56.5089 43.4121 56.0323 44 56.0323H53.5806V41.129H35.129V56.0323H38.3226C38.9105 56.0323 39.3871 56.5089 39.3871 57.0968C39.3871 57.6847 38.9105 58.1613 38.3226 58.1613H34.0645C33.4766 58.1613 33 57.6847 33 57.0968V40.0645Z\" fill=\"#000418\"></path>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M53.5806 45.0323C53.5806 44.4443 54.0572 43.9677 54.6452 43.9677H60.7281C61.0616 43.9677 61.3759 44.1241 61.5771 44.3901L66.1394 50.4224C66.2792 50.6073 66.3548 50.8327 66.3548 51.0645V57.0968C66.3548 57.6847 65.8782 58.1613 65.2903 58.1613H60.8983C60.3104 58.1613 59.8338 57.6847 59.8338 57.0968C59.8338 56.5089 60.3104 56.0323 60.8983 56.0323H64.2258V51.4217L60.1985 46.0968H55.7097V57.0968C55.7097 57.6847 55.2331 58.1613 54.6452 58.1613C54.0572 58.1613 53.5806 57.6847 53.5806 57.0968V45.0323Z\" fill=\"#000418\"></path>\n</svg>",
+            "title": "Free Shipping",
+            "content": "<p>Subscriptions ship free for <br/>all U.S. orders.</p>"
+          }
+        },
+        "step_wAzE6i": {
+          "type": "step",
+          "settings": {
+            "icon": "<svg aria-label=\"Double points\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewbox=\"0 0 100 100\" fill=\"none\">\n<g clip-path=\"url(#clip0_883_10592)\">\n<path d=\"M50 99C77.062 99 99 77.062 99 50C99 22.938 77.062 1 50 1C22.938 1 1 22.938 1 50C1 77.062 22.938 99 50 99Z\" stroke=\"#41B7FF\" stroke-width=\"2\"></path>\n<path d=\"M55.6075 53.2935L51.8177 48.4534H54.7196L57.0693 51.5285L59.4623 48.4534H62.4508L58.5527 53.2935L63.068 58.9999H60.1661L57.0693 55.0585L53.8967 58.9999H50.9189L55.6075 53.2935Z\" fill=\"#000418\"></path>\n<path d=\"M42.0025 56.6287H48.2287V59H37L42.8038 51.9726C43.3741 51.2724 43.8505 50.666 44.2331 50.1535C44.6229 49.641 44.9189 49.2115 45.121 48.865C45.5325 48.1864 45.7382 47.5764 45.7382 47.035C45.7382 46.2554 45.4639 45.6021 44.9153 45.0752C44.3667 44.5482 43.6881 44.2847 42.8796 44.2847C41.1904 44.2847 40.2231 45.2845 39.9777 47.2841H37.4656C37.8699 43.7614 39.6493 42 42.8038 42C44.327 42 45.6047 42.4837 46.6369 43.451C47.6764 44.4183 48.1962 45.6166 48.1962 47.0459C48.1962 47.9554 47.9544 48.8469 47.4707 49.7204C47.2253 50.1752 46.8643 50.7166 46.3879 51.3446C45.9187 51.9654 45.3231 52.7017 44.6013 53.5535L42.0025 56.6287Z\" fill=\"#000418\"></path>\n</g>\n<defs>\n<clippath id=\"clip0_883_10592\">\n<rect width=\"100\" height=\"100\" fill=\"white\"></rect>\n</clippath>\n</defs>\n</svg>",
+            "title": "Double Points",
+            "content": "<p>Earn double points every time<br/>your subscription order ships. </p>"
+          }
+        },
+        "step_7rTXyD": {
+          "type": "step",
+          "settings": {
+            "icon": "<svg aria-label=\"Cancel anytime\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewbox=\"0 0 100 100\" fill=\"none\">\n<g clip-path=\"url(#clip0_3361_20)\">\n<path d=\"M50 99C77.062 99 99 77.062 99 50C99 22.938 77.062 1 50 1C22.938 1 1 22.938 1 50C1 77.062 22.938 99 50 99Z\" stroke=\"#41B7FF\" stroke-width=\"2\"></path>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M43.2691 41.129C43.1792 41.129 43.0927 41.1631 43.0271 41.2244L33.6247 50L43.027 58.7755C43.0926 58.8368 43.1792 58.871 43.2691 58.871H59.0323C59.2283 58.871 59.3871 58.7121 59.3871 58.5161V41.4839C59.3871 41.2879 59.2283 41.129 59.0323 41.129H43.2691ZM41.5744 39.668C42.0343 39.2387 42.6401 39 43.2691 39H59.0323C60.4041 39 61.5161 40.112 61.5161 41.4839V58.5161C61.5161 59.888 60.4041 61 59.0323 61H43.2691C42.6401 61 42.0343 60.7613 41.5744 60.332L31.3382 50.7782C31.1225 50.5769 31 50.2951 31 50C31 49.7049 31.1225 49.4231 31.3382 49.2218L41.5744 39.668Z\" fill=\"#000418\"></path>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M54.5269 45.6989C54.9426 46.1146 54.9426 46.7886 54.5269 47.2043L47.4301 54.3011C47.0144 54.7168 46.3404 54.7168 45.9247 54.3011C45.509 53.8854 45.509 53.2114 45.9247 52.7957L53.0215 45.6989C53.4372 45.2832 54.1112 45.2832 54.5269 45.6989Z\" fill=\"#000418\"></path>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M45.9247 45.6989C46.3404 45.2832 47.0144 45.2832 47.4301 45.6989L54.5269 52.7957C54.9426 53.2114 54.9426 53.8854 54.5269 54.3011C54.1112 54.7168 53.4372 54.7168 53.0215 54.3011L45.9247 47.2043C45.509 46.7886 45.509 46.1146 45.9247 45.6989Z\" fill=\"#000418\"></path>\n</g>\n<defs>\n<clippath id=\"clip0_3361_20\">\n<rect width=\"100\" height=\"100\" fill=\"white\"></rect>\n</clippath>\n</defs>\n</svg>",
+            "title": "Cancel Anytime",
+            "content": "<p>Adjust, pause or cancel<br/>your delivery as needed.</p>"
+          }
+        },
+        "step_tdAiV6": {
+          "type": "step",
+          "disabled": true,
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewbox=\"0 0 100 100\" fill=\"none\">\n  <circle cx=\"50\" cy=\"50\" r=\"49\" stroke=\"#41B7FF\" stroke-width=\"2\"></circle>\n  <path d=\"M42 44.1538C42.5098 44.1538 42.9231 44.5671 42.9231 45.0769V61.0769C42.9231 61.5867 42.5098 62 42 62C41.4902 62 41.0769 61.5867 41.0769 61.0769V45.0769C41.0769 44.5671 41.4902 44.1538 42 44.1538Z\" fill=\"#000418\"></path>\n  <path d=\"M50 52.1538C50.5098 52.1538 50.9231 52.5671 50.9231 53.0769V61.0769C50.9231 61.5867 50.5098 62 50 62C49.4902 62 49.0769 61.5867 49.0769 61.0769V53.0769C49.0769 52.5671 49.4902 52.1538 50 52.1538Z\" fill=\"#000418\"></path>\n  <path d=\"M50 38C50.5098 38 50.9231 38.4133 50.9231 38.9231V46.9231C50.9231 47.4329 50.5098 47.8462 50 47.8462C49.4902 47.8462 49.0769 47.4329 49.0769 46.9231V38.9231C49.0769 38.4133 49.4902 38 50 38Z\" fill=\"#000418\"></path>\n  <path d=\"M58 38C58.5098 38 58.9231 38.4133 58.9231 38.9231V54.9231C58.9231 55.4329 58.5098 55.8462 58 55.8462C57.4902 55.8462 57.0769 55.4329 57.0769 54.9231V38.9231C57.0769 38.4133 57.4902 38 58 38Z\" fill=\"#000418\"></path>\n  <path d=\"M38 42C38 39.7909 39.7909 38 42 38C44.2091 38 46 39.7909 46 42C46 44.2091 44.2091 46 42 46C39.7909 46 38 44.2091 38 42ZM42 39.8462C40.8105 39.8462 39.8462 40.8105 39.8462 42C39.8462 43.1895 40.8105 44.1538 42 44.1538C43.1895 44.1538 44.1538 43.1895 44.1538 42C44.1538 40.8105 43.1895 39.8462 42 39.8462Z\" fill=\"#000418\"></path>\n  <path d=\"M46 50C46 47.7909 47.7909 46 50 46C52.2091 46 54 47.7909 54 50C54 52.2091 52.2091 54 50 54C47.7909 54 46 52.2091 46 50ZM50 47.8462C48.8105 47.8462 47.8462 48.8105 47.8462 50C47.8462 51.1895 48.8105 52.1538 50 52.1538C51.1895 52.1538 52.1538 51.1895 52.1538 50C52.1538 48.8105 51.1895 47.8462 50 47.8462Z\" fill=\"#000418\"></path>\n  <path d=\"M54 58C54 55.7909 55.7909 54 58 54C60.2091 54 62 55.7909 62 58C62 60.2091 60.2091 62 58 62C55.7909 62 54 60.2091 54 58ZM58 55.8462C56.8105 55.8462 55.8462 56.8105 55.8462 58C55.8462 59.1895 56.8105 60.1538 58 60.1538C59.1895 60.1538 60.1538 59.1895 60.1538 58C60.1538 56.8105 59.1895 55.8462 58 55.8462Z\" fill=\"#000418\"></path>\n</svg>",
+            "title": "Flexible Changes",
+            "content": "<p>Adjust your ship date or subscription <br/>frequency at any time.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_gV6tD7",
+        "step_jWGT9K",
+        "step_wAzE6i",
+        "step_7rTXyD",
+        "step_tdAiV6"
+      ],
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>How it Works</h2>",
+        "button_label": "",
+        "button_url": ""
+      }
+    },
+    "2_cols_media_text_LwqAPk": {
+      "type": "2-cols-media-text",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "container": "blog",
+        "paddings_tablet": true,
+        "media_type": "image",
+        "lazyload": true,
+        "image": "shopify://shop_images/Subscribe-Save-Featured.jpg",
+        "eyebrow": "Glow on Repeat",
+        "bg_color": "white",
+        "content": "<h2>Your self-care essentials are delivered automatically on your schedule.</h2>",
+        "font_size": "normal",
+        "custom_signature": "",
+        "custom_signature_size_mobile": 45,
+        "custom_signature_size_desktop": 55,
+        "text_alignment": "center",
+        "button_label": "Manage Your Subscription",
+        "button_url": "https://summerfridays.com/account/login"
+      }
+    },
+    "recommendations_A3FcED": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "id": "",
+        "layout": "slider",
+        "source": "custom",
+        "subscription_mode": true,
+        "content": "<h2>Our Most Popular Subscriptions</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 10,
+        "products": [
+          "jet-lag-mask",
+          "lip-butter-balm",
+          "cloud-dew-gel-cream",
+          "cc-me-serum",
+          "shadedrops-spf-30-mineral-milk-sunscreen",
+          "sheer-skin-tint",
+          "rich-cushion-cream",
+          "jet-lag-overnight-eye-serum",
+          "super-amino-gel-cleanser"
+        ]
+      }
+    },
+    "accordions_6JkM3Q": {
+      "type": "accordions",
+      "blocks": {
+        "accordion_VEq3gq": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I sign up for subscriptions?",
+            "content": "<p>To sign up for a product subscription, go to the desired product page, select ‘Subscribe and Save’ and choose the frequency that works best for you. Add the product to your cart and proceed to checkout.</p><p>Unfortunately, <strong>only U.S. customers </strong>are eligible to sign up for subscriptions at this time. Stay tuned for international updates coming in the future.</p>"
+          }
+        },
+        "accordion_jkfcNh": {
+          "type": "accordion",
+          "settings": {
+            "title": "How does the subscription program work?",
+            "content": "<p>Our subscription program allows you to easily replenish your self-care essentials when it's time to restock.</p><p>Create an account or log in to your account to manage your frequency, delivery, quantity, or product swaps. You can also cancel your subscription in your account at any time.</p><p>You will receive a 15% discount on all subscription products and free standard shipping within the United States. You will also earn 2x loyalty points with every subscription order that ships.</p>"
+          }
+        },
+        "accordion_EkHrCJ": {
+          "type": "accordion",
+          "settings": {
+            "title": "Can I use a promo code with my subscription order?",
+            "content": "<p>Subscription products receive a 15% discount, and are ineligible to use in combination with promo codes.</p>"
+          }
+        },
+        "accordion_dXwAqw": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I change, skip, or cancel my subscription order?",
+            "content": "<p>To make any changes to your subscription, log into your account and click on subscriptions. From here you can:</p><p>• Change your shipping address<br/>• Change your billing address<br/>• Change your next order date<br/>• Change your subscription frequency<br/>• Skip your upcoming order<br/>• Update quantity<br/>• Add additional product to your order<br/>• Edit payment method<br/>• Cancel your subscription<br/>• Re-activate your subscription</p>"
+          }
+        },
+        "accordion_Ht4wCi": {
+          "type": "accordion",
+          "settings": {
+            "title": "Can I return or exchange my subscription order?",
+            "content": "<p>Please contact our customer support team <a href=\"https://summerfridays.gorgias.help/en-US/contact\" target=\"_blank\" title=\"https://summerfridays.gorgias.help/en-US/contact\">here</a> to initiate a return.</p>"
+          }
+        },
+        "accordion_gRbciq": {
+          "type": "accordion",
+          "settings": {
+            "title": "Can I use AfterPay for a subscription?",
+            "content": "<p>No, unfortunately AfterPay is not eligible for subscription orders as it was designed for single purchases, not recurring orders.</p>"
+          }
+        },
+        "accordion_gi9xeM": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "What products are available for subscription?",
+            "content": "<p>All core Summer Fridays products are available for subscription. Exceptions to subscription services are merchandise items, gift sets and bundles, and limited edition products.</p>"
+          }
+        },
+        "accordion_hXQAWb": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "What is the deadline to make changes to my order?",
+            "content": "<p>All orders are processed at 12am EST on the scheduled order date. To modify your order, simply log into your account and click on subscription. Changes must be made prior to 11:59pm EST the day before your scheduled order date. For example, if your next order is scheduled for 9/13 - changes should be made by 9/12 before 11:59pm EST.</p>"
+          }
+        },
+        "accordion_bbCCeE": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "Can I expedite shipping for my auto-replenish order?",
+            "content": "<p>Unfortunately, we cannot expedite shipping on subscription orders. However, you are able to edit the date of your upcoming shipment to an earlier date if your products are needed sooner than planned.</p>"
+          }
+        },
+        "accordion_cfG9W6": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "How do I edit my shipping address?",
+            "content": "<p>Log into your account, click subscriptions, click on shipping, and make the necessary edits to your address.</p>"
+          }
+        },
+        "accordion_EBQr6c": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "How will I know when my order will ship?",
+            "content": "<p>We'll send you an email reminder before your order ships. You will also receive sms reminders if subscribed to text alerts. You can also log into your account anytime to view your scheduled deliveries.</p>"
+          }
+        },
+        "accordion_by9kcJ": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "How often will my orders ship?",
+            "content": "<p>You have control over the frequency of your product orders! You can choose to receive your products every 1, 2, or 3 months.</p>"
+          }
+        },
+        "accordion_tqcKmy": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "How does billing work?",
+            "content": "<p>Your credit card will be charged on the order date selected when you signed up for your subscription.</p>"
+          }
+        },
+        "accordion_BAGtrL": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "How do I update my billing information?",
+            "content": "<p>Log into your account, go to subscriptions, click on billing information and select send email to update. This provides you with a secure link to update your payment information.</p>"
+          }
+        },
+        "accordion_arERdM": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "How do I change my charge date?",
+            "content": "<p>Log into your account, go to subscriptions, click on edit and select next charge date. From there you'll select the new charge date and update.</p>"
+          }
+        },
+        "accordion_hpfGap": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "If I change my next charge date, will it change my order frequency?",
+            "content": "<p>Changing your charge date and changing your order frequency are different actions. If you'd like to change both charge date and frequency, you will need to do so separately.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_VEq3gq",
+        "accordion_jkfcNh",
+        "accordion_EkHrCJ",
+        "accordion_dXwAqw",
+        "accordion_Ht4wCi",
+        "accordion_gRbciq",
+        "accordion_gi9xeM",
+        "accordion_hXQAWb",
+        "accordion_bbCCeE",
+        "accordion_cfG9W6",
+        "accordion_EBQr6c",
+        "accordion_by9kcJ",
+        "accordion_tqcKmy",
+        "accordion_BAGtrL",
+        "accordion_arERdM",
+        "accordion_hpfGap"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 4.4,
+        "content": "<p>FAQ.</p><h2>For the Curious.<br/>You Asked, We Answered.</h2>",
+        "open_first": false,
+        "bg_color": "chalk",
+        "container": "medium"
+      }
+    },
+    "marquee_84WJX8": {
+      "type": "marquee",
+      "blocks": {
+        "item_nK9zET": {
+          "type": "item",
+          "settings": {
+            "media_type": "video",
+            "title": "",
+            "subtitle": "",
+            "badge": "",
+            "url": ""
+          }
+        },
+        "item_BBUqyd": {
+          "type": "item",
+          "settings": {
+            "media_type": "video",
+            "title": "",
+            "subtitle": "",
+            "badge": "",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_nK9zET",
+        "item_BBUqyd"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "content": "<p>Want to learn more? Click <a href=\"https://summerfridays.com/pages/faqs?hcUrl=%2Fen-US%2Farticles%2Fsubscribe-%2B-save-167165\" target=\"_blank\" title=\"https://summerfridays.com/pages/faqs?hcUrl=%2Fen-US%2Farticles%2Fsubscribe-%2B-save-167165\">here</a>.</p>",
+        "text_alignment": "center",
+        "font_size": "larger",
+        "font_p_size": "larger"
+      }
+    },
+    "content_cBhkXB": {
+      "type": "content",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 3,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 7,
+        "content": "<p><em>*All core Summer Fridays products are available for subscription. Exceptions to subscription services are merchandise items, gift sets and bundles, and limited edition products.</em></p><h3>For more information, please see <a href=\"https://summerfridays.com/pages/faqs?hcUrl=%2Fen-US%2Farticles%2Fsubscribe-%2B-save-167165\" target=\"_blank\" title=\"https://summerfridays.com/pages/faqs?hcUrl=%2Fen-US%2Farticles%2Fsubscribe-%2B-save-167165\">here</a>.</h3>",
+        "font_size": "normal",
+        "container": "page",
+        "paragraph_margins": "normal",
+        "heading_alignment": "center",
+        "text_alignment": "center",
+        "text_wrap": "normal"
+      }
+    }
+  },
+  "order": [
+    "page_header_kWmwQq",
+    "how_it_works_kYHBXd",
+    "2_cols_media_text_LwqAPk",
+    "recommendations_A3FcED",
+    "accordions_6JkM3Q",
+    "marquee_84WJX8",
+    "content_cBhkXB"
+  ]
+}

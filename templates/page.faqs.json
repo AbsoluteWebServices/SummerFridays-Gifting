@@ -1,0 +1,226 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "page_header_RiX6ai": {
+      "type": "page-header",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/faqs.jpg",
+        "overlay_opacity": 0,
+        "gradient_direction": "gradient-t",
+        "gradient_percent": 25,
+        "content": "<h1>Help & FAQs</h1>",
+        "button_label": "",
+        "button_url": ""
+      }
+    },
+    "accordions_GwixER": {
+      "type": "accordions",
+      "blocks": {
+        "accordion_PE9D4T": {
+          "type": "accordion",
+          "settings": {
+            "title": "What credit cards do you accept?",
+            "content": "<p>We accept American Express, Visa, Mastercard, and Discover. We also accept PayPal when applicable. If you have a preferred method of payment that we don’t offer, please email so that we can look into it. You can write us <a href=\"https://summerfridays.com/help\" target=\"_blank\" title=\"https://summerfridays.com/help\">here</a> – we’re always looking to expand our offering. Please note we do not accept gift cards, banking gift cards, international credit cards, checks or money orders.</p>"
+          }
+        },
+        "accordion_R6Gwje": {
+          "type": "accordion",
+          "settings": {
+            "title": "What should I do if my order is missing or something is wrong?",
+            "content": "<p>Please contact us <a href=\"https://summerfridays.com/help\" target=\"_blank\" title=\"https://summerfridays.com/help\">here</a> with your order number and we will get back to you ASAP.</p>"
+          }
+        },
+        "accordion_yKhzbK": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I check the status of my order?",
+            "content": "<p>To check the status of your order, simply log into your Summer Fridays.com account and select “Order History” in the “My Account” page. If you still have questions about your order, please contact customer care <a href=\"https://summerfridays.com/help\" target=\"_blank\" title=\"https://summerfridays.com/help\">here</a> with your order number and preferably the order confirmation email and we will get back to you ASAP.</p>"
+          }
+        },
+        "accordion_nrKneK": {
+          "type": "accordion",
+          "settings": {
+            "title": "What should I do if I receive the wrong product?",
+            "content": "<p>Orders submitted on summerfridays.com process and ship very quickly. We will do our best to modify an existing order if you contact customer care <a href=\"https://summerfridays.com/help\" target=\"_blank\" title=\"https://summerfridays.com/help\">here</a>, but we offer no guarantee that your order will be canceled or modified. so sorry for any inconvenience this may cause.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_PE9D4T",
+        "accordion_R6Gwje",
+        "accordion_yKhzbK",
+        "accordion_nrKneK"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Orders</h2>",
+        "open_first": true
+      }
+    },
+    "accordions_ibQqpR": {
+      "type": "accordions",
+      "blocks": {
+        "accordion_HTpFjb": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I place a return or exchange?",
+            "content": "<p>Summer Fridays will accept returns on any orders placed through our website within 30 days of purchase. Please see our <a href=\"/pages/returns-exchanges\" target=\"_blank\" title=\"Returns + Exchanges\"><span style=\"text-decoration:underline\">returns + exchanges</span></a> page for complete information. We are only able to accept returns for items purchased through <a href=\"http://www.summerfridays.com/\"><span style=\"text-decoration:underline\">www.summerfridays.com</span></a>. If you purchased a Summer Fridays item from one of our authorized retail partners, please follow that retailer’s return/exchange policy.</p>"
+          }
+        },
+        "accordion_aHWyb3": {
+          "type": "accordion",
+          "settings": {
+            "title": "How much does shipping cost? (USA orders)",
+            "content": "<p>Standard Shipping on orders is $5.95.</p><p>Standard Shipping on orders $35 or more is<strong> FREE.<br/></strong><br/>Expedited shipping options are available for an additional fee and will be listed at checkout. Please note that expedited shipping options are available for Monday through Friday delivery, excluding holidays.</p>"
+          }
+        },
+        "accordion_9YpJbT": {
+          "type": "accordion",
+          "settings": {
+            "title": "How will my order be shipped? (USA orders)",
+            "content": "<p>Standard shipping is USPS and/or UPS Mail Innovations (the package will ship via UPS and be delivered by your local USPS). Your order will arrive approximately 7-10 business days from date of purchase (Hawaii, Alaska, Puerto Rico & US Virgin Islands may experience longer transit times). Summer Fridays does not ship to freight forwarding companies or export agents. <br/><br/>Expedited shipping options are also available for an additional fee. These options are listed at check out. Please note that expedited shipping options are available for Monday through Friday delivery, excluding holidays.<br/><br/>Please note: orders over $350 will require signature at delivery</p>"
+          }
+        },
+        "accordion_9FLgxX": {
+          "type": "accordion",
+          "settings": {
+            "title": "How long will it take to ship? (USA orders)",
+            "content": "<p>Your order will arrive approximately 7-10 business days from date of purchase (Hawaii, Alaska, Puerto Rico & US Virgin Islands may experience longer transit times). All orders, placed after noon EST will be processed the following business day despite the shipping method. We can only process and ship orders Monday through Friday, excluding holidays. Please allow up to 3 business days for your order to ship. </p>"
+          }
+        },
+        "accordion_K4DhXW": {
+          "type": "accordion",
+          "settings": {
+            "title": "How much is the sales tax? (USA orders)",
+            "content": "<p>We are required by law to collect state sales tax on orders being shipped to California and Utah. Sales tax will be assessed on the total purchase, excluding shipping. Sales tax charges are based upon the state where your order is being shipped. All applicable state and local sales taxes will be calculated during the checkout process.</p>"
+          }
+        },
+        "accordion_4T9qUa": {
+          "type": "accordion",
+          "settings": {
+            "title": "How much is the sales tax? (USA orders)",
+            "content": "<p>We are required by law to collect state sales tax on orders being shipped to California and Utah. Sales tax will be assessed on the total purchase, excluding shipping. Sales tax charges are based upon the state where your order is being shipped. All applicable state and local sales taxes will be calculated during the checkout process.</p>"
+          }
+        },
+        "accordion_ghP6LR": {
+          "type": "accordion",
+          "settings": {
+            "title": "Does Summer Fridays Ship Internationally?",
+            "content": "<p>Yes! Outside of the USA, we’re currently accepting orders from Canada, Germany, France, and the UK. We offer UPS shipping internationally, and duties and taxes will be pre-paid and collected during checkout. </p><p>For orders $0 - $99.99 USD, International shipping is $16.95. We offer Free international shipping on orders $100 USD or more!</p><p>Orders are typically processed in 1-2 business days and should arrive within 15 business days. Note that while these estimated times reflect the vast majority of shipments, due to uncontrollable local customs clearance processes and inspections, these estimated times could take longer. You pay guaranteed landed costs at checkout; no additional fees are due upon delivery. Subject to local clearance procedures. Package is traceable and your shipping confirmation will include tracking information. Please allow 48 hours for tracking information to update once you receive a tracking number. Local carriers will do the final delivery. If you have additional questions, please contact customer care <a href=\"https://summerfridays.com/help\" target=\"_blank\" title=\"https://summerfridays.com/help\">here</a>.</p><p>Please note that International Customers are responsible for any and all customs fees, taxes, tariffs or duties levied by their respective government (the “Fees”). Please note that we are unable to fulfill any request to declare your package for any value other than the total value paid at checkout.</p><p>The Fees are typically determined based on a combination of factors that may include:</p><p>• The merchandise's country of origin or manufacture<br/>• The merchandise classification, using a system adopted by the countries that we ship to<br/>• VAT rates are set by the country to which the order is shipping<br/>• Select countries will be able to view the total amount of applicable fees, duties and tax/VAT for your order during the checkout process</p>"
+          }
+        },
+        "accordion_nUCcHc": {
+          "type": "accordion",
+          "settings": {
+            "title": "What items can ship Internationally?",
+            "content": "<p>Items with shipping restrictions to specific regions will be noted on their product pages.</p>"
+          }
+        },
+        "accordion_UwLVhT": {
+          "type": "accordion",
+          "settings": {
+            "title": "Is shopping on SummerFridays.com secure?",
+            "content": "<p>We understand how important security is to you. Credit card and order data is encrypted and secure. The platform we are hosted on is Level 1 PCI compliant and uses 256-bit SSL certificated to keep order details secure (you’ll see that the shopping cart switches from http to https to show you it’s secure). This is an advanced consumer online security technique. You can be assured that your order will be placed safely and securely. Please contact us <a href=\"https://summerfridays.com/help\" target=\"_blank\" title=\"https://summerfridays.com/help\">here</a> with any questions.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_HTpFjb",
+        "accordion_aHWyb3",
+        "accordion_9YpJbT",
+        "accordion_9FLgxX",
+        "accordion_K4DhXW",
+        "accordion_4T9qUa",
+        "accordion_ghP6LR",
+        "accordion_nUCcHc",
+        "accordion_UwLVhT"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Shipping & Returns</h2>",
+        "open_first": false
+      }
+    },
+    "accordions_zT6PUn": {
+      "type": "accordions",
+      "blocks": {
+        "accordion_wfTTyU": {
+          "type": "accordion",
+          "settings": {
+            "title": "Does Summer Fridays test on animals?",
+            "content": "<p>Our masks have NOT been tested on animals—we love our fuzzy friends too much.</p>"
+          }
+        },
+        "accordion_t79dWT": {
+          "type": "accordion",
+          "settings": {
+            "title": "Are the Jet Lag and Overtime masks vegan?",
+            "content": "<p>There are NO animal by-products in these masks, AKA this mask is VEGAN.</p>"
+          }
+        },
+        "accordion_KmLfw3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Are the Jet Lag and Overtime masks gluten free?",
+            "content": "<p>Yes!</p>"
+          }
+        },
+        "accordion_4r73KL": {
+          "type": "accordion",
+          "settings": {
+            "title": "What fragrances are in the Jet Lag mask?",
+            "content": "<p>Jet Lag Mask has no ingredients that were added for fragrance.</p>"
+          }
+        },
+        "accordion_Q9DB7m": {
+          "type": "accordion",
+          "settings": {
+            "title": "What fragrances are in the Overtime mask?",
+            "content": "<p>Overtime gets its natural fragrance from Cardamom, Cinnamon, Nutmeg, Ginger, Clove, and Pumpkin Oil. These cleansing oils are strong antioxidants that help with circulation, as well as provide an unbelievable aroma to this mask.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_wfTTyU",
+        "accordion_t79dWT",
+        "accordion_KmLfw3",
+        "accordion_4r73KL",
+        "accordion_Q9DB7m"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Products</h2>",
+        "open_first": false
+      }
+    }
+  },
+  "order": [
+    "page_header_RiX6ai",
+    "accordions_GwixER",
+    "accordions_ibQqpR",
+    "accordions_zT6PUn"
+  ]
+}

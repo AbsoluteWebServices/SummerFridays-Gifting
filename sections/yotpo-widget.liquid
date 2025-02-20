@@ -1,0 +1,115 @@
+{%- liquid
+    assign padding_top = section.settings.padding_top | default: 0
+    assign padding_bottom = section.settings.padding_bottom | default: 0
+    assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+    assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+    assign hide_for_registered_customer = section.settings.hide_for_registered_customer
+    assign yotpo_script_needed = section.settings.yotpo_script_needed
+    assign widget_id = section.settings.widget_id | strip
+    assign container = section.settings.container
+    assign class = section.settings.class | strip
+-%}
+
+{% unless hide_for_registered_customer and customer %}
+    {% if widget_id != blank %}
+        {%- render 'offset',
+            id: section.id,
+            padding_top: padding_top,
+            padding_bottom: padding_bottom,
+            padding_top_desktop: padding_top_desktop,
+            padding_bottom_desktop: padding_bottom_desktop
+        -%}
+
+        <section id="section-{{- section.id -}}"{% if class != blank %}class="{{- class -}}"{% endif %}>
+            {% if yotpo_script_needed %}
+                <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/{{- settings.swell_id -}}?languageCode={{ localization.language.iso_code | escape }}" async></script>
+            {% endif %}
+
+            {% if container %}
+                <div class="container">
+            {% endif %}
+            <div class="yotpo-widget-instance" data-yotpo-instance-id="{{- widget_id -}}"></div>
+            {% if container %}
+                </div>
+            {% endif %}
+        </section>
+    {% endif %}
+{% endunless %}
+
+{% schema %}
+{
+    "name": "Yotpo Widget | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Settings"
+        },
+        {
+            "type": "text",
+            "id": "widget_id",
+            "label": "Widget ID"
+        },
+        {
+            "type": "text",
+            "id": "class",
+            "label": "Section class name"
+        },
+        {
+            "type": "checkbox",
+            "id": "hide_for_registered_customer",
+            "label": "Hide For Registered Customers",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "container",
+            "label": "Container",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "yotpo_script_needed",
+            "label": "Yotpo Script Needed?",
+            "default": false
+        }
+    ],
+    "presets": [
+        {
+            "name": "Yotpo Widget | AW"
+        }
+    ]
+}
+{% endschema %}

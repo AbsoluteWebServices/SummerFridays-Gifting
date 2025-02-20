@@ -1,0 +1,44 @@
+@import '@/styles/snippets/collection-filters.scss';
+@import '@/styles/snippets/disruptor.scss';
+
+.container.container--collection-header {
+    @media only screen and (min-width: 1024px) {
+        padding: 0 6rem;
+    }
+}
+
+.collection__title {
+    margin-bottom: 2rem;
+
+    @media only screen and (min-width: 1280px) {
+        margin-bottom: 2.6rem;
+    }
+}
+
+.collection__load-more-intersect {
+    width: 100%;
+    height: 2px;
+}
+
+.collection__products {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: .7rem;
+    row-gap: 4.2rem;
+
+    @media only screen and (min-width: 1024px) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        padding: 0 6rem;
+    }
+}
+
+.collection__load-more-btn-wrapper {
+    margin-top: 4.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .btn {
+        min-width: 15rem;
+    }
+}

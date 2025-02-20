@@ -1,0 +1,81 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "collection",
+      "blocks": {
+        "disruptor_J7mfMm": {
+          "type": "disruptor",
+          "disabled": true,
+          "settings": {
+            "position": 3,
+            "dark_overlay_opacity": 20,
+            "media_type": "image",
+            "image": "shopify://shop_images/i1_877cbd0b-aee3-404b-970c-146e09414d26.jpg",
+            "eyebrow": "",
+            "title": "<p>FIND YOUR ROUTINE</p><h2>Understand Your Skin<br/>and It’s Needs</h2>",
+            "button_label": "Take the Skincare Quiz",
+            "button_url": "#",
+            "link_whole_disruptor": false
+          }
+        },
+        "disruptor_pGwqX6": {
+          "type": "disruptor",
+          "disabled": true,
+          "settings": {
+            "position": 9,
+            "dark_overlay_opacity": 20,
+            "media_type": "video",
+            "video": "shopify://files/videos/-38ed-4fe8-b3a6-49b61609f1b1.mp4",
+            "eyebrow": "",
+            "title": "<p>WHICH ONE ARE YOU?</p><h2>Natural Coverage in <br/>12 Flexible Shades</h2>",
+            "button_label": "Find your shade",
+            "button_url": "#",
+            "link_whole_disruptor": false
+          }
+        },
+        "disruptor_d76bmH": {
+          "type": "disruptor",
+          "disabled": true,
+          "settings": {
+            "position": 10,
+            "dark_overlay_opacity": 0,
+            "media_type": "image",
+            "image": "shopify://shop_images/i3_b3748c2a-8055-4d82-a834-35306c3b11f4.jpg",
+            "eyebrow": "",
+            "title": "",
+            "button_label": "",
+            "button_url": "#",
+            "link_whole_disruptor": true
+          }
+        }
+      },
+      "block_order": [
+        "disruptor_J7mfMm",
+        "disruptor_pGwqX6",
+        "disruptor_d76bmH"
+      ],
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "products_per_page": 16,
+        "show_title": true,
+        "show_filters": true,
+        "show_sort_by": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

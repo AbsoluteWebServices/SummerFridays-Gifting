@@ -1,0 +1,952 @@
+{%- liquid
+    assign id = id | default: section.id
+    assign inHiddenOverflow = inHiddenOverflow | default: false
+    assign top = top | default: false
+    assign current_variant = product.selected_or_first_available_variant
+    assign subscription_mode = subscription_mode | default: false
+    assign priceModifier = priceModifier | default: 1
+    assign price = current_variant.price | times: priceModifier | money_without_trailing_zeros
+    assign landscape = landscape | default: false
+    
+
+    comment 
+        Define the variant selector type:
+            - no-selector: default first selected or available variant
+            - custom: custom products connected through accentuate.variant_product metafield (e. g., Jet Lag Mask)
+            - custom_swatches: custom products connected through 'Swatches -'' tag (e. g., Lip Butter Balm)
+            - variant-swatches: variants as swatches (e. g., Sheer Skin Tint)
+            - variants: product's variants
+    endcomment
+
+    assign variant_selector_type = 'no-selector'
+
+    assign accentuate = product.metafields.accentuate
+    assign custom_variants = accentuate.variant_product
+    if custom_variants.size > 0
+        assign variant_selector_type = 'custom'
+        assign custom_variant_title = accentuate.variant_title
+        assign custom_variant_type = accentuate.variants_type
+        assign custom_current_variant_title = product.title
+        assign prices = ''
+
+        for custom_variant in custom_variants
+            assign custom_variant_product = all_products[custom_variant]  
+            assign prices = prices | append: custom_variant_product.price_min | append: ','
+            assign prices = prices | append: custom_variant_product.price_max | append: ','
+            if product.handle == custom_variant_product.handle
+                assign custom_variant_label = custom_variant_title[forloop.index0] | default: custom_variant_product.title
+                assign custom_current_variant_title = custom_variant_label
+            endif
+        endfor
+
+        assign prices = prices | remove_last: ',' | split: ',' | uniq | sort
+        if prices.size > 1
+            assign price_min = prices | first | times: priceModifier | money_without_trailing_zeros
+            assign price_max = prices | last | times: priceModifier | money_without_trailing_zeros
+
+            assign price = price_min | append: '-' | append: price_max
+        endif
+    endif
+    
+    if variant_selector_type == 'no-selector'
+        assign swatch_products = nil
+        for tag in product.tags
+            if tag contains 'swatches-' or tag contains 'Swatches -'
+                assign tag_handle = tag | handleize
+                assign swatch_products = collections[tag_handle].products
+                break
+            endif
+        endfor
+
+        if swatch_products and swatch_products.size > 0
+            assign variant_selector_type = 'custom-swatches'
+            assign prices = ''
+
+            for swatch_product in swatch_products
+                assign prices = prices | append: swatch_product.price_min | append: ','
+                assign prices = prices | append: swatch_product.price_max | append: ','
+            endfor
+
+            assign prices = prices | remove_last: ',' | split: ',' | uniq | sort
+            if prices.size > 1
+                assign price_min = prices | first | times: priceModifier | money_without_trailing_zeros
+                assign price_max = prices | last | times: priceModifier | money_without_trailing_zeros
+
+                assign price = price_min | append: '-' | append: price_max
+            endif
+        endif
+
+        assign color_position = product.options_by_name.Color.position | minus: 1
+        if product.options_by_name.Shade
+            assign color_position = product.options_by_name.Shade.position | minus: 1
+        endif
+
+        assign hide_toggle_swatches_button = false
+        assign hide_toggle_swatches_button_tablet = false
+        assign hide_toggle_swatches_button_desktop = false
+        assign hide_toggle_swatches_threshold = 6
+        if landscape
+            assign hide_toggle_swatches_threshold = 11
+        endif
+        assign hide_toggle_swatches_threshold_tablet = 8
+        if landscape
+            assign hide_toggle_swatches_threshold_tablet = 15
+        endif
+        assign hide_toggle_swatches_threshold_desktop = 10
+        if landscape
+            assign hide_toggle_swatches_threshold_desktop = 19
+        endif
+        
+        if swatch_products.size < hide_toggle_swatches_threshold_desktop
+            assign hide_toggle_swatches_button_desktop = true
+        endif
+
+        if swatch_products.size < hide_toggle_swatches_threshold_tablet
+            assign hide_toggle_swatches_button_tablet = true
+        endif 
+
+        if swatch_products.size < hide_toggle_swatches_threshold
+            assign hide_toggle_swatches_button = true
+        endif
+
+    endif
+
+    if variant_selector_type == 'no-selector'
+        assign color_options = product.options_with_values | where: 'name', 'Color'
+        assign color_options_values = color_options[0].values
+        if color_options_values == blank
+            assign color_options = product.options_with_values | where: 'name', 'Shade'
+            assign color_options_values = color_options[0].values
+        endif
+        if color_options_values.size > 0
+            assign variant_selector_type = 'variant-swatches'
+            assign color_position = product.options_by_name.Color.position | minus: 1
+            if product.price_min < product.price_max
+                assign price_min = product.price_min | times: priceModifier |  money_without_trailing_zeros
+                assign price_max = product.price_max | times: priceModifier | money_without_trailing_zeros
+
+                assign price = price_min | append: '-' | append: price_max
+            endif
+        endif
+
+        assign hide_toggle_swatches_button = false
+        assign hide_toggle_swatches_button_tablet = false
+        assign hide_toggle_swatches_button_desktop = false
+        assign hide_toggle_swatches_threshold = 6
+        if landscape
+            assign hide_toggle_swatches_threshold = 11
+        endif
+        assign hide_toggle_swatches_threshold_tablet = 8
+        if landscape
+            assign hide_toggle_swatches_threshold_tablet = 15
+        endif
+        assign hide_toggle_swatches_threshold_desktop = 10
+        if landscape
+            assign hide_toggle_swatches_threshold_desktop = 19
+        endif 
+
+        if color_options_values.size < hide_toggle_swatches_threshold_desktop
+            assign hide_toggle_swatches_button_desktop = true
+        endif
+
+        if color_options_values.size < hide_toggle_swatches_threshold_tablet
+            assign hide_toggle_swatches_button_tablet = true
+        endif 
+
+        if color_options_values.size < hide_toggle_swatches_threshold
+            assign hide_toggle_swatches_button = true
+        endif
+    endif
+
+    if variant_selector_type == 'no-selector'
+        if product.variants.size > 1
+            assign variant_selector_type = 'variants'
+            if product.price_min < product.price_max
+                assign price_min = product.price_min | times: priceModifier | money_without_trailing_zeros
+                assign price_max = product.price_max | times: priceModifier | money_without_trailing_zeros
+
+                assign price = price_min | append: '-' | append: price_max
+            endif
+        endif
+    endif
+-%}
+
+<form 
+    action="/cart/add"
+    method="POST"
+    enctype="multipart/form-data"
+    @submit.prevent="$store.Cart.addToCart(event)"
+>
+    <input type="hidden" name="quantity" value="1">
+
+    {%- case variant_selector_type -%}
+        {%- when 'custom' -%}
+            <div 
+                x-data="{
+                    open: false
+                }"
+                class="superscript-normal select-wrapper {% unless inHiddenOverflow %}select-wrapper--absolute{% endunless %} select-wrapper--bordered product-card__selector-wrapper"
+                @click.outside="open = false"
+            >
+                <button
+                    id="product-card-selector-btn-{{- product.id -}}-{{ id }}"
+                    class="product-card__selector-btn p-normal select-toggle-btn {% if top %}select-toggle-btn--top{% endif %}"
+                    type="button"
+                    aria-haspopup="true"
+                    aria-controls="product-card-selector-{{- product.id -}}"
+                    :aria-expanded="open"
+                    @click.prevent="open = ! open"
+                >
+                    <span x-text="data ? (data.custom_variant_title ? data.custom_variant_title : '') : initialized ? '{{- custom_current_variant_title -}}': '{{- 'collections.general.select_option' | t: title: custom_variant_type -}}'">{{- 'collections.general.select_option' | t: title: custom_variant_type -}}</span>
+                    {%- render 'icon', name: 'chevron-down' -%}
+                </button>
+
+                <ul 
+                    id="product-card-selector-{{- product.id -}}"
+                    class="dropdown-content {% if top %}dropdown-content--top{% endif %} list-reset"
+                    :data-open="open"
+                    aria-labelledby="product-card-selector-btn-{{- product.id -}}-{{ id }}"
+                    :style="open && { height: $el.scrollHeight + 'px' }"
+                    @resize.window="if (!open) { return; } $el.style.height = 'auto'"
+                >
+                    {%- for custom_variant in custom_variants -%}
+                        {%- liquid
+                            assign custom_variant_product = all_products[custom_variant] 
+                            assign custom_variant_label = custom_variant_title[forloop.index0] | default: custom_variant_product.title
+                            assign custom_variant_product_url = custom_variant_product.url
+        
+                            assign custom_variant_active = false
+                            if product.handle == custom_variant_product.handle
+                                assign custom_variant_active = true
+                            endif
+
+                            assign main_media = custom_variant_product.media | first
+                            if custom_variant_product.metafields.custom.main_image_on_plp != blank
+                                assign main_media = custom_variant_product.metafields.custom.main_image_on_plp.value
+                            endif
+
+                            assign hover_media = custom_variant_product.media[1] 
+                            if custom_variant_product.metafields.custom.hover_media_on_plp != blank
+                                assign hover_media = custom_variant_product.metafields.custom.hover_media_on_plp.value
+                            endif
+
+                            assign product_title = custom_variant_product.title
+                            if custom_variant_product.metafields.accentuate.plp_title != blank
+                                assign product_title = custom_variant_product.metafields.accentuate.plp_title | escape
+                            endif
+                            assign product_title = product_title | split: ' - ' | first
+                            assign product_title_html = product_title | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>'
+
+
+                            assign hide_variant_title = custom_variant_product.selected_or_first_available_variant.metafields.variant.hide_variant_title | default: false
+                            assign variant_title = ''
+                            if custom_variant_product.selected_or_first_available_variant.title != 'Default Title' and hide_variant_title == false
+                                assign variant_title = custom_variant_product.selected_or_first_available_variant.title
+
+                                assign variant_title_override = custom_variant_product.selected_or_first_available_variant.metafields.variant.variant_title_override | escape 
+                                if variant_title_override != blank 
+                                    assign variant_title = variant_title_override
+                                endif
+                            endif
+
+                            assign product_subtitle = custom_variant_product.metafields.accentuate.product_type | escape
+                        -%}
+
+                        {%- if subscription_mode == true -%}
+                            {%- assign selling_plan_allocations = custom_variant_product.selected_or_first_available_variant.selling_plan_allocations -%}
+                            {%- capture selling_plans_array -%}
+                                [
+                                    {%- for selling_plan_allocation in selling_plan_allocations -%}
+                                        {%- liquid 
+                                            assign selling_plan = selling_plan_allocation.selling_plan 
+                                            assign first_available_discount_value = selling_plan.price_adjustments[0].value
+                                            assign price_modifier = 100 | minus: first_available_discount_value | divided_by: 100.00
+                                        -%}
+                                        {
+                                            name: '{{ selling_plan.name }}',
+                                            id: {{- selling_plan.id -}},
+                                            priceModifier: {{- price_modifier -}}
+                                        }{% unless forloop.last %},{% endunless %}
+                                    {%- endfor -%}
+                                ]
+                            {%- endcapture -%}
+                        {%- endif -%}
+        
+                        {%- if custom_variant_product_url != blank -%}
+                            <li>
+                                <label class="select-option p-normal" @click="open = false; initialized = true">
+                                    <input 
+                                        x-model="variantId"
+                                        name="id" 
+                                        type="radio" 
+                                        class="visually-hidden" 
+                                        value="{{- custom_variant_product.selected_or_first_available_variant.id -}}"
+                                        {% if custom_variant_active %}
+                                            checked
+                                        {% endif %}
+                                        @change="
+                                            open = false; 
+                                            updateProductCard({
+                                            available: {{ custom_variant_product.selected_or_first_available_variant.available | default: false }}
+                                            ,coming_soon: {{ custom_variant_product.metafields.product.enable_coming_soon | default: false }}
+                                            ,notify_me: {{ custom_variant_product.metafields.product.enable_notify_me | default: false }}
+                                            ,price: {{ custom_variant_product.selected_or_first_available_variant.price }}
+                                            ,url: '{{- custom_variant_product.selected_or_first_available_variant.url -}}'
+                                            ,title: '{{- product_title -}}'
+                                            ,title_html: '{{- product_title_html -}}'
+                                            {%- if variant_title != blank -%}
+                                                ,variant_title: '{{- variant_title -}}'
+                                            {%- endif -%}
+                                            ,custom_variant_title: '{{- custom_variant_label -}}'
+                                            {%- if product_subtitle != blank -%}
+                                                ,subtitle: '{{- product_subtitle -}}'
+                                            {%- endif -%}
+                                            {%- if main_media != blank -%}
+                                                ,main_media: {
+                                                    type: '{{ main_media.media_type }}',
+                                                    {%- if main_media.media_type == 'video' -%}
+                                                        {%- liquid 
+                                                            assign video_url = '' 
+                                                            assign mp4_sources = main_media.sources | where: 'format', 'mp4'
+                                                            if main_media.sources.size > 0
+                                                                assign video_url = mp4_sources[0].url
+                                                            endif  
+                                                        -%}
+                                                        {%- if video_url != blank -%}
+                                                            video_url: '{{ video_url }}'
+                                                        {%- endif -%}
+                                                    {%- elsif main_media.media_type == 'image' -%}
+                                                        image_url: '{{ main_media | image_url }}',
+                                                        alt: '{{ main_media.alt | default: product_title }}'
+                                                    {%- endif -%}
+                                                }
+                                            {%- endif -%}
+                                            {%- if hover_media != blank -%}
+                                                ,hover_media: {
+                                                    type: '{{ hover_media.media_type }}',
+                                                    {%- if hover_media.media_type == 'video' -%}
+                                                        {%- liquid 
+                                                            assign video_url = '' 
+                                                            assign mp4_sources = hover_media.sources | where: 'format', 'mp4'
+                                                            if hover_media.sources.size > 0
+                                                                assign video_url = mp4_sources[0].url
+                                                            endif  
+                                                        -%}
+                                                        {%- if video_url != blank -%}
+                                                            video_url: '{{ video_url }}'
+                                                        {%- endif -%}
+                                                    {%- elsif hover_media.media_type == 'image' -%}
+                                                        image_url: '{{ hover_media | image_url }}'
+                                                    {%- endif -%}
+                                                }
+                                            {%- endif -%}
+                                            });
+                                            {% if subscription_mode == true %}
+                                                updateSellingPlans({{ selling_plans_array | default: false }})
+                                            {% endif %}
+                                        "
+                                    >
+                                    
+                                    {{- custom_variant_label -}}
+                                </label>
+                            </li>
+                        {%- endif -%}
+                    {%- endfor -%}
+                </ul>
+            </div> 
+
+        {%- when 'custom-swatches' -%}
+            <ul x-data="{ open: false }" class="product-card__swatches list-reset">
+                {%- for swatch_product in swatch_products -%}
+                    {%- liquid 
+                        assign colors_name = swatch_product.variants[0].options[color_position]
+                        assign colors_thumbnail = 'swatch-' | append: colors_name | handleize | append: '.png'  
+                        assign custom_product_thumbnail = swatch_product.metafields.product.thumbnail  
+                        assign thumbnail_src = colors_thumbnail | file_img_url: '72x'
+                        if custom_product_thumbnail
+                            assign thumbnail_src = custom_product_thumbnail | image_url: width: 72
+                        endif
+                        assign new = swatch_product.metafields.product.new | default: false
+
+                        assign main_media = swatch_product.media | first
+                        if swatch_product.metafields.custom.main_image_on_plp != blank
+                            assign main_media = swatch_product.metafields.custom.main_image_on_plp.value
+                        endif
+
+                        assign hover_media = swatch_product.media[1] 
+                        if swatch_product.metafields.custom.hover_media_on_plp != blank
+                            assign hover_media = swatch_product.metafields.custom.hover_media_on_plp.value
+                        endif
+
+                        assign product_title = swatch_product.title
+                        if swatch_product.metafields.accentuate.plp_title != blank
+                            assign product_title = swatch_product.metafields.accentuate.plp_title | escape 
+                        endif
+                        assign product_title = product_title | split: ' - ' | first
+                        assign product_title_html = product_title | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>'
+
+                        assign hide_variant_title = swatch_product.selected_or_first_available_variant.metafields.variant.hide_variant_title | default: false
+                        assign variant_title = ''
+                        if swatch_product.selected_or_first_available_variant.title != 'Default Title' and hide_variant_title == false
+                            assign variant_title = swatch_product.selected_or_first_available_variant.title
+
+                            assign variant_title_override = swatch_product.selected_or_first_available_variant.metafields.variant.variant_title_override | escape 
+                            if variant_title_override != blank 
+                                assign variant_title = variant_title_override
+                            endif
+                        endif
+
+                        assign product_subtitle = swatch_product.metafields.accentuate.product_type | escape
+
+                        assign less_than_5 = false
+                        assign less_than_7 = false
+                        assign less_than_9 = false
+                        assign less_than_5_threshold = 5
+                        if landscape 
+                            assign less_than_5_threshold = 10
+                        endif
+                        assign less_than_7_threshold = 7
+                        if landscape 
+                            assign less_than_7_threshold = 14
+                        endif
+                        assign less_than_9_threshold = 9
+                        if landscape 
+                            assign less_than_9_threshold = 18
+                        endif
+
+                        if forloop.index < less_than_5_threshold
+                            assign less_than_5 = true
+                        endif
+                        if forloop.index < less_than_7_threshold
+                            assign less_than_7 = true
+                        endif
+                        if forloop.index < less_than_9_threshold
+                            assign less_than_9 = true
+                        endif
+
+                        assign show_on_mobile = true
+                        if less_than_5 == false and hide_toggle_swatches_button == false
+                            assign show_on_mobile = false
+                        endif
+
+                        assign show_on_tablet = true
+                        if less_than_7 == false and hide_toggle_swatches_button_tablet == false
+                            assign show_on_tablet = false
+                        endif
+                        
+                        assign show_on_desktop = true
+                        if less_than_9 == false and hide_toggle_swatches_button_desktop == false
+                            assign show_on_desktop = false
+                        endif
+                    -%}
+                    {%- if subscription_mode == true -%}
+                        {%- assign selling_plan_allocations = swatch_product.selected_or_first_available_variant.selling_plan_allocations -%}
+                        {%- capture selling_plans_array -%}
+                            [
+                                {%- for selling_plan_allocation in selling_plan_allocations -%}
+                                    {%- liquid 
+                                        assign selling_plan = selling_plan_allocation.selling_plan 
+                                        assign first_available_discount_value = selling_plan.price_adjustments[0].value
+                                        assign price_modifier = 100 | minus: first_available_discount_value | divided_by: 100.00
+                                    -%}
+                                    {
+                                        name: '{{ selling_plan.name }}',
+                                        id: {{- selling_plan.id -}},
+                                        priceModifier: {{- price_modifier -}}
+                                    }{% unless forloop.last %},{% endunless %}
+                                {%- endfor -%}
+                            ]
+                        {%- endcapture -%}
+                    {%- endif -%}
+                    <li
+                        class="product-card__swatch-wrapper {% unless show_on_mobile %}product-card__swatch-wrapper--hide-mobile{% endunless %} {% unless show_on_tablet %}product-card__swatch-wrapper--hide-tablet{% endunless %} {% unless show_on_desktop %}product-card__swatch-wrapper--hide-desktop{% endunless %}"
+                        {% if forloop.index > 4 %}
+                            x-show="[
+                                open, 
+                                (previousWindowWidth < 768 && {{ show_on_mobile }}), 
+                                (previousWindowWidth < 1024 && {{ show_on_tablet }}), 
+                                (previousWindowWidth >= 1024 && {{ show_on_desktop }})
+                            ].includes(true)"
+                            x-transition.duration.300ms
+                            x-transition.opacity
+                            :data-open="open"
+                        {% endif %}
+                    >
+                        <label 
+                            class="product-card__swatch"
+                            {% if swatch_product.handle == product.handle %}
+                                data-active="true"
+                            {% endif %}
+                            :data-active="+variantId === {{ swatch_product.selected_or_first_available_variant.id }}"
+                        >
+                            <input 
+                                x-model="variantId"
+                                name="id" 
+                                type="radio" 
+                                class="visually-hidden" 
+                                value="{{- swatch_product.selected_or_first_available_variant.id -}}"
+                                {% if swatch_product.handle == product.handle %}
+                                    checked
+                                {% endif %}
+                                @change="updateProductCard({
+                                    available: {{ swatch_product.selected_or_first_available_variant.available | default: false }}
+                                    ,coming_soon: {{ swatch_product.metafields.product.enable_coming_soon | default: false }}
+                                    ,notify_me: {{ swatch_product.metafields.product.enable_notify_me | default: false }}
+                                    ,price: {{ swatch_product.selected_or_first_available_variant.price }}
+                                    ,url: '{{- swatch_product.selected_or_first_available_variant.url -}}'
+                                    {%- if variant_title != blank -%}
+                                        ,variant_title: '{{- variant_title -}}'
+                                    {%- endif -%}
+                                    ,title: '{{- product_title -}}'
+                                    ,title_html: '{{- product_title_html -}}'
+                                    {%- if product_subtitle != blank -%}
+                                        ,subtitle: '{{- product_subtitle -}}'
+                                    {%- endif -%}
+                                    {%- if main_media != blank -%}
+                                        ,main_media: {
+                                            type: '{{ main_media.media_type }}',
+                                            {%- if main_media.media_type == 'video' -%}
+                                                {%- liquid 
+                                                    assign video_url = '' 
+                                                    assign mp4_sources = main_media.sources | where: 'format', 'mp4'
+                                                    if main_media.sources.size > 0
+                                                        assign video_url = mp4_sources[0].url
+                                                    endif  
+                                                -%}
+                                                {%- if video_url != blank -%}
+                                                    video_url: '{{ video_url }}'
+                                                {%- endif -%}
+                                            {%- elsif main_media.media_type == 'image' -%}
+                                                image_url: '{{ main_media | image_url }}',
+                                                alt: '{{ main_media.alt | default: product_title }}'
+                                            {%- endif -%}
+                                        }
+                                    {%- endif -%}
+                                    {%- if hover_media != blank -%}
+                                        ,hover_media: {
+                                            type: '{{ hover_media.media_type }}',
+                                            {%- if hover_media.media_type == 'video' -%}
+                                                {%- liquid 
+                                                    assign video_url = '' 
+                                                    assign mp4_sources = hover_media.sources | where: 'format', 'mp4'
+                                                    if hover_media.sources.size > 0
+                                                        assign video_url = mp4_sources[0].url
+                                                    endif  
+                                                -%}
+                                                {%- if video_url != blank -%}
+                                                    video_url: '{{ video_url }}'
+                                                {%- endif -%}
+                                            {%- elsif hover_media.media_type == 'image' -%}
+                                                image_url: '{{ hover_media | image_url }}'
+                                            {%- endif -%}
+                                        }
+                                    {%- endif -%}
+                                });
+                                {% if subscription_mode == true %}
+                                    updateSellingPlans({{ selling_plans_array | default: false }})
+                                {% endif %}
+                                "
+                            >
+
+                            <div class="product-card__swatch-inner">
+                                <img
+                                    src="{{- thumbnail_src -}}"
+                                    class="absolute-img"
+                                    alt="{{ colors_name | escape }} Thumbnail"
+                                    width="36"
+                                    height="36"
+                                >
+                            </div>
+
+                            {%- if new -%}
+                                <span class="superscript-normal product-card__swatch-inner-label">{{- 'products.product.new' | t -}}</span>
+                            {%- endif -%}
+                        </label>
+                    </li>
+                {%- endfor -%}
+
+                {%- if swatch_products.size > 5 -%}
+                    <li
+                        class="{% if hide_toggle_swatches_button %}product-card__swatches-toggle-all-wrapper--hide{% endif %} {% if hide_toggle_swatches_button_tablet %}product-card__swatches-toggle-all-wrapper--hide-tablet{% endif %} {% if hide_toggle_swatches_button_desktop %}product-card__swatches-toggle-all-wrapper--hide-desktop{% endif %}"
+                    >
+                        <button
+                            class="product-card__swatches-toggle-all"
+                            type="button"
+                            aria-label="Toggle the remaining swatches"
+                            aria-expanded="false"
+                            :aria-expanded="open"
+                            @click.prevent="open = ! open"
+                        >
+                            {%- render 'plus-icon' -%}
+                        </button>
+                    </li>
+                {%- endif -%}
+            </ul>
+
+        {%- when 'variant-swatches' -%}
+            <ul x-data="{ open: false }" class="product-card__swatches list-reset">
+                {%- assign product_title = product.metafields.accentuate.plp_title | default: product.title -%}
+                {%- assign product_title = product_title | split: ' - ' | first -%}
+                {%- assign product_title_html = product_title | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>' -%}
+                {%- for color in color_options[0].values -%}
+                    {%- liquid 
+                        assign custom_thumbnail = ''
+    
+                        for v in product.variants
+                            if v.options[color_position] == color
+                                assign variant = v
+                                assign custom_thumbnail = variant.metafields.custom.thumbnail
+                                break
+                            endif
+                        endfor
+                        
+                        assign variant_draft = variant.metafields.variant.draft | default: false
+                        if variant_draft
+                            continue
+                        endif  
+    
+                        assign color_handle = color | handleize
+                        assign colors_thumbnail = 'swatch-' | append: color_handle | append: '.png'
+                        assign thumbnail_src = colors_thumbnail | file_img_url: '72x'
+                        if custom_thumbnail
+                            assign thumbnail_src = custom_thumbnail | image_url: width: 72
+                        endif
+    
+                        assign new = variant.metafields.variant.new | default: false
+
+                        assign hide_variant_title = variant.metafields.variant.hide_variant_title | default: false 
+                        assign variant_title = ''
+                        if variant.title != 'Default Title' and hide_variant_title == false
+                            assign variant_title = variant.title
+
+                            assign variant_title_override = variant.metafields.variant.variant_title_override | escape 
+                            if variant_title_override != blank 
+                                assign variant_title = variant_title_override
+                            endif
+                        endif
+
+                        assign variant_subtitle = variant.metafields.accentuate.variant_type | escape | default: variant.title
+
+                        assign main_media = variant.metafields.custom.main_image_on_plp.value
+
+                        assign less_than_5 = false
+                        assign less_than_7 = false
+                        assign less_than_9 = false
+                        assign less_than_5_threshold = 5
+                        if landscape 
+                            assign less_than_5_threshold = 10
+                        endif
+                        assign less_than_7_threshold = 7
+                        if landscape 
+                            assign less_than_7_threshold = 14
+                        endif
+                        assign less_than_9_threshold = 9
+                        if landscape 
+                            assign less_than_9_threshold = 18
+                        endif
+
+                        if forloop.index < less_than_5_threshold
+                            assign less_than_5 = true
+                        endif
+                        if forloop.index < less_than_7_threshold
+                            assign less_than_7 = true
+                        endif
+                        if forloop.index < less_than_9_threshold
+                            assign less_than_9 = true
+                        endif
+
+                        assign show_on_mobile = true
+                        if less_than_5 == false and hide_toggle_swatches_button == false
+                            assign show_on_mobile = false
+                        endif
+
+                        assign show_on_tablet = true
+                        if less_than_7 == false and hide_toggle_swatches_button_tablet == false
+                            assign show_on_tablet = false
+                        endif
+                        
+                        assign show_on_desktop = true
+                        if less_than_9 == false and hide_toggle_swatches_button_desktop == false
+                            assign show_on_desktop = false
+                        endif
+                    -%} 
+                    {%- if subscription_mode == true -%}
+                        {%- assign selling_plan_allocations = variant.selling_plan_allocations -%}
+                        {%- capture selling_plans_array -%}
+                            [
+                                {%- for selling_plan_allocation in selling_plan_allocations -%}
+                                    {%- liquid 
+                                        assign selling_plan = selling_plan_allocation.selling_plan 
+                                        assign first_available_discount_value = selling_plan.price_adjustments[0].value
+                                        assign price_modifier = 100 | minus: first_available_discount_value | divided_by: 100.00
+                                    -%}
+                                    {
+                                        name: '{{ selling_plan.name }}',
+                                        id: {{- selling_plan.id -}},
+                                        priceModifier: {{- price_modifier -}}
+                                    }{% unless forloop.last %},{% endunless %}
+                                {%- endfor -%}
+                            ]
+                        {%- endcapture -%}
+                    {%- endif -%}
+
+                    <li
+                        class="product-card__swatch-wrapper {% unless show_on_mobile %}product-card__swatch-wrapper--hide-mobile{% endunless %} {% unless show_on_tablet %}product-card__swatch-wrapper--hide-tablet{% endunless %} {% unless show_on_desktop %}product-card__swatch-wrapper--hide-desktop{% endunless %}"
+                        {% if forloop.index > 4 %}
+                            x-show="[
+                                open, 
+                                (previousWindowWidth < 768 && {{ show_on_mobile }}), 
+                                (previousWindowWidth < 1024 && {{ show_on_tablet }}), 
+                                (previousWindowWidth >= 1024 && {{ show_on_desktop }})
+                            ].includes(true)"
+                            x-transition.duration.300ms
+                            x-transition.opacity
+                            :data-open="open"
+                        {% endif %}
+                    > 
+                        <label 
+                            class="product-card__swatch"
+                            data-active="{%- if current_variant.id == variant.id -%}true{%- else -%}false{%- endif -%}"
+                            :data-active="+variantId === {{ variant.id }}"
+                        >
+                            <input 
+                                x-model="variantId"
+                                name="id" 
+                                type="radio" 
+                                class="visually-hidden" 
+                                value="{{- variant.id -}}"
+                                {% if current_variant.id == variant.id %}
+                                    checked
+                                {% endif %}
+                                @change="
+                                    open = false; 
+                                    updateProductCard({
+                                        available: {{ variant.available | default: false }}
+                                        ,coming_soon: {{ product.metafields.product.enable_coming_soon | default: false }}
+                                        ,notify_me: {{ product.metafields.product.enable_notify_me | default: false }}
+                                        ,price: {{ variant.price }}
+                                        ,title: '{{ product_title }}'
+                                        ,title_html: '{{- product_title_html -}}'
+                                        {%- if variant_title != blank -%}
+                                            ,variant_title: '{{- variant_title -}}'
+                                        {%- endif -%}
+                                        ,url: '{{- variant.url -}}'
+                                        {%- if variant_subtitle != blank -%}
+                                            ,subtitle: '{{- variant_subtitle -}}'
+                                        {%- endif -%}
+                                        {%- if main_media != blank -%}
+                                            ,main_media: {
+                                                type: '{{ main_media.media_type }}',
+                                                {%- if main_media.media_type == 'video' -%}
+                                                    {%- liquid 
+                                                        assign video_url = '' 
+                                                        assign mp4_sources = main_media.sources | where: 'format', 'mp4'
+                                                        if main_media.sources.size > 0
+                                                            assign video_url = mp4_sources[0].url
+                                                        endif  
+                                                    -%}
+                                                    {%- if video_url != blank -%}
+                                                        video_url: '{{ video_url }}'
+                                                    {%- endif -%}
+                                                {%- elsif main_media.media_type == 'image' -%}
+                                                    image_url: '{{ main_media | image_url }}',
+                                                    alt: '{{ main_media.alt | default: product.title }}'
+                                                {%- endif -%}
+                                            }
+                                        {%- else -%}
+                                            {%- if variant.image != blank -%}
+                                                ,main_media: {
+                                                    type: 'image',
+                                                    image_url: '{{ variant.image | image_url }}',
+                                                    alt: '{{ variant.image.alt | default: product.title }}'
+                                                }
+                                            {%- endif -%}
+                                        {%- endif -%}
+                                    });
+                                    {% if subscription_mode == true %}
+                                        updateSellingPlans({{ selling_plans_array | default: false }})
+                                    {% endif %}
+                                "
+                            >
+
+                            <div class="product-card__swatch-inner">
+                                <img
+                                    src="{{- thumbnail_src -}}"
+                                    class="absolute-img"
+                                    alt="{{ color | escape }} Thumbnail"
+                                    width="36"
+                                    height="36"
+                                >
+                            </div>
+
+                            {%- if new -%}
+                                <span class="superscript-normal product-card__swatch-inner-label">{{- 'products.product.new' | t -}}</span>
+                            {%- endif -%}
+                        </label>
+                    </li>
+                {%- endfor -%}
+
+                {%- if color_options[0].values.size > 5 -%}
+                    <li
+                        class="{% if hide_toggle_swatches_button %}product-card__swatches-toggle-all-wrapper--hide{% endif %} {% if hide_toggle_swatches_button_tablet %}product-card__swatches-toggle-all-wrapper--hide-tablet{% endif %} {% if hide_toggle_swatches_button_desktop %}product-card__swatches-toggle-all-wrapper--hide-desktop{% endif %}"
+                    >
+                        <button
+                            class="product-card__swatches-toggle-all"
+                            type="button"
+                            aria-label="Toggle the remaining swatches"
+                            aria-expanded="false"
+                            :aria-expanded="open"
+                            @click.prevent="open = ! open"
+                        >
+                            {%- render 'plus-icon' -%}
+                        </button>
+                    </li>
+                {%- endif -%}
+            </ul>
+
+        {%- when 'variants' -%}
+            <div 
+                x-data="{
+                    open: false
+                }"
+                class="superscript-normal select-wrapper {% unless inHiddenOverflow %}select-wrapper--absolute{% endunless %} select-wrapper--bordered product-card__selector-wrapper"
+                @click.outside="open = false"
+            >
+                <button
+                    id="product-card-selector-btn-{{- product.id -}}-{{ id }}"
+                    class="product-card__selector-btn p-normal select-toggle-btn {% if top %}select-toggle-btn--top{% endif %}"
+                    type="button"
+                    aria-haspopup="true"
+                    aria-controls="product-card-selector-{{- product.id -}}"
+                    :aria-expanded="open"
+                    @click.prevent="open = ! open"
+                >
+                    <span x-text="data?.variant_title ? data?.variant_title : `{{- current_variant.title -}}`">{{- current_variant.title -}}</span>
+                    {%- render 'icon', name: 'chevron-down' -%}
+                </button>
+
+                <ul 
+                    id="product-card-selector-{{- product.id -}}"
+                    class="dropdown-content {% if top %}dropdown-content--top{% endif %} list-reset"
+                    :data-open="open"
+                    aria-labelledby="product-card-selector-btn-{{- product.id -}}-{{ id }}"
+                    :style="open && { height: $el.scrollHeight + 'px' }"
+                    @resize.window="if (!open) { return; } $el.style.height = 'auto'"
+                >
+                    {%- for variant in product.variants -%}
+                        {%- liquid 
+                            assign hide_variant_title = variant.metafields.variant.hide_variant_title | default: false 
+                            assign variant_title = ''
+                            if variant.title != 'Default Title' and hide_variant_title == false
+                                assign variant_title = variant.title
+
+                                assign variant_title_override = variant.metafields.variant.variant_title_override | escape 
+                                if variant_title_override != blank 
+                                    assign variant_title = variant_title_override
+                                endif
+                            endif
+
+                            assign variant_subtitle = variant.metafields.accentuate.variant_type | escape | default: variant.title
+
+                            assign main_media = variant.metafields.custom.main_image_on_plp.value    
+                        -%}
+                        {%- if subscription_mode == true -%}
+                            {%- assign selling_plan_allocations = variant.selling_plan_allocations -%}
+                            {%- capture selling_plans_array -%}
+                                [
+                                    {%- for selling_plan_allocation in selling_plan_allocations -%}
+                                        {%- liquid 
+                                            assign selling_plan = selling_plan_allocation.selling_plan 
+                                            assign first_available_discount_value = selling_plan.price_adjustments[0].value
+                                            assign price_modifier = 100 | minus: first_available_discount_value | divided_by: 100.00
+                                        -%}
+                                        {
+                                            name: '{{ selling_plan.name }}',
+                                            id: {{- selling_plan.id -}},
+                                            priceModifier: {{- price_modifier -}}
+                                        }{% unless forloop.last %},{% endunless %}
+                                    {%- endfor -%}
+                                ]
+                            {%- endcapture -%}
+                        {%- endif -%}
+                        <li>
+                            <label class="select-option p-normal" @click="open = false">
+                                <input 
+                                    x-model="variantId"
+                                    name="id" 
+                                    type="radio" 
+                                    class="visually-hidden" 
+                                    value="{{- variant.id -}}"
+                                    {% if current_variant.id == variant.id %}
+                                        checked
+                                    {% endif %}
+                                    @change="
+                                        open = false; 
+                                        updateProductCard({
+                                            available: {{ variant.available | default: false }}
+                                            ,coming_soon: {{ product.metafields.product.enable_coming_soon | default: false }}
+                                            ,notify_me: {{ product.metafields.product.enable_notify_me | default: false }}
+                                            ,price: {{ variant.price }}
+                                            ,url: '{{- variant.url -}}'
+                                            {%- if variant_title != blank -%}
+                                                ,variant_title: '{{- variant_title -}}'
+                                            {%- endif -%}
+                                            {%- if variant_subtitle != blank -%}
+                                                ,subtitle: '{{- variant_subtitle -}}'
+                                            {%- endif -%}
+                                            {%- if main_media != blank -%}
+                                                ,main_media: {
+                                                    type: '{{ main_media.media_type }}',
+                                                    {%- if main_media.media_type == 'video' -%}
+                                                        {%- liquid 
+                                                            assign video_url = '' 
+                                                            assign mp4_sources = main_media.sources | where: 'format', 'mp4'
+                                                            if main_media.sources.size > 0
+                                                                assign video_url = mp4_sources[0].url
+                                                            endif  
+                                                        -%}
+                                                        {%- if video_url != blank -%}
+                                                            video_url: '{{ video_url }}'
+                                                        {%- endif -%}
+                                                    {%- elsif main_media.media_type == 'image' -%}
+                                                        image_url: '{{ main_media | image_url }}',
+                                                        alt: '{{ main_media.alt | default: product.title }}'
+                                                    {%- endif -%}
+                                                }
+                                            {%- else -%}
+                                                {%- if variant.image != blank -%}
+                                                    ,main_media: {
+                                                        type: 'image',
+                                                        image_url: '{{ variant.image | image_url }}',
+                                                        alt: '{{ variant.image.alt | default: product.title }}'
+                                                    }
+                                                {%- endif -%}
+                                            {%- endif -%}
+                                        });
+                                        {% if subscription_mode == true %}
+                                            updateSellingPlans({{ selling_plans_array | default: false }})
+                                        {% endif %}
+                                    "
+                                >
+                                {{- variant.title -}}
+                            </label>
+                        </li>
+                    {%- endfor -%}
+                </ul>
+            </div> 
+
+        {%- else -%}
+            <input type="hidden" name="id" value="{{- current_variant.id -}}">
+    {%- endcase -%}
+
+    {%- if subscription_mode == true -%}
+        {%- render 'product-card-form-selling-plans-selector', 
+            product: product, 
+            current_variant: current_variant, 
+            inHiddenOverflow: inHiddenOverflow, 
+            top: top 
+        -%}
+    {%- endif -%}
+
+    {%- render 'product-card-form-submit-button', product: product, variant_selector_type: variant_selector_type, price: price, priceModifier: priceModifier -%}
+</form>

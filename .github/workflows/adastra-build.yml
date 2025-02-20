@@ -1,0 +1,76 @@
+
+name: Build & Deploy Theme
+on:
+    pull_request:
+        branches:
+            - Build/Redesign
+    push:
+        branches:
+            - Build/Redesign
+        paths-ignore:
+            - README.md
+
+concurrency:
+    group: "${{ github.workflow }}-${{ github.ref }}"
+    cancel-in-progress: true
+
+permissions:
+    contents: write
+
+jobs:
+    build:
+        if: endsWith(github.actor, '[bot]') == false
+        runs-on: ubuntu-latest
+        environment: Build/Redesign
+        steps:
+            -   uses: actions/checkout@v3
+            -   uses: actions/setup-node@v3
+                with:
+                    node-version: '20.x'
+            -   uses: ruby/setup-ruby@v1
+                with:
+                    ruby-version: 3.1
+                    bundler: "latest"
+            -   uses: pnpm/action-setup@v3
+                with:
+                  version: 8
+                  run_install: false
+            -   uses: actions/cache@v3
+                with:
+                    path: ~/.npm
+                    key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
+                    restore-keys: |
+                        ${{ runner.os }}-node-
+            -   run: pnpm install
+            -   run: pnpm build
+            -   name: Extract branch name
+                id: extract_branch
+                shell: bash
+                run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+            -   name: Add -build branch
+                run: |
+                    git checkout -b "${{ steps.extract_branch.outputs.branch }}-build" || true
+            -   run: |
+                    git config user.name "GitHub Action"
+                    git config user.email "action@github.com"
+                    git add .
+                    git commit --amend --no-edit
+                    git add -f assets/adastra.manifest.json
+                    git add -f assets/sf-*
+                    git add -f snippets/adastra.liquid
+                    git commit -m "Shopify git-busting commit: `date`"
+            -   name: Push changes to development-build subtree
+                run: |
+                    git config --global --add --bool push.autoSetupRemote true
+                    git push --force
+            -   name: Deploy to Live Theme
+                env:
+                    SHOPIFY_FLAG_STORE: ${{ vars.SHOPIFY_STORE }}
+                    SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+                    THEME_ID: ${{ vars.THEME_ID }}
+                    SHOPIFY_CLI_TTY: 0
+                    SHOPIFY_FLAG_FORCE: 1
+                if: ${{ env.THEME_ID != '' }}
+                run: |
+                    pnpm shopify theme push --json --allow-live --theme $THEME_ID --ignore templates/*.json --ignore templates/**/*.json --ignore config/settings_data.json || true
+

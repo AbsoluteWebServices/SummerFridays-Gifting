@@ -1,0 +1,163 @@
+{%- if section.blocks.size > 0 -%}
+	{%- liquid
+		assign padding_top = section.settings.padding_top | default: 0
+		assign padding_bottom = section.settings.padding_bottom | default: 0
+		assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+		assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+		assign content = section.settings.content
+		assign text_alignment = section.settings.text_alignment | default: 'center'
+		assign max_width_desktop = section.settings.max_width_desktop | default: 110.4
+	-%}
+
+	{%- render 'adastra' with 'styles/sections/rewards-steps.scss' -%}
+
+	{%- render 'offset',
+		id: section.id,
+		padding_top: padding_top,
+		padding_bottom: padding_bottom,
+		padding_top_desktop: padding_top_desktop,
+		padding_bottom_desktop: padding_bottom_desktop
+	-%}
+
+	<section id="section-{{ section.id }}">
+		<div 
+			class="container rewards-steps__wrapper"
+			style="--max-width-desktop: {{- max_width_desktop -}}rem; --columns: {{- section.blocks.size -}};"
+		>
+			{%- if content != blank -%}
+				<div class="rte rewards-steps__content rewards-steps__content--{{ text_alignment }}">
+					{{- content -}}
+				</div>
+			{%- endif -%}
+
+			<ul 
+				class="rewards-steps__items list-reset"
+				style="background-color: {{- section.blocks.last.settings.color -}};"
+			>
+				{%- for block in section.blocks -%}
+					{%- liquid 
+						assign color = block.settings.color | default: 'transparent'
+						assign next_color = section.blocks[forloop.index].settings.color | default: 'transparent'
+						assign title = block.settings.title 
+						assign subtitle = block.settings.subtitle  
+					-%}
+					<li 
+						class="rewards-steps__item" 
+						style="--color: {{- color -}}; --color-left: {{- color -}}; --color-right: {{- next_color -}};"
+					>
+						{%- if title != blank -%}
+							<p class="subheader-large">
+								{{- title -}}
+							</p>
+						{%- endif -%}
+
+						{%- if subtitle != blank -%}
+							<p>{{- subtitle -}}</p>
+						{%- endif -%}
+
+						{%- unless forloop.last -%}
+							{%- render 'icon', name: 'corner-bottom' -%}
+							{%- render 'icon', name: 'corner' -%}
+						{%- endunless -%}
+					</li>
+				{%- endfor -%}
+			</ul>
+		</div>
+	</section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Rewards Steps | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Settings"
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content"
+        },
+        {
+            "type": "select",
+            "id": "text_alignment",
+            "label": "Text alignment",
+            "default": "center",
+            "options": [
+                { "value": "left", "label": "Left" },
+                { "value": "center", "label": "Center" },
+                { "value": "right", "label": "Right" }
+            ]
+        },
+		{
+            "type": "number",
+            "id": "max_width_desktop",
+            "label": "Max. width on desktop (rem)",
+            "default": 110,
+            "info": "1rem = 10px"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "step",
+            "name": "Step",
+            "settings": [
+                {
+                    "type": "color",
+                    "id": "color",
+                    "label": "Color"
+                },
+                {
+                    "type": "inline_richtext",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "inline_richtext",
+                    "id": "subtitle",
+                    "label": "Subtitle"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Rewards Steps | AW"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,41 @@
+@import './account/menu.scss';
+@import './account/addresses.scss';
+@import './account/orders.scss';
+@import './account/rewards.scss';
+@import './account/subscriptions.scss';
+@import './rewards-history-popup.scss';
+
+body:has(.yotpo-mobile-modal) {
+    overflow: hidden;
+}
+
+body#account {
+    background-color: inherit;
+}
+
+section.account {
+    column-gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    &.account--logged-out {
+        display: block;
+    }
+
+    @media screen and (min-width: 1280px) {
+        grid-template-columns: repeat(16, 1fr);
+        margin-top: 4.8rem;
+    }
+
+    .account__content {
+        grid-column: 1 / 5;
+
+        @media screen and (min-width: 1280px) {
+            grid-column: 6 / 17;
+        }
+
+        .subheader-large {
+            margin-bottom: 2.4rem;
+        }
+    }
+}

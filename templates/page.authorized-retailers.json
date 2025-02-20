@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "main": {
+      "type": "2-cols-media-text",
+      "settings": {
+        "padding_top": 2,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 2.4,
+        "padding_bottom_desktop": 2.4,
+        "media_type": "image",
+        "image": "shopify:\/\/shop_images\/authorized-retailers.jpg",
+        "content": "<h1>Authorized Retailers<\/h1><p>Summer Fridays is available for purchase at select retailers and on summerfridays.com. Authorized retailers include Sephora (US, Canada, Europe, Middle East), Mecca, Cult Beauty, REVOLVE, Space NK, Apotheca, and Amazon (through Fortress\/Front Row, our only Amazon authorized resellers).<\/p><p>For Sales on the Amazon platform, the Summer Fridays brand works hard to ensure that only authentic, high quality products reach consumers in the condition we intend. As such, for all sales on the Amazon platform, the Summer Fridays brand offers a 45 day Satisfaction Guarantee which will NOT be honored without provision of valid proof of purchase directly from the Fortress\/Front Row Brand Amazon storefront.<\/p><p>Any Summer Fridays product sold via other retailers or websites are unauthorized to do so and are not affiliated with Summer Fridays.<\/p>",
+        "text_alignment": "center",
+        "button_label": "",
+        "button_url": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

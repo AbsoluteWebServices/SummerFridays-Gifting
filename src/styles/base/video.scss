@@ -1,0 +1,110 @@
+.video__wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    video {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+.video__controls {
+    position: absolute;
+    right: 1.4rem;
+    bottom: 1.4rem; 
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.video__button {
+    position: relative;
+    color: var(--ink);
+    height: 2.4rem;
+    width: 2.4rem;
+    border-radius: 50%;
+    overflow: hidden;
+
+    .icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(249, 248, 245, .6);
+        border-radius: 50%;
+        transition: var(--transition-all);
+
+        &.icon-play-round {
+            opacity: 0;
+        }
+    }
+
+    &.video__button--paused {
+        .icon {
+            &.icon-play-round {
+                opacity: 1;
+            }
+
+            &.icon-pause-round {
+                opacity: 0;
+            }
+        }
+    }
+}
+
+.video__button-cross {
+    position: absolute;
+    top: 50%;
+    height: 75%;
+    width: 1px;
+    background-color: var(--ink);
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    opacity: 1;
+    transition: var(--transition-all);
+
+    .video__button.video__button--sound-on & {
+        opacity: 0;
+    }
+}
+
+.video__big-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: var(--ink);
+    height: 6rem;
+    width: 6rem;
+    border: none;
+
+    .icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(249, 248, 245, .6);
+        border-radius: 50%;
+        transition: var(--transition-all);
+    }
+}

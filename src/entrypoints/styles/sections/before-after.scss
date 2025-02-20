@@ -1,0 +1,198 @@
+.before-after__inner {
+    background-color: var(--chalk-40);
+    padding: 2.4rem 1.8rem;
+
+    @media only screen and (min-width: 768px) {
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.8rem;
+    }
+
+    @media only screen and (min-width: 1280px) {
+        padding: 4.2rem 8.5rem;
+    }
+}
+
+.before-after__title {
+    text-align: center;
+    margin-bottom: 3.6rem;
+
+    @media only screen and (min-width: 768px) {
+        text-align: left;
+        margin-bottom: 2.4rem;
+    }
+
+    .before-after__images & {
+        @media only screen and (min-width: 768px) {
+            display: none;
+        }
+    }
+
+    .before-after__body & {
+        display: none;
+
+        @media only screen and (min-width: 768px) {
+            display: block;
+        }
+    }
+}
+
+.before-after__body {
+    margin-top: 3.6rem;
+
+    @media only screen and (min-width: 768px) {
+        order: -1;
+        margin-top: 0;
+        text-wrap: balance;
+    }
+}
+
+.before-after__comparison {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    width: calc(100% + 7.2rem);
+    margin-left: -3.6rem;
+    overflow: hidden;
+    min-height: 20rem;
+
+    @media only screen and (min-width: 768px) {
+        width: 100%;
+        margin-left: 0;
+        border-radius: .3rem;
+    }
+
+    img, video {
+        z-index: 2;
+    }
+}
+
+.before-after__image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    &.before-after__image--before {
+        z-index: 2;
+    }
+
+    &.before-after__image--after {
+        z-index: 1;
+    }
+}
+
+.before-after__label {
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    bottom: .9rem;
+    padding: .4rem .8rem;
+    background-color: var(--white);
+    border-radius: .5rem;
+
+    .before-after__image--before & {
+        left: .9rem;
+    }
+
+    .before-after__image--after & {
+        right: .9rem;
+    }
+}
+
+.absolute-img.before-after__img {
+    position: initial;
+    max-width: initial;
+    pointer-events: none;
+}
+
+.before-after__thumb {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 100%;
+    color: var(--white);
+    width: 3.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        cursor: e-resize;
+    }
+
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: .1rem;
+        height: calc(50% - 1.9rem);
+        background-color: var(--white);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &:before {
+        top: 0;
+    }
+
+    &:after {
+        bottom: 0;
+    }
+}
+
+.before-after__thumb-icon {
+    width: 100%;
+    height: 3.8rem;
+    border-radius: 50%;
+    border: .1rem solid var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.before-after__fact {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 7rem 1fr;
+    gap: 1.2rem;
+
+    &:not(:last-child) {
+        margin-bottom: 2.5rem;
+
+        @media only screen and (min-width: 768px) {
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+.before-after__note { 
+    margin-top: 2.5rem;
+}
+
+.before-after__fact-result {
+    position: relative;
+    height: 7rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.before-after__circle {
+    position: absolute; 
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    right: 0;
+    bottom: 0;
+    left: 50%;
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
+}

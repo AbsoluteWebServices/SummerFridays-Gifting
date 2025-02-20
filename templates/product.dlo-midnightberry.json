@@ -1,0 +1,479 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product-sf",
+      "settings": {}
+    },
+    "shade_carousel_9GLRcV": {
+      "type": "shade-carousel",
+      "blocks": {
+        "slider_6dk9M7": {
+          "type": "slider",
+          "settings": {
+            "slider_name": "Vanilla",
+            "image_1": "shopify://shop_images/PDP-DLO_Lips-MidnightBerry-1.jpg",
+            "hover_media_type_1": "video",
+            "title_1": "",
+            "text_1": "",
+            "hover_media_type_2": "image",
+            "title_2": "",
+            "text_2": "",
+            "image_3": "shopify://shop_images/PDP-DLO_Lips-MidnightBerry.jpg",
+            "hover_media_type_3": "video",
+            "title_3": "",
+            "text_3": "",
+            "image_4": "shopify://shop_images/PDP-DLO_Lips-MidnightBerry-2.jpg",
+            "hover_media_type_4": "image",
+            "title_4": "",
+            "text_4": "",
+            "hover_media_type_5": "image",
+            "title_5": "",
+            "text_5": "",
+            "image_6": "shopify://shop_images/PDP-DLO_Lips-MidnightBerry-3.jpg",
+            "hover_media_type_6": "image",
+            "title_6": "",
+            "text_6": "",
+            "hover_media_type_7": "image",
+            "title_7": "",
+            "text_7": "",
+            "hover_media_type_8": "image",
+            "title_8": "",
+            "text_8": "",
+            "hover_media_type_9": "image",
+            "title_9": "",
+            "text_9": "",
+            "hover_media_type_10": "image",
+            "title_10": "",
+            "text_10": "",
+            "hover_media_type_11": "image",
+            "title_11": "",
+            "text_11": "",
+            "hover_media_type_12": "image",
+            "title_12": "",
+            "text_12": "",
+            "hover_media_type_13": "image",
+            "title_13": "",
+            "text_13": "",
+            "hover_media_type_14": "image",
+            "title_14": "",
+            "text_14": ""
+          }
+        }
+      },
+      "block_order": [
+        "slider_6dk9M7"
+      ],
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "title": "Discover Midnight Berry",
+        "show_dropdown": false,
+        "show_toggle": false
+      }
+    },
+    "how_to_use_R4qdic": {
+      "type": "how-to-use",
+      "blocks": {
+        "cards_JPyikh": {
+          "type": "cards",
+          "settings": {
+            "main_media_type": "video",
+            "main_video": "shopify://files/videos/DLO_HowtoUse_e0aa311d-80a5-4afc-93ae-85b421cf81fb.mp4",
+            "secondary_media_type": "image",
+            "secondary_image": "shopify://shop_images/PDP-DLO_HowTo.jpg",
+            "title": "<h2>How to Use <br/><em>Dream Lip Oil</em></h2>",
+            "subtitle": "",
+            "content": "<p>Apply to bare lips or layer over your favorite lip color or liner for added dimension.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "cards_JPyikh"
+      ],
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "slider_type": "all",
+        "bg_color": "chalk"
+      }
+    },
+    "media_accordions_wYx3xn": {
+      "type": "media-accordions",
+      "blocks": {
+        "accordion_custom_XMbYAd": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "VEGAN OIL COMPLEX",
+            "content": "<p>Our ultra-rich blend of nine plant-based oils delivers a surge of deep moisture for softer, more supple lips.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_jFX3hz": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "VITAMIN E",
+            "content": "<p>Essential for skin health, this oil-soluble antioxidant works to protect, nourish and soften dryness-prone lips.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_3Ch9X4": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Full Ingredient List",
+            "content": "<p>Hydrogenated Polyisobutene, Hydrogenated Poly(C6-14 Olefin), Octyldodecanol, Ethylene/Propylene/Styrene Copolymer, Ricinus Communis (Castor) Seed Oil, Rosa Canina Fruit Oil, Butyrospermum Parkii (Shea) Oil, Persea Gratissima (Avocado) Oil, Prunus Armeniaca (Apricot) Kernel Oil, Simmondsia Chinensis (Jojoba) Seed Oil, Squalane, Vitis Vinifera (Grape) Seed Oil, Rubus Idaeus (Raspberry) Seed Oil, Cocoyl Hydrolyzed Collagen, Tocopheryl Acetate, Tocopherol, Siraitia Grosvenorii Fruit Extract, Menthoxypropanediol, Caprylyl Glycol, Butylene/Ethylene/Styrene Copolymer, Pentaerythrityl Tetra-di-t-butyl Hydroxyhydrocinnamate, May Contain/Peut Contenir (+/-) Iron Oxides (CI 77491), Iron Oxides (CI 77492), Red 7 Lake (CI 15850), Titanium Dioxide (CI 77891), Iron Oxides (CI 77499), Blue 1 Lake (CI 42090)</p><p>For external use only.</p>",
+            "badge": ""
+          }
+        }
+      },
+      "block_order": [
+        "accordion_custom_XMbYAd",
+        "accordion_custom_jFX3hz",
+        "accordion_custom_3Ch9X4"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "media_type": "image",
+        "image": "shopify://shop_images/DLO_1000x1000_982bf9be-5eed-4f12-837a-2d64f9d21a18.jpg",
+        "media_aspect_ratio": "square",
+        "stripes": false,
+        "gradient_direction": "gradient-none",
+        "text_color": "black",
+        "content": "",
+        "content_2": "<h2>Key Ingredients</h2>",
+        "vertical_alignment": "center",
+        "accordions_bg_color": "white",
+        "open_first": true
+      }
+    },
+    "routine_timeline_f9TxwP": {
+      "type": "routine-timeline",
+      "blocks": {
+        "step_W369PX": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "step 1: PREP",
+            "content": "<p>Explore <a href=\"/products/jet-lag-soothing-hydration-mist\" title=\"Jet Lag™ Skin Soothing Hydration Mist\">Jet Lag™ Skin Soothing Hydration Mist</a></p>",
+            "product": "",
+            "width_desktop": 75
+          }
+        },
+        "step_nWfGer": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "step 2: MOISTURIZE",
+            "content": "<p>Explore <a href=\"/products/rich-cushion-cream\" title=\"Rich Cushion Cream\">Rich Cushion Cream Ultra Plumping Moisturizer</a></p>",
+            "product": "",
+            "width_desktop": 89
+          }
+        },
+        "step_34q7Ff": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "Step 3: PROTECT",
+            "content": "<p>Explore <a href=\"/products/shadedrops-spf-30-mineral-milk-sunscreen\" title=\"ShadeDrops Broad Spectrum SPF 30 Mineral Milk Sunscreen\">ShadeDrops Broad Spectrum SPF 30 Mineral Milk Sunscreen</a></p>",
+            "product": "",
+            "width_desktop": 100
+          }
+        },
+        "step_7KzagL": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "step 4: Cover",
+            "content": "<p>Explore <a href=\"/products/sheer-skin-tint\" title=\"Sheer Skin Tint\">Sheer Skin Tint</a></p>",
+            "product": "",
+            "width_desktop": 45
+          }
+        },
+        "step_h7W3yP": {
+          "type": "step",
+          "settings": {
+            "active": true,
+            "show_dot": true,
+            "title": "step 5: Hydrate",
+            "content": "<h2>Dream Lip Oil</h2>",
+            "product": "",
+            "width_desktop": 43
+          }
+        },
+        "step_Lg8kJh": {
+          "type": "step",
+          "disabled": true,
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "Step 5: Repeat",
+            "content": "",
+            "product": "",
+            "width_desktop": 0
+          }
+        }
+      },
+      "block_order": [
+        "step_W369PX",
+        "step_nWfGer",
+        "step_34q7Ff",
+        "step_7KzagL",
+        "step_h7W3yP",
+        "step_Lg8kJh"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "content": "<h2>Adding Dream Lip Oil to your <em>Routine</em></h2>",
+        "hide_last_step_on_mobile": false,
+        "hide_last_step_on_desktop": false
+      }
+    },
+    "2_blocks_with_accordions_Gyp7Wq": {
+      "type": "2-blocks-with-accordions",
+      "blocks": {
+        "block_1_7x3Aww": {
+          "type": "block_1",
+          "settings": {
+            "title": "Recycle with us and receive a $25 E-Gift Card",
+            "content": "<p>Send back 5+ of your empty Summer Fridays products in exchange for a $25 e-gift card to be used on your next purchase on SummerFridays.com. Learn more <a href=\"https://summerfridays.com/pages/recycling-program\" target=\"_blank\" title=\"https://summerfridays.com/pages/recycling-program\">here.</a></p>",
+            "html": "",
+            "image": "shopify://shop_images/Jet-Lag-Mask-Empty_8df86097-7192-439b-9461-6691d9a503f0.jpg"
+          }
+        },
+        "block_1_RdQNyK": {
+          "type": "block_1",
+          "settings": {
+            "title": "Recycling Instructions",
+            "content": "",
+            "html": "<script src=\"https://app.bluebirdclimate.com/embed/summer-fridays?id=A52_QqNR_2XtT3UmAIAh-8hexVE14TIrNl_brRsznQuH9SsggioHSGWtVZ9zSRPFyoFyWZUbeoq2VqHEOR_u1kY72mdyy5zH9hEW7hKfyMy0pr0XRML8hQ\" async=\"\" type=\"text/javascript\"></script>"
+          }
+        },
+        "block_1_8MEpJY": {
+          "type": "block_1",
+          "settings": {
+            "title": "SUSTAINABILITY",
+            "content": "<p>Learn more about sustainability <a href=\"/pages/sustainability\" title=\"Sustainability\">here</a>.</p>",
+            "html": ""
+          }
+        },
+        "block_2_GJErhL": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Dream Lip Oil vegan and cruelty-free?",
+            "content": "<p>Yes, Summer Fridays products are not tested on animals or contain any animal by-products.</p>",
+            "html": ""
+          }
+        },
+        "block_2_EPAw3e": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Dream Lip Oil gluten-free?",
+            "content": "<p>Dream Lip Oil is formulated without gluten. It’s important to note that while all Summer Fridays products are formulated to be gluten-free, we cannot guarantee that they have been produced in a gluten-free facility. However, The National Celiac Association has stated that unless cosmetic products are ingested, there should not be an issue with gluten in topical products.</p><p>Please see <a href=\"https://nationalceliac.org/celiac-disease-questions/using-gluten-free-skin-body-products-someone-celiac-disease/\">here</a> for additional information. As always, if there is concern, we recommend that you consult with your physician/healthcare provider prior to use.<br/></p>",
+            "html": ""
+          }
+        },
+        "block_2_bD9rgM": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Dream Lip Oil suitable for all skin types?",
+            "content": "<p>Yes, Dream Lip Oil is suitable for all skin types, including sensitive skin.</p>",
+            "html": ""
+          }
+        },
+        "block_2_AkcyGE": {
+          "type": "block_2",
+          "settings": {
+            "title": "What are the undertones of Dream Lip Oil shades?",
+            "content": "<p>Pink Cloud – Neutral<br/>Blush Dreams – Warm neutral<br/>Soft Mauve – Cool<br/>Rosewood Nights – Warm</p>",
+            "html": ""
+          }
+        },
+        "block_2_LVhXpE": {
+          "type": "block_2",
+          "settings": {
+            "title": "How is Dream Lip Oil different from Lip Butter Balm?",
+            "content": "<p>Dream Lip Oil is a silky-smooth lip oil infused with skincare benefits that hydrate, nourish and enhance moisture. It’s perfect to layer with lipstick for added hydration and color dimension, but can also be worn on its own.<br/><br/>Lip Butter Balm comes in seven different shades and flavors and has a thick buttery texture. It’s perfect for on-the-go instant hydration, shine, and a flush of color -- it can also be worn as an overnight lip mask. </p>",
+            "html": ""
+          }
+        },
+        "block_2_yYdqK4": {
+          "type": "block_2",
+          "settings": {
+            "title": "What is the finish?",
+            "content": "<p>Dream Lip Oil infuses moisture into the lips, leaving a high-shine, milky, non-sticky finish.</p>",
+            "html": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_1_7x3Aww",
+        "block_1_RdQNyK",
+        "block_1_8MEpJY",
+        "block_2_GJErhL",
+        "block_2_EPAw3e",
+        "block_2_bD9rgM",
+        "block_2_AkcyGE",
+        "block_2_LVhXpE",
+        "block_2_yYdqK4"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "block_1_type": "accordions",
+        "block_1_accordion_open": true,
+        "block_1_background_color": "morning-sky",
+        "block_1_background_color_opacity": 100,
+        "block_1_title_top": "How to recycle",
+        "block_1_title": "<h2>We Love Our Planet.<br/>Help us keep our home a little cleaner.</h2>",
+        "block_2_type": "accordions",
+        "block_2_accordion_open": false,
+        "block_2_background_color": "chalk",
+        "block_2_background_color_opacity": 100,
+        "block_2_title_top": "FAQ.",
+        "block_2_title": "<h2>For the Curious.<br/>You Asked, We Answered.</h2>"
+      }
+    },
+    "content_X8ddch": {
+      "type": "content",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 3,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 4.2,
+        "content": "<p>For more information, please see <a href=\"https://summerfridays.com/pages/faqs?hcUrl=%2Fen-US%2Farticles%2Fself-care-club-165598\" target=\"_blank\"><span style=\"text-decoration:underline\">here</span></a>.</p>",
+        "font_size": "normal",
+        "container": "page",
+        "paragraph_margins": "normal",
+        "heading_alignment": "center",
+        "text_alignment": "center",
+        "text_wrap": "normal"
+      }
+    },
+    "recommendations_tJFiNh": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 2.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 2.2,
+        "padding_bottom_desktop": 4.2,
+        "id": "",
+        "layout": "slider",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>You May Also Like</h2>",
+        "content_related": "<h2>Related Products</h2>",
+        "button_label": "",
+        "button_url": "",
+        "limit": 10,
+        "products": [
+          "super-amino-gel-cleanser",
+          "jet-lag-soothing-hydration-mist",
+          "rich-cushion-cream",
+          "sheer-skin-tint",
+          "lip-butter-balm-brown-sugar",
+          "dream-lip-oil-mauve",
+          "dream-lip-oil-blush-dreams",
+          "dream-lip-oil-rosewood-nights"
+        ]
+      }
+    },
+    "product_reviews_cbD7zb": {
+      "type": "product-reviews",
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "content": "<h2>Reviews</h2>"
+      }
+    },
+    "media_accordions_VHhHBz": {
+      "type": "media-accordions",
+      "blocks": {
+        "accordion_custom_fnWABr": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Join the Self-Care Club",
+            "content": "<p>Earn points every time you shop when you join our rewards program. Redeem points for exclusive discounts, early access to sales and free products. <a href=\"/pages/rewards\" title=\"Summer Fridays Self-Care Club & Rewards\">Learn more.</a></p>",
+            "badge": "Rewards"
+          }
+        },
+        "accordion_custom_9jVMbX": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Subscribe & Save",
+            "content": "<p>Enjoy 15% off and free shipping when you subscribe to your favorite skincare and hybrid-makeup essentials. Cancel, pause or edit any time. <a href=\"/pages/subscription\" title=\"Subscribe + Save\">Learn more.</a></p>",
+            "badge": "Get 15% Off"
+          }
+        },
+        "accordion_custom_PTKNMG": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Recycle with Us",
+            "content": "<p>Send back five or more empties for recycling, and you'll receive a $25 e-gift card to use on your next SummerFridays.com purchase. <a href=\"/pages/recycling-program\" title=\"Recycling Program\">Learn more.</a></p>",
+            "badge": "Get $25 back"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_custom_fnWABr",
+        "accordion_custom_9jVMbX",
+        "accordion_custom_PTKNMG"
+      ],
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 0,
+        "media_type": "image",
+        "image": "shopify://shop_images/HP-Footer.jpg",
+        "media_aspect_ratio": "square",
+        "stripes": true,
+        "gradient_direction": "gradient-none",
+        "text_color": "white",
+        "content": "<h2>Essential beauty formulations from California.</h2><h3>For the skin and senses.</h3>",
+        "content_2": "",
+        "vertical_alignment": "center",
+        "accordions_bg_color": "white",
+        "open_first": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "shade_carousel_9GLRcV",
+    "how_to_use_R4qdic",
+    "media_accordions_wYx3xn",
+    "routine_timeline_f9TxwP",
+    "2_blocks_with_accordions_Gyp7Wq",
+    "content_X8ddch",
+    "recommendations_tJFiNh",
+    "product_reviews_cbD7zb",
+    "media_accordions_VHhHBz"
+  ]
+}

@@ -1,0 +1,500 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product-sf",
+      "settings": {}
+    },
+    "shade_carousel_9GLRcV": {
+      "type": "shade-carousel",
+      "blocks": {
+        "slider_6dk9M7": {
+          "type": "slider",
+          "settings": {
+            "slider_name": "Vanilla",
+            "image_1": "shopify://shop_images/PDP-LBB_ShadeHighlight-BirthdayCake-1.jpg",
+            "hover_media_type_1": "video",
+            "title_1": "",
+            "text_1": "",
+            "hover_media_type_2": "image",
+            "title_2": "",
+            "text_2": "",
+            "image_3": "shopify://shop_images/PDP-LBB_ShadeHighlight-BirthdayCake.jpg",
+            "hover_media_type_3": "video",
+            "title_3": "",
+            "text_3": "",
+            "image_4": "shopify://shop_images/PDP-LBB_ShadeHighlight-BirthdayCake-2.jpg",
+            "hover_media_type_4": "image",
+            "title_4": "",
+            "text_4": "",
+            "hover_media_type_5": "image",
+            "title_5": "",
+            "text_5": "",
+            "image_6": "shopify://shop_images/PDP-LBB_ShadeHighlight-BirthdayCake-3.jpg",
+            "hover_media_type_6": "image",
+            "title_6": "",
+            "text_6": "",
+            "hover_media_type_7": "image",
+            "title_7": "",
+            "text_7": "",
+            "hover_media_type_8": "image",
+            "title_8": "",
+            "text_8": "",
+            "hover_media_type_9": "image",
+            "title_9": "",
+            "text_9": "",
+            "hover_media_type_10": "image",
+            "title_10": "",
+            "text_10": "",
+            "hover_media_type_11": "image",
+            "title_11": "",
+            "text_11": "",
+            "hover_media_type_12": "image",
+            "title_12": "",
+            "text_12": "",
+            "hover_media_type_13": "image",
+            "title_13": "",
+            "text_13": "",
+            "hover_media_type_14": "image",
+            "title_14": "",
+            "text_14": ""
+          }
+        }
+      },
+      "block_order": [
+        "slider_6dk9M7"
+      ],
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "title": "Discover Birthday Cake",
+        "show_dropdown": false,
+        "show_toggle": false
+      }
+    },
+    "before_after_XHawEY": {
+      "type": "before-after",
+      "blocks": {
+        "result_XMYJDn": {
+          "type": "result",
+          "settings": {
+            "result": 100,
+            "fact": "<p>agreed their lips looked healthier.*</p>"
+          }
+        },
+        "result_RaDYdp": {
+          "type": "result",
+          "settings": {
+            "result": 97,
+            "fact": "<p>agreed their lips felt softer.*</p>"
+          }
+        },
+        "result_RWfJgT": {
+          "type": "result",
+          "settings": {
+            "result": 97,
+            "fact": "<p>agreed their lips felt hydrated.*</p>"
+          }
+        }
+      },
+      "block_order": [
+        "result_XMYJDn",
+        "result_RaDYdp",
+        "result_RWfJgT"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 3,
+        "padding_bottom": 3,
+        "padding_top_desktop": 6,
+        "padding_bottom_desktop": 6,
+        "content": "<h2>The Results Are In</h2>",
+        "note": "<p>*In an independent consumer use study, with 39 participants aged 20 to 55, immediately after application.</p>",
+        "functionality": "static-media",
+        "before_image": "shopify://shop_images/AboutUs-Our-Values-Gently-Effective.jpg",
+        "before_label": "Before",
+        "after_image": "shopify://shop_images/AboutUs-Our-Values-Gently-Effective.jpg",
+        "after_label": "After",
+        "media_type": "image",
+        "lazyload": true,
+        "image": "shopify://shop_images/AboutUs-Our-Values-Gently-Effective.jpg"
+      }
+    },
+    "how_to_use_R4qdic": {
+      "type": "how-to-use",
+      "blocks": {
+        "cards_W3Pqpk": {
+          "type": "cards",
+          "settings": {
+            "main_media_type": "video",
+            "main_video": "shopify://files/videos/CloudDew_HowtoUse_8f1b7e62-f52b-43b4-8011-0f262bada5ae.mp4",
+            "secondary_media_type": "image",
+            "secondary_image": "shopify://shop_images/PDP-How-To-Cloud-Dew.jpg",
+            "title": "<h2>How to Use <br/>Cloud Dew Gel Cream Moisturizer</h2>",
+            "subtitle": "",
+            "content": "<p>Apply to cleansed skin and massage in gently with fingertips.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "cards_W3Pqpk"
+      ],
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "slider_type": "all",
+        "bg_color": "morning-sky",
+        "text_color": "white"
+      }
+    },
+    "media_accordions_WW3EB8": {
+      "type": "media-accordions",
+      "blocks": {
+        "accordion_custom_mfNxB4": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "SHEA & MURUMURU SEED BUTTERS",
+            "content": "<p>Packed with ultra-hydrating properties, these natural moisturizers help to soothe, heal and condition parched lips.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_CfXjKF": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "VEGAN WAXES",
+            "content": "<p>Our unique blend of vegan waxes softens and boosts shine all day with a smooth, never-greasy texture.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_QEf96R": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "PINK SUGAR FLAVOR",
+            "content": "<p>A blend of buttercream with a hint of sweet sugar flavor.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_nQHwdq": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Full ingredient list",
+            "content": "<p>Phytosteryl/Isostearyl/Cetyl/Stearyl/Behenyl Dimer Dilinoleate, Diisostearyl Malate, Hydrogenated Polyisobutene, Polybutene, Hydrogenated Poly (C6-14 Olefin), Butyrospermum Parkii (Shea) Butter, Microcrystalline Wax/Cera Microcristallina/Cire Microcristalline, Octyldodecanol, Synthetic Wax, Disteardimonium Hectorite, Astrocaryum Murumuru Seed Butter, Sodium Hyaluronate, Tocopherol, Propylene Carbonate, Polyglyceryl-2 Diisostearate, Aluminum Hydroxide, Fragrance/Parfum, Mica, BHT, Benzyl Alcohol, Benzyl Benzoate, Red 6 (CI 15850), Red 28 Lake (CI 45410), Titanium Dioxide (CI 77891).<br/><br/>For external use only.</p>",
+            "badge": ""
+          }
+        }
+      },
+      "block_order": [
+        "accordion_custom_mfNxB4",
+        "accordion_custom_CfXjKF",
+        "accordion_custom_QEf96R",
+        "accordion_custom_nQHwdq"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "media_type": "image",
+        "image": "shopify://shop_images/LBB_1000x1000_a9bbceda-a810-4900-ba6b-b6eda5d68704.jpg",
+        "media_aspect_ratio": "square",
+        "stripes": false,
+        "gradient_direction": "gradient-none",
+        "text_color": "black",
+        "content": "",
+        "content_2": "<h2>Key Ingredients</h2>",
+        "vertical_alignment": "center",
+        "accordions_bg_color": "white",
+        "open_first": true
+      }
+    },
+    "routine_timeline_f9TxwP": {
+      "type": "routine-timeline",
+      "blocks": {
+        "step_W369PX": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "step 1: PREP",
+            "content": "<p>Explore <a href=\"/products/jet-lag-soothing-hydration-mist\" title=\"Jet Lag™ Skin Soothing Hydration Mist\">Jet Lag™ Skin Soothing Hydration Mist</a></p>",
+            "product": "",
+            "width_desktop": 25
+          }
+        },
+        "step_nWfGer": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "step 2: MOISTURIZE",
+            "content": "<p>Explore <a href=\"/products/rich-cushion-cream\" title=\"Rich Cushion Cream\">Rich Cushion Cream Ultra Plumping Moisturizer</a></p>",
+            "product": "",
+            "width_desktop": 25
+          }
+        },
+        "step_34q7Ff": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "Step 3: Protect",
+            "content": "<p>Explore <a href=\"/products/shadedrops-spf-30-mineral-milk-sunscreen\" title=\"ShadeDrops Broad Spectrum SPF 30 Mineral Milk Sunscreen\">ShadeDrops Broad Spectrum SPF 30 Mineral Milk Sunscreen</a></p>",
+            "product": "",
+            "width_desktop": 25
+          }
+        },
+        "step_7KzagL": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "step 4: Cover",
+            "content": "<p>Explore <a href=\"/products/sheer-skin-tint\" title=\"Sheer Skin Tint\">Sheer Skin Tint</a></p>",
+            "product": "",
+            "width_desktop": 12
+          }
+        },
+        "step_h7W3yP": {
+          "type": "step",
+          "settings": {
+            "active": true,
+            "show_dot": true,
+            "title": "step 5: Hydrate",
+            "content": "<h2>Lip Butter Balm</h2>",
+            "product": "",
+            "width_desktop": 12
+          }
+        }
+      },
+      "block_order": [
+        "step_W369PX",
+        "step_nWfGer",
+        "step_34q7Ff",
+        "step_7KzagL",
+        "step_h7W3yP"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "content": "<h2>Adding Lip Butter Balm to your <em>Routine</em></h2>",
+        "hide_last_step_on_mobile": false,
+        "hide_last_step_on_desktop": false
+      }
+    },
+    "2_blocks_with_accordions_Gyp7Wq": {
+      "type": "2-blocks-with-accordions",
+      "blocks": {
+        "block_1_7x3Aww": {
+          "type": "block_1",
+          "settings": {
+            "title": "Recycle with us and receive a $25 E-Gift Card",
+            "content": "<p>Send back 5+ of your empty Summer Fridays products in exchange for a $25 e-gift card to be used on your next purchase on SummerFridays.com. Learn more <a href=\"https://summerfridays.com/pages/recycling-program\" target=\"_blank\" title=\"https://summerfridays.com/pages/recycling-program\">here.</a></p>",
+            "html": "",
+            "image": "shopify://shop_images/Empties-3.jpg"
+          }
+        },
+        "block_1_RdQNyK": {
+          "type": "block_1",
+          "settings": {
+            "title": "Recycling Instructions",
+            "content": "",
+            "html": "<script src=\"https://app.bluebirdclimate.com/embed/summer-fridays?id=A52_QqNR_2XtSyh1V4Z29c1elVZl4DIrMFmLrUI0wQ-Hqi5y0XgHQzCuWc0vSRPFyoFyWZUbeoq2VqHEOR_u1kY72mdyy5zHrCFqFAYfDfgLwis_YjRSJQ\" async=\"\" type=\"text/javascript\"></script>"
+          }
+        },
+        "block_1_8MEpJY": {
+          "type": "block_1",
+          "settings": {
+            "title": "SUSTAINABILITY",
+            "content": "<p>Learn more about sustainability <a href=\"/pages/sustainability\" title=\"Sustainability\">here</a>.</p>",
+            "html": ""
+          }
+        },
+        "block_2_GJErhL": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Lip Butter Balm vegan and cruelty-free?",
+            "content": "<p>Yes, Summer Fridays products are not tested on animals or contain any animal by-products.</p>",
+            "html": ""
+          }
+        },
+        "block_2_EPAw3e": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Lip Butter Balm gluten-free?",
+            "content": "<p>Lip Butter Balm is formulated without gluten. It’s important to note that while all Summer Fridays products are formulated to be gluten-free, we cannot guarantee that they have been produced in a gluten-free facility. However, The National Celiac Association has stated that unless cosmetic products are ingested, there should not be an issue with gluten in topical products.</p><p>Please see <a href=\"https://nationalceliac.org/celiac-disease-questions/using-gluten-free-skin-body-products-someone-celiac-disease/\">here</a> for additional information. As always, if there is concern, we recommend that you consult with your physician/healthcare provider prior to use.<br/></p>",
+            "html": ""
+          }
+        },
+        "block_2_bD9rgM": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Lip Butter Balm suitable for all skin types?",
+            "content": "<p>Yes, Lip Butter Balm is suitable for all skin types, including sensitive skin.</p>",
+            "html": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_1_7x3Aww",
+        "block_1_RdQNyK",
+        "block_1_8MEpJY",
+        "block_2_GJErhL",
+        "block_2_EPAw3e",
+        "block_2_bD9rgM"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "block_1_type": "accordions",
+        "block_1_accordion_open": true,
+        "block_1_background_color": "morning-sky",
+        "block_1_background_color_opacity": 100,
+        "block_1_title_top": "How to recycle",
+        "block_1_title": "<h2>We Love Our Planet.<br/>Help us keep our home a little cleaner.</h2>",
+        "block_2_type": "accordions",
+        "block_2_accordion_open": false,
+        "block_2_background_color": "chalk",
+        "block_2_background_color_opacity": 100,
+        "block_2_title_top": "FAQ.",
+        "block_2_title": "<h2>For the Curious.<br/>You Asked, We Answered.</h2>"
+      }
+    },
+    "content_YfjDB6": {
+      "type": "content",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 3,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 4.2,
+        "content": "<p>For more information, please see <a href=\"https://summerfridays.com/pages/faqs?hcUrl=%2Fen-US%2Farticles%2Fself-care-club-165598\" target=\"_blank\"><span style=\"text-decoration:underline\">here</span></a>.</p>",
+        "font_size": "normal",
+        "container": "page",
+        "paragraph_margins": "normal",
+        "heading_alignment": "center",
+        "text_alignment": "center",
+        "text_wrap": "normal"
+      }
+    },
+    "recommendations_tJFiNh": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "id": "",
+        "layout": "slider",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>You May Also Like</h2>",
+        "content_related": "<h2>Related Products</h2>",
+        "button_label": "",
+        "button_url": "",
+        "limit": 8,
+        "products": [
+          "super-amino-gel-cleanser",
+          "jet-lag-soothing-hydration-mist",
+          "rich-cushion-cream",
+          "sheer-skin-tint",
+          "jet-lag-mask",
+          "shadedrops-spf-30-mineral-milk-sunscreen",
+          "dream-lip-oil-pink-cloud"
+        ]
+      }
+    },
+    "product_reviews_cbD7zb": {
+      "type": "product-reviews",
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "content": "<h2>Reviews</h2>"
+      }
+    },
+    "media_accordions_aNQqRE": {
+      "type": "media-accordions",
+      "blocks": {
+        "accordion_custom_ziFrLb": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Join the Self-Care Club",
+            "content": "<p>Earn points every time you shop when you join our rewards program. Redeem points for exclusive discounts, early access to sales and free products. <a href=\"/pages/rewards\" title=\"Summer Fridays Self-Care Club & Rewards\">Learn more.</a></p>",
+            "badge": "Rewards"
+          }
+        },
+        "accordion_custom_AVThwD": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Subscribe & Save",
+            "content": "<p>Enjoy 15% off and free shipping when you subscribe to your favorite skincare and hybrid-makeup essentials. Cancel, pause or edit any time. <a href=\"/pages/subscription\" title=\"Subscribe + Save\">Learn more.</a></p>",
+            "badge": "Get 15% Off"
+          }
+        },
+        "accordion_custom_mJWy7e": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Recycle with Us",
+            "content": "<p>Send back five or more empties for recycling, and you'll receive a $25 e-gift card to use on your next SummerFridays.com purchase. <a href=\"/pages/recycling-program\" title=\"Recycling Program\">Learn more.</a></p>",
+            "badge": "Get $25 back"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_custom_ziFrLb",
+        "accordion_custom_AVThwD",
+        "accordion_custom_mJWy7e"
+      ],
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 0,
+        "media_type": "image",
+        "image": "shopify://shop_images/HP-Footer.jpg",
+        "media_aspect_ratio": "square",
+        "stripes": true,
+        "gradient_direction": "gradient-none",
+        "text_color": "white",
+        "content": "<h2>Essential beauty formulations from California.</h2><h3>For the skin and senses.</h3>",
+        "content_2": "",
+        "vertical_alignment": "center",
+        "accordions_bg_color": "white",
+        "open_first": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "shade_carousel_9GLRcV",
+    "before_after_XHawEY",
+    "how_to_use_R4qdic",
+    "media_accordions_WW3EB8",
+    "routine_timeline_f9TxwP",
+    "2_blocks_with_accordions_Gyp7Wq",
+    "content_YfjDB6",
+    "recommendations_tJFiNh",
+    "product_reviews_cbD7zb",
+    "media_accordions_aNQqRE"
+  ]
+}

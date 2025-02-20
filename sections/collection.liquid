@@ -1,0 +1,193 @@
+{%- assign collection = collections[section.settings.collection] | default: collection -%}
+{%- if collection != blank and collection != nil -%}
+    {%- liquid
+        assign padding_top = section.settings.padding_top | default: 0
+        assign padding_bottom = section.settings.padding_bottom | default: 0
+        assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+        assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+        assign products_per_page = 50
+        assign show_title = section.settings.show_title
+        assign show_filters = section.settings.show_filters | default: false
+        assign show_sort_by = section.settings.show_sort_by | default: false
+        assign infinite_scroll = section.settings.infinite_scroll | default: true, allow_false: true
+    -%}
+
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/collection.scss' -%}
+
+    <section 
+        id="section-{{- section.id -}}"
+        x-data="collection"
+        data-split-load-section
+    >
+        <div class="container container--collection-header">
+            {%- if show_title -%}
+                <h1 class="collection__title">{{- collection.title -}}</h1>
+            {%- endif -%}
+        </div>
+
+        {%- if show_filters or show_sort_by -%}
+            {%- render 'collection-filters', 
+                show_filters: show_filters,  
+                show_sort_by: show_sort_by
+            -%}
+        {%- endif -%}
+
+        {%- render 'collection-products',
+            collection: collection,
+            products_per_page: products_per_page,
+            infinite_scroll: infinite_scroll
+        -%}
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Collection",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Collection Settings"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_title",
+            "label": "Show title",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "show_filters",
+            "label": "Show filters",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "show_sort_by",
+            "label": "Show sort by",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "infinite_scroll",
+            "label": "Infinite scroll",
+            "default": true
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Disruptor",
+            "type": "disruptor",
+            "settings": [
+                {
+                    "type": "number",
+                    "id": "position",
+                    "label": "Position",
+                    "default": 1,
+                    "info": "Position of a product; previous disruptors don't count."
+                },
+                {
+                    "type": "range",
+                    "id": "dark_overlay_opacity",
+                    "label": "Dark overlay opacity",
+                    "unit": "%",
+                    "min": 0,
+                    "max": 100,
+                    "step": 5,
+                    "default": 20
+                },
+                {
+                    "type": "select",
+                    "id": "media_type",
+                    "label": "Media type",
+                    "default": "video",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "video",
+                    "id": "video",
+                    "label": "Video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image",
+                    "info": "With the video type, the image is used as a poster (first frame)"
+                },
+                {
+                    "type": "text",
+                    "id": "eyebrow",
+                    "label": "Eyebrow",
+                    "info": "Keep it short: ~10-16 characters, 2-5 words."
+                },
+                {
+                    "type": "richtext",
+                    "id": "title",
+                    "label": "Content",
+                    "info": "Hint: use Heading 2 for title"
+                },
+                {
+                    "type": "text",
+                    "id": "button_label",
+                    "label": "Button label"
+                },
+                {
+                    "type": "url",
+                    "id": "button_url",
+                    "label": "Button URL"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "link_whole_disruptor",
+                    "label": "Link the whole disruptor",
+                    "default": false
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

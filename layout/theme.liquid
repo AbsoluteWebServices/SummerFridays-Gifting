@@ -1,0 +1,383 @@
+<!doctype html>
+<html class="no-js supports-no-cookies" lang="{{ shop.locale }}">
+    {% assign template_handle = template.name | handle %}
+    <head>
+        {%- if template_handle == 'cart' and template.suffix == null -%}
+            <script>
+                window.location.href = '/?cart_redirect=true';
+            </script>
+        {%- endif -%}
+
+        <link rel="preconnect dns-prefetch" href="https://api.config-security.com/" crossorigin>
+        <link rel="preconnect dns-prefetch" href="https://conf.config-security.com/" crossorigin>
+        <link rel="preconnect dns-prefetch" href="https://whale.camera/" crossorigin>
+        <script>
+            /* >> TriplePixel :: start*/
+            (window.TriplePixelData = {
+                TripleName: 'summerfridaysbeauty.myshopify.com',
+                ver: '2.12',
+                plat: 'SHOPIFY',
+                isHeadless: false,
+            }),
+                (function (W, H, A, L, E, _, B, N) {
+                    function O(U, T, P, H, R) {
+                        void 0 === R && (R = !1),
+                            (H = new XMLHttpRequest()),
+                            P
+                                ? (H.open('POST', U, !0),
+                                  H.setRequestHeader('Content-Type', 'text/plain'))
+                                : H.open('GET', U, !0),
+                            H.send(JSON.stringify(P || {})),
+                            (H.onreadystatechange = function () {
+                                4 === H.readyState && 200 === H.status
+                                    ? ((R = H.responseText),
+                                      U.includes('.txt') ? eval(R) : P || (N[B] = R))
+                                    : (299 < H.status || H.status < 200) &&
+                                      T &&
+                                      !R &&
+                                      ((R = !0), O(U, T - 1, P));
+                            });
+                    }
+                    if (((N = window), !N[H + 'sn'])) {
+                        (N[H + 'sn'] = 1),
+                            (L = function () {
+                                return Date.now().toString(36) + '_' + Math.random().toString(36);
+                            });
+                        try {
+                            A.setItem(H, 1 + (0 | A.getItem(H) || 0)),
+                                (E = JSON.parse(A.getItem(H + 'U') || '[]')).push({
+                                    u: location.href,
+                                    r: document.referrer,
+                                    t: Date.now(),
+                                    id: L(),
+                                }),
+                                A.setItem(H + 'U', JSON.stringify(E));
+                        } catch (e) {}
+                        var i, m, p;
+                        A.getItem('"!nC`') ||
+                            ((_ = A),
+                            (A = N),
+                            A[H] ||
+                                ((E = A[H] =
+                                    function (t, e, a) {
+                                        return (
+                                            void 0 === a && (a = []),
+                                            'State' == t
+                                                ? E.s
+                                                : ((W = L()),
+                                                  (E._q = E._q || []).push([W, t, e].concat(a)),
+                                                  W)
+                                        );
+                                    }),
+                                (E.s = 'Installed'),
+                                (E._q = []),
+                                (E.ch = W),
+                                (B = 'configSecurityConfModel'),
+                                (N[B] = 1),
+                                O('https://conf.config-security.com/model', 5),
+                                (i = L()),
+                                (m = A[atob('c2NyZWVu')]),
+                                _.setItem('di_pmt_wt', i),
+                                (p = {
+                                    id: i,
+                                    action: 'profile',
+                                    avatar: _.getItem('auth-security_rand_salt_'),
+                                    time: m[atob('d2lkdGg=')] + ':' + m[atob('aGVpZ2h0')],
+                                    host: A.TriplePixelData.TripleName,
+                                    plat: A.TriplePixelData.plat,
+                                    url: window.location.href,
+                                    ref: document.referrer,
+                                    ver: A.TriplePixelData.ver,
+                                }),
+                                O('https://api.config-security.com/event', 5, p),
+                                O('https://whale.camera/live/dot.txt', 5)));
+                    }
+                })('', 'TriplePixel', localStorage);
+            /* << TriplePixel :: end*/
+        </script>
+        {%- render 'redirect-rules' -%}
+
+        {%- render 'fonts' -%}
+
+        {%- render 'css-root-styles' -%}
+
+        {%- liquid
+            render 'adastra' with 'main.scss'
+        -%}
+
+        {% render 'orbislabs_sitemap_noindex' %}
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="google-site-verification" content="7Efv6EmUxLDTHpPB9TIsZp3GtSsZNXqTgZiTCVy0eVA">
+
+        {% if template contains 'collection' or template contains 'blog' -%}
+            <link rel="canonical" href="{{ shop.url }}{{ request.path }}">
+        {%- else -%}
+            <link rel="canonical" href="{{ canonical_url }}">
+        {%- endif %}
+
+        {% if settings.favicon != blank %}
+            <link
+                rel="shortcut icon"
+                href="{{ settings.favicon | img_url: '32x32' }}"
+                type="image/png"
+            >
+        {% endif %}
+
+        {%- if template_handle == 'blog' and current_tags != blank -%}
+            {%- assign blog_accentuate = blog.metafields.accentuate -%}
+            {%- if blog_accentuate.meta_tag.size > 0 and current_tags != blank -%}
+                {%- for tag in blog_accentuate.meta_tag -%}
+                    {%- assign current_tags_handle = current_tags | handle -%}
+                    {%- assign tag_handle = tag | handle -%}
+                    {%- if current_tags_handle == tag_handle -%}
+                        {%- assign blog_accentuate_description = blog_accentuate.meta_description[forloop.index0] -%}
+                        {%- assign blog_accentuate_title = blog_accentuate.meta_title[forloop.index0] -%}
+                    {%- endif -%}
+                {%- endfor -%}
+            {%- endif -%}
+        {%- endif -%}
+
+        {%- capture seo_title -%}
+        {%- if blog_accentuate_title != blank -%}
+          {{- blog_accentuate_title -}}
+        {%- else -%}
+          {{- page_title -}}
+          {%- if current_tags -%}
+            {% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}
+          {%- endif -%}
+          {%- if current_page != 1 -%}
+            &ndash; {{ 'general.meta.page' | t: page: current_page }}
+          {%- endif -%}
+          {% unless page_title contains shop.name %}
+            &ndash; {{ shop.name }}
+          {% endunless %}
+        {%- endif -%}
+      {%- endcapture -%}
+        <title>{{ seo_title }}</title>
+
+        {% if page_description or blog_accentuate_description != blank %}
+            {% if blog_accentuate_description != blank %}
+                <meta name="description" content="{{ blog_accentuate_description | escape }}">
+            {% elsif page_description %}
+                <meta name="description" content="{{ page_description | escape }}">
+            {% endif %}
+        {% endif %}
+
+        {% render 'social-meta-tags' %}
+
+        {% render 'head-settings' %}
+
+        {% render 'header-scripts' %}
+
+        <script>
+            window.Shopify = window.Shopify || {};
+            window.Shopify.domain = {{- shop.domain | json -}};
+            window.Shopify.shop = {{- shop.permanent_domain | json -}};
+            window.Shopify.money_format = {{- shop.money_format | json -}};
+            window.Shopify.country = {{- localization.country.iso_code | json -}};
+            window.Shopify.country_code = {{- localization.country.iso_code | json -}};
+            window.Shopify.locale = {{- localization.language.iso_code | downcase | json -}};
+            window.Shopify.routes = {
+                root: '/'
+            };
+            window.Shopify.currency = {
+                active: {{- shop.currency | json -}}
+            };
+
+            window.__st = window.__st || {};
+            window.__st.cid = {{- customer.id | json -}};
+        </script>
+
+        {%- capture wrapped_content_for_header -%}
+            <script type="text/javascript">
+                (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "o2or1hiq97");
+            </script>
+
+            {% comment %}https://www.postpilot.com/sitematch{% endcomment %}
+            <script type='text/javascript'>
+                var script = document.createElement('script');
+                script.src = 'https://xp2023-pix.s3.amazonaws.com/px_2imTC.js';
+                document.getElementsByTagName('head')[0].appendChild(script);
+            </script>
+
+            <script
+                src='https://js.afterpay.com/afterpay-1.x.js'
+                data-min='35.00'
+                data-max='1000.00'
+                async
+            ></script>
+            <script src='https://cdn.userway.org/widget.js' data-account='dHVpsLQLLJ' defer></script>
+            {{ content_for_header }}
+        {%- endcapture -%}
+
+        <script>
+            (() => {
+                let userInteraction = false;
+                function loadOnceOnUserInteraction(cb) {
+                    if (userInteraction) {
+                        return;
+                    }
+
+                    cb();
+                    userInteraction = true;
+                }
+
+                function registerCallbackOnUserInteraction(asyncLoad) {
+                    let events = ['touchstart', 'mouseover', 'keydown'];
+                    if (!events) {
+                        return;
+                    }
+
+                    if (!events?.length) {
+                        return;
+                    }
+
+                    events.map((eventName) => {
+                        document.addEventListener(
+                            eventName,
+                            (event) => {
+                                loadOnceOnUserInteraction(asyncLoad);
+                            },
+                            { once: true }
+                        );
+                    });
+                }
+
+                function PreviewBarInjectorInit(...params) {
+                    if (!window?.Shopify.PreviewBarInjector) {
+                        return;
+                    }
+
+                    const previewBarInjector = new window.Shopify.PreviewBarInjector(...params);
+                    previewBarInjector?.init();
+                }
+
+                function PreviewBarInjectorLoader(...params) {
+                    return new Promise((resolve, reject) => {
+                        if (!!window?.Shopify?.PreviewBarInjector) {
+                            PreviewBarInjectorInit(...params);
+
+                            return resolve(true);
+                        }
+
+                        const PreviewBarInjectorLoaderInterval = setInterval(() => {
+                            if (!window?.Shopify?.PreviewBarInjector) {
+                                return;
+                            }
+
+                            PreviewBarInjectorInit(...params);
+
+                            clearInterval(PreviewBarInjectorLoaderInterval);
+
+                            return resolve(true);
+                        }, 100);
+                    });
+                }
+
+                window.registerCallbackOnUserInteraction = registerCallbackOnUserInteraction;
+                window.PreviewBarInjectorLoader = PreviewBarInjectorLoader;
+                window.PreviewBarInjectorInit = PreviewBarInjectorInit;
+            })();
+        </script>
+
+        {%- assign wrapped_content_for_header = wrapped_content_for_header
+            | replace: 'new Shopify.PreviewBarInjector', 'PreviewBarInjectorLoader'
+            | replace: 'previewBarInjector.init();', ''
+            | replace: "window.addEventListener('load', asyncLoad, false)",
+                'registerCallbackOnUserInteraction(asyncLoad)'
+            | replace: 's.src = urls[i]', 'if(!/^\?/.test(urls[i])) s.src = urls[i]'
+        -%}
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-420VFK8Q3N"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-420VFK8Q3N');
+        </script>
+
+        {% if template contains 'rewards'
+            or template contains 'refer'
+            or template contains 'account'
+            or template contains 'cart'
+        %}
+            {% if settings.swell_id != blank %}
+                <script
+                    src="https://cdn-widgetsrepository.yotpo.com/v1/loader/{{ settings.swell_id }}?languageCode={{ localization.language.iso_code | escape }}"
+                    async
+                ></script>
+            {% endif %}
+        {% endif %}
+
+        {% if settings.yotpo_app_key != blank %}
+            <script type="text/javascript">
+                (function e() {
+                    var e = document.createElement('script');
+                    (e.type = 'text/javascript'),
+                        (e.async = true),
+                        (e.src = '//staticw2.yotpo.com/{{ settings.yotpo_app_key }}/widget.js');
+                    var t = document.getElementsByTagName('script')[0];
+                    t.parentNode.insertBefore(e, t);
+                })();
+            </script>
+        {% endif %}
+
+        {%- render 'settings' -%}
+
+        {% liquid
+            # Always add entrypoint below content_for_header
+            render 'adastra' with 'index.js'
+        %}
+
+        {%- include 'async-load-head-scripts' -%}
+    </head>
+
+    <body
+        id="{{ page_title | handle }}"
+        class="template-{{ template_handle }} template-{{ template_handle }}--{{ page_title | handle }}"
+        data-theme="{{ theme.id }}"
+    >
+        {%- render 'sprite' -%}
+
+        <a class="visually-hidden" href="#MainContent" aria-hidden="false"> 
+            {{- 'general.accessibility.skip_to_content' | t -}}
+        </a>
+
+        <div class="site-container">
+            {%- section 'announcement' -%}
+
+            {%- section 'header' -%}
+
+            <main role="main" id="MainContent" class="main-container">
+                {{ content_for_layout }}
+            </main>
+
+            {%- section 'footer' -%}
+        </div>
+
+        {%- section 'minicart' -%}
+
+        {% if template.directory == 'customers' %}
+            <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+        {% endif %}
+
+        {% include 'social-login' %}
+
+        {%- section 'newsletter-popup' -%}
+
+        {%- render 'schema' -%}
+
+        {%- render 'async-load-body-scripts' -%}
+    </body>
+</html>

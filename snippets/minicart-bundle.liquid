@@ -1,0 +1,101 @@
+<div 
+    x-show="item.quantity"
+    class="minicart__item"
+    x-transition:leave="default-transition"
+    x-transition:leave-start="opacity-1"
+    x-transition:leave-end="opacity-0 scale-0"
+>
+    <a 
+        :href="item.url" 
+        class="minicart__item-image scale-img"
+        :title="item.title"
+        :aria-label="`Go to ${ item.title }`"
+    >
+        <template x-if="item.image">
+            <img
+                :src="`${ item.image }&width=200`"
+                width="100"
+                height="100"
+                loading="lazy"
+                :alt="`${ item.title } image`"
+                class="absolute-img"
+            >
+        </template>
+    </a>
+
+    <div class="minicart__item-main">
+        <div class="minicart__item-main-left">
+            <h4>
+                <a 
+                    :href="item.url" 
+                    class="hover-opacity"
+                    :title="item.title"
+                    :aria-label="`Go to ${ item.title }`"
+                    x-html="item.title"
+                ></a>
+            </h4>
+
+            <template x-if="item.items?.length">
+                <ul class="minicart__item-bundle-items list-reset">
+                    <template
+                        x-for="bundle_item in item.items"
+                        :key="`bundle-item-${bundle_item.key}`"
+                    >
+                        <li class="minicart__item-bundle-item">
+                            <a 
+                                class="minicart__item-bundle-item-image scale-img"
+                                :href="bundle_item.url"
+                                :aria-label="bundle_item.title"
+                            >
+                                <template x-if="bundle_item.image">
+                                    <img
+                                        :src="`${ bundle_item.image }&width=60`"
+                                        width="30"
+                                        height="30"
+                                        loading="lazy"
+                                        :alt="`${ bundle_item.title } image`"
+                                        class="absolute-img"
+                                    >
+                                </template>
+                            </a>
+
+                            <a 
+                                :href="bundle_item.url" 
+                                class="superscript-normal hover-opacity"
+                                :title="bundle_item.title"
+                                :aria-label="`Go to ${ bundle_item.title }`"
+                                x-html="bundle_item.title_html"
+                            ></a>
+                        </li>
+                    </template>
+                </ul>
+            </template>
+        </div>
+
+        <div class="minicart__item-main-right">
+            <div class="minicart__item-prices">
+                <template x-if="item.compare_at_price > item.price">
+                    <s x-text="window.Shopify.formatMoney(item.compare_at_price)" class="cta-textlink minicart__item-price-compare-at"></s>
+                </template>
+
+                <span x-text="window.Shopify.formatMoney(item.price)" class="cta-textlink"></span>
+            </div>
+
+
+            <button
+                class="superscript-normal minicart__item-remove-btn"
+                type="button"
+                @click.prevent="item.quantity = 0; $store.Cart.update(
+                    {
+                        updates: item.items.reduce((acc, child) => {
+                            acc[child.key] = 0;
+                            return acc;
+                        }, {})
+                    }
+                )"
+            >
+                {{- 'minicart.general.remove' | t -}}
+            </button>
+        </div>
+    </div>
+</div>

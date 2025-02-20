@@ -1,0 +1,378 @@
+{%- if section.blocks.size > 0 -%}
+    {%- liquid
+        assign padding_top = section.settings.padding_top | default: 0
+        assign padding_bottom = section.settings.padding_bottom | default: 0
+        assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+        assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+        assign stripes = section.settings.stripes | default: false
+        assign media_type = section.settings.media_type | default: 'video'
+        assign video = section.settings.video
+        assign image = section.settings.image 
+        assign media_aspect_ratio = section.settings.media_aspect_ratio | default: 'square'
+        assign gradient_direction = section.settings.gradient_direction | default: 'gradient-y'
+        assign text_color = section.settings.text_color | default: 'white'
+        assign content = section.settings.content
+        assign open_first = section.settings.open_first | default: true, allow_false: true
+        assign content_2 = section.settings.content_2
+        assign stripes_img = shop.metaobjects.global_settings['global-settings'].stripes.value
+        assign vertical_alignment = section.settings.vertical_alignment | default: 'top'
+        assign accordions_bg_color = section.settings.accordions_bg_color | default: 'white'
+    -%}
+
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/media-accordions.scss' -%}
+
+    <section id="section-{{- section.id -}}">
+        <div class="container">
+            <div class="media-accordions__inner">
+                <div class="media-accordions__media media-accordions__media--ar-{{ media_aspect_ratio }} {% if stripes %}media-accordions__media--stripes{% endif %} {% if gradient_direction != 'gradient-none' %}media-accordions__media--{{- gradient_direction -}}{% endif %}">
+                    {%- if content != blank and stripes == false -%}
+                        <div class="rte media-accordions__content p-large" {% if text_color != 'black' %}style="color:var(--{{- text_color -}});"{% endif %}>{{- content -}}</div>
+                    {%- endif -%}
+
+                    {%- if stripes -%}
+                        {%- if stripes_img -%}
+                            {%- render 'img', image: stripes_img -%}
+                        {%- endif -%}
+
+                        <div class="media-accordions__media-inner">
+                    {%- endif -%}
+                        {%- if media_type == 'image' -%}
+                            {%- if image -%}
+                                {%- render 'img', image: image -%}
+                            {%- endif -%}
+                        {%- elsif media_type == 'video' -%}
+                            {%- if video -%}
+                                {%- render 'video', 
+                                    video: video,
+                                    poster: image
+                                -%}
+                            {%- endif -%}
+                        {%- endif -%}
+                    {%- if stripes -%}
+                        </div>
+                    {%- endif -%}
+                </div>
+
+                <div class="media-accordions__accordions media-accordions__accordions--y-{{- vertical_alignment -}}" style="background-color: var(--{{ accordions_bg_color }});">
+                    <div>
+                        {%- if stripes and content != blank -%}
+                            <div class="rte media-accordions__content p-large">{{- content -}}</div>
+                        {%- elsif content_2 != blank -%}
+                            <div class="rte media-accordions__content p-large">{{- content_2 -}}</div>
+                        {%- endif -%}
+
+                        <ul 
+                            x-data="{ open: {% if open_first %}1{% else %}0{% endif %} }"
+                            class="media-accordions__items list-reset"
+                        >
+                            {%- for accordion in section.blocks -%}
+                                {%- liquid 
+                                    assign accordion_type = accordion.type
+
+                                    assign accordion_title = ''
+                                    assign accordion_content = ''
+                                    assign accordion_icon = ''
+                                    assign accordion_badge = ''
+
+                                    if accordion_type == 'accordion_ingredient'
+                                        assign ingredient_handle = accordion.settings.handle | escape
+                                        if ingredient_handle == blank
+                                            continue 
+                                        endif
+
+                                        assign ingredient = shop.metaobjects.ingredient[ingredient_handle]
+                                        if ingredient == blank or ingredient == nil
+                                            continue
+                                        endif
+
+                                        assign accordion_title = ingredient.short_name.value
+                                        assign accordion_content = ingredient.description
+                                        if accordion_content != blank 
+                                            assign accordion_content = accordion_content | metafield_tag
+                                        endif
+                                        assign accordion_icon = ingredient.icon.value
+                                    endif
+
+                                    assign accordion_title = accordion.settings.title | default: accordion_title | escape
+                                    assign accordion_content = accordion.settings.content | default: accordion_content
+
+                                    if accordion_title == blank or accordion_content == blank 
+                                        continue
+                                    endif
+
+                                    assign accordion_badge = accordion.settings.badge | escape | truncate: 12
+                                -%}
+                                <li
+                                    class="media-accordions__item"
+                                >
+                                    <button
+                                        id="accordion-toggle-btn-{{ forloop.index }}-{{ section.id }}"
+                                        class="subheader-small media-accordions__item-btn {% if accordion_icon != blank %}media-accordions__item-btn--with-icon{% endif %}"
+                                        type="button"
+                                        aria-controls="accordion-{{ forloop.index }}-{{ section.id }}"
+                                        {% if forloop.first and open_first %}
+                                            aria-expanded="true"
+                                        {% endif %}
+                                        :aria-expanded="open === {{ forloop.index }}"
+                                        @click.prevent="open = open === {{ forloop.index }} ? 0 : {{ forloop.index }}"
+                                    >
+                                        <div class="media-accordions__item-btn-title">
+                                            {%- if accordion_icon != blank -%}
+                                                <div class="media-accordions__item-btn-icon">
+                                                    {{- accordion_icon -}}
+                                                </div>
+                                            {%- endif -%}
+
+                                            {{- accordion_title -}}
+                                        </div>
+
+                                        <div class="media-accordions__item-btn-badge-wrapper">
+                                            {%- if accordion_badge != blank -%}
+                                                <span class="superscript-normal media-accordions__item-btn-badge">{{- accordion_badge -}}</span>
+                                            {%- endif -%}
+
+                                            {%- render 'plus-icon', size: 12 -%}
+                                        </div>
+                                    </button>
+
+                                    <div
+                                        id="accordion-{{ forloop.index }}-{{ section.id }}"
+                                        class="media-accordions__item-content dropdown-content rte list-reset"
+                                        aria-labelledby="accordion-toggle-btn-{{ forloop.index }}-{{ section.id }}"
+                                        {% if forloop.first and open_first %}
+                                            data-open="true"
+                                            style="height: auto;"
+                                        {% endif %}
+                                        :data-open="open === {{ forloop.index }}"
+                                        :style="open === {{ forloop.index }} && { height: $el.scrollHeight + 'px' }"
+                                        @resize.window="if (open !== {{ forloop.index }}) { return; } $el.style.height = 'auto'"
+                                    >
+                                        {{ accordion_content }}   
+                                    </div>
+                                </li>
+                            {%- endfor -%}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Media & Accordions | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Media Settings"
+        },
+        {
+            "type": "select",
+            "id": "media_type",
+            "label": "Media type",
+            "default": "video",
+            "options": [
+                { "value": "image", "label": "Image" },
+                { "value": "video", "label": "Video" }
+            ]
+        },
+        {
+            "type": "video",
+            "id": "video",
+            "label": "Video",
+            "info": "Format: .mp4"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "With the video type, the image is used as a poster (first frame)"
+        },
+        {
+            "type": "select",
+            "id": "media_aspect_ratio",
+            "label": "Media aspect ratio on desktop",
+            "default": "square",
+            "info": "With dynamic selected the media will occupy the whole container on desktop.",
+            "options": [
+                { "value": "square", "label": "Square" },
+                { "value": "dynamic", "label": "Dynamic" }
+            ]
+        },
+        {
+          "type": "checkbox",
+          "id": "stripes",
+          "label": "Stripes"
+        },
+        {
+            "type": "select",
+            "id": "gradient_direction",
+            "label": "Gradient direction",
+            "default": "gradient-y",
+            "options": [
+                { "value": "gradient-t", "label": "To Top" },
+                { "value": "gradient-b", "label": "To Bottom" },
+                { "value": "gradient-y", "label": "Vertical Sides" },
+                { "value": "gradient-none", "label": "Off" }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Text Settings"
+        },
+        {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "white",
+            "options": [
+                { "value": "black", "label": "Black" },
+                { "value": "white", "label": "White"}
+            ]
+        },
+        {
+            "type": "richtext",
+            "id": "content", 
+            "label": "Content (media)",
+            "info": "Hint: use Heading 2 for title, and paragraph for body"
+        },
+        {
+            "type": "richtext",
+            "id": "content_2", 
+            "label": "Content (accordions)",
+            "info": "Hint: use Heading 2 for title, and paragraph for body"
+        },
+        {
+            "type": "select",
+            "id": "vertical_alignment",
+            "label": "Vertical alignment",
+            "default": "bottom",
+            "options": [
+                { "value": "top", "label": "Top" },
+                { "value": "center", "label": "Center" },
+                { "value": "bottom", "label": "Bottom" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "accordions_bg_color",
+            "label": "Accordions background color",
+            "default": "white",
+            "options": [
+                { "value": "white", "label": "White" },
+                { "value": "chalk", "label": "Chalk" },
+                { "value": "morning-sky", "label": "Morning Sky" }
+            ]
+        },
+        {
+          "type": "checkbox",
+          "id": "open_first",
+          "label": "First accordion open?",
+          "default": true
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Accordion (custom)",
+            "type": "accordion_custom",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "info": "Keep it short. ~50 characters (4-8 words)"
+                },
+                {
+                    "type": "richtext",
+                    "id": "content",
+                    "label": "Content",
+                    "info": "Recommendation: ~180 characters (20-30 words)"
+                },
+                {
+                    "type": "text",
+                    "id": "badge",
+                    "label": "Badge",
+                    "info": "Keep it short. ~6-10 characters (1-3 short words)"
+                }
+            ]
+        },
+        {
+            "name": "Accordion (ingredient)",
+            "type": "accordion_ingredient",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "handle",
+                    "label": "Handle",
+                    "info": "The handle is at the bottom of the ingredient metaobject. Click the copy icon to copy it."
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "info": "Keep it short. ~50 characters (4-8 words); This title overrides the title from the metaobject."
+                },
+                {
+                    "type": "richtext",
+                    "id": "content",
+                    "label": "Content",
+                    "info": "Recommendation: ~180 characters (20-30 words); This content overrides the content from the metaobject."
+                },
+                {
+                    "type": "text",
+                    "id": "badge",
+                    "label": "Badge",
+                    "info": "Keep it short. ~6-10 characters (1-3 short words)"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Media & Accordions | AW"
+        }
+    ]
+}
+{% endschema %}

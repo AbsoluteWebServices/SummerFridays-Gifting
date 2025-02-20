@@ -1,0 +1,903 @@
+{%- if section.blocks.size > 0 -%}
+    {%- liquid
+        assign padding_top = section.settings.padding_top | default: 0
+        assign padding_bottom = section.settings.padding_bottom | default: 0
+        assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+        assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+        assign title = section.settings.title | escape
+        assign show_dropdown = section.settings.show_dropdown | default: false
+        assign show_toggle = section.settings.show_toggle | default: false
+    -%}
+
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/shade-carousel.scss' -%}
+
+    <section 
+        id="section-{{- section.id -}}"
+        x-data="shadeCarousel('{{- section.id -}}')"
+        data-split-load-section
+    >
+        <div class="container">
+            {%- if title != blank -%}
+                <div class="shade-carousel__content">
+                    <h2>
+                        {{- title -}}
+                        {%- if show_dropdown -%}
+                            <div class="shade-carousel__dropdown">
+                                <button
+                                    class="shade-carousel__dropdown-toggle"
+                                    :class="dropdownOpen && 'is-open'"
+                                    aria-controls="shade-carousel-dropdown"
+                                    :aria-expanded="dropdownOpen"
+                                    aria-label="Toggle dropdown"
+                                    @click.prevent="dropdownOpen = !dropdownOpen"
+                                >
+                                    <span x-text="sliderName">{{ section.blocks[0].settings.slider_name }}</span>
+                                    {%- render 'icon', name: 'chevron-down' -%}
+                                </button>
+                                <ul
+                                    id="shade-carousel-dropdown"
+                                    class="dropdown-content shade-carousel__dropdown-content"
+                                    :data-open="dropdownOpen"
+                                    :style="dropdownOpen && { height: $el.scrollHeight + 'px' }"
+                                    @resize.window="if (!dropdownOpen) { return; } $el.style.height = 'auto'"
+                                >
+                                    {%- for block in section.blocks -%}
+                                        <li
+                                            @click="activeSlider = {{ forloop.index }}; $nextTick(() => {
+                                                alignButtons();
+                                                sliderName = '{{- block.settings.slider_name -}}';
+                                                dropdownOpen = false;
+                                            });"
+                                            :class="sliderName === '{{- block.settings.slider_name -}}' && 'active'"
+                                        >
+                                            {{- block.settings.slider_name -}}
+                                        </li>
+                                    {%- endfor -%}
+                                </ul>
+                            </div>
+                        {%- endif -%}
+                    </h2>
+                    {%- if show_toggle -%}
+                        <button
+                            class="shade-carousel__toggle"
+                            @click.prevent="toggle = !toggle"
+                            :class="toggle === true && 'shade-carousel__toggle--active'"
+                        ></button>
+                    {%- endif -%}
+                </div>
+            {%- endif -%}
+
+            {%- for block in section.blocks -%}
+                {%- liquid
+                    if show_dropdown == false and forloop.index > 1
+                        continue
+                    endif
+
+                    assign slider_name = block.settings.slider_name
+                -%}
+                <div 
+                    class="swiper shade-carousel__slider{% if forloop.index == 1 %} shade-carousel__slider--active{% endif %}"
+                    x-intersect.once="initSlider($el, '{{ slider_name }}')"
+                    :class="{ 'shade-carousel__slider--active': activeSlider === {{ forloop.index }} }"
+                >
+                    <ul class="swiper-wrapper list-reset">
+                        {%- for i in (1..14) -%}
+                            {%- capture image_key -%}image_{{ i }}{%- endcapture -%}
+                            {%- capture title_key -%}title_{{ i }}{%- endcapture -%}
+                            {%- liquid 
+                                assign image = block.settings[image_key]
+                                assign title = block.settings[title_key]
+                                if image == blank
+                                    continue
+                                endif
+                            -%}
+                            {%- capture toggle_image_key -%}toggle_image_{{ i }}{%- endcapture -%}
+                            {%- capture hover_media_type_key -%}hover_media_type_{{ i }}{%- endcapture -%}
+                            {%- capture hover_image_key -%}hover_image_{{ i }}{%- endcapture -%}
+                            {%- capture hover_video_key -%}hover_video_{{ i }}{%- endcapture -%}
+                            {%- capture text_key -%}text_{{ i }}{%- endcapture -%}
+                            {%- liquid
+                                assign toggle_image = block.settings[toggle_image_key]
+                                assign hover_media_type = block.settings[hover_media_type_key] | default: 'image'
+                                assign hover_image = block.settings[hover_image_key]
+                                assign hover_video = block.settings[hover_video_key]
+                                assign text = block.settings[text_key] | escape
+                            -%}
+
+                            {%- render 'shade-carousel-slide',
+                                image: image,
+                                toggle_image: toggle_image,
+                                hover_media_type: hover_media_type,
+                                hover_image: hover_image,
+                                hover_video: hover_video,
+                                title: title,
+                                text: text
+                            -%}
+                        {%- endfor -%}
+                    </ul>
+
+                    <button
+                        class="swiper-nav-btn swiper-button-disabled swiper-nav-btn--prev hover-opacity"
+                        type="button"
+                        aria-label="Go to the previous slide"
+                        data-swiper-prev
+                    >
+                        {%- render 'icon', name: 'swiper-chevron' -%}
+                    </button>
+    
+                    <button
+                        class="swiper-nav-btn swiper-button-disabled swiper-nav-btn--next hover-opacity"
+                        type="button"
+                        aria-label="Go to the next slide"
+                        data-swiper-next
+                    >
+                        {%- render 'icon', name: 'swiper-chevron' -%}
+                    </button>
+                </div>
+            {%- endfor -%}
+        </div>
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Shade Carousel | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Main Settings"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_dropdown",
+            "label": "Show dropdown",
+            "info": "Option for the header to include a dropdown",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "show_toggle",
+            "label": "Show toggle button",
+            "info": "Option to add a toggle that changes all images in the carousel at once",
+            "default": false
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Slider",
+            "type": "slider",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "slider_name",
+                    "label": "Slider name",
+                    "info": "Name in the dropdown"
+                },
+                {
+                    "type": "header",
+                    "content": "Slide 1"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_1",
+                    "label": "Image",
+                    "info": "Aspect ration: square"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "toggle_image_1",
+                    "label": "Toggle image",
+                    "info": "Image to show for active toggle button state. Aspect ration: square"
+                },
+                {
+                    "type": "select",
+                    "id": "hover_media_type_1",
+                    "label": "Hover media type",
+                    "default": "image",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hover_image_1",
+                    "label": "Hover image",
+                    "info": "With the video type, the image is used as a poster (first frame). Aspect ration: square"
+                },
+                {
+                    "type": "video",
+                    "id": "hover_video_1",
+                    "label": "Hover video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "text",
+                    "id": "title_1",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "text_1",
+                    "label": "Text"
+                },
+                {
+                    "type": "header",
+                    "content": "Slide 2"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_2",
+                    "label": "Image",
+                    "info": "Aspect ration: square"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "toggle_image_2",
+                    "label": "Toggle image",
+                    "info": "Image to show for active toggle button state. Aspect ration: square"
+                },
+                {
+                    "type": "select",
+                    "id": "hover_media_type_2",
+                    "label": "Hover media type",
+                    "default": "image",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hover_image_2",
+                    "label": "Hover image",
+                    "info": "With the video type, the image is used as a poster (first frame). Aspect ration: square"
+                },
+                {
+                    "type": "video",
+                    "id": "hover_video_2",
+                    "label": "Hover video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "text",
+                    "id": "title_2",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "text_2",
+                    "label": "Text"
+                },
+                {
+                    "type": "header",
+                    "content": "Slide 3"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_3",
+                    "label": "Image",
+                    "info": "Aspect ration: square"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "toggle_image_3",
+                    "label": "Toggle image",
+                    "info": "Image to show for active toggle button state. Aspect ration: square"
+                },
+                {
+                    "type": "select",
+                    "id": "hover_media_type_3",
+                    "label": "Hover media type",
+                    "default": "image",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hover_image_3",
+                    "label": "Hover image",
+                    "info": "With the video type, the image is used as a poster (first frame). Aspect ration: square"
+                },
+                {
+                    "type": "video",
+                    "id": "hover_video_3",
+                    "label": "Hover video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "text",
+                    "id": "title_3",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "text_3",
+                    "label": "Text"
+                },
+                {
+                    "type": "header",
+                    "content": "Slide 4"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_4",
+                    "label": "Image",
+                    "info": "Aspect ration: square"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "toggle_image_4",
+                    "label": "Toggle image",
+                    "info": "Image to show for active toggle button state. Aspect ration: square"
+                },
+                {
+                    "type": "select",
+                    "id": "hover_media_type_4",
+                    "label": "Hover media type",
+                    "default": "image",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hover_image_4",
+                    "label": "Hover image",
+                    "info": "With the video type, the image is used as a poster (first frame). Aspect ration: square"
+                },
+                {
+                    "type": "video",
+                    "id": "hover_video_4",
+                    "label": "Hover video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "text",
+                    "id": "title_4",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "text_4",
+                    "label": "Text"
+                },
+                {
+                    "type": "header",
+                    "content": "Slide 5"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_5",
+                    "label": "Image",
+                    "info": "Aspect ration: square"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "toggle_image_5",
+                    "label": "Toggle image",
+                    "info": "Image to show for active toggle button state. Aspect ration: square"
+                },
+                {
+                    "type": "select",
+                    "id": "hover_media_type_5",
+                    "label": "Hover media type",
+                    "default": "image",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hover_image_5",
+                    "label": "Hover image",
+                    "info": "With the video type, the image is used as a poster (first frame). Aspect ration: square"
+                },
+                {
+                    "type": "video",
+                    "id": "hover_video_5",
+                    "label": "Hover video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "text",
+                    "id": "title_5",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "text_5",
+                    "label": "Text"
+                },
+                {
+                    "type": "header",
+                    "content": "Slide 6"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_6",
+                    "label": "Image",
+                    "info": "Aspect ration: square"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "toggle_image_6",
+                    "label": "Toggle image",
+                    "info": "Image to show for active toggle button state. Aspect ration: square"
+                },
+                {
+                    "type": "select",
+                    "id": "hover_media_type_6",
+                    "label": "Hover media type",
+                    "default": "image",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hover_image_6",
+                    "label": "Hover image",
+                    "info": "With the video type, the image is used as a poster (first frame). Aspect ration: square"
+                },
+                {
+                    "type": "video",
+                    "id": "hover_video_6",
+                    "label": "Hover video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "text",
+                    "id": "title_6",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "text_6",
+                    "label": "Text"
+                },
+                {
+                    "type": "header",
+                    "content": "Slide 7"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_7",
+                    "label": "Image",
+                    "info": "Aspect ration: square"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "toggle_image_7",
+                    "label": "Toggle image",
+                    "info": "Image to show for active toggle button state. Aspect ration: square"
+                },
+                {
+                    "type": "select",
+                    "id": "hover_media_type_7",
+                    "label": "Hover media type",
+                    "default": "image",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hover_image_7",
+                    "label": "Hover image",
+                    "info": "With the video type, the image is used as a poster (first frame). Aspect ration: square"
+                },
+                {
+                    "type": "video",
+                    "id": "hover_video_7",
+                    "label": "Hover video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "text",
+                    "id": "title_7",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "text_7",
+                    "label": "Text"
+                },
+                {
+                    "type": "header",
+                    "content": "Slide 8"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_8",
+                    "label": "Image",
+                    "info": "Aspect ration: square"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "toggle_image_8",
+                    "label": "Toggle image",
+                    "info": "Image to show for active toggle button state. Aspect ration: square"
+                },
+                {
+                    "type": "select",
+                    "id": "hover_media_type_8",
+                    "label": "Hover media type",
+                    "default": "image",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hover_image_8",
+                    "label": "Hover image",
+                    "info": "With the video type, the image is used as a poster (first frame). Aspect ration: square"
+                },
+                {
+                    "type": "video",
+                    "id": "hover_video_8",
+                    "label": "Hover video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "text",
+                    "id": "title_8",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "text_8",
+                    "label": "Text"
+                },
+                {
+                    "type": "header",
+                    "content": "Slide 9"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_9",
+                    "label": "Image",
+                    "info": "Aspect ration: square"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "toggle_image_9",
+                    "label": "Toggle image",
+                    "info": "Image to show for active toggle button state. Aspect ration: square"
+                },
+                {
+                    "type": "select",
+                    "id": "hover_media_type_9",
+                    "label": "Hover media type",
+                    "default": "image",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hover_image_9",
+                    "label": "Hover image",
+                    "info": "With the video type, the image is used as a poster (first frame). Aspect ration: square"
+                },
+                {
+                    "type": "video",
+                    "id": "hover_video_9",
+                    "label": "Hover video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "text",
+                    "id": "title_9",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "text_9",
+                    "label": "Text"
+                },
+                {
+                    "type": "header",
+                    "content": "Slide 10"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_10",
+                    "label": "Image",
+                    "info": "Aspect ration: square"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "toggle_image_10",
+                    "label": "Toggle image",
+                    "info": "Image to show for active toggle button state. Aspect ration: square"
+                },
+                {
+                    "type": "select",
+                    "id": "hover_media_type_10",
+                    "label": "Hover media type",
+                    "default": "image",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hover_image_10",
+                    "label": "Hover image",
+                    "info": "With the video type, the image is used as a poster (first frame). Aspect ration: square"
+                },
+                {
+                    "type": "video",
+                    "id": "hover_video_10",
+                    "label": "Hover video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "text",
+                    "id": "title_10",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "text_10",
+                    "label": "Text"
+                },
+                {
+                    "type": "header",
+                    "content": "Slide 11"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_11",
+                    "label": "Image",
+                    "info": "Aspect ration: square"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "toggle_image_11",
+                    "label": "Toggle image",
+                    "info": "Image to show for active toggle button state. Aspect ration: square"
+                },
+                {
+                    "type": "select",
+                    "id": "hover_media_type_11",
+                    "label": "Hover media type",
+                    "default": "image",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hover_image_11",
+                    "label": "Hover image",
+                    "info": "With the video type, the image is used as a poster (first frame). Aspect ration: square"
+                },
+                {
+                    "type": "video",
+                    "id": "hover_video_11",
+                    "label": "Hover video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "text",
+                    "id": "title_11",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "text_11",
+                    "label": "Text"
+                },
+                {
+                    "type": "header",
+                    "content": "Slide 12"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_12",
+                    "label": "Image",
+                    "info": "Aspect ration: square"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "toggle_image_12",
+                    "label": "Toggle image",
+                    "info": "Image to show for active toggle button state. Aspect ration: square"
+                },
+                {
+                    "type": "select",
+                    "id": "hover_media_type_12",
+                    "label": "Hover media type",
+                    "default": "image",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hover_image_12",
+                    "label": "Hover image",
+                    "info": "With the video type, the image is used as a poster (first frame). Aspect ration: square"
+                },
+                {
+                    "type": "video",
+                    "id": "hover_video_12",
+                    "label": "Hover video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "text",
+                    "id": "title_12",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "text_12",
+                    "label": "Text"
+                },
+                {
+                    "type": "header",
+                    "content": "Slide 13"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_13",
+                    "label": "Image",
+                    "info": "Aspect ration: square"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "toggle_image_13",
+                    "label": "Toggle image",
+                    "info": "Image to show for active toggle button state. Aspect ration: square"
+                },
+                {
+                    "type": "select",
+                    "id": "hover_media_type_13",
+                    "label": "Hover media type",
+                    "default": "image",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hover_image_13",
+                    "label": "Hover image",
+                    "info": "With the video type, the image is used as a poster (first frame). Aspect ration: square"
+                },
+                {
+                    "type": "video",
+                    "id": "hover_video_13",
+                    "label": "Hover video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "text",
+                    "id": "title_13",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "text_13",
+                    "label": "Text"
+                },
+                {
+                    "type": "header",
+                    "content": "Slide 14"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_14",
+                    "label": "Image",
+                    "info": "Aspect ration: square"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "toggle_image_14",
+                    "label": "Toggle image",
+                    "info": "Image to show for active toggle button state. Aspect ration: square"
+                },
+                {
+                    "type": "select",
+                    "id": "hover_media_type_14",
+                    "label": "Hover media type",
+                    "default": "image",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "image_picker",
+                    "id": "hover_image_14",
+                    "label": "Hover image",
+                    "info": "With the video type, the image is used as a poster (first frame). Aspect ration: square"
+                },
+                {
+                    "type": "video",
+                    "id": "hover_video_14",
+                    "label": "Hover video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "text",
+                    "id": "title_14",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "text_14",
+                    "label": "Text"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Shade Carousel | AW"
+        }
+    ]
+}
+{% endschema %}

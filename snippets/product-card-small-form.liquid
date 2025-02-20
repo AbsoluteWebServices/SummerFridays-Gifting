@@ -1,0 +1,912 @@
+{%- liquid
+    assign id = id | default: section.id
+    assign inHiddenOverflow = inHiddenOverflow | default: false
+    assign style = style | default: 1
+    assign top = top | default: false
+    assign current_variant = product.selected_or_first_available_variant
+    assign price = current_variant.price | money_without_trailing_zeros
+    assign landscape = landscape | default: false
+    assign btnColor = btnColor | default: 'clay'
+    assign hide_variant_selectors = hide_variant_selectors | default: false
+
+    comment 
+        Define the variant selector type:
+            - no-selector: default first selected or available variant
+            - custom: custom products connected through accentuate.variant_product metafield (e. g., Jet Lag Mask)
+            - custom_swatches: custom products connected through 'Swatches -'' tag (e. g., Lip Butter Balm)
+            - variant-swatches: variants as swatches (e. g., Sheer Skin Tint)
+            - variants: product's variants
+    endcomment
+
+    assign hide_variant_title = product.selected_or_first_available_variant.metafields.variant.hide_variant_title | default: false 
+    if product.selected_or_first_available_variant.title != 'Default Title' and hide_variant_title == false
+        assign variant_title = product.selected_or_first_available_variant.title
+
+        assign variant_title_override = product.selected_or_first_available_variant.metafields.variant.variant_title_override | escape 
+        if variant_title_override != blank 
+            assign variant_title = variant_title_override
+        endif
+    endif
+
+    assign variant_selector_type = 'no-selector'
+
+    unless hide_variant_selectors
+        assign accentuate = product.metafields.accentuate
+        assign custom_variants = accentuate.variant_product
+        if custom_variants.size > 0
+            assign variant_selector_type = 'custom'
+            assign custom_variant_title = accentuate.variant_title
+            assign custom_variant_type = accentuate.variants_type
+            assign custom_current_variant_title = product.title
+            assign prices = ''
+
+            for custom_variant in custom_variants
+                assign custom_variant_product = all_products[custom_variant] 
+                assign prices = prices | append: custom_variant_product.price_min | append: ','
+                assign prices = prices | append: custom_variant_product.price_max | append: ','
+                if product.handle == custom_variant_product.handle
+                    assign custom_variant_label = custom_variant_title[forloop.index0] | default: custom_variant_product.title
+                    assign custom_current_variant_title = custom_variant_label
+                endif
+            endfor
+
+            assign prices = prices | remove_last: ',' | split: ',' | uniq | sort
+            if prices.size > 1
+                assign price_min = prices | first | money_without_trailing_zeros
+                assign price_max = prices | last | money_without_trailing_zeros
+
+                assign price = price_min | append: '-' | append: price_max
+            endif
+        endif
+        
+        if variant_selector_type == 'no-selector'
+            assign swatch_products = nil
+            for tag in product.tags
+                if tag contains 'swatches-' or tag contains 'Swatches -'
+                    assign tag_handle = tag | handleize
+                    assign swatch_products = collections[tag_handle].products
+                    break
+                endif
+            endfor
+
+            if swatch_products and swatch_products.size > 0
+                assign variant_selector_type = 'custom-swatches'
+                assign prices = ''
+
+                for swatch_product in swatch_products
+                    assign prices = prices | append: swatch_product.price_min | append: ','
+                    assign prices = prices | append: swatch_product.price_max | append: ','
+                endfor
+
+                assign prices = prices | remove_last: ',' | split: ',' | uniq | sort
+                if prices.size > 1
+                    assign price_min = prices | first | money_without_trailing_zeros
+                    assign price_max = prices | last | money_without_trailing_zeros
+
+                    assign price = price_min | append: '-' | append: price_max
+                endif
+
+                assign color_position = product.options_by_name.Color.position | minus: 1
+                if product.options_by_name.Shade
+                    assign color_position = product.options_by_name.Shade.position | minus: 1
+                endif
+
+                assign colors_name = product.variants[0].options[color_position]
+                assign colors_thumbnail = 'swatch-' | append: colors_name | handleize | append: '.png'  
+                assign custom_product_thumbnail = product.metafields.product.thumbnail  
+                assign thumbnail_src = colors_thumbnail | file_img_url: '60x'
+                if custom_product_thumbnail
+                    assign thumbnail_src = custom_product_thumbnail | image_url: width: 60
+                endif
+            endif
+        endif
+
+        if variant_selector_type == 'no-selector'
+            assign color_options = product.options_with_values | where: 'name', 'Color'
+            assign color_options_values = color_options[0].values
+            if color_options_values == blank
+                assign color_options = product.options_with_values | where: 'name', 'Shade'
+                assign color_options_values = color_options[0].values
+            endif
+            if color_options_values.size > 0
+                assign variant_selector_type = 'variant-swatches'
+
+                if product.price_min < product.price_max
+                    assign price_min = product.price_min | money_without_trailing_zeros
+                    assign price_max = product.price_max | money_without_trailing_zeros
+
+                    assign price = price_min | append: '-' | append: price_max
+                endif
+
+                assign color_position = product.options_by_name.Color.position | minus: 1
+                assign color = color_options_values[0]
+
+                assign custom_thumbnail = current_variant.metafields.custom.thumbnail 
+                assign color_handle = color | handleize
+                assign colors_thumbnail = 'swatch-' | append: color_handle | append: '.png'
+                assign thumbnail_src = colors_thumbnail | file_img_url: '60x'
+                if custom_thumbnail
+                    assign thumbnail_src = custom_thumbnail | image_url: width: 60
+                endif
+            endif
+        endif
+
+        if variant_selector_type == 'no-selector'
+            if product.variants.size > 1
+                assign variant_selector_type = 'variants'
+                if product.price_min < product.price_max
+                    assign price_min = product.price_min | money_without_trailing_zeros
+                    assign price_max = product.price_max | money_without_trailing_zeros
+
+                    assign price = price_min | append: '-' | append: price_max
+                endif
+            endif
+        endif
+    endunless
+
+    if variant_selector_type == 'no-selector'
+        # Product Subtitle
+        assign product_subtitle = product.metafields.accentuate.product_type | escape
+    endif
+-%}
+
+{%- if variant_selector_type == 'no-selector' and product_subtitle != blank and style == 1 -%}
+    <p class="superscript-normal product-card-small__subtitle" >
+        {{- product_subtitle -}}
+    </p>
+{%- endif -%}
+
+<form 
+    action="/cart/add"
+    method="POST"
+    enctype="multipart/form-data"
+    @submit.prevent="$store.Cart.addToCart(event)"
+>
+    <input type="hidden" name="quantity" value="1">
+
+    {%- case variant_selector_type -%}
+        {%- when 'custom' -%}
+            <div 
+                x-data="{
+                    open: false
+                }" 
+                class="superscript-normal select-wrapper {% unless inHiddenOverflow %}select-wrapper--absolute{% endunless %} select-wrapper--bordered product-card-small__selector-wrapper"
+                @click.outside="open = false"
+            >
+                <button
+                    id="product-card-selector-btn-{{- product.id -}}-{{ id }}"
+                    class="product-card-small__selector-btn p-normal select-toggle-btn {% if top %}select-toggle-btn--top{% endif %}"
+                    type="button"
+                    aria-haspopup="true"
+                    aria-controls="product-card-selector-{{- product.id -}}"
+                    :aria-expanded="open"
+                    @click.prevent="open = ! open"
+                >
+                    <span x-text="data ? (data.custom_variant_title ? data.custom_variant_title : '') : initialized ? '{{- custom_current_variant_title -}}': '{{- 'collections.general.select_option' | t: title: custom_variant_type -}}'">{{- 'collections.general.select_option' | t: title: custom_variant_type -}}</span>
+                    {%- render 'icon', name: 'chevron-down' -%}
+                </button>
+
+                <ul 
+                    id="product-card-selector-{{- product.id -}}"
+                    class="dropdown-content {% if top %}dropdown-content--top{% endif %} scrollbar list-reset"
+                    :data-open="open"
+                    aria-labelledby="product-card-selector-btn-{{- product.id -}}-{{ id }}"
+                    :style="open && { height: $el.scrollHeight + 1 + 'px' }"
+                    @resize.window="if (!open) { return; } $el.style.height = 'auto'"
+                >
+                    {%- for custom_variant in custom_variants -%}
+                        {%- liquid
+                            assign custom_variant_product = all_products[custom_variant] 
+                            assign custom_variant_label = custom_variant_title[forloop.index0] | default: custom_variant_product.title
+                            assign custom_variant_product_url = custom_variant_product.url
+        
+                            assign custom_variant_active = false
+                            if product.handle == custom_variant_product.handle
+                                assign custom_variant_active = true
+                            endif
+
+                            assign main_media = custom_variant_product.media | first
+                            if custom_variant_product.metafields.custom.main_image_on_plp != blank
+                                assign main_media = custom_variant_product.metafields.custom.main_image_on_plp.value
+                            endif
+
+                            assign product_title = custom_variant_product.title
+                            if custom_variant_product.metafields.accentuate.plp_title != blank
+                                assign product_title = custom_variant_product.metafields.accentuate.plp_title | escape
+                            endif
+                            assign product_title_html = product_title | split: ' - ' | first | strip | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>'
+
+                            assign hide_variant_title = custom_variant_product.selected_or_first_available_variant.metafields.variant.hide_variant_title | default: false
+                            assign variant_title = ''
+                            if custom_variant_product.selected_or_first_available_variant.title != 'Default Title' and hide_variant_title == false
+                                assign variant_title = custom_variant_product.selected_or_first_available_variant.title
+
+                                assign variant_title_override = custom_variant_product.selected_or_first_available_variant.metafields.variant.variant_title_override | escape 
+                                if variant_title_override != blank 
+                                    assign variant_title = variant_title_override
+                                endif
+                            endif
+                        -%}
+        
+                        {%- if custom_variant_product_url != blank -%}
+                            <li>
+                                <label class="select-option p-normal" @click="open = false; initialized = true">
+                                    <input 
+                                        x-model="variantId"
+                                        name="id" 
+                                        type="radio" 
+                                        class="visually-hidden" 
+                                        value="{{- custom_variant_product.selected_or_first_available_variant.id -}}"
+                                        {% if custom_variant_active %}
+                                            checked
+                                        {% endif %}
+                                        @change="open = false; updateProductCard({
+                                            available: {{ custom_variant_product.selected_or_first_available_variant.available | default: false }}
+                                            ,coming_soon: {{ custom_variant_product.metafields.product.enable_coming_soon | default: false }}
+                                            ,notify_me: {{ custom_variant_product.metafields.product.enable_notify_me | default: false }}
+                                            ,price: {{ custom_variant_product.selected_or_first_available_variant.price }}
+                                            ,url: '{{- custom_variant_product.selected_or_first_available_variant.url -}}'
+                                            ,title: '{{- product_title -}}'
+                                            ,title_html: '{{- product_title_html -}}'
+                                            {%- if variant_title != blank -%}
+                                                ,variant_title: '{{- variant_title -}}'
+                                            {%- endif -%}
+                                            ,custom_variant_title: '{{- custom_variant_label -}}'
+                                            {%- if main_media != blank -%}
+                                                ,main_media: {
+                                                    type: '{{ main_media.media_type }}',
+                                                    {%- if main_media.media_type == 'video' -%}
+                                                        {%- liquid 
+                                                            assign video_url = '' 
+                                                            assign mp4_sources = main_media.sources | where: 'format', 'mp4'
+                                                            if main_media.sources.size > 0
+                                                                assign video_url = mp4_sources[0].url
+                                                            endif  
+                                                        -%}
+                                                        {%- if video_url != blank -%}
+                                                            video_url: '{{ video_url }}'
+                                                        {%- endif -%}
+                                                    {%- elsif main_media.media_type == 'image' -%}
+                                                        image_url: '{{ main_media | image_url }}',
+                                                        alt: '{{ main_media.alt | default: product_title }}'
+                                                    {%- endif -%}
+                                                }
+                                            {%- endif -%}
+                                        })"
+                                    >
+                                    
+                                    {{- custom_variant_label -}}
+                                </label>
+                            </li>
+                        {%- endif -%}
+                    {%- endfor -%}
+                </ul>
+            </div> 
+
+        {%- when 'custom-swatches' -%}
+            {%- if style == 1 -%}
+                <div 
+                    x-data="{
+                        open: false
+                    }"
+                    class="superscript-normal select-wrapper {% unless inHiddenOverflow %}select-wrapper--absolute{% endunless %} select-wrapper--bordered product-card-small__selector-wrapper"
+                    @click.outside="open = false"
+                >
+                    <button
+                        id="product-card-selector-btn-{{- product.id -}}-{{ id }}"
+                        class="product-card-small__selector-btn p-normal select-toggle-btn {% if top %}select-toggle-btn--top{% endif %}"
+                        type="button"
+                        aria-haspopup="true"
+                        aria-controls="product-card-selector-{{- product.id -}}"
+                        :aria-expanded="open"
+                        @click.prevent="open = ! open"
+                    >
+                        <div class="product-card-small__swatch-wrapper">
+                            <div class="product-card-small__swatch">
+                                <img
+                                    src="{{- thumbnail_src -}}"
+                                    :src="data?.thumbnail_src ? data.thumbnail_src : '{{- thumbnail_src -}}'"
+                                    class="absolute-img"
+                                    alt="{{ colors_name | escape }} Thumbnail"
+                                    width="30"
+                                    height="30"
+                                >
+                            </div>
+
+                            <span x-text="data ? (data.variant_title ? data.variant_title : '') : '{{- variant_title -}}'">{{- variant_title -}}</span>
+                        </div>
+                        {%- render 'icon', name: 'chevron-down' -%}
+                    </button>
+
+                    <ul 
+                        id="product-card-selector-{{- product.id -}}"
+                        class="dropdown-content {% if top %}dropdown-content--top{% endif %} scrollbar list-reset"
+                        :data-open="open"
+                        aria-labelledby="product-card-selector-btn-{{- product.id -}}-{{ id }}"
+                        :style="open && { height: $el.scrollHeight + 1 + 'px' }"
+                        @resize.window="if (!open) { return; } $el.style.height = 'auto'"
+                    >
+                        {%- for swatch_product in swatch_products -%}
+                            {%- liquid 
+                                assign colors_name = swatch_product.variants[0].options[color_position]
+                                assign colors_thumbnail = 'swatch-' | append: colors_name | handleize | append: '.png'  
+                                assign custom_product_thumbnail = swatch_product.metafields.product.thumbnail  
+                                assign thumbnail_src = colors_thumbnail | file_img_url: '60x'
+                                if custom_product_thumbnail
+                                    assign thumbnail_src = custom_product_thumbnail | image_url: width: 60
+                                endif
+        
+                                assign main_media = swatch_product.media | first
+                                if swatch_product.metafields.custom.main_image_on_plp != blank
+                                    assign main_media = swatch_product.metafields.custom.main_image_on_plp.value
+                                endif
+        
+                                assign product_title = swatch_product.title
+                                if swatch_product.metafields.accentuate.plp_title != blank
+                                    assign product_title = swatch_product.metafields.accentuate.plp_title | escape
+                                endif
+                                assign product_title_html = product_title | split: ' - ' | first | strip | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>'
+                                
+                                assign hide_variant_title = swatch_product.selected_or_first_available_variant.metafields.variant.hide_variant_title | default: false
+                                assign variant_title = ''
+                                if swatch_product.selected_or_first_available_variant.title != 'Default Title' and hide_variant_title == false
+                                    assign variant_title = swatch_product.selected_or_first_available_variant.title
+        
+                                    assign variant_title_override = swatch_product.selected_or_first_available_variant.metafields.variant.variant_title_override | escape 
+                                    if variant_title_override != blank 
+                                        assign variant_title = variant_title_override
+                                    endif
+                                endif
+                            -%}
+
+                            <li>
+                                <label class="select-option p-normal" @click="open = false; initialized = true">
+                                    <input 
+                                        x-model="variantId"
+                                        name="id" 
+                                        type="radio" 
+                                        class="visually-hidden" 
+                                        value="{{- swatch_product.selected_or_first_available_variant.id -}}"
+                                        {% if swatch_product.handle == product.handle %}
+                                            checked
+                                        {% endif %}
+                                        @change="updateProductCard({
+                                            available: {{ swatch_product.selected_or_first_available_variant.available | default: false }}
+                                            ,coming_soon: {{ swatch_product.metafields.product.enable_coming_soon | default: false }}
+                                            ,notify_me: {{ swatch_product.metafields.product.enable_notify_me | default: false }}
+                                            ,price: {{ swatch_product.selected_or_first_available_variant.price }}
+                                            ,url: '{{- swatch_product.selected_or_first_available_variant.url -}}'
+                                            {%- if variant_title != blank -%}
+                                                ,variant_title: '{{- variant_title -}}'
+                                            {%- endif -%}
+                                            ,title: '{{- product_title -}}'
+                                            ,title_html: '{{- product_title_html -}}'
+                                            {%- if main_media != blank -%}
+                                                ,main_media: {
+                                                    type: '{{ main_media.media_type }}',
+                                                    {%- if main_media.media_type == 'video' -%}
+                                                        {%- liquid 
+                                                            assign video_url = '' 
+                                                            assign mp4_sources = main_media.sources | where: 'format', 'mp4'
+                                                            if main_media.sources.size > 0
+                                                                assign video_url = mp4_sources[0].url
+                                                            endif  
+                                                        -%}
+                                                        {%- if video_url != blank -%}
+                                                            video_url: '{{ video_url }}'
+                                                        {%- endif -%}
+                                                    {%- elsif main_media.media_type == 'image' -%}
+                                                        image_url: '{{ main_media | image_url }}',
+                                                        alt: '{{ main_media.alt | default: product_title }}'
+                                                    {%- endif -%}
+                                                }
+                                            {%- endif -%}
+                                            ,thumbnail_src: '{{- thumbnail_src -}}'
+                                        })"
+                                    >
+                                    <div class="product-card-small__swatch">
+                                        <img
+                                            src="{{- thumbnail_src -}}"
+                                            class="absolute-img"
+                                            alt="{{ colors_name | escape }} Thumbnail"
+                                            width="30"
+                                            height="30"
+                                        >
+                                    </div>
+
+                                    {{- variant_title -}}
+                                </label>
+                            </li>
+                        {%- endfor -%}
+                    </ul>
+                </div>
+            {%- else -%}
+                <div 
+                    x-ref="swatchesSlider"
+                    class="swiper product-card-small__swatches-slider swiper-no-swiping"
+                    x-intersect.once="initSwatchesSlider"
+                >
+                    <ul class="swiper-wrapper list-reset">
+                        {%- for swatch_product in swatch_products -%}
+                            {%- liquid 
+                                assign colors_name = swatch_product.variants[0].options[color_position]
+                                assign colors_thumbnail = 'swatch-' | append: colors_name | handleize | append: '.png'  
+                                assign custom_product_thumbnail = swatch_product.metafields.product.thumbnail  
+                                assign thumbnail_src = colors_thumbnail | file_img_url: '72x'
+                                if custom_product_thumbnail
+                                    assign thumbnail_src = custom_product_thumbnail | image_url: width: 72
+                                endif
+                                assign new = swatch_product.metafields.product.new | default: false
+
+                                assign main_media = swatch_product.media | first
+                                if swatch_product.metafields.custom.main_image_on_plp != blank
+                                    assign main_media = swatch_product.metafields.custom.main_image_on_plp.value
+                                endif
+
+                                assign product_title = swatch_product.title
+                                if swatch_product.metafields.accentuate.plp_title != blank
+                                    assign product_title = swatch_product.metafields.accentuate.plp_title | escape
+                                endif
+                                assign product_title_html = product_title | split: ' - ' | first | strip | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>'
+
+                                assign hide_variant_title = swatch_product.selected_or_first_available_variant.metafields.variant.hide_variant_title | default: false 
+                                assign variant_title = ''
+                                if swatch_product.selected_or_first_available_variant.title != 'Default Title' and hide_variant_title == false
+                                    assign variant_title = swatch_product.selected_or_first_available_variant.title
+
+                                    assign variant_title_override = swatch_product.selected_or_first_available_variant.metafields.variant.variant_title_override | escape 
+                                    if variant_title_override != blank 
+                                        assign variant_title = variant_title_override
+                                    endif
+                                endif
+                            -%}
+                            <li class="swiper-slide product-card__swatch-wrapper">
+                                <label 
+                                    class="product-card__swatch"
+                                    {% if swatch_product.handle == product.handle %}
+                                        data-active="true"
+                                    {% endif %}
+                                    :data-active="+variantId === {{ swatch_product.selected_or_first_available_variant.id }}"
+                                >
+                                    <input 
+                                        x-model="variantId"
+                                        name="id" 
+                                        type="radio" 
+                                        class="visually-hidden" 
+                                        value="{{- swatch_product.selected_or_first_available_variant.id -}}"
+                                        {% if swatch_product.handle == product.handle %}
+                                            checked
+                                        {% endif %}
+                                        @change="updateProductCard({
+                                            available: {{ swatch_product.selected_or_first_available_variant.available | default: false }}
+                                            ,coming_soon: {{ swatch_product.metafields.product.enable_coming_soon | default: false }}
+                                            ,notify_me: {{ swatch_product.metafields.product.enable_notify_me | default: false }}
+                                            ,price: {{ swatch_product.selected_or_first_available_variant.price }}
+                                            ,url: '{{- swatch_product.selected_or_first_available_variant.url -}}'
+                                            {%- if variant_title != blank -%}
+                                                ,variant_title: '{{- variant_title -}}'
+                                            {%- endif -%}
+                                            ,title: '{{- product_title -}}'
+                                            ,title_html: '{{- product_title_html -}}'
+                                            {%- if main_media != blank -%}
+                                                ,main_media: {
+                                                    type: '{{ main_media.media_type }}',
+                                                    {%- if main_media.media_type == 'video' -%}
+                                                        {%- liquid 
+                                                            assign video_url = '' 
+                                                            assign mp4_sources = main_media.sources | where: 'format', 'mp4'
+                                                            if main_media.sources.size > 0
+                                                                assign video_url = mp4_sources[0].url
+                                                            endif  
+                                                        -%}
+                                                        {%- if video_url != blank -%}
+                                                            video_url: '{{ video_url }}'
+                                                        {%- endif -%}
+                                                    {%- elsif main_media.media_type == 'image' -%}
+                                                        image_url: '{{ main_media | image_url }}',
+                                                        alt: '{{ main_media.alt | default: product_title }}'
+                                                    {%- endif -%}
+                                                }
+                                            {%- endif -%}
+                                        })"
+                                    >
+
+                                    <div class="product-card__swatch-inner">
+                                        <img
+                                            src="{{- thumbnail_src -}}"
+                                            class="absolute-img"
+                                            alt="{{ colors_name | escape }} Thumbnail"
+                                            width="36"
+                                            height="36"
+                                        >
+                                    </div>
+
+                                    {%- if new -%}
+                                        <span class="superscript-normal product-card__swatch-inner-label">{{- 'products.product.new' | t -}}</span>
+                                    {%- endif -%}
+                                </label>
+                            </li>
+                        {%- endfor -%}
+                    </ul>
+                </div>
+            {%- endif -%}
+
+        {%- when 'variant-swatches' -%}
+            {%- liquid 
+                assign product_title = product.title
+                if product.metafields.accentuate.plp_title != blank
+                    assign product_title = product.metafields.accentuate.plp_title | escape
+                endif    
+                assign product_title_html = product_title | split: ' - ' | first | strip | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>'
+            -%}
+            {%- if style == 1 -%}
+                <div 
+                    x-data="{
+                        open: false
+                    }"
+                    class="superscript-normal select-wrapper {% unless inHiddenOverflow %}select-wrapper--absolute{% endunless %} select-wrapper--bordered product-card-small__selector-wrapper"
+                    @click.outside="open = false"
+                >
+                    <button
+                        id="product-card-selector-btn-{{- product.id -}}-{{ id }}"
+                        class="product-card-small__selector-btn p-normal select-toggle-btn {% if top %}select-toggle-btn--top{% endif %}"
+                        type="button"
+                        aria-haspopup="true"
+                        aria-controls="product-card-selector-{{- product.id -}}"
+                        :aria-expanded="open"
+                        @click.prevent="open = ! open"
+                    >
+                        <div class="product-card-small__swatch-wrapper">
+                            <div class="product-card-small__swatch">
+                                <img
+                                    src="{{- thumbnail_src -}}"
+                                    :src="data?.thumbnail_src ? data.thumbnail_src : '{{- thumbnail_src -}}'"
+                                    class="absolute-img"
+                                    alt="{{ color | escape }} Thumbnail"
+                                    width="30"
+                                    height="30"
+                                >
+                            </div>
+
+                            <span x-text="data ? (data.variant_title ? data.variant_title : '') : '{{- variant_title -}}'">{{- variant_title -}}</span>
+                        </div>
+                        {%- render 'icon', name: 'chevron-down' -%}
+                    </button>
+
+                    <ul 
+                        id="product-card-selector-{{- product.id -}}"
+                        class="dropdown-content {% if top %}dropdown-content--top{% endif %} scrollbar list-reset"
+                        :data-open="open"
+                        aria-labelledby="product-card-selector-btn-{{- product.id -}}-{{ id }}"
+                        :style="open && { height: $el.scrollHeight + 1 + 'px' }"
+                        @resize.window="if (!open) { return; } $el.style.height = 'auto'"
+                    >
+                        {%- for color in color_options[0].values -%}
+                            {%- liquid 
+                                assign custom_thumbnail = ''
+            
+                                for v in product.variants
+                                    if v.options[color_position] == color
+                                        assign variant = v
+                                        assign custom_thumbnail = variant.metafields.custom.thumbnail
+                                        break
+                                    endif
+                                endfor
+                                
+                                assign variant_draft = variant.metafields.variant.draft | default: false
+                                if variant_draft
+                                    continue
+                                endif  
+            
+                                assign color_handle = color | handleize
+                                assign colors_thumbnail = 'swatch-' | append: color_handle | append: '.png'
+                                assign thumbnail_src = colors_thumbnail | file_img_url: '60x'
+                                if custom_thumbnail
+                                    assign thumbnail_src = custom_thumbnail | image_url: width: 60
+                                endif
+        
+                                assign hide_variant_title = variant.metafields.variant.hide_variant_title | default: false 
+                                assign variant_title = ''
+                                if variant.title != 'Default Title' and hide_variant_title == false
+                                    assign variant_title = variant.title
+        
+                                    assign variant_title_override = variant.metafields.variant.variant_title_override | escape 
+                                    if variant_title_override != blank 
+                                        assign variant_title = variant_title_override
+                                    endif
+                                endif
+        
+                                assign main_media = variant.metafields.custom.main_image_on_plp.value
+                            -%}
+
+                            <li>
+                                <label class="select-option p-normal" @click="open = false; initialized = true">
+                                    <input 
+                                        x-model="variantId"
+                                        name="id" 
+                                        type="radio" 
+                                        class="visually-hidden" 
+                                        value="{{- variant.id -}}"
+                                        {% if current_variant.id == variant.id %}
+                                            checked
+                                        {% endif %}
+                                        @change="open = false; updateProductCard({
+                                            available: {{ variant.available | default: false }}
+                                            ,coming_soon: {{ product.metafields.product.enable_coming_soon | default: false }}
+                                            ,notify_me: {{ product.metafields.product.enable_notify_me | default: false }}
+                                            ,price: {{ variant.price }}
+                                            {%- if variant_title != blank -%}
+                                                ,variant_title: '{{- variant_title -}}'
+                                            {%- endif -%}
+                                            ,title: '{{- product_title -}}'
+                                            ,title_html: '{{- product_title_html -}}'
+                                            ,url: '{{- variant.url -}}'
+                                            ,thumbnail_src: '{{- thumbnail_src -}}'
+                                            {%- if main_media != blank -%}
+                                                ,main_media: {
+                                                    type: '{{ main_media.media_type }}',
+                                                    {%- if main_media.media_type == 'video' -%}
+                                                        {%- liquid 
+                                                            assign video_url = '' 
+                                                            assign mp4_sources = main_media.sources | where: 'format', 'mp4'
+                                                            if main_media.sources.size > 0
+                                                                assign video_url = mp4_sources[0].url
+                                                            endif  
+                                                        -%}
+                                                        {%- if video_url != blank -%}
+                                                            video_url: '{{ video_url }}'
+                                                        {%- endif -%}
+                                                    {%- elsif main_media.media_type == 'image' -%}
+                                                        image_url: '{{ main_media | image_url }}',
+                                                        alt: '{{ main_media.alt | default: product.title }}'
+                                                    {%- endif -%}
+                                                }
+                                            {%- else -%}
+                                                {%- if variant.image != blank -%}
+                                                    ,main_media: {
+                                                        type: 'image',
+                                                        image_url: '{{ variant.image | image_url }}',
+                                                        alt: '{{ variant.image.alt | default: product.title }}'
+                                                    }
+                                                {%- endif -%}
+                                            {%- endif -%}
+                                        })"
+                                    >
+                                    <div class="product-card-small__swatch">
+                                        <img
+                                            src="{{- thumbnail_src -}}"
+                                            class="absolute-img"
+                                            alt="{{ color | escape }} Thumbnail"
+                                            width="30"
+                                            height="30"
+                                        >
+                                    </div>
+
+                                    {{- variant_title -}}
+                                </label>
+                            </li>
+                        {%- endfor -%}
+                    </ul>
+                </div>
+            {%- else -%}
+                <div 
+                    x-ref="swatchesSlider"
+                    class="swiper product-card-small__swatches-slider swiper-no-swiping"
+                    x-intersect.once="initSwatchesSlider"
+                >
+                    <ul class="swiper-wrapper list-reset">
+                        {%- for color in color_options[0].values -%}
+                            {%- liquid 
+                                assign custom_thumbnail = ''
+            
+                                for v in product.variants
+                                    if v.options[color_position] == color
+                                        assign variant = v
+                                        assign custom_thumbnail = variant.metafields.custom.thumbnail
+                                        break
+                                    endif
+                                endfor
+                                
+                                assign variant_draft = variant.metafields.variant.draft | default: false
+                                if variant_draft
+                                    continue
+                                endif  
+            
+                                assign color_handle = color | handleize
+                                assign colors_thumbnail = 'swatch-' | append: color_handle | append: '.png'
+                                assign thumbnail_src = colors_thumbnail | file_img_url: '72x'
+                                if custom_thumbnail
+                                    assign thumbnail_src = custom_thumbnail | image_url: width: 72
+                                endif
+            
+                                assign new = variant.metafields.variant.new | default: false
+        
+                                assign hide_variant_title = variant.metafields.variant.hide_variant_title | default: false 
+                                assign variant_title = ''
+                                if variant.title != 'Default Title' and hide_variant_title == false
+                                    assign variant_title = variant.title
+        
+                                    assign variant_title_override = variant.metafields.variant.variant_title_override | escape 
+                                    if variant_title_override != blank 
+                                        assign variant_title = variant_title_override
+                                    endif
+                                endif
+        
+                                assign main_media = variant.metafields.custom.main_image_on_plp.value
+                            -%}
+                            <li
+                                class="swiper-slide product-card__swatch-wrapper"
+                            >
+                                <label 
+                                    class="product-card__swatch"
+                                    data-active="{%- if current_variant.id == variant.id -%}true{%- else -%}false{%- endif -%}"
+                                    :data-active="+variantId === {{ variant.id }}"
+                                >
+                                    <input 
+                                        x-model="variantId"
+                                        name="id" 
+                                        type="radio" 
+                                        class="visually-hidden" 
+                                        value="{{- variant.id -}}"
+                                        {% if current_variant.id == variant.id %}
+                                            checked
+                                        {% endif %}
+                                        @change="open = false; updateProductCard({
+                                            available: {{ variant.available | default: false }}
+                                            ,coming_soon: {{ product.metafields.product.enable_coming_soon | default: false }}
+                                            ,notify_me: {{ product.metafields.product.enable_notify_me | default: false }}
+                                            ,price: {{ variant.price }}
+                                            {%- if variant_title != blank -%}
+                                                ,variant_title: '{{- variant_title -}}'
+                                            {%- endif -%}
+                                            ,title: '{{- product_title -}}'
+                                            ,title_html: '{{- product_title_html -}}'
+                                            ,url: '{{- variant.url -}}'
+                                            {%- if main_media != blank -%}
+                                                ,main_media: {
+                                                    type: '{{ main_media.media_type }}',
+                                                    {%- if main_media.media_type == 'video' -%}
+                                                        {%- liquid 
+                                                            assign video_url = '' 
+                                                            assign mp4_sources = main_media.sources | where: 'format', 'mp4'
+                                                            if main_media.sources.size > 0
+                                                                assign video_url = mp4_sources[0].url
+                                                            endif  
+                                                        -%}
+                                                        {%- if video_url != blank -%}
+                                                            video_url: '{{ video_url }}'
+                                                        {%- endif -%}
+                                                    {%- elsif main_media.media_type == 'image' -%}
+                                                        image_url: '{{ main_media | image_url }}',
+                                                        alt: '{{ main_media.alt | default: product.title }}'
+                                                    {%- endif -%}
+                                                }
+                                            {%- else -%}
+                                                {%- if variant.image != blank -%}
+                                                    ,main_media: {
+                                                        type: 'image',
+                                                        image_url: '{{ variant.image | image_url }}',
+                                                        alt: '{{ variant.image.alt | default: product.title }}'
+                                                    }
+                                                {%- endif -%}
+                                            {%- endif -%}
+                                        })"
+                                    >
+        
+                                    <div class="product-card__swatch-inner">
+                                        <img
+                                            src="{{- thumbnail_src -}}"
+                                            class="absolute-img"
+                                            alt="{{ color | escape }} Thumbnail"
+                                            width="36"
+                                            height="36"
+                                        >
+                                    </div>
+        
+                                    {%- if new -%}
+                                        <span class="superscript-normal product-card__swatch-inner-label">{{- 'products.product.new' | t -}}</span>
+                                    {%- endif -%}
+                                </label>
+                            </li>
+                        {%- endfor -%}
+                    </ul>
+                </div>
+            {%- endif -%}
+
+        {%- when 'variants' -%}
+            <div 
+                x-data="{
+                    open: false
+                }"
+                class="superscript-normal select-wrapper {% unless inHiddenOverflow %}select-wrapper--absolute{% endunless %} select-wrapper--bordered product-card-small__selector-wrapper"
+                @click.outside="open = false"
+            >
+                <button
+                    id="product-card-selector-btn-{{- product.id -}}-{{ id }}"
+                    class="product-card-small__selector-btn p-normal select-toggle-btn {% if top %}select-toggle-btn--top{% endif %}"
+                    type="button"
+                    aria-haspopup="true"
+                    aria-controls="product-card-selector-{{- product.id -}}"
+                    :aria-expanded="open"
+                    @click.prevent="open = ! open"
+                >
+                    {{- current_variant.metafields.variant.variant_title_override | default: current_variant.title -}}
+                    {%- render 'icon', name: 'chevron-down' -%}
+                </button>
+
+                <ul 
+                    id="product-card-selector-{{- product.id -}}"
+                    class="dropdown-content {% if top %}dropdown-content--top{% endif %} scrollbar list-reset"
+                    :data-open="open"
+                    aria-labelledby="product-card-selector-btn-{{- product.id -}}-{{ id }}"
+                    :style="open && { height: $el.scrollHeight + 1 + 'px' }"
+                    @resize.window="if (!open) { return; } $el.style.height = 'auto'"
+                >
+                    {%- for variant in product.variants -%}
+                        {%- liquid 
+                            assign variant_title = variant.metafields.variant.variant_title_override | default: variant.title
+                            assign main_media = variant.metafields.custom.main_image_on_plp.value    
+                        -%}
+                        <li>
+                            <label class="select-option p-normal" @click="open = false; initialized = true">
+                                <input 
+                                    x-model="variantId"
+                                    name="id" 
+                                    type="radio" 
+                                    class="visually-hidden" 
+                                    value="{{- variant.id -}}"
+                                    {% if current_variant.id == variant.id %}
+                                        checked
+                                    {% endif %}
+                                    @change="open = false; updateProductCard({
+                                        available: {{ variant.available | default: false }}
+                                        ,coming_soon: {{ product.metafields.product.enable_coming_soon | default: false }}
+                                        ,notify_me: {{ product.metafields.product.enable_notify_me | default: false }}
+                                        ,price: {{ variant.price }}
+                                        ,url: '{{- variant.url -}}'
+                                        {%- if variant_title != blank -%}
+                                            ,variant_title: '{{- variant_title -}}'
+                                        {%- endif -%}
+                                        {%- if main_media != blank -%}
+                                            ,main_media: {
+                                                type: '{{ main_media.media_type }}',
+                                                {%- if main_media.media_type == 'video' -%}
+                                                    {%- liquid 
+                                                        assign video_url = '' 
+                                                        assign mp4_sources = main_media.sources | where: 'format', 'mp4'
+                                                        if main_media.sources.size > 0
+                                                            assign video_url = mp4_sources[0].url
+                                                        endif  
+                                                    -%}
+                                                    {%- if video_url != blank -%}
+                                                        video_url: '{{ video_url }}'
+                                                    {%- endif -%}
+                                                {%- elsif main_media.media_type == 'image' -%}
+                                                    image_url: '{{ main_media | image_url }}',
+                                                    alt: '{{ main_media.alt | default: product.title }}'
+                                                {%- endif -%}
+                                            }
+                                        {%- else -%}
+                                            {%- if variant.image != blank -%}
+                                                ,main_media: {
+                                                    type: 'image',
+                                                    image_url: '{{ variant.image | image_url }}',
+                                                    alt: '{{ variant.image.alt | default: product.title }}'
+                                                }
+                                            {%- endif -%}
+                                        {%- endif -%}
+                                    })"
+                                >
+                                {{- variant_title -}}
+                            </label>
+                        </li>
+                    {%- endfor -%}
+                </ul>
+            </div> 
+
+        {%- else -%}
+            <input type="hidden" name="id" value="{{- current_variant.id -}}">
+    {%- endcase -%}
+
+    {%- render 'product-card-form-submit-button', product: product, variant_selector_type: variant_selector_type, price: price, button_color: btnColor -%}
+</form>

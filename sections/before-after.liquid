@@ -1,0 +1,309 @@
+{%- liquid 
+    assign before_image = section.settings.before_image
+    assign after_image = section.settings.after_image
+-%}
+
+{%- if before_image and after_image and section.blocks.size > 0 -%}
+    {%- liquid
+        assign padding_top = section.settings.padding_top | default: 0
+        assign padding_bottom = section.settings.padding_bottom | default: 0
+        assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+        assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+        assign content = section.settings.content
+        assign note = section.settings.note 
+        assign before_label = section.settings.before_label | default: 'Before'
+        assign after_label = section.settings.after_label | default: 'After'
+        assign before_default_width = 60
+        assign functionality = section.settings.functionality | default: 'before-after-slider'
+        assign media_type = section.settings.media_type | default: 'image'
+        assign lazyload = section.settings.lazyload | default: false
+        assign image = section.settings.image
+        assign video = section.settings.video
+        if lazyload == true 
+            assign loading = 'lazy'
+        endif
+    -%}
+
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/before-after.scss' -%}
+    
+    <section id="section-{{- section.id -}}">
+        <div class="container">
+            <div class="before-after__inner before-after__inner--{{ functionality }}">
+                <div class="before-after__images">
+                    {%- if content != blank -%}
+                        <div class="before-after__title rte">{{- content -}}</div>
+                    {%- endif -%}
+
+                    {%- if functionality == 'before-after-slider' -%}
+                        <div 
+                            x-data="comparison({{ before_default_width }})"
+                            class="before-after__comparison"
+                            data-split-load-section
+                        >
+                            <div 
+                                x-ref="thumb"
+                                class="before-after__thumb"
+                                style="left: {{- before_default_width -}}%;"
+                                :style="{ left: `${ width }px` }"
+                            >
+                                <div class="before-after__thumb-icon">
+                                    {%- render 'icon', name: 'arrows' -%}
+                                </div>
+                            </div>
+
+                            <div 
+                                class="before-after__image before-after__image--before"
+                                style="width: {{- before_default_width -}}%;"
+                                :style="{ width: `${ width }px` }"
+                            >
+                                {%- render 'img', 
+                                    image: before_image, 
+                                    class: 'before-after__img', 
+                                    attributes: ':style="{ width: `${ imageWidth }px` }"'
+                                -%}
+                                <span class="before-after__label superscript-normal">{{- before_label -}}</span>
+                            </div>
+
+                            <div class="before-after__image before-after__image--after">
+                                {%- render 'img', image: after_image, class: 'before-after__img' -%}
+                                <span class="before-after__label superscript-normal">{{- after_label -}}</span>
+                            </div>
+                        </div>
+                    {%- else -%}
+                        <div class="before-after__comparison before-after__comparison--media">
+                            {%- if media_type == 'image' -%}
+                                {%- if image -%}
+                                    {%- render 'img', image: image, loading: loading -%}
+                                {%- endif -%}
+                            {%- elsif media_type == 'video' -%}
+                                {%- if video -%}
+                                    {%- render 'video', 
+                                        video: video,
+                                        poster: image
+                                    -%}
+                                {%- endif -%}
+                            {%- endif -%}
+                        </div>
+                    {%- endif -%}
+                </div>
+
+                <div class="before-after__body">
+                    {%- if content != blank -%}
+                        <div class="before-after__title rte">{{- content -}}</div>
+                    {%- endif -%}
+
+                    <ul class="list-reset before-after__facts">
+                        {%- for block in section.blocks -%}
+                            {%- liquid 
+                                assign result = block.settings.result | default: 100
+                                assign fact = block.settings.fact
+                                if fact == blank
+                                    continue
+                                endif
+
+                                assign dashoffset = result | divided_by: 100.00 | times: 252 | round
+                            -%}
+                            <li class="before-after__fact">
+                                <div class="before-after__fact-result h3">
+                                    {{- result -}}%
+
+                                    <svg class="before-after__circle" xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="-8.75 -8.75 87.5 87.5" version="1.1" aria-label="Before / After progress circle bar">
+                                        <circle r="40" cx="35" cy="35" fill="transparent" stroke="var(--chalk)" stroke-width="3" stroke-dasharray="252" stroke-dashoffset="0"/>
+                                        <circle r="40" cx="35" cy="35" stroke="var(--accent-blue)" stroke-width="3" stroke-linecap="butt" stroke-dashoffset="{{- 252 | minus: dashoffset -}}" fill="transparent" stroke-dasharray="252"/>
+                                    </svg>
+                                </div>
+
+                                <div class="before-after__fact-content rte">
+                                    {{- fact -}}
+                                </div>
+                            </li>
+                        {%- endfor -%}
+                    </ul>
+
+                    {%- if note != blank -%}
+                        <div class="before-after__note p-small rte">
+                            {{- note -}}
+                        </div>
+                    {%- endif -%}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Before / After | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Section Settings"
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content",
+            "info": "Use H2 for title; Paragraph for regular text."
+        },
+        {
+            "type": "richtext",
+            "id": "note",
+            "label": "Note"
+        },
+        {
+            "id": "functionality",
+            "label": "Functionality",
+            "type": "select",
+            "options": [
+                {
+                    "value": "before-after-slider",
+                    "label": "Before / After slider"
+                },
+                {
+                    "value": "static-media",
+                    "label": "Static media"
+                }
+            ],
+            "default": "before-after-slider"
+        },
+        {
+            "type": "header",
+            "content": "Before / After slider"
+        },
+        {
+            "type": "header",
+            "content": "Before"
+        },
+        {
+            "type": "image_picker",
+            "id": "before_image",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "before_label",
+            "label": "Label",
+            "default": "Before"
+        },
+        {
+            "type": "header",
+            "content": "After"
+        },
+        {
+            "type": "image_picker",
+            "id": "after_image",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "after_label",
+            "label": "Label",
+            "default": "After"
+        },
+        {
+            "type": "header",
+            "content": "Static media"
+        },
+        {
+            "type": "select",
+            "id": "media_type",
+            "label": "Media type",
+            "default": "video",
+            "options": [
+                { "value": "image", "label": "Image" },
+                { "value": "video", "label": "Video" }
+            ]
+        },
+        {
+            "type": "checkbox",
+            "id": "lazyload",
+            "label": "Lazyload",
+            "default": true,
+            "info": "Enable if the media is below the fold."
+        },
+        {
+            "type": "video",
+            "id": "video",
+            "label": "Video",
+            "info": "Format: .mp4; Aspect ratio: 1 / 1"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "With the video type, the image is used as a poster (first frame); Aspect ratio: 1 / 1"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "result",
+            "name": "Result",
+            "settings": [
+                {
+                    "type": "range",
+                    "id": "result",
+                    "label": "Result",
+                    "unit": "%",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "default": 100
+                },
+                {
+                    "type": "richtext",
+                    "id": "fact",
+                    "label": "Fact"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Before / After | AW"
+        }
+    ]
+}
+{% endschema %}
+ 

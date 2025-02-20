@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "rewards-history": {
+      "type": "rewards-history",
+      "settings": {}
+    }
+  },
+  "order": [
+    "rewards-history"
+  ]
+}

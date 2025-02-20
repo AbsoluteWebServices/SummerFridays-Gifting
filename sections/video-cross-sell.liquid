@@ -1,0 +1,241 @@
+{%- liquid
+    assign padding_top = section.settings.padding_top | default: 0
+    assign padding_bottom = section.settings.padding_bottom | default: 0
+    assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+    assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+
+    assign content = section.settings.content
+    assign font_size = section.settings.font_size | default: 'normal'
+    assign button_label = section.settings.button_label | escape | strip_html
+    assign button_url = section.settings.button_url
+    assign media_type = section.settings.media_type | default: 'image'
+    assign lazyload = section.settings.lazyload | default: false
+    assign image = section.settings.image
+    assign video = section.settings.video
+    assign autoplay = section.settings.autoplay | default: false 
+    assign play_control = section.settings.play_control | default: false 
+    assign sound_control = section.settings.sound_control | default: false 
+    assign content_secondary = section.settings.content_secondary
+    assign font_size_secondary = section.settings.font_size_secondary | default: 'normal'
+    assign products = section.settings.products
+    
+    assign loading = 'eager'
+    if lazyload == true 
+        assign loading = 'lazy'
+    endif
+-%}
+
+{%- render 'offset',
+    id: section.id,
+    padding_top: padding_top,
+    padding_bottom: padding_bottom,
+    padding_top_desktop: padding_top_desktop,
+    padding_bottom_desktop: padding_bottom_desktop
+-%}
+
+{%- render 'adastra' with 'styles/sections/video-cross-sell.scss' -%}
+ 
+<section id="section-{{- section.id -}}">
+    <div class="container container--smaller-tablet">
+        <div class="video-cross-sell__wrapper">
+            <div class="video-cross-sell__body">
+                {%- if content != blank -%}
+                    <div class="rte {% if font_size == 'larger' %}p-large rte--larger{% endif %}">
+                        {{- content -}}
+
+                        {%- if button_label != blank and button_url != blank -%}
+                            <p>
+                                <a href="{{- button_url -}}" aria-label="{{- button_label -}}" class="btn btn--px-36 btn--chalk btn--center hover-arrow">
+                                    {{- button_label -}}
+                                    {%- render 'icon', name: 'arrow-right' -%}
+                                </a>
+                            </p>
+                        {%- endif -%}
+                    </div>
+                {%- endif -%}
+            </div>
+
+            <div class="video-cross-sell__media">
+                {%- if media_type == 'image' -%}
+                    {%- if image -%}
+                        {%- render 'img', image: image, loading: loading -%}
+                    {%- endif -%}
+                {%- elsif media_type == 'video' -%}
+                    {%- if video -%}
+                        {%- render 'video', 
+                            video: video,
+                            poster: image,
+                            play_control: play_control,
+                            sound_control: sound_control,
+                            autoplay: autoplay
+                        -%}
+                    {%- endif -%}
+                {%- endif -%}
+            </div>
+
+            <div class="video-cross-sell__products">
+                {%- if content_secondary != blank -%}
+                    <div class="rte {% if font_size_secondary == 'larger' %}p-large rte--larger{% endif %}">
+                        {{- content_secondary -}}
+                    </div>
+                {%- endif -%}
+
+                {%- if products != blank -%}
+                    <div class="video-cross-sell__products-items">
+                        {%- for product in products -%}
+                            {%- assign id = section.id | append: '-' | append: product.id -%}
+                            <div class="video-cross-sell__product">
+                                {%- render 'product-card-small', product: product, id: id -%}
+                            </div>
+                        {%- endfor -%}
+                    </div>
+                {%- endif -%}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Video Cross Sell | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Settings"
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content",
+            "info": "Hint: use H2 for the title, paragraph for regular text; make text bold to highlight in blue"
+        },
+        {
+            "type": "select",
+            "id": "font_size",
+            "label": "Font size",
+            "default": "normal",
+            "options": [
+                { "value": "normal", "label": "Normal" },
+                { "value": "larger", "label": "Larger" }
+            ]
+        },
+        {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label",
+            "info": "Keep it short."
+        },
+        {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+        },
+        {
+            "type": "select",
+            "id": "media_type",
+            "label": "Media type",
+            "default": "video",
+            "options": [
+                { "value": "image", "label": "Image" },
+                { "value": "video", "label": "Video" }
+            ]
+        },
+        {
+            "type": "checkbox",
+            "id": "lazyload",
+            "label": "Lazyload",
+            "default": false,
+            "info": "Enable if the media is below the fold."
+        },
+        {
+            "type": "video",
+            "id": "video",
+            "label": "Video",
+            "info": "Format: .mp4"
+        },
+        {
+            "type": "checkbox",
+            "id": "autoplay",
+            "label": "Autoplay",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "play_control",
+            "label": "Play control",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "sound_control",
+            "label": "Sound control",
+            "default": true
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "With the video type, the image is used as a poster (first frame)"
+        },
+        {
+            "type": "richtext",
+            "id": "content_secondary",
+            "label": "Content",
+            "info": "Hint: use H2 for the title, paragraph for regular text"
+        },
+        {
+            "type": "select",
+            "id": "font_size_secondary",
+            "label": "Font size",
+            "default": "normal",
+            "options": [
+                { "value": "normal", "label": "Normal" },
+                { "value": "larger", "label": "Larger" }
+            ]
+        },
+        {
+            "type": "product_list",
+            "id": "products",
+            "label": "Products"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Video Cross Sell | AW"
+        }
+    ]
+}
+{% endschema %}

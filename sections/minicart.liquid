@@ -1,0 +1,160 @@
+{%- render 'adastra' with 'styles/sections/minicart.scss' -%}
+
+{%- include 'minicart-settings' -%}
+
+<div
+    x-data
+    x-show="$store?.Cart?.opened"
+    x-trap="$store?.Cart?.opened"
+    id="minicart"
+    class="minicart"
+    data-loading="true"
+    :data-loading="$store?.Cart?.loading"
+    style="display: none;"
+    x-transition:enter="default-transition"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-1"
+    x-transition:leave="default-transition"
+    x-transition:leave-start="opacity-1"
+    x-transition:leave-end="opacity-0"
+    role="dialog"
+    aria-label="Cart drawer"
+    aria-describedby="minicart-description"
+>
+    <div 
+        class="minicart__overlay"
+    ></div>
+
+    <div 
+        x-show="$store?.Cart?.opened"
+        class="minicart__body"
+        style="display: none;"
+        @mousedown.outside="$store.Cart.close()"
+        x-transition:enter="default-transition"
+        x-transition:enter-start="minicart__body--hidden"
+        x-transition:enter-end="minicart__body--opened"
+        x-transition:leave="default-transition"
+        x-transition:leave-start="minicart__body--opened"
+        x-transition:leave-end="minicart__body--hidden"
+    >
+        <a
+            href="/checkout"
+            class="visually-hidden"
+            aria-label="Skip to Checkout"
+            title="Skip to Checkout"
+            aria-hidden="false"
+        >
+            <span>Skip to Checkout</span>
+            <span x-text="$store?.Cart?.cart ? window.Shopify.formatMoney($store.Cart.cart.total_price) : '{{- cart.total_price | money_without_trailing_zeros -}}'">{{- cart.total_price | money_without_trailing_zeros -}}</span>
+        </a>
+
+        <div class="minicart__header">
+            <div class="minicart__header-title-wrapper">
+                <span class="minicart__header-title subheader-small">
+                    {{ 'minicart.general.title' | t }} (<span x-text="$store?.Cart?.cart ? ($store.Cart.cart.item_count || 0) : '{{- cart.item_count -}}'">{{- cart.item_count -}}</span>)
+                </span>
+
+                <button
+                    class="minicart__close-btn hover-opacity"
+                    type="button"
+                    aria-controls="minicart"
+                    aria-label="Close minicart"
+                    @click.prevent="$store.Cart.close()"
+                >
+                    {%- render 'icon', name: 'times' -%}
+                </button>
+            </div>
+
+            {%- render 'minicart-shipping-progress-bar', 
+                enable: free_shipping_progress_bar_enable,
+                cost: free_shipping_progress_bar_cost,
+                reached_text: free_shipping_progress_bar_reached_text
+            -%}
+        </div> 
+
+        <div class="minicart__main scrollbar" data-allow-scroll>
+            <template x-if="$store?.Cart?.cart?.items?.length">
+                {%- render 'minicart-loyalty-points' -%}
+            </template>
+
+            <template x-if="$store?.Cart?.cart?.items?.length">
+                <div class="minicart__main-block minicart__items">
+                    <template x-if="($store.Cart?.bundles() || []).length">
+                        <template x-for="item in $store.Cart.bundles()" :key="`bundle-${item.key}`">
+                            {%- render 'minicart-bundle' -%}
+                        </template>
+                    </template>
+
+                    <template x-if="($store.Cart?.line_items() || []).length">
+                        <template x-for="item in $store.Cart.line_items()" :key="`line-item-${item.key}`">
+                            {%- render 'minicart-item' -%}
+                        </template>
+                    </template>
+                </div>
+            </template>
+
+            {%- render 'minicart-upsells', 
+                enable: upsells_enable,
+                title: upsells_title,
+                products: upsells_products
+            -%}
+
+            <template x-if="$store?.Cart?.cart?.items?.length">
+                {%- render 'minicart-free-samples', title: free_samples_title -%}
+            </template>
+
+            <template x-if="!$store?.Cart?.cart?.items?.length">
+                <div class="minicart__main-block">
+                    {{- 'minicart.general.empty' | t -}}
+                </div>
+            </template>
+
+            {%- if donations_enable -%}
+                <template x-if="$store?.Cart?.cart?.items?.length">
+                    {%- render 'minicart-donations',
+                        enable: donations_enable,
+                        title: donations_title,
+                        products: donations_products,
+                        cta: donations_cta
+                    -%}
+                </template>
+            {%- endif -%}
+        </div>
+
+        <template x-if="$store?.Cart?.cart?.items?.length">
+            <div class="minicart__footer">
+                {%- render 'minicart-is-a-gift',
+                    enable: is_a_gift_enable,
+                    title: is_a_gift_title,
+                    placeholder: is_a_gift_placeholder    
+                -%}
+
+                <div class="minicart__footer-actions">
+                    <a
+                        href="/checkout"
+                        class="btn btn--full btn--between btn--clay"
+                        aria-label="Go to {{ 'minicart.general.checkout' | t }}"
+                        title="{{ 'minicart.general.checkout' | t }}"
+                    >
+                        <span>{{ 'minicart.general.checkout' | t }}</span>
+                        <span x-text="$store?.Cart?.cart ? window.Shopify.formatMoney($store.Cart.cart.total_price) : '{{- cart.total_price | money_without_trailing_zeros -}}'">{{- cart.total_price | money_without_trailing_zeros -}}</span>
+                    </a>
+                </div>
+
+                {%- if footer_note_enable == true and footer_note_text != blank -%}
+                    <div class="minicart__footer-note superscript-normal rte">
+                        {{- footer_note_text | metafield_tag -}}
+                    </div>
+                {%- endif -%}
+            </div>
+        </template>
+        
+        <div id="minicart-description" class="visually-hidden">Review the items in your shopping cart before proceeding to checkout.</div>
+
+        <div 
+            aria-live="assertive" 
+            class="visually-hidden"
+            x-text="$store?.Cart?.ariaLiveText || 'Cart drawer opened.'"
+        ></div>
+    </div>
+</div>

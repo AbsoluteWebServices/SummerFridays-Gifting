@@ -1,0 +1,129 @@
+{%- if section.blocks.size > 0 -%}
+    {%- liquid
+        assign padding_top = section.settings.padding_top | default: 0
+        assign padding_bottom = section.settings.padding_bottom | default: 0
+        assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+        assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+        assign content = section.settings.content
+    -%}
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/jobs.scss' -%}
+
+    <section id='section-{{- section.id -}}'>
+        <div class='container container--page'>
+            {%- if content != blank -%}
+                <div class='rte jobs__content'>
+                    {{- content -}}
+                </div>
+            {%- endif -%}
+
+            <div class="jobs__items">
+                {%- for block in section.blocks -%}
+                    {%- liquid 
+                        assign position = block.settings.position | escape | strip_html
+                        assign location = block.settings.location | escape | strip_html  
+                        assign url = block.settings.url 
+                        if url == blank or position == blank 
+                            continue
+                        endif
+                    -%}
+                    <a href="{{- url -}}" aria-label="{{- position -}}" target="_blank" class="jobs__item hover-opacity">
+                        <span class="subheader-small">{{- position -}}</span>
+                        
+                        <span class="jobs__item-inner">
+                            {%- if location != blank -%}
+                                <span class="p-normal">{{- location -}}</span>
+                            {%- endif -%}
+                            {%- render 'icon', name: 'arrow-right' -%}
+                        </span>
+                    </a>
+                {%- endfor -%}
+            </div>
+        </div>
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Jobs | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Settings"
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Jobs | AW"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Job",
+            "type": "job",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "position",
+                    "label": "Position"
+                },
+                {
+                    "type": "text",
+                    "id": "location",
+                    "label": "Location"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "URL"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

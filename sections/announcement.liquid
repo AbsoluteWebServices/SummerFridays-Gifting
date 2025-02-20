@@ -1,0 +1,90 @@
+{%- if section.blocks.size > 0 -%}
+    <section>
+        {%- for block in section.blocks -%}
+            {%- liquid
+                assign announcement = block.settings.announcement 
+                if announcement == blank
+                    continue
+                endif
+
+                assign background_color = block.settings.background_color | default: 'morning-sky'
+                assign text_color = block.settings.text_color | default: 'black'
+            -%}
+            
+            <div 
+                class="announcement p-normal a-underline-wrapper a-underline-style-2"
+                style="--bg-color: var(--{{ background_color }}); --text-color: var(--{{- text_color -}});"
+            >
+                <div class="container">
+                    {{- announcement -}}
+                </div>
+            </div>
+        {%- endfor -%}
+    </section>
+
+    <style>
+        :root {
+            --announcement-height: {{- 42.00 | times: section.blocks.size | divided_by: 10.00 -}}rem;
+        }
+    </style>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Announcement",
+    "max_blocks": 3,
+    "blocks": [
+        {
+            "type": "announcement",
+            "name": "Announcement",
+            "settings": [
+                {
+                    "id": "announcement",
+                    "label": "Announcement",
+                    "type": "richtext"
+                },
+                {
+                    "id": "background_color",
+                    "label": "Background color",
+                    "type": "select",
+                    "options": [
+                        {
+                            "value": "white",
+                            "label": "White"
+                        },
+                        {
+                            "value": "black",
+                            "label": "Black"
+                        },
+                        {
+                            "value": "red",
+                            "label": "Red"
+                        },
+                        {
+                            "value": "morning-sky",
+                            "label": "Morning Sky"
+                        }
+                    ],
+                    "default": "morning-sky"
+                },
+                {
+                    "id": "text_color",
+                    "label": "Text color",
+                    "type": "select",
+                    "options": [
+                        {
+                            "value": "white",
+                            "label": "White"
+                        },
+                        {
+                            "value": "black",
+                            "label": "Black"
+                        }
+                    ],
+                    "default": "black"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

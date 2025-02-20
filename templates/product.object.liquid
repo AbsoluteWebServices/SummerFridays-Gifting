@@ -1,0 +1,157 @@
+{%- layout none -%}
+{%- liquid 
+    assign max_qty = 6 
+    if product.tags.size > 0
+        for tag in product.tags
+            unless tag contains 'max_qty:'
+                continue
+            endunless
+
+            assign tagArr = tag | split: ':'
+            unless tagArr.size == 2
+                continue
+            endunless
+
+            assign max_qty = tagArr[1] | times: 1
+        endfor
+    endif  
+    
+    assign image_url = product.featured_image | image_url: width: product.featured_image.width
+    unless image_url contains 'https:'
+      assign image_url = 'https:' | append: image_url
+    endunless
+-%}
+{  
+    "id": {{- product.id -}}
+    ,"title": {{- product.title | json -}}
+    ,"handle": {{- product.handle | json -}}
+    ,"variant_default_id": {{- product.selected_or_first_available_variant.id -}}
+    ,"variants": [
+        {%- for variant in product.variants -%}
+            {%- assign variant_media = variant.metafields.variant.media.value -%}
+            {%- unless forloop.first -%},{%- endunless -%}
+            {
+                "id": {{- variant.id | json -}},
+                "available": {{- variant.available -}},
+                "title": {{- variant.title | json -}},
+                "price": {{- variant.price | json -}},
+                "compare_at_price": {{- variant.compare_at_price | json -}},
+                "options": {{- variant.options | json -}}
+                {%- if variant_media != blank -%}
+                    ,"media": [
+                        {%- for media in variant_media -%}
+                            {
+                                "alt": {{- media.alt | default: product.title | json -}},
+                                "media_type": {{- media.media_type | json -}},
+                                {%- if media.media_type == 'image' -%}
+                                    "src": {{- media.preview_image.src | default: '' | json -}}
+                                {%- elsif media.media_type == 'video' -%}
+                                    {%- assign mp4_sources = media.sources | where: 'format', 'mp4' -%}
+                                    {%- if mp4_sources.size > 0 -%}
+                                        "src": {{- mp4_sources[0].url | json -}},
+                                        "preview_image": {{- media.preview_image.src | default: '' | json -}}
+                                    {%- endif -%}
+                                {%- endif -%}
+                            }{%- unless forloop.last -%},{%- endunless -%}
+                        {%- endfor -%}
+                    ]
+                {%- endif -%}
+            }
+        {%- endfor -%}
+    ]
+    ,"url": {{- product.url | json -}}
+    ,"image_url": {{- image_url | json -}}
+    ,"vendor": {{- product.vendor | json -}}
+    ,"collections": [
+        {%- if product.collections.size > 0 -%}
+            {%- for collection in product.collections -%}
+                {{ collection.title | json }}{%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+        {%- endif -%}
+    ]
+    ,"max_qty": {{- max_qty -}}
+    {% assign custom_media = product.metafields.product.custom_media.value %}
+    {%- if custom_media != blank -%}
+        ,"custom_media": [
+            {%- for media in custom_media -%}
+                {%- liquid
+                    assign main_media = media.main_media.value
+                    assign alt = media.alt.value
+                    assign background_media = media.background_media.value
+                -%}
+                {
+                    {%- if main_media != blank -%}
+                        "alt": {{- alt | default: product.title | json -}},
+                        "main_media_type": {{- main_media.media_type | json -}},
+                        {%- if main_media.media_type == 'image' -%}
+                            "main_src": {{- main_media.preview_image.src | default: '' | json -}}
+                        {%- elsif main_media.media_type == 'video' -%}
+                            {%- assign mp4_sources = main_media.sources | where: 'format', 'mp4' -%}
+                            {%- if mp4_sources.size > 0 -%}
+                                "main_src": {{- mp4_sources[0].url | json -}},
+                                "main_preview_image": {{- main_media.preview_image.src | default: '' | json -}}
+                            {%- endif -%}
+                        {%- endif -%}
+
+                        {%- if background_media != blank -%}
+                            ,"bg_media_type": {{- background_media.media_type | json -}},
+                            {%- if background_media.media_type == 'image' -%}
+                                "bg_src": {{- background_media.preview_image.src | default: '' | json -}}
+                            {%- elsif background_media.media_type == 'video' -%}
+                                {%- assign mp4_sources = background_media.sources | where: 'format', 'mp4' -%}
+                                {%- if mp4_sources.size > 0 -%}
+                                    "bg_src": {{- mp4_sources[0].url | json -}},
+                                    "bg_preview_image": {{- background_media.preview_image.src | default: '' | json -}}
+                                {%- endif -%}
+                            {%- endif -%}
+                        {%- endif -%}
+                    {% endif %}
+                }{%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+        ]
+    {%- endif -%}
+    ,"media": [
+        {%- if product.media.size > 0 -%}
+            {%- for media in product.media -%}
+                {
+                    "alt": {{- media.alt | default: product.title | json -}},
+                    "media_type": {{- media.media_type | json -}},
+                    {%- if media.media_type == 'image' -%}
+                        "src": {{- media.preview_image.src | default: '' | json -}}
+                    {%- elsif media.media_type == 'video' -%}
+                        {%- assign mp4_sources = media.sources | where: 'format', 'mp4' -%}
+                        {%- if mp4_sources.size > 0 -%}
+                            "src": {{- mp4_sources[0].url | json -}},
+                            "preview_image": {{- media.preview_image.src | default: '' | json -}}
+                        {%- endif -%}
+                    {%- endif -%}
+                }{%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+        {%- endif -%}
+    ]
+    ,"selling_plan_default_id": {%- if product.selected_or_first_available_selling_plan_allocation != nil -%}{{- product.selected_or_first_available_selling_plan_allocation.selling_plan.id -}}{%- else -%}null{%- endif -%}
+    ,"selling_plans": 
+        {%- if product.selling_plan_groups.size > 0 -%}
+            [
+                {%- for selling_plan_group in product.selling_plan_groups -%}
+                    {%- assign selling_plan_group_first = forloop.first -%}
+                    {%- for selling_plan in selling_plan_group.selling_plans -%}
+                        {%- assign first_available_discount_value = selling_plan.price_adjustments[0].value | default: 0 -%}
+                        {%- assign price_modifier = 100 | minus: first_available_discount_value | divided_by: 100.00 -%}
+                        {%- unless selling_plan_group_first and forloop.first -%},{%- endunless -%}
+                        {
+                            "id": {{- selling_plan.id | json -}},
+                            "name": {{- selling_plan.name | json -}},
+                            "price_modifier": {{- price_modifier | json -}}
+                        }
+                    {%- endfor -%}
+                {%- endfor -%}
+            ]
+        {%- else -%}
+            null
+        {%- endif -%}
+    ,"metafields": {
+        "enable_coming_soon": {{- product.metafields.product.enable_coming_soon | default: false -}},
+        "enable_notify_me": {{- product.metafields.product.enable_notify_me | default: false -}}
+    }
+}

@@ -1,0 +1,215 @@
+{%- assign cross_sell_tabs = product.metafields.product.cross_sell_tabs.value -%}
+
+{%- if cross_sell_tabs != blank -%}
+    {%- liquid 
+        assign view_more = ''
+        assign cross_sell_tabs_tabs = '' 
+        assign cross_sell_tabs_tabpanels = ''
+        assign index = 1
+    -%}
+
+    {%- for cross_sell_tab in cross_sell_tabs -%}
+        {%- liquid
+            assign view_more_condition = false
+            assign cross_sell_tab_title = cross_sell_tab.title.value | escape
+
+            assign index_product = 1
+
+            if cross_sell_tab_title == blank
+                continue
+            endif
+
+            assign cross_sell_tab_products = cross_sell_tab.products.value
+            assign cross_sell_tab_custom_products = cross_sell_tab.custom_products.value
+
+            assign tab_id = cross_sell_tab_title | handleize
+            assign id = section.id | append: '-' | append: 'cross-sell' | append: '-' | append: tab_id
+        -%}
+
+        {%- capture cross_sell_tabs_tab -%}
+            <button
+                class="cta-textlink product__cross-sells-tab"
+                role="tab"
+                aria-selected="{% if index == 1 %}true{% else %}false{% endif %}"
+                :aria-selected="activeTabIndex === {{ index }}"
+                aria-controls="panel-{{ cross_sell_tab_title | handleize }}"
+                id="tab-{{ cross_sell_tab_title | handleize }}"
+                tabindex="0"
+                type="button"
+                @click.prevent="activeTabIndex = {{ index }}; viewMore = null"
+            >
+                {{ cross_sell_tab_title }}
+            </button>
+        {%- endcapture -%}
+        {%- assign cross_sell_tabs_tabs = cross_sell_tabs_tabs | append: cross_sell_tabs_tab -%}
+
+        {%- capture cross_sell_tabs_tabpanel -%}
+            <div
+                x-ref="panel-{{ index }}"
+                x-show="activeTabIndex === {{ index }}"
+                id="panel-{{ cross_sell_tab_title | handleize }}"
+                class="product__cross-sells-tabpanel"
+                role="tabpanel"
+                aria-labelledby="tab-{{ cross_sell_tab_title | handleize }}"
+                x-transition:enter="default-transition"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100"
+                x-transition:leave="no-transition"
+                x-transition:leave-start="opacity-0"
+                x-transition:leave-end="opacity-0"
+                {% if index != 1 %}
+                    style="display: none;"
+                {% endif %}
+            >
+                {%- if cross_sell_tab_custom_products != blank -%}
+                    {%- for cross_sell in cross_sell_tab_custom_products -%}
+                        {%- liquid 
+                            if view_more_condition == false and index_product > 1
+                                assign view_more_condition = true
+                            endif
+                            
+                            assign index_product = index_product | plus: 1
+                            assign custom_product_url = cross_sell.url 
+                            assign custom_product_image = cross_sell.image 
+                            assign custom_product_title = cross_sell.title | escape | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>'
+                            assign custom_product_subtitle = cross_sell.subtitle | escape
+                            assign custom_product_button_label = cross_sell.button_label | escape | default: 'Add to bag'
+                            assign custom_product_price = cross_sell.price | default: 0 | money_without_trailing_zeros
+                        -%}
+
+                        <div
+                            x-show="{{ view_more_condition }} === false || viewMore === {{ index }}"
+                            {% if view_more_condition %}
+                                style="display: none;"
+                            {% endif %}
+                            x-transition:enter="default-transition"
+                            x-transition:enter-start="opacity-0"
+                            x-transition:enter-end="opacity-100"
+                            x-transition:leave="default-transition"
+                            x-transition:leave-start="opacity-100"
+                            x-transition:leave-end="opacity-0"
+                        >
+                            <div class="product-card-small">
+                                <a href="{{- custom_product_url -}}" class="product-card-small__media scale-img" aria-label="Go to {{ custom_product_title }}">
+                                    {%- if custom_product_image != blank -%}
+                                        <img
+                                            class="absolute-img"
+                                            src="{{ custom_product_image | image_url: width: 200 }}"
+                                            height="100"
+                                            width="100"
+                                            loading="lazy"
+                                            alt="{{ custom_product_image.alt | default: custom_product_title }}"
+                                        >
+                                    {%- endif -%}
+                                </a>
+
+                                <div class="product-card-small__body">
+                                    <h4 class="product-card-small__title-wrapper">
+                                        {%- if custom_product_title != blank -%}
+                                            <a href="{{- custom_product_url -}}" class="hover-opacity product-card-small__title" aria-label="Go to {{ custom_product_title }}">
+                                                {{- custom_product_title -}}
+                                            </a>
+                                        {%- endif -%}
+                                    </h4>
+
+                                    {%- if custom_product_subtitle != blank -%}
+                                        <p class="superscript-normal product-card-small__subtitle">
+                                            {{- custom_product_subtitle -}}
+                                        </p>
+                                    {%- endif -%}
+
+                                    <a href="{{- custom_product_url -}}" class="btn btn--full btn--between btn--clay" aria-label="{{- custom_product_button_label -}}">
+                                        <span>{{- custom_product_button_label -}}</span>
+                                        {{- custom_product_price -}}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {%- endfor -%}
+                {%- endif -%}
+
+                {%- if cross_sell_tab_products != blank -%}
+                    {%- for cross_sell in cross_sell_tab_products -%}
+                        {%- if view_more_condition == false and index_product > 1 -%}
+                            {%- assign view_more_condition = true -%}
+                        {%- endif -%}
+
+                        {%- assign index_product = index_product | plus: 1 -%}
+
+                        <div
+                            x-show="{{ view_more_condition }} === false || viewMore === {{ index }}"
+                            {% if view_more_condition %}
+                                style="display: none;"
+                            {% endif %}
+                            x-transition:enter="default-transition"
+                            x-transition:enter-start="opacity-0"
+                            x-transition:enter-end="opacity-100"
+                            x-transition:leave="default-transition"
+                            x-transition:leave-start="opacity-100"
+                            x-transition:leave-end="opacity-0"
+                        >
+                            {%- render 'product-card-small', product: cross_sell, id: id -%}
+                        </div>
+                    {%- endfor -%}
+                {%- endif -%}
+            </div>
+        {%- endcapture -%}
+        {%- assign cross_sell_tabs_tabpanels = cross_sell_tabs_tabpanels | append: cross_sell_tabs_tabpanel -%}
+
+        {%- capture view_more_html -%}
+            <button
+                x-show="{{ view_more_condition }} && activeTabIndex === {{ index }}"
+                class="cta-textlink product__cross-sells-tabpanels-view-more hover-opacity"
+                type="button"
+                aria-expanded="false"
+                :aria-expanded="viewMore === {{ index }}"
+                {% if view_more_condition == false or index > 1 %}
+                    style="display: none;"
+                {% endif %}
+                x-transition:enter="default-transition"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100"
+                x-transition:leave="no-transition"
+                x-transition:leave-start="opacity-0"
+                x-transition:leave-end="opacity-0"
+                @click.prevent="viewMore = viewMore === {{ index }} ? null : {{ index }}"
+            >
+                <span x-text="viewMore === {{ index }} ? '{{- 'products.product.view_less' | t -}}' : '{{- 'products.product.view_more' | t -}}'">
+                    {{- 'products.product.view_more' | t -}}
+                </span>
+                {%- render 'icon', name: 'arrow-down' -%}
+            </button>
+        {%- endcapture -%}
+        {%- assign view_more = view_more | append: view_more_html -%}
+
+        {%- assign index = index | plus: 1 -%}
+    {%- endfor -%}
+
+    {%- if cross_sell_tabs_tabs != blank and cross_sell_tabs_tabpanels != blank -%}
+        <div 
+            x-data="{ activeTabIndex: 1, viewMore: null }"
+            class="product__cross-sells-wrapper"
+        >
+            <div 
+                class="product__cross-sells-tabs {% if index > 2 %}product__cross-sells-tabs--justify{% endif %}"
+                role="tablist"
+                aria-label="Cross Sell Tabs"
+            >
+                {{- cross_sell_tabs_tabs -}}
+            </div>
+
+            <div class="product__cross-sells-tabpanels">
+                <div 
+                    class="product__cross-sells-tabpanels-inner"
+                    :style="viewMore && { height: ($refs['panel-' + viewMore].childNodes.length * 100) + (($refs['panel-' + viewMore].childNodes.length - 1) * 10) + 'px' }"
+                >
+                    {{- cross_sell_tabs_tabpanels -}}
+                </div>
+
+                <div class="product__cross-sells-tabpanels-view-more-wrapper">
+                    {{- view_more -}}
+                </div>
+            </div>
+        </div>
+    {%- endif -%}
+{%- endif -%}

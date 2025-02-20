@@ -1,0 +1,187 @@
+@import './rewards-history-popup.scss';
+
+.rewards-hero {
+    position: relative;
+    z-index: 100;
+
+    .rewards-hero__container {
+        position: relative;
+    }
+
+    .rewards-hero__image {
+        display: block;
+        max-height: var(--max-height);
+        min-height: var(--min-height);
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .rewards-hero__info {
+        align-items: center;
+        color: var(--color);
+        display: flex;
+        justify-content: center;
+        inset: 0;
+        padding: 3.4rem;
+        position: absolute;
+        text-align: center;
+
+        &:before {
+            background-color: var(--overlay-background-color);
+            content: '';
+            inset: 0;
+            opacity: var(--overlay-opacity);
+            position: absolute;
+        }
+    }
+
+    .rewards-hero__info-inner {
+        z-index: 10;
+
+        .yotpo-background {
+            background-color: transparent !important;
+        }
+    }
+
+    .rewards-hero__title {
+        font-family: var(--font-primary);
+        font-size: var(--font-h1-larger-size-mobile);
+        font-weight: 450;
+        line-height: var(--font-h1-larger-line-height-mobile);
+        letter-spacing: -.076rem;
+        margin-bottom: 2.4rem;
+    }
+
+    .rewards-hero__buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1.2rem;
+    }
+
+    .rewards-hero__button {
+        border-color: var(--color);
+        color: var(--color);
+        min-width: 15rem;
+
+        @media screen and (min-width: 768px) {
+            min-width: 20rem;
+        }
+
+        @media screen and (min-width: 1280px) {
+            min-width: 15rem;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: var(--morning-sky);
+            border-color: var(--morning-sky);
+            color: var(--white);
+        }
+    }
+
+    .rewards-hero__message {
+        font-family: var(--font-body);
+        font-size: var(--font-superscript-normal-size);
+        line-height: var(--font-superscript-normal-line-height);
+        letter-spacing: .011rem;
+        margin-top: 2.4rem;
+        text-wrap: balance;
+
+        a {
+            color: var(--color);
+        }
+
+        br {
+            display: none;
+        }
+    }
+
+    .yotpo-widget-my-rewards-widget {
+        margin: 0;
+        max-width: 100%;
+
+        .yotpo-logged-in-view {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 100%;
+            padding: 0;
+
+            .yotpo-headline,
+            .yotpo-description {
+                width: 100%;
+                margin: 0;
+
+                .yotpo-inner-text {
+                    color: var(--color) !important;
+                    font-family: var(--font-body) !important;
+                    font-size: var(--font-subheader-large-size) !important;
+                    font-weight: 450 !important;
+                    line-height: var(--font-subheader-large-line-height);
+                    letter-spacing: .17rem;
+                    text-transform: uppercase;
+                }
+            }
+
+            .yotpo-description {
+                display: block;
+                text-align: center;
+                text-wrap: balance;
+                margin-top: 1.8rem;
+
+                .yotpo-vertical-divider {
+                    display: none;
+                }
+
+                .yotpo-customized-text:not(:last-child) {
+                    margin-bottom: .6rem;
+                }
+            }
+
+            .yotpo-action-buttons-tile {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1.2rem;
+                margin-top: 2.4rem;
+                width: 100%;
+
+                button.yotpo-action-button {
+                    background-color: transparent !important;
+                    border: .1rem solid var(--ink) !important;
+                    border-radius: .3rem;
+                    box-sizing: border-box;
+                    color: var(--ink) !important;
+                    font-family: var(--font-body);
+                    font-size: var(--font-superscript-normal-size);
+                    height: auto;
+                    line-height: 1.6rem;
+                    letter-spacing: 0.11rem;
+                    min-height: 3rem;
+                    min-width: 15rem;
+                    padding: .7rem 1.2rem;
+                    text-transform: uppercase;
+                    transition: var(--transition-all);
+                    width: auto;
+
+                    &:hover,
+                    &:focus {
+                        background-color: var(--morning-sky) !important;
+                        border: .1rem solid var(--morning-sky) !important;
+                        color: var(--white) !important;
+                    }
+
+                    .yopto-widget-button-text {
+                        font-family: inherit !important;
+                        font-size: inherit !important;
+                        line-height: inherit !important;
+                        letter-spacing: inherit !important;
+                    }
+                }
+            }
+        }
+    }
+}

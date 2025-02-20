@@ -1,0 +1,205 @@
+.yotpo-widget-referral-widget {
+    @media screen and (min-width: 768px) {
+        margin: 0 auto;
+        max-width: 52.6rem;
+    }
+
+    @media screen and (min-width: 1280px) {
+        max-width: 100%;
+    }
+
+    & :focus {
+        box-shadow: none;
+    }
+
+    .yotpo-background {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+
+        @media screen and (min-width: 1280px) {
+            align-items: center;
+            display: grid !important;
+            grid-template-columns: repeat(16, 1fr);
+        }
+
+        img {
+            aspect-ratio: 1 / 1 !important;
+            border-radius: .3rem;
+            min-height: initial !important;
+            height: auto !important;
+            max-height: initial !important;
+            max-width: 100% !important;
+            order: -1;
+            width: 100% !important;
+
+            @media screen and (min-width: 1280px) {
+                grid-column: 1 / 9;
+            }
+        }
+
+        .yotpo-tile-wrapper {
+            max-width: 100%;
+            min-height: auto !important;
+
+            @media screen and (min-width: 1280px) {
+                grid-column: 10 / 16;
+            }
+
+            .yotpo-tile {
+                background-color: transparent !important;
+                min-height: auto;
+
+                .yotpo-tile-box {
+                    margin: 4.2rem 0 0;
+                    padding: 0;
+                    width: 100%;
+
+                    .yotpo-title-text {
+                        color: var(--ink) !important;
+                        font-family: var(--font-primary) !important;
+                        font-size: var(--font-h2-size) !important;
+                        font-style: normal !important;
+                        font-weight: 450 !important;
+                        line-height: var(--font-h2-line-height);
+                        letter-spacing: -0.052rem;
+                        margin-bottom: .6rem;
+                        padding: 0;
+                    }
+
+                    .yotpo-header-text {
+                        color: var(--ink) !important;
+                        font-family: var(--font-body) !important;
+                        font-size: var(--font-p-large-size) !important;
+                        font-style: normal !important;
+                        font-weight: 450 !important;
+                        line-height: var(--font-p-large-line-height);
+                        letter-spacing: 0.016rem;
+                        margin-bottom: 2.4rem;
+                        padding: 0;
+
+                        @media screen and (min-width: 1280px) {
+                            margin-bottom: 3.6rem;
+                        }
+                    }
+
+                    .yotpo-description-text {
+                        color: var(--ink) !important;
+                        font-family: var(--font-body) !important;
+                        font-size: var(--font-body-size) !important;
+                        font-style: normal !important;
+                        font-weight: 450 !important;
+                        line-height: var(--font-body-line-height);
+                        letter-spacing: 0.013rem;
+                    }
+
+                    button {
+                        background-color: var(--chalk) !important;
+                        border: none !important;
+                        border-radius: .3rem;
+                        box-sizing: border-box;
+                        color: var(--ink) !important;
+                        font-family: var(--font-body);
+                        font-size: var(--font-button-size);
+                        font-style: normal;
+                        font-weight: 450;
+                        height: auto;
+                        line-height: var(--font-button-line-height);
+                        letter-spacing: 0.11rem;
+                        min-height: 3rem;
+                        padding: .6rem 1.2rem;
+                        transition: var(--transition-all);
+                        text-transform: uppercase;
+                        width: 100%;
+
+                        &:hover,
+                        &:focus {
+                            background-color: var(--morning-sky) !important;
+                            color: var(--white) !important;
+                        }
+
+                        .yopto-widget-button-text {
+                            font-family: inherit !important;
+                            font-size: inherit !important;
+                            letter-spacing: 0.11rem;
+                        }
+                    }
+
+                    .yotpo-email-view {
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
+
+                        .yotpo-title-text {
+                            order: 1;
+                        }
+
+                        .yotpo-header-text {
+                            order: 2;
+                        }
+
+                        .yotpo-description-text {
+                            order: 3;
+                        }
+
+                        .yotpo-referral-widget-form {
+                            margin-top: 1.8rem;
+                            order: 4;
+
+                            textarea,
+                            input {
+                                background-color: transparent;
+                                box-shadow: none !important;
+                                color: var(--ink);
+                                font-family: var(--font-body) !important;
+                                font-size: 1.6rem;
+                                font-style: normal;
+                                font-weight: 450;
+                                height: auto;
+                                line-height: normal;
+                                letter-spacing: 0.05rem;
+                                padding: .6rem 1.2rem;
+                                border: .1rem solid var(--ink-40);
+                                border-radius: .3rem;
+                                width: 100%;
+                                min-height: 3rem;
+
+                                &::placeholder {
+                                    color: var(--ink);
+                                }
+
+                                @media only screen and (min-width: 1280px) {
+                                    font-size: var(--font-input-size);
+                                    letter-spacing: 0.011rem;
+                                }
+                            }
+
+                            .yotpo-input-example,
+                            .yotpo-input-label {
+                                display: none;
+                            }
+
+                            .yotpo-referral-widget-error-message {
+                                font-family: var(--font-body);
+                                font-size: var(--font-cta-textlink-size);
+                                font-style: normal;
+                                font-weight: 450;
+                                line-height: var(--font-cta-textlink-line-height);
+                                letter-spacing: 0.011rem;
+                                position: static;
+                            }
+
+                            .yotpo-action-button-widget {
+                                margin-top: 1.2rem;
+                            }
+                        }
+                    }
+
+                    .yotpo-share-buttons-container {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

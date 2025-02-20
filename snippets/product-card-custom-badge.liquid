@@ -1,0 +1,20 @@
+{%- assign custom_badge = product.metafields.product.product_card_custom_badge.value -%}
+
+{%- if custom_badge != blank -%}
+    {%- liquid 
+        assign title = custom_badge.title.value | escape 
+        assign url = custom_badge.url.value   
+    -%}
+
+    {%- if title != blank and url != blank -%}
+        <a 
+            href="{{- url -}}"
+            class="product-card__custom-badge superscript-normal hover-opacity"
+            title="{{- title -}}"
+            aria-label="{{- title -}}"
+        >
+            {{- title -}}
+            {%- render 'icon', name: 'arrow-right' -%}
+        </a>
+    {%- endif -%}
+{%- endif -%}

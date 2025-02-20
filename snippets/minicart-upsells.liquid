@@ -1,0 +1,62 @@
+{%- if enable and products != blank -%}
+    {%- liquid 
+        assign show_nav = false
+        for prod in products
+            unless forloop.first 
+                assign show_nav = true
+                break
+            endunless
+        endfor
+
+        assign id = section.id | append: '-' | append: 'minicart-upsell'
+    -%}
+
+    <div class="minicart__main-block minicart__upsells">
+        <div class="minicart__upsells-title-wrapper">
+            <span class="subheader-small">{{- title -}}</span>
+
+            {%- if show_nav -%}
+                <div class="minicart__upsells-nav-wrapper">
+                    <button
+                        class="minicart__upsells-nav-btn swiper-button-disabled hover-opacity"
+                        type="button"
+                        aria-label="Go to the previous slide"
+                        data-upsells-slider-prev
+                    >
+                        {%- render 'icon', name: 'swiper-arrow-left' -%}
+                    </button>
+
+                    <button
+                        class="minicart__upsells-nav-btn hover-opacity"
+                        type="button"
+                        aria-label="Go to the next slide"
+                        data-upsells-slider-next
+                    >
+                        {%- render 'icon', name: 'swiper-arrow-right' -%}
+                    </button>
+                </div>
+            {%- endif -%}
+        </div>
+
+        <div
+            {% if show_nav %}
+                data-minicart-upsells-slider
+                x-intersect.once="$store.Cart.initUpsellsSlider()"
+            {% endif %}
+            class="swiper swiper-horizontal"
+        >
+            <div class="swiper-wrapper">
+                {%- for prod in products -%} 
+                <div class="swiper-slide {% if show_nav == false %}swiper-slide--full{% endif %}">
+                        {%- render 'product-card-small', 
+                            id: id,
+                            product: prod, 
+                            lazyload: true,
+                            inHiddenOverflow: false
+                        -%}
+                    </div>
+                {%- endfor -%}
+            </div>
+        </div>
+    </div>
+{%- endif -%}

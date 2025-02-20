@@ -1,0 +1,65 @@
+{% assign ns = 'giftcard' %}
+
+<header class="{{ ns }}__header" role="banner">
+  <figure itemscope itemtype="http://schema.org/Organization" class="{{ ns }}-logo">
+    <a href="{{ shop.url | escape }}" itemprop="url" aria-label="{{ shop.name | escape }}" class="{{ ns }}-logo__link">
+      <img src="{{ 'logo.svg' | asset_url }}" class="{{ ns }}-logo__image" alt="{{ shop.name }}" />
+      <meta itemprop="logo" content="{{ 'logo.jpg' | asset_url }}">
+    </a>
+    <figcaption class="{{ ns }}-logo__info">
+      <p class="visually-hidden" itemprop="name">{{ shop.name }}</p>
+    </figcaption>
+  </figure>
+</header>
+
+<section class="{{ ns }}{% if gift_card.expired or gift_card.enabled != true %} giftcard--disabled{% endif %}">
+  <div class="{{ ns }}__container">
+    <div class="{{ ns }}__block">
+      <h1 class="{{ ns }}__title" aria-label="{{ 'gift_cards.issued.subtext' | t | strip_html | downcase | escape }}">{{ 'gift_cards.issued.subtext' | t | upcase }}</h1>
+
+      {% unless gift_card.enabled %}
+        <span class="{{ ns }}-tag">{{ 'gift_cards.issued.disabled' | t }}</span>
+      {% endunless %}
+
+      {%- assign gift_card_expiry_date = gift_card.expires_on | date: "%d/%m/%y" -%}
+      {% if gift_card.expired and gift_card.enabled %}
+        <span class="{{ ns }}-tag">{{ 'gift_cards.issued.expired' | t: expiry: gift_card_expiry_date }}</span>
+      {% endif %}
+
+      {% if gift_card.expired != true and gift_card.expires_on and gift_card.enabled %}
+        <span class="{{ ns }}-tag {{ ns }}-tag--active">{{ 'gift_cards.issued.active' | t: expiry: gift_card_expiry_date }}</span>
+      {% endif %}
+
+      <img src="{{ 'giftcard.jpg' | asset_img_url: '792x' }}" class="{{ ns }}__image" alt="{{ shop.name }} Gift Card" />
+    </div>
+
+    <div class="{{ ns }}__block">
+      {%- assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros: gift_card.currency -%}
+      <h2 class="{{ ns }}__subtitle" aria-label="{{ 'gift_cards.issued.initial_value' | t: value: formatted_initial_value | strip_html | downcase | escape }}">{{ 'gift_cards.issued.initial_value' | t: value: formatted_initial_value | upcase }}</h2>
+
+      {%- assign formatted_current_balance = gift_card.balance | money -%}
+      {% if gift_card.balance != gift_card.initial_value %}
+        <p>{{ 'gift_cards.issued.remaining_html' | t: balance: formatted_current_balance }}</p>
+      {% endif %}
+
+      {%- assign code_size = gift_card.code | format_code | size -%}
+      <span id="GiftCardDigits" class="{{ ns }}__code">{{ gift_card.code | format_code }}</span>
+
+      <p>{{ 'gift_cards.issued.redeem' | t }}</p>
+
+      <a href="{{ shop.url }}" class="{{ ns }}__button" target="_blank" rel="noopener noreferrer" aria-label="{{ 'gift_cards.issued.shop_link' | t }}">{{ 'gift_cards.issued.shop_link' | t }}</a>
+    </div>
+
+    <div class="{{ ns }}__block">
+      <div id="QrCode" class="{{ ns }}-qr" data-identifier="{{ gift_card.qr_identifier }}"></div>
+
+      {% if gift_card.pass_url %}
+        <a href="{{ gift_card.pass_url }}" class="apple-wallet" aria-label="{{ 'gift_cards.issued.add_to_apple_wallet' | t }}">
+          <img class="apple-wallet-image" src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="{{ 'gift_cards.issued.add_to_apple_wallet' | t }}">
+        </a>
+      {% endif %}
+
+      <a href="#" id="PrintGiftCard" class="{{ ns }}__button print-giftcard" aria-label="{{ 'gift_cards.issued.print' | t }}">{{ 'gift_cards.issued.print' | t }}</a>
+    </div>
+  </div>
+</section>

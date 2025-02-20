@@ -1,0 +1,75 @@
+{%- layout none -%}
+
+{% assign grouped_product = false %}
+{% assign grouped_product_prices = false %}
+{% for tag in product.tags %}
+  {% if tag contains 'swatches-' or tag contains 'Swatches -' %}
+    {% assign grouped_product = product %}
+    {% assign tag_handle = tag | handleize %}
+    {% assign swatch_products = collections[tag_handle].products %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{%- liquid
+  assign color_variants = false
+  if product.options.size == 1
+    if product.options_by_name.Shade.values.size > 1 or product.options_by_name.Color.values.size > 1
+      assign color_variants = true
+    endif
+  endif
+-%}
+
+{% capture json %}
+  {
+    "title": {{ product.title | json }},
+    "handle": {{ product.handle | json }},
+      "variants": [
+      {% if grouped_product %}
+        {% for swatch_product in swatch_products %}
+          {%- assign color_position = product.options_by_name['Shade'].position | minus: 1 -%}
+          {%- assign colors_name = swatch_product.variants[0].options[color_position] -%}
+          {%- assign colors_thumbnail = 'swatch-' | append: colors_name | handleize | append: '.png' -%}
+          {%- assign custom_product_thumbnail = swatch_product.metafields.product.thumbnail -%}
+          {%- assign main_image_on_plp = swatch_product.metafields.custom.main_image_on_plp -%}
+          {%- assign is_draft = swatch_product.metafields.variant.draft -%}
+          {
+            "available": {{ swatch_product.available | json }},
+            "title": {{ swatch_product.title | json }},
+            "color":  {{ colors_name | escape | json }},
+            "subtitle": {{ swatch_product.metafields.accentuate.product_type | escape | default: '' | json }},
+            "image": {%- if main_image_on_plp -%}{{ main_image_on_plp.value | img_url: 'x752' | json }}{%- else -%}{{ swatch_product.featured_image.src | img_url: 'x752' | json }}{%- endif -%},
+            "swatch_image": {%- if custom_product_thumbnail -%}{{ custom_product_thumbnail | image_url: width: 292 | json }}{%- else -%}{{ colors_thumbnail | file_img_url: '146x' | json }}{%- endif -%},
+            "hover_image": {{ swatch_product.images[1].src | img_url: 'x752' | json }},
+            "id": {{ swatch_product.selected_or_first_available_variant.id | json }},
+            "hide": {%- if is_draft -%}{{ true | json }}{%- else -%}{{ false | json }}{%- endif -%}
+          }
+          {% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      {%- elsif color_variants -%}
+        {%- assign custom_thumbnail = '' -%}
+        {% for variant in product.variants %}
+          {%- assign colors_name = variant.title -%}
+          {%- assign colors_thumbnail = 'swatch-' | append: colors_name | handleize | append: '.png' -%}
+          {%- assign custom_thumbnail = variant.metafields.custom.thumbnail -%}
+          {%- assign variant_subtitle = variant.metafields.accentuate.variant_type | escape | default: variant.title -%}
+          {%- assign main_image_on_plp = variant.metafields.custom.main_image_on_plp -%}
+          {%- assign is_draft = variant.metafields.variant.draft -%}
+          {
+            "available": {{ variant.available | json }},
+            "title": {{ product.title | json }},
+            "color":  {{ colors_name | escape | json }},
+            "subtitle": {{ variant_subtitle | json }},
+            "image": {%- if main_image_on_plp -%}{{ main_image_on_plp.value | img_url: 'x752' | json }}{%- else -%}{{ variant.featured_image.src | img_url: 'x752' | json }}{%- endif -%},
+            "swatch_image": {%- if custom_thumbnail -%}{{ custom_thumbnail | image_url: width: 292 | json }}{%- else -%}{{ colors_thumbnail | file_img_url: '146x' | json }}{%- endif -%},
+            "hover_image": {{ variant.images[1].src | img_url: 'x752' | json }},
+            "id": {{ variant.id | json }},
+            "hide": {%- if is_draft -%}{{ true | json }}{%- else -%}{{ false | json }}{%- endif -%}
+          }
+          {% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      {% endif %}
+      ]
+  }
+{% endcapture -%}
+{{- json | strip_newlines | replace: '	', '' | replace: '    ', '' | replace: '  ', ' ' }}

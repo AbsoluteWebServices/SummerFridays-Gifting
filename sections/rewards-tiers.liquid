@@ -1,0 +1,176 @@
+{%- liquid
+  assign padding_top = section.settings.padding_top | default: 0
+  assign padding_bottom = section.settings.padding_bottom | default: 0
+  assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+  assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+  assign title = section.settings.title
+  assign subtitle = section.settings.subtitle
+-%}
+
+{%- render 'adastra' with 'styles/sections/rewards-tiers.scss' -%}
+
+{%- render 'offset',
+  id: section.id,
+  padding_top: padding_top,
+  padding_bottom: padding_bottom,
+  padding_top_desktop: padding_top_desktop,
+  padding_bottom_desktop: padding_bottom_desktop
+-%}
+
+<section class="rewards-tiers" id="section-{{ section.id }}">
+    <div class="rewards-tiers__container">
+        <div class="rewards-tiers__inner">
+            {%- if title != blank -%}
+                <h2 class="rewards-tiers__title h2">
+                    {{- title -}}
+                </h2>
+            {%- endif -%}
+
+            {%- if subtitle != blank -%}
+                <p class="rewards-tiers__subtitle p-large">
+                    {{- subtitle -}}
+                </p>
+            {%- endif -%}
+
+            <div class="rewards-tiers__table-wrapper">
+                <table role="presentation">
+                    <thead>
+                        <tr>
+                            <th>
+                                <p class="rewards-tiers__table-th-upper-title superscript-normal">
+                                   TIERS
+                                </p>
+                            </th>
+                            <th>
+                                <p class="rewards-tiers__table-th-upper-title superscript-normal" style="background-color: #d1eefe">
+                                    Self-Care Mode
+                                </p>
+                                <p class="rewards-tiers__table-th-lower-title">
+                                    Free to Join
+                                </p>
+                            </th>
+                            <th>
+                                <p class="rewards-tiers__table-th-upper-title superscript-normal" style="background-color: #acd5e9">
+                                    Vacation Mode
+                                </p>
+                                <p class="rewards-tiers__table-th-lower-title">
+                                    $200/year
+                                </p>
+                            </th>
+                            <th>
+                                <p class="rewards-tiers__table-th-upper-title superscript-normal" style="background-color: #719fb9">
+                                    Golden Hour Mode
+                                </p>
+                                <p class="rewards-tiers__table-th-lower-title">
+                                    $400/year
+                                </p>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td class="rewards-tiers__table-th-upper-title superscript-normal">POINTS PER $</td>
+                            <td>1</td>
+                            <td>1.25</td>
+                            <td>1.50</td>
+                        </tr>
+
+                        <tr>
+                            <td class="rewards-tiers__table-th-upper-title superscript-normal">FREE STANDARD SHIPPING*</td>
+                            <td>Orders $35+</td>
+                            <td>Orders $25+</td>
+                            <td>All Orders</td>
+                        </tr>
+
+                        <tr>
+                            <td class="rewards-tiers__table-th-upper-title superscript-normal">ENTRY GIFT</td>
+                            <td>10% Off</td>
+                            <td>15% Off</td>
+                            <td>20% Off</td>
+                        </tr>
+
+                        <tr>
+                            <td class="rewards-tiers__table-th-upper-title superscript-normal">EARLY ACCESS TO SALES AND NEW PRODUCTS</td>
+                            <td><div class="rewards-tiers__table-circle rewards-tiers__table-circle--beige"></div></td>
+                            <td><div class="rewards-tiers__table-circle rewards-tiers__table-circle--olive"></div></td>
+                            <td><div class="rewards-tiers__table-circle rewards-tiers__table-circle--blue"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td class="rewards-tiers__table-th-upper-title superscript-normal">BIRTHDAY GIFT</td>
+                            <td><div class="rewards-tiers__table-circle rewards-tiers__table-circle--beige"></div></td>
+                            <td><div class="rewards-tiers__table-circle rewards-tiers__table-circle--olive"></div></td>
+                            <td><div class="rewards-tiers__table-circle rewards-tiers__table-circle--blue"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td class="rewards-tiers__table-th-upper-title superscript-normal">EXCLUSIVE ANNUAL GIFT</td>
+                            <td></td>
+                            <td></td>
+                            <td><div class="rewards-tiers__table-circle rewards-tiers__table-circle--blue"></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Rewards Tiers | AW",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Paddings"
+      },
+      {
+        "type": "number",
+        "id": "padding_top",
+        "label": "Padding top (rem)",
+        "default": 3,
+        "info": "1rem = 10px"
+      },
+      {
+        "type": "number",
+        "id": "padding_bottom",
+        "label": "Padding bottom (rem)",
+        "default": 3,
+        "info": "1rem = 10px"
+      },
+      {
+        "type": "number",
+        "id": "padding_top_desktop",
+        "label": "Padding top desktop (rem)",
+        "default": 6,
+        "info": "1rem = 10px"
+      },
+      {
+        "type": "number",
+        "id": "padding_bottom_desktop",
+        "label": "Padding bottom desktop (rem)",
+        "default": 6,
+        "info": "1rem = 10px"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "title",
+        "label": "Title",
+        "default": "Self-Care Club Loyalty Tiers"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "Unlock Rewards as you Shop"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Rewards Tiers | AW"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,395 @@
+{%- liquid
+    assign padding_top = section.settings.padding_top | default: 0
+    assign padding_bottom = section.settings.padding_bottom | default: 0
+    assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+    assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+-%}
+
+{%- render 'offset',
+    id: section.id,
+    padding_top: padding_top,
+    padding_bottom: padding_bottom,
+    padding_top_desktop: padding_top_desktop,
+    padding_bottom_desktop: padding_bottom_desktop
+-%}
+
+{%- render 'adastra' with 'styles/sections/2-blocks-with-accordions.scss' -%}
+ 
+<section id="section-{{- section.id -}}">
+    <div class="blocks-w-accs_wrapper">
+        {%- for i in (1..2) -%}
+            {%- capture block_i_type -%}block_{{- i -}}_type{%- endcapture -%}
+            {%- assign block_type = section.settings[block_i_type] | default: 'accordions' -%}
+            {%- if block_type == 'accordions' -%}
+                {%- capture block_i_accordion_open -%}block_{{- i -}}_accordion_open{%- endcapture -%}
+                {%- capture block_i_background_color -%}block_{{- i -}}_background_color{%- endcapture -%}
+                {%- capture block_i_background_color_opacity -%}block_{{- i -}}_background_color_opacity{%- endcapture -%}
+                {%- capture block_i_title_top -%}block_{{- i -}}_title_top{%- endcapture -%}
+                {%- capture block_i_title -%}block_{{- i -}}_title{%- endcapture -%}
+                {%- capture accordions_key -%}block_{{- i -}}{%- endcapture -%}
+                {%- liquid
+                    assign block_accordion_open = section.settings[block_i_accordion_open] | default: true, allow_false: true
+                    assign block_background_color = section.settings[block_i_background_color] | default: 'morning-sky'
+                    assign block_background_color_opacity = section.settings[block_i_background_color_opacity] | default: 100 | divided_by: 100.0
+                    assign block_title_top = section.settings[block_i_title_top] | escape
+                    assign block_title = section.settings[block_i_title]
+                    assign accordions = section.blocks | where: 'type', accordions_key
+                -%}
+                <div 
+                    class="blocks-w-accs__col"
+                >
+                    <div 
+                        class="blocks-w-accs__col-bg"
+                        style="{%- if block_background_color != 'morning-sky' -%}background-color:var(--{{- block_background_color -}});{%- endif -%}{%- if block_background_color_opacity != 1 -%}opacity:{{- block_background_color_opacity -}};{%- endif -%}"
+                    ></div>
+
+                    <div class="blocks-w-accs__col-inner">
+                        {%- if block_title_top != blank -%}
+                            <p class="subheader-small blocks-w-accs__title-top">{{- block_title_top -}}</p>
+                        {%- endif -%}
+
+                        {%- if block_title != blank -%}
+                            <div class="blocks-w-accs__title">{{- block_title -}}</div>
+                        {%- endif -%}
+
+                        {%- if accordions.size > 0 -%}
+                            <ul 
+                                x-data="{ open: {% if block_accordion_open %}1{% else %}0{% endif %} }"
+                                class="blocks-w-accs__accordions list-reset"
+                            >
+                                {%- for accordion in accordions -%}
+                                    {%- liquid 
+                                        assign accordion_title = accordion.settings.title | escape 
+                                        if accordion_title == blank
+                                            continue
+                                        endif
+
+                                        assign html = accordion.settings.html
+                                        assign accordion_content = accordion.settings.content 
+                                        if html == blank and accordion_content == blank
+                                            continue
+                                        endif
+
+                                        assign accordion_image = accordion.settings.image
+                                    -%}
+                                    <li
+                                        class="blocks-w-accs__accordion"
+                                    >
+                                        <button
+                                            id="accordion-toggle-btn-{{ i }}-{{ forloop.index }}-{{ section.id }}"
+                                            class="subheader-small blocks-w-accs__btn"
+                                            type="button"
+                                            aria-controls="accordion-{{ i }}-{{ forloop.index }}-{{ section.id }}"
+                                            {% if forloop.first and block_accordion_open %}
+                                                aria-expanded="true"
+                                            {% endif %}
+                                            :aria-expanded="open === {{ forloop.index }}"
+                                            @click.prevent="open = open === {{ forloop.index }} ? 0 : {{ forloop.index }}"
+                                        >
+                                            {{- accordion_title -}}
+            
+                                            {%- render 'plus-icon', size: 12 -%}
+                                        </button>
+
+                                        <div
+                                            id="accordion-{{ i }}-{{ forloop.index }}-{{ section.id }}"
+                                            class="blocks-w-accs__accordion-content dropdown-content rte list-reset"
+                                            aria-labelledby="accordion-toggle-btn-{{ i }}-{{ forloop.index }}-{{ section.id }}"
+                                            {% if forloop.first and block_accordion_open %}
+                                                data-open="true"
+                                                style="height: auto;"
+                                            {% endif %}
+                                            :data-open="open === {{ forloop.index }}"
+                                            :style="open === {{ forloop.index }} && { height: $el.scrollHeight + 'px' }"
+                                            @resize.window="if (open !== {{ forloop.index }}) { return; } $el.style.height = 'auto'"
+                                        >
+                                            {%- if accordion_image -%}
+                                                <div class="blocks-w-accs__accordion-content-inner">
+                                                    <div>
+                                                        <div class="blocks-w-accs__accordion-content-image">
+                                                            <img 
+                                                                src="{{ accordion_image | image_url: width: 500 }}"
+                                                                class="absolute-img"
+                                                                width="250"
+                                                                height="250"
+                                                                alt="{{ accordion_image.alt | default: accordion_title }}"
+                                                                loading="lazy"
+                                                            >
+                                                        </div>
+                                                    </div>
+
+                                                    {%- if accordion_content != blank -%}
+                                                        <div>
+                                                            {{ accordion_content }}
+                                                        </div>
+                                                    {%- endif -%}
+
+                                                    {%- if html != blank -%}
+                                                      <div>{{ html }}</div>
+                                                    {%- endif -%}
+                                                </div>
+                                            {%- else -%}
+                                                {%- if accordion_content != blank -%}
+                                                    {{ accordion_content }}
+                                                {%- endif -%}
+
+                                                  {%- if html != blank -%}
+                                                    <div>{{ html }}</div>
+                                                  {%- endif -%}
+                                            {%- endif -%}     
+                                        </div>
+                                    </li>
+                                {%- endfor -%}
+                            </ul>
+                        {%- endif -%}
+                    </div>
+                </div>
+            {%- else -%}
+                {%- capture block_i_image -%}block_{{- i -}}_image{%- endcapture -%}
+                {%- assign block_image = section.settings[block_i_image] -%}
+                <div 
+                    class="blocks-w-accs__col blocks-w-accs__col--image"
+                >
+                    {%- if block_image -%}
+                        {%- render 'img', image: block_image -%}
+                    {%- endif -%}
+                </div>
+            {%- endif -%}
+        {%- endfor -%}
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "2 Blocks with Accordions",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Block 1 Settings"
+        },
+        {
+            "id": "block_1_type",
+            "label": "Block 1 type",
+            "type": "select",
+            "options": [
+                {
+                    "value": "image",
+                    "label": "Image"
+                },
+                {
+                    "value": "accordions",
+                    "label": "Accordions"
+                }
+            ],
+            "default": "accordions"
+        },
+        {
+            "type": "checkbox",
+            "id": "block_1_accordion_open",
+            "label": "Open the first accordion by default",
+            "default": true
+        },
+        {
+            "type": "image_picker",
+            "id": "block_1_image",
+            "label": "Image",
+            "info": "For the image block type."
+        },
+        {
+            "id": "block_1_background_color",
+            "label": "Background color",
+            "type": "select",
+            "options": [
+                {
+                    "value": "morning-sky",
+                    "label": "Morning Sky"
+                },
+                {
+                    "value": "chalk",
+                    "label": "Chalk"
+                }
+            ],
+            "default": "morning-sky"
+        },
+        {
+            "type": "range",
+            "id": "block_1_background_color_opacity",
+            "label": "Background opacity",
+            "min": 5,
+            "max": 100,
+            "step": 5,
+            "default": 100
+        },
+        {
+            "type": "text",
+            "id": "block_1_title_top",
+            "label": "Title (top)",
+            "default": "How to recycle"
+        },
+        {
+            "type": "richtext",
+            "id": "block_1_title",
+            "label": "Title"
+        },
+        {
+            "type": "header",
+            "content": "Block 2 Settings"
+        },
+        {
+            "id": "block_2_type",
+            "label": "Block 2 type",
+            "type": "select",
+            "options": [
+                {
+                    "value": "image",
+                    "label": "Image"
+                },
+                {
+                    "value": "accordions",
+                    "label": "Accordions"
+                }
+            ],
+            "default": "accordions"
+        },
+        {
+            "type": "checkbox",
+            "id": "block_2_accordion_open",
+            "label": "Open the first accordion by default",
+            "default": true
+        },
+        {
+            "type": "image_picker",
+            "id": "block_2_image",
+            "label": "Image",
+            "info": "For the image block type."
+        },
+        {
+            "id": "block_2_background_color",
+            "label": "Background color",
+            "type": "select",
+            "options": [
+                {
+                    "value": "morning-sky",
+                    "label": "Morning Sky"
+                },
+                {
+                    "value": "chalk",
+                    "label": "Chalk"
+                }
+            ],
+            "default": "chalk"
+        },
+        {
+            "type": "range",
+            "id": "block_2_background_color_opacity",
+            "label": "Background opacity",
+            "min": 5,
+            "max": 100,
+            "step": 5,
+            "default": 10
+        },
+        {
+            "type": "text",
+            "id": "block_2_title_top",
+            "label": "Title (top)",
+            "default": "FAQ"
+        },
+        {
+            "type": "richtext",
+            "id": "block_2_title",
+            "label": "Title"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "block_1",
+            "name": "Block 1 Accordion",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "content",
+                    "label": "Content"
+                },
+                {
+                    "type": "html",
+                    "id": "html",
+                    "label": "HTML"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        },
+        {
+            "type": "block_2",
+            "name": "Block 2 Accordion",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "content",
+                    "label": "Content"
+                },
+                {
+                    "type": "html",
+                    "id": "html",
+                    "label": "HTML"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "2 Blocks with Accordions"
+        }
+    ]
+}
+{% endschema %}

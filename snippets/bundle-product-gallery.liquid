@@ -1,0 +1,124 @@
+{%- if media.size > 0 -%}
+    <div 
+        class="bundle-media__wrapper"
+        x-intersect.once="initSliders"
+    >
+        {% comment %} @TODO: {%- render 'product-media-seal' -%} {% endcomment %}
+
+        {% comment %} @TODO: {%- render 'product-media-badge' -%} {% endcomment %}
+        
+        <div 
+            x-ref="slider"
+            class="bundle-media__slider swiper"
+        >
+            <div class="swiper-wrapper">
+                {%- assign index = 0 -%}
+                {%- for block in media -%}
+                    {%- case block.type -%}
+                        {%- when 'Image' -%}
+                            {%- assign image = block.settings.image -%}
+                            {%- if image -%}
+                                {%- liquid 
+                                    assign index = index | plus: 1    
+                                    assign loading = 'lazy'
+                                    if index == 1
+                                        assign loading = 'eager'
+                                    endif
+                                -%}
+                                <div class="swiper-slide">
+                                    {%- render 'img', image: image, loading: loading -%}
+                                </div>
+                            {%- endif -%}
+                        
+                        {%- when 'Video' -%}
+                            {%- assign video_url = block.settings.video_url -%}
+                            {%- if video_url != blank -%}
+                                {%- assign index = index | plus: 1 -%}
+                                <div class="swiper-slide">
+                                    {%- render 'video', video_url: video_url -%}
+                                </div>
+                            {%- endif -%}
+                    {%- endcase -%}
+                {%- endfor -%}
+            </div>
+
+            <div class="bundle-media__slider-nav">
+                <button
+                    class="bundle-media__slider-nav-btn"
+                    type="button"
+                    aria-label="Go to the previous slide"
+                    data-swiper-prev
+                >
+                    {%- render 'icon', name: 'swiper-arrow-left' -%}
+                </button>
+
+                <button
+                    class="bundle-media__slider-nav-btn"
+                    type="button"
+                    aria-label="Go to the next slide"
+                    data-swiper-next
+                >
+                    {%- render 'icon', name: 'swiper-arrow-right' -%}
+                </button>
+            </div>
+        </div>
+
+        <div class="bundle-media__thumbs-wrapper">
+            <div 
+                x-ref="thumbSlider"
+                class="bundle-media__thumbs swiper swiper-vertical"
+            >
+                <div class="swiper-wrapper">
+                    {%- assign index = 0 -%}
+                    {%- for block in media -%}
+                        {%- case block.type -%}
+                            {%- when 'Image' -%}
+                                {%- assign image = block.settings.image -%}
+                                {%- if image -%}
+                                    {%- liquid 
+                                        assign index = index | plus: 1
+                                        assign loading = 'lazy'
+                                        if index < 6
+                                            assign loading = 'eager'
+                                        endif
+                                    -%}
+                                    <div class="swiper-slide">
+                                        <img
+                                            src="{{ image | image_url: width: 260 }}"
+                                            width="130"
+                                            height="130"
+                                            class="absolute-img"
+                                            alt="{{ image.alt | default: 'Product Bundle Thumbnail' }}"
+                                            {% if loading == 'lazy' %}
+                                                loading="lazy"
+                                            {% endif %}
+                                        >
+                                    </div>
+                                {%- endif -%}
+                            
+                            {%- when 'Video' -%}
+                                {%- assign video_url = block.settings.video_url -%}
+                                {%- if video_url != blank -%}
+                                    {%- assign index = index | plus: 1 -%}
+                                    <div class="swiper-slide">
+                                        {%- render 'video', video_url: video_url -%}
+                                    </div>
+                                {%- endif -%}
+                        {%- endcase -%}
+                    {%- endfor -%}
+                </div> 
+            </div>
+
+            {%- if index > 4 -%}
+                <button
+                    type="button"
+                    class="bundle-media__thumbs-next hover-opacity"
+                    aria-label="Go to next thumbnail"
+                    @click.prevent="goToNextThumb"
+                >
+                    {%- render 'icon', name: 'chevron-down' -%}
+                </button>
+            {%- endif -%}
+        </div>
+    </div>
+{%- endif -%}

@@ -1,0 +1,10 @@
+.announcement {
+    background-color: var(--bg-color, var(--morning-sky)); 
+    color: var(--text-color, var(--white));
+    padding: 1.2rem 0;
+    text-align: center;
+
+    a {
+        color: var(--text-color, var(--white));
+    }
+}

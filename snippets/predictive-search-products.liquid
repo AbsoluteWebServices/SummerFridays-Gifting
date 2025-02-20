@@ -1,0 +1,53 @@
+<template x-if="($store.Search.searchResults?.products || []).length">
+    <div class="predictive-search__main-block">
+        <template
+            x-for="(product, index) in $store.Search.searchResults.products.slice(0,3)"
+            :key="`search-result-product-${ index }-${ product.id }`"
+        >
+            <div class="predictive-search__product">
+                <a 
+                    :href="product.url" 
+                    class="predictive-search__product-image scale-img"
+                    :aria-label="`Go to ${ product.name }`"
+                >
+                    <template x-if="product.imageUrl">
+                        <img 
+                            :src="`${ product.imageUrl }&width=200`" 
+                            :alt="product.name"
+                            width="100"
+                            height="100"
+                            class="absolute-img"
+                        >
+                    </template>
+                </a>
+
+                <div class="predictive-search__product-body">
+                    <div class="predictive-search__product-body-inner">
+                        <h4>
+                            <a 
+                                :href="product.url"
+                                class="hover-opacity"
+                                :aria-label="`Go to ${ product.name }`"
+                                x-html="(product.plp_title && typeof product.plp_title === 'string') ? product.plp_title.replaceAll('®', '<sup>®</sup>').replaceAll('™', '<sup>™</sup>') : product.name"
+                            ></a>
+                        </h4>
+
+                        <p class="predictive-search__product-description a-underline-wrapper a-underline-style-2">
+                            <a 
+                                :href="product.url"
+                                :aria-label="`Go to ${ product.name }`"
+                            >{{- 'products.product.more_details' | t -}}</a>
+                        </p>
+                    </div>
+
+                    <div class="predictive-search__product-price-wrapper">
+                        <span 
+                            class="cta-textlink"
+                            x-text="window.Shopify.formatMoney((+product.basePrice * 100))"
+                        ></span>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

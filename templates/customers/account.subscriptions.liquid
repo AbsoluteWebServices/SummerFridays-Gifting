@@ -1,0 +1,126 @@
+{%- liquid
+    render 'adastra' with 'styles/sections/account.scss'
+-%}
+
+<script
+    src="https://cdn-widgetsrepository.yotpo.com/v1/loader/hAnCQ8TdC1im1AlyOrM2vMEn3Fdg8zmmdzJ4M32n?languageCode={{ localization.language.iso_code | escape }}"
+    async
+></script>
+{{- 'yotpo-subscriptions.css' | asset_url | stylesheet_tag -}}
+
+{%- liquid
+    assign acc_subs_custom_message_enable = settings.acc_subs_custom_message_enable | default: false
+    assign acc_subs_custom_message = settings.acc_subs_custom_message
+
+    assign content = settings.acc_subs_content
+    assign products = settings.acc_subs_products
+    assign limit = settings.acc_subs_limit
+-%}
+
+<div class="container">
+    <section class="account account--logged-{% if customer %}in{% else %}out{% endif %}">
+        {%- if customer -%}
+            {%- render 'account-menu' -%}
+        {%- endif -%}
+
+        <div class="account__content">
+            {%- if acc_subs_custom_message_enable and acc_subs_custom_message != blank -%}
+                <div class="acc-subs__custom-message-wrapper">
+                    {{- acc_subs_custom_message -}}
+                </div>
+            {%- endif -%}
+
+            <div
+                class="yotpo-widget-instance"
+                data-yotpo-instance-id="393070"
+                widget-type="SubscriptionsCustomerPortal"
+                mode-allowed-actions-fn="yotpoIsValidAction(args)"
+            ></div>
+
+            {%- if products != blank -%}
+                <div
+                    class="account__slider"
+                    x-data="subscriptionsProducts"
+                    data-split-load-section
+                >
+                    {%- if content != blank -%}
+                        <div class="rte slider-content">
+                            {{- content -}}
+                        </div>
+                    {%- endif -%}
+
+                    <div
+                        class="swiper pww__slider"
+                        x-ref="slider"
+                        x-intersect.once="initSlider"
+                    >
+                        <div
+                            x-show="slider"
+                            class="swiper-wrapper swiper-wrapper--main"
+                            style="display: none;"
+                        >
+                            {%- for prod in products limit: limit -%}
+                                <div class="swiper-slide">
+                                    {%- render 'product-card',
+                                        product: prod,
+                                        lazyload: true,
+                                        disableLandscape: true,
+                                        top: true
+                                    -%}
+                                </div>
+                            {%- endfor -%}
+                        </div>
+
+                        <button
+                            class="swiper-nav-btn swiper-nav-btn--prev swiper-button-disabled hover-opacity"
+                            type="button"
+                            aria-label="Go to the previous slide"
+                            data-swiper-prev
+                        >
+                            {%- render 'icon', name: 'swiper-chevron' -%}
+                        </button>
+
+                        <button
+                            class="swiper-nav-btn swiper-nav-btn--next swiper-button-disabled hover-opacity"
+                            type="button"
+                            aria-label="Go to the next slide"
+                            data-swiper-next
+                        >
+                            {%- render 'icon', name: 'swiper-chevron' -%}
+                        </button>
+                    </div>
+                </div>
+            {%- endif -%}
+        </div>
+    </section>
+</div>
+
+<script>
+    // disallow product ids
+
+    const disallowedProductIds = ['1421306003533'];
+
+    const disallowedProductTitleSuffix = '[NOT ON SALE]';
+
+    function yotpoIsValidAction(args) {
+        if (args.actionType === 'reactive_subscription') {
+            for (let i = 0; i < args.subscription.products.length; i++) {
+                const product = args.subscription.products[i];
+
+                // disallow reactivate if product has '[NOT ON SALE]' in the title
+
+                if (product.title.indexOf(disallowedProductTitleSuffix) > -1) {
+                    return false;
+                }
+
+                // disallow reactivate on hardcoded product ids
+
+                if (disallowedProductIds.indexOf(product.id) > -1) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+</script>

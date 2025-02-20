@@ -1,0 +1,27 @@
+{%- liquid 
+    assign points_modifier = 1
+    if customer
+        assign tags = customer.tags | join: '%%%' | downcase
+        if tags contains 'swell_vip_golden hour mode'
+            assign points_modifier = 1.5
+        elsif tags contains 'swell_vip_vacation mode'
+            assign points_modifier = 1.25
+        endif
+    endif
+
+    assign points = cart.total_price | times: points_modifier | divided_by: 100 | floor
+-%}
+
+<div class="minicart__main-block minicart__main-block--no-border minicart__loyalty-points">
+    <div class="minicart__loyalty-points-inner superscript-normal a-underline-wrapper a-underline-style-2">
+        <div class="minicart__loyalty-points-amount">
+            {%- render 'icon', name: 'sun-spiral' -%}
+            <div>
+                <span x-text="$store?.Cart?.cart ? Math.floor(($store.Cart.cart.total_price * {{ points_modifier }}) / 100) : '{{- points -}}'">{{- points -}}</span> points
+            </div>
+        </div>
+        <div>
+            earned with this order. {% unless customer %}<a href="{{- routes.account_login_url -}}" aria-label="Login into your account">Sign in</a> to Redeem!{% endunless %}
+        </div>
+    </div>
+</div>

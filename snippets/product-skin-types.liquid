@@ -1,0 +1,45 @@
+{%- assign skin_types = product.metafields.product.skin_types.value -%}
+{%- assign targets = product.metafields.product.targets.value -%}
+{%- if skin_types != blank or targets != blank -%}
+    <ul class="list-reset product-info__skin-types">
+        {%- if skin_types != blank -%}
+            {%- for skin_type in skin_types -%}
+                {%- liquid
+                    assign skin_type_title = skin_type.full_name.value 
+                    if skin_type_title == blank
+                        continue
+                    endif
+
+                    assign skin_type_icon = skin_type.icon.value
+                -%}
+                <li class="superscript-normal product-info__skin-type">
+                    {%- if skin_type_icon != blank -%}
+                        {{- skin_type_icon -}}
+                    {%- endif -%}
+
+                    {{- skin_type_title -}}
+                </li>
+            {%- endfor -%}
+        {%- endif -%}
+
+        {%- if targets != blank -%}
+            {%- for target in targets -%}
+                {%- liquid
+                    assign target_title = target.full_name.value 
+                    if target_title == blank
+                        continue
+                    endif
+
+                    assign target_icon = target.icon.value
+                -%}
+                <li class="superscript-normal product-info__skin-type">
+                    {%- if target_icon != blank -%}
+                        {{- target_icon -}}
+                    {%- endif -%}
+
+                    {{- target_title -}}
+                </li>
+            {%- endfor -%}
+        {%- endif -%}
+    </ul>
+{%- endif -%}

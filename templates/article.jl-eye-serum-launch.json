@@ -1,0 +1,339 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_split_4hp6Rw": {
+      "type": "hero-split",
+      "blocks": {
+        "media_i9J8t4": {
+          "type": "media",
+          "settings": {
+            "media_type": "video",
+            "video_desktop": "shopify://files/videos/NEW JLOES - Blog - Desktop.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "media_i9J8t4"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "height_type": "percentage",
+        "height": 80,
+        "deduct_header_height": true,
+        "deduct_announcement_bar_height": true,
+        "aspect_ratio_width": 1,
+        "aspect_ratio_height": 1,
+        "height_type_tablet": "percentage",
+        "height_tablet": 100,
+        "deduct_header_height_tablet": false,
+        "deduct_announcement_bar_height_tablet": true,
+        "aspect_ratio_width_tablet": 16,
+        "aspect_ratio_height_tablet": 9,
+        "height_type_desktop": "percentage",
+        "height_desktop": 100,
+        "deduct_header_height_desktop": false,
+        "deduct_announcement_bar_height_destop": true,
+        "aspect_ratio_width_desktop": 16,
+        "aspect_ratio_height_desktop": 9,
+        "text_color": "white",
+        "title_color": "white",
+        "content_color": "white",
+        "title_font": "primary",
+        "title_tag": "h1",
+        "overlay_opacity": 20,
+        "gradient_direction": "gradient-none",
+        "gradient_percent": 25,
+        "vertical_alignment": "center",
+        "horizontal_alignment": "center",
+        "vertical_alignment_desktop": "center",
+        "horizontal_alignment_desktop": "center",
+        "alignment_container": "full",
+        "alignment_container_desktop": "full",
+        "eyebrow": "Products",
+        "eyebrow_margin": "normal",
+        "content_above_title": "",
+        "title": "Introducing Jet Lag Overnight Eye Serum",
+        "title_custom_line_1": "",
+        "title_custom_line_2": "",
+        "title_font_size": 3,
+        "title_font_size_tablet": 3,
+        "title_font_size_desktop": 3,
+        "content": "",
+        "content_font_size": 1,
+        "content_font_size_tablet": 1,
+        "content_font_size_desktop": 1,
+        "button_label": "",
+        "button_url": "",
+        "button_margin": "normal",
+        "btn_style": "regular"
+      }
+    },
+    "image_split_6gWxjf": {
+      "type": "image-split",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/is.jpg",
+        "media_aspect_ratio_mobile": "square",
+        "media_aspect_ratio_desktop": "taller",
+        "media_fullwidth_mobile": false,
+        "media_caption": "",
+        "content": "<h2>Introducing the best nighttime eye serum around, and our newest product, Jet Lag Overnight Eye Serum. </h2><p>Jet Lag Overnight Eye Serum is the first product addition to our iconic Jet Lag Collection, following our award-winning and community-loved Jet Lag Mask. Just like Jet Lag Mask, this under eye serum was formulated to leave the skin feeling ultra-hydrated, soothed, and nourished.</p>",
+        "content_smaller": "<p>This rich, emollient nighttime eye serum helps to visibly minimize fine lines for a smoother, firmer look with regular use. Powered by super-hydrating glycerin, barrier-supporting ceramides and a gentle retinoid blend, it works hard overnight to nourish and hydrate the eye area while you’re sleeping for the ultimate well-rested appearance. Like all of our products, this under eye serum is non-comedogenic, so you don’t have to worry about waking up to clogged pores.</p>",
+        "content_left": "",
+        "content_right": "",
+        "content_bottom": "",
+        "products": [
+          "jet-lag-overnight-eye-serum",
+          "jet-lag-mask"
+        ],
+        "content_justify_on_desktop": "space-between",
+        "content_secondary": "",
+        "content_secondary_position_desktop": "bottom",
+        "content_secondary_layout": "text_media",
+        "vertical_alignment": "top",
+        "layout_desktop": "text_media",
+        "layout_mobile": "text_media"
+      }
+    },
+    "content_mXUFDG": {
+      "type": "content",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Find Your Eye Product</h2><p>If you already swear by our award-winning<a href=\"/products/light-aura-vitamin-c-peptide-eye-cream\" title=\"Light Aura Vitamin C + Peptide Eye Cream\"> Light Aura Vitamin C + Peptide Eye Cream</a>, you may be wondering how Jet Lag Overnight Eye Serum is different, and if you actually need both in your routine.</p><p>Light Aura Eye Cream was formulated to brighten and depuff the eye area, leaving it perfectly primed for makeup or concealer, and an essential step for your morning routine. Powered by a vitamin C and peptide blend, it visibly brightens the entire eye area, while caffeine helps de-puff, for a refreshed and replenished look.</p><p>Jet Lag Overnight Eye Serum was formulated to be used only at night due to its gentle-yet-effective retinol blend, that helps to improve the appearance of wrinkles. Over time, the skin around the eye area will appear less crepey and more even.<br/>Add both products to your AM and PM routines for your brightest, most-hydrated eyes yet.</p>",
+        "font_size": "normal",
+        "container": "small",
+        "paragraph_margins": "normal",
+        "heading_alignment": "center",
+        "text_alignment": "left",
+        "text_wrap": "normal"
+      }
+    },
+    "media_with_caption_7irLaT": {
+      "type": "media-with-caption",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "video",
+        "lazyload": false,
+        "video": "shopify://files/videos/Beach-Sunset.mp4",
+        "autoplay": false,
+        "show_big_play_button": true,
+        "play_control": true,
+        "sound_control": true,
+        "image": "shopify://shop_images/Dream_Oasis_-_Model_1.png",
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur <a href=\"#\" title=\"#\">adipiscing elit</a>.</p>"
+      }
+    },
+    "results_tT3Hp6": {
+      "type": "results",
+      "blocks": {
+        "result_VFX4wy": {
+          "type": "result",
+          "settings": {
+            "result": 100,
+            "fact": "<p>showed a significant improvement in fine lines and wrinkles after 2 weeks of use*</p>"
+          }
+        },
+        "result_8CFYmC": {
+          "type": "result",
+          "settings": {
+            "result": 97,
+            "fact": "<p>showed a significant improvement in firmness after 2 weeks of use*</p>"
+          }
+        },
+        "result_fCVEqc": {
+          "type": "result",
+          "settings": {
+            "result": 94,
+            "fact": "<p>agreed that after using this serum, the skin around their eyes has a visibly smoother texture after 4 weeks**</p>"
+          }
+        },
+        "ingredient_8LKpEA": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Glycerin",
+            "content": "<p>Jet Lag Overnight Eye Serum’s multi-tasking, ultra-hydrating gel formula includes Glycerin to attract and lock in moisture. The super-powered humectant provides lasting dryness relief, for a soft and supple feel.</p>"
+          }
+        },
+        "ingredient_ghJhFi": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Retinol and Retinyl Linoleate",
+            "content": "<p>Penetrates deep into the skin to help improve the appearance of fine lines and wrinkles, while <br/>being gentle enough for all skin types. These powerful, plant-based vitamin A derivatives also help to improve discoloration around the delicate eye area.</p>"
+          }
+        },
+        "ingredient_9iUqrT": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Licorice Root Extract",
+            "content": "<p>Soothes the look of inflammation and helps reduce the appearance of puffiness around the eye area.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "result_VFX4wy",
+        "result_8CFYmC",
+        "result_fCVEqc",
+        "ingredient_8LKpEA",
+        "ingredient_ghJhFi",
+        "ingredient_9iUqrT"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content_mobile": "",
+        "content": "<h2>The Results</h2>",
+        "note": "<p>**In an independent consumer use study, with 31 participants aged 32 – 60</p>",
+        "key_ingredients_title": "<h2>Key Ingredients</h2>",
+        "content_below_results": "",
+        "media_type": "image",
+        "image": "shopify://shop_images/results.jpg",
+        "media_fit": "contain"
+      }
+    },
+    "image_gallery_BrXVHH": {
+      "type": "image-gallery",
+      "blocks": {
+        "image_49myHe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/JLOES-Blog-Carousel-1.jpg",
+            "url": "#",
+            "open_in_new_tab": true
+          }
+        },
+        "image_MbjefF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/JLOES-Blog-Carousel-2.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_wfrXYM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/JLOES-Blog-Carousel-3.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_jTiiqz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HP-Jet-Lag-Mask-And-Eye-Serum.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "image_49myHe",
+        "image_MbjefF",
+        "image_wfrXYM",
+        "image_jTiiqz"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "background_color": "transparent",
+        "content": "",
+        "images_type": "shopify-images",
+        "embed": "",
+        "spirit_gallery_id": "",
+        "force": false,
+        "open_in_new_tab": true,
+        "limit": 8,
+        "spirit_gallery_image_url": ""
+      }
+    },
+    "image_split_8Jrptn": {
+      "type": "image-split",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/image_917f3893-722e-45d5-8706-e0dcc08a92ea.jpg",
+        "media_aspect_ratio_mobile": "square",
+        "media_aspect_ratio_desktop": "taller",
+        "media_fullwidth_mobile": false,
+        "media_caption": "",
+        "content": "",
+        "content_smaller": "<h2>How to Use</h2>",
+        "content_left": "<p>AM<br/>Gently apply Light Aura Vitamin C + Peptide Eye Cream around the eye area. Follow with your favorite moisturizer, SPF and makeup routine.</p>",
+        "content_right": "<p>PM<br/>In the PM, gently apply a small amount of Jet Lag Overnight Eye Serum around the contour of each eye.</p>",
+        "content_bottom": "<p>You can use Jet Lag Overnight Eye Serum every night, every other night, or incorporate it into your skin cycling routine — whatever works best for you and your skin.</p><p>If your skin concerns include dehydration, loss of firmness, fine lines and wrinkles around the eye area, Jet Lag Overnight Eye Serum will quickly earn a spot in your nighttime skincare routine. We can’t wait for it to become your new favorite product—it’s truly the best overnight eye serum.</p>",
+        "products": [],
+        "content_justify_on_desktop": "space-between",
+        "content_secondary": "",
+        "content_secondary_position_desktop": "bottom",
+        "content_secondary_layout": "text_media",
+        "vertical_alignment": "center",
+        "layout_desktop": "text_media",
+        "layout_mobile": "media_text"
+      }
+    },
+    "recommendations_qj337L": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "id": "",
+        "layout": "slider",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Related Products</h2>",
+        "content_related": "<h2>Related Products</h2>",
+        "button_label": "",
+        "button_url": "",
+        "limit": 8,
+        "products": [
+          "jet-lag-overnight-eye-serum",
+          "jet-lag-mask",
+          "jet-lag-soothing-hydration-mist",
+          "jet-lag-deep-hydration-serum"
+        ]
+      }
+    }
+  },
+  "order": [
+    "hero_split_4hp6Rw",
+    "image_split_6gWxjf",
+    "content_mXUFDG",
+    "media_with_caption_7irLaT",
+    "results_tT3Hp6",
+    "image_gallery_BrXVHH",
+    "image_split_8Jrptn",
+    "recommendations_qj337L"
+  ]
+}

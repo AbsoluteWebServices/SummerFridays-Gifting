@@ -1,0 +1,28 @@
+{%- assign objects = settings[key].value -%}
+{%- if objects != blank -%}
+    {%- for object in objects -%}
+        {%- liquid 
+            assign title = object.full_name.value
+            assign url = object.url.value
+            if title == blank or url == blank 
+                continue
+            endif
+            assign icon = object.icon.value
+        -%}
+        <li {% if class != blank %}class="{{ class }}-wrapper{% endif %}">
+            <a 
+                href="{{- url -}}"
+                class="{% if class != blank %}{{ class }}{% else %}mobile-menu__link{% endif %}"
+                aria-label="Go to {{ title -}}"
+            >
+                {%- if icon != blank -%}
+                    {{- icon -}}
+                {%- endif -%}
+
+                <span>
+                    {{- title -}}
+                </span>
+            </a>
+        </li>
+    {%- endfor -%}
+{%- endif -%}

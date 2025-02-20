@@ -1,0 +1,95 @@
+{%- liquid 
+    assign columns = columns | default: 1
+    assign custom_source = custom_source | strip_html | escape 
+    assign list_id = list_id | strip_html | escape
+    assign signup_unit_id = signup_unit_id | strip_html | escape
+    assign coming_soon = coming_soon | default: false 
+    assign global_settings = shop.metaobjects.global_settings['global-settings']
+    if settings != blank
+        assign disclaimer = global_settings.subscription_disclaimer
+        assign success_message = global_settings.success_message.value
+        assign error_message = global_settings.error_message.value
+    endif
+    assign btnTransparent = btnTransparent | default: true, allow_false: true
+-%}
+
+<div 
+	x-data="newsletter({
+        custom_source: '{{ custom_source }}',
+        list_id: '{{ list_id }}',
+        signup_unit_id: '{{ signup_unit_id }}',
+        coming_soon: {{ coming_soon }},
+        {% if coming_soon == true and template.name == 'product' %}
+            product_title: '{{ product.title | strip_html | escape }}'
+        {% endif %}
+    })"
+	class="newsletter {% if text_color != blank %}newsletter--{{ text_color }}{% endif %} {% if columns != blank and columns != 1 %}newsletter--cols-{{ columns }}{% endif %}"
+	:class="loading ? 'loading' : ''"
+	data-split-load-section
+>
+	<form action="/contact" method="POST">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="contact[tags]" value="newsletter">
+
+		{% if title != blank %}
+			<label
+                for="EmailField-{{ id }}"
+                class="h2 newsletter__title"
+                aria-label="{{ title | strip_html | downcase | escape }}"
+            >
+                {{- title -}}
+            </label>
+		{% endif %}
+
+		<div class="newsletter__input-wrap">
+			<input
+                type="email"
+                id="EmailField-{{ id }}"
+                class="newsletter__input"
+                value="{% if customer %}{{ customer.email }}{% endif %}"
+                placeholder="{{- 'general.newsletter.email_placeholder' | t -}}"
+                aria-label="Email address"
+                name="contact[email]"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                data-newsletter-email-input
+            >
+			<input
+                type="phone"
+                id="PhoneField{{ id }}"
+                class="newsletter__input"
+                value="{% if customer %}{{ customer.phone }}{% endif %}"
+                placeholder="{{- 'general.newsletter.phone_placeholder' | t -}}"
+                aria-label="Phone number"
+                name="contact[phone]"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                data-newsletter-phone-input
+			>
+		</div>
+
+		{%- if disclaimer != blank -%}
+			<div class="newsletter__disclaimer p-small a-underline-wrapper a-underline-style-2">{{ disclaimer | metafield_tag }}</div>
+		{% endif %}
+
+		<button 
+			type="submit"
+			class="btn btn--center btn--full btn--{% if text_color == 'white' %}white{% else %}ink{% endif %}{% if btnTransparent %}-transparent{% endif %} newsletter__submit" 
+			aria-label="Subscribe"
+		>{{- 'general.newsletter.subscribe' | t -}}</button>
+
+		<div
+			x-show="(error || success) && message"
+			class="newsletter-message alert-message"
+			:class="success ? 'alert-message--success' : 'alert-message--error'"
+			aria-role="alert"
+			style="display: none;"
+            x-transition.duration.300ms
+			x-transition
+			x-text="message"
+		></div>
+	</form>
+</div>

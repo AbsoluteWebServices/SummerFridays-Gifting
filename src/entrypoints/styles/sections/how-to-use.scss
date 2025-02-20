@@ -1,0 +1,105 @@
+.how-to-use__card {
+    @media only screen and (min-width: 768px) {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.8rem;
+    }
+
+    @media only screen and (min-width: 1280px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .swiper {
+        width: 100%;
+    }
+}
+
+.how-to-use__card-col {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1.45;
+    max-height: calc(95svh - var(--header-height-mobile) - var(--announcement-height, 0));
+
+    @media only screen and (min-width: 1280px) {
+        min-height: 35rem;
+    }
+
+    @media only screen and (min-width: 1280px) {
+        max-height: calc(95svh - var(--header-height-desktop) - var(--announcement-height, 0));
+    }
+}
+
+.how-to-use__card-content {
+    position: relative;
+    aspect-ratio: initial;
+    height: 100%;
+    padding-top: 3rem;
+    text-align: center;
+    color: var(--text-color, var(--ink));
+
+    a, button {
+        color: var(--text-color, var(--ink));
+    }
+
+    &.how-to-use__card-content--with-nav {
+        padding-top: 6.5rem;
+    }
+
+    @media only screen and (min-width: 768px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5.6rem;
+
+        &.how-to-use__card-content--with-nav {
+            padding-top: 5.6rem;
+        }
+    }
+}
+
+.how-to-use__card-body {
+    margin-top: 2.4rem;
+}
+
+
+
+.how-to-use__card-nav-subtitle-wrapper {
+    position: absolute;
+    z-index: 2;
+    top: 2.2rem;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+
+    @media only screen and (min-width: 768px) {
+        position: initial;
+        margin-top: 2.2rem;
+    }
+}
+
+.how-to-use__card-nav-btn {
+    padding: .8rem;
+}
+
+.how-to-use__card-main-media {
+    border-radius: .3rem;
+    overflow: hidden;
+
+    video, img {
+        z-index: 1;
+    }
+}
+
+.how-to-use__card-secondary-media {
+    border-radius: .3rem;
+    overflow: hidden;
+    display: none;
+
+    @media only screen and (min-width: 1280px) {
+        display: block;
+    }
+}

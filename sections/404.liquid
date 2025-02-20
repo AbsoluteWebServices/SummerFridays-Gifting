@@ -1,0 +1,188 @@
+{%- liquid
+    assign padding_top = section.settings.padding_top | default: 0
+    assign padding_bottom = section.settings.padding_bottom | default: 0
+    assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+    assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+    assign media_type = section.settings.media_type | default: 'image'
+    assign lazyload = section.settings.lazyload | default: false
+    assign image = section.settings.image
+    assign video = section.settings.video
+    assign title_top = section.settings.title_top | escape | strip_html
+    assign content_main = section.settings.content_main | default: "<h1>404. Not Found.</h1>"
+    assign content_secondary = section.settings.content_secondary
+    assign menu = section.settings.menu 
+    assign button_label = section.settings.button_label | escape | strip_html
+    assign button_url = section.settings.button_url
+    assign loading = 'eager'
+    if lazyload == true 
+        assign loading = 'lazy'
+    endif
+-%}
+
+{%- render 'offset',
+    id: section.id,
+    padding_top: padding_top,
+    padding_bottom: padding_bottom,
+    padding_top_desktop: padding_top_desktop,
+    padding_bottom_desktop: padding_bottom_desktop
+-%}
+
+{%- render 'adastra' with 'styles/sections/404.scss' -%}
+ 
+<section id="section-{{- section.id -}}">
+    <div class="container container--smaller-tablet container--padding-tablet">
+        <div class="two-cols-wrapper">
+            <div class="media-col">
+                {%- if media_type == 'image' -%}
+                    {%- if image -%}
+                        {%- render 'img', image: image, loading: loading -%}
+                    {%- endif -%}
+                {%- elsif media_type == 'video' -%}
+                    {%- if video -%}
+                        {%- render 'video', 
+                            video: video,
+                            poster: image
+                        -%}
+                    {%- endif -%}
+                {%- endif -%}
+            </div>
+
+            <div class="content-col">
+                {%- if title_top != blank -%}
+                    <div class="not-found__title-top subheader-small">{{- title_top -}}</div>
+                {%- endif -%}
+
+                <div class="rte">{{- content_main -}}</div>
+
+                {%- if content_secondary != blank -%}
+                    <div class="not-found__content-secondary rte">{{- content_secondary -}}</div>
+                {%- endif -%}
+
+                {%- if menu != blank -%}
+                    {%- assign links = linklists[menu].links -%}
+                    {%- if links.size > 0 -%}
+                        <ul class="not-found__links list-reset a-underline-wrapper a-underline-style-2">
+                            {%- for link in links -%}
+                                <li>
+                                    <a href="{{- link.url -}}" aria-label="{{- link.title -}}">{{- link.title -}}</a>
+                                </li>
+                            {%- endfor -%}
+                        </ul>
+                    {%- endif -%}
+                {%- endif -%}
+
+                {%- if button_label != blank and button_url != blank -%}
+                    <a href="{{- button_url -}}" aria-label="{{- button_label -}}" class="not-found__btn btn btn--full btn--chalk btn--center hover-arrow">
+                        {{- button_label -}}
+                        {%- render 'icon', name: 'arrow-right' -%}
+                    </a>
+                {%- endif -%}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "404 | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Settings"
+        },
+        {
+            "type": "select",
+            "id": "media_type",
+            "label": "Media type",
+            "default": "video",
+            "options": [
+                { "value": "image", "label": "Image" },
+                { "value": "video", "label": "Video" }
+            ]
+        },
+        {
+            "type": "checkbox",
+            "id": "lazyload",
+            "label": "Lazyload",
+            "default": false,
+            "info": "Enable if the media is below the fold."
+        },
+        {
+            "type": "video",
+            "id": "video",
+            "label": "Video",
+            "info": "Format: .mp4"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "With the video type, the image is used as a poster (first frame)"
+        },
+        {
+            "type": "text",
+            "id": "title_top",
+            "label": "Title (top)"
+        },
+        {
+            "type": "richtext",
+            "id": "content_main",
+            "label": "Content (main)",
+            "info": "Hint: use H1 for the main title"
+        },
+        {
+            "type": "richtext",
+            "id": "content_secondary",
+            "label": "Content (secondary)"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        },
+        {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+        },
+        {
+            "type": "text",
+            "id": "button_url",
+            "label": "Button URL"
+        }
+    ]
+}
+{% endschema %}

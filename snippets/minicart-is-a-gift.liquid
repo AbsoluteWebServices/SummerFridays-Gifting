@@ -1,0 +1,51 @@
+{%- if enable -%}
+    <div
+        x-data="{ open: {% if cart.note != blank %}true{% else %}false{% endif %} }" 
+        class="minicart__footer-is-a-gift"
+    >
+        <div class="minicart__footer-is-a-gift-header">
+            <div class="minicart__footer-is-a-gift-title">
+                {%- render 'icon', name: 'gift' -%}
+                <span class="cta-textlink">{{- title -}}</span>
+            </div>
+
+            <div>
+                <input 
+                    id="is-a-gift"
+                    type="checkbox"
+                    class="visually-hidden"
+                    @change="open = !open; if (!open) { $store.Cart.updateNote('') }"
+                    {% if cart.note != blank %}
+                        checked
+                    {% endif %}
+                />
+                <label 
+                    for="is-a-gift"
+                    class="checkbox-toggle"
+                >
+                    {{- title -}}
+                </label>
+            </div>
+        </div>
+
+        <div 
+            x-show="open"
+            class="minicart__footer-is-a-gift-textarea-wrapper"
+            x-transition
+            {% if cart.note == blank %}
+                style="display: none;"
+            {% endif %}
+        >
+            <textarea 
+                x-text="$store?.Cart?.note ? $store.Cart.note : ''"
+                name="note"
+                class="minicart__footer-is-a-gift-textarea scrollbar"
+                placeholder="{{- placeholder -}}"
+                aria-label="{{- placeholder -}}"
+                @change="$store.Cart.updateNote(event.target.value)"
+            >
+                {{- cart.note -}}
+            </textarea>
+        </div>
+    </div>
+{%- endif -%}

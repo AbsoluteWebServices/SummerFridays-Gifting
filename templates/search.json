@@ -1,0 +1,62 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "search": {
+      "type": "search",
+      "blocks": {
+        "suggestion_9q8jAF": {
+          "type": "suggestion",
+          "settings": {
+            "title": "Check for misspellings."
+          }
+        },
+        "suggestion_Vh7hDH": {
+          "type": "suggestion",
+          "settings": {
+            "title": "Remove possible redundant keywords (ie. \"products\")."
+          }
+        },
+        "suggestion_DPbDEy": {
+          "type": "suggestion",
+          "settings": {
+            "title": "Use other words to describe what you are searching for."
+          }
+        }
+      },
+      "block_order": [
+        "suggestion_9q8jAF",
+        "suggestion_Vh7hDH",
+        "suggestion_DPbDEy"
+      ],
+      "settings": {
+        "padding_top": 3,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 6,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Still can't find what you're looking for?</h2>",
+        "link_label": "CONTACT US",
+        "link_url": "shopify://pages/contact",
+        "you_might_like_label": "You Might Like",
+        "products": [
+          "lip-butter-balm",
+          "jet-lag-mask",
+          "rich-cushion-cream",
+          "sheer-skin-tint",
+          "cloud-dew-gel-cream",
+          "dream-lip-oil-pink-cloud"
+        ]
+      }
+    }
+  },
+  "order": [
+    "search"
+  ]
+}

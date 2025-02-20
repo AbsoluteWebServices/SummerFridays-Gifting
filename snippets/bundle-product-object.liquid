@@ -1,0 +1,146 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+
+  assign product_image = product.metafields.custom.main_image_on_plp | default: product.featured_image 
+  if current_variant.metafields.custom.main_image_on_plp
+    assign product_image = current_variant.metafields.custom.main_image_on_plp
+  endif
+  assign product_image_url = product_image | image_url: width: 160
+
+  assign product_title = product.metafields.accentuate.plp_title | default: product.title | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>'
+
+  assign discounted_price = discounted_price
+  for tag in product.tags
+    if tag contains 'bundle_price:'
+      assign bundle_price_tag = tag | split: ':'
+      assign discounted_price = bundle_price_tag[1] | times: 1
+      break
+    endif
+  endfor
+
+  assign grouped_product = false
+  for tag in product.tags
+    if tag contains 'swatches-' or tag contains 'Swatches -'
+      assign grouped_product = true
+      assign tag_handle = tag | handleize
+      assign swatch_products = collections[tag_handle].products | where: "available"
+      break
+    endif
+  endfor
+
+  assign options = false
+
+  assign shade_finder_url = product.metafields.shade_finder.url.value | default: ''
+-%}
+
+{%- assign variants = product.variants -%}
+{%- capture variants_json -%}
+  {%- for variant in variants -%}
+    {%- liquid
+      assign variant_draft = variant.metafields.variant.draft | default: false
+
+      assign image = variant.metafields.custom.main_image_on_plp | default: variant.image | default: product_image
+      assign image_url = image | image_url: width: 160
+
+      assign variant_title = variant.title
+      if variant_title == 'Default Title'
+        assign variant_title = product_title
+      endif
+
+      assign thumbnail_url = ''
+      assign custom_variant_thumbnail = variant.metafields.custom.thumbnail
+      if custom_variant_thumbnail
+        assign thumbnail_url = custom_variant_thumbnail | image_url: width: 32
+      else
+        assign colors_name = variant.title
+        assign colors_thumbnail = 'swatch-' | append: colors_name | handleize | append: '.png'
+        assign thumbnail_url = colors_thumbnail | file_img_url: '32x' | default: ''
+        if variant.title == 'Default Title'
+            assign thumbnail_url = product_image | image_url: width: 32
+        endif
+      endif
+
+    -%}
+    {
+
+      "id": {{- variant.id | json -}},
+      "url": {{- variant.url | json -}},
+      "image_url": {{- image_url | json -}},
+      "discounted_price": {{- discounted_price | json -}},
+      "product_title": {{- product_title | json -}},
+      "title": {{- variant_title | json -}},
+      "price": {{- variant.price | json -}},
+      "shade_finder_url": {{- shade_finder_url | json -}},
+      "thumbnail_url": {{- thumbnail_url | json -}},
+      "available": {{- variant.available -}},
+      "draft": {{- variant_draft -}}
+    }{%- unless forloop.last -%},{%- endunless -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- if grouped_product -%}
+  {%- capture options -%}
+    {%- for swatch_product in swatch_products -%}
+      {%- liquid 
+        assign current_variant = swatch_product.selected_or_first_available_variant
+
+        assign product_image = swatch_product.metafields.custom.main_image_on_plp | default: swatch_product.featured_image
+        assign product_image_url = product_image | image_url: width: 160
+
+        assign thumbnail_url = ''
+        assign custom_product_thumbnail = swatch_product.metafields.product.thumbnail
+        if custom_product_thumbnail
+          assign thumbnail_url = custom_product_thumbnail | image_url: width: 32
+        else
+          assign color_position = product.options_by_name['Shade'].position | minus: 1
+          assign colors_name = swatch_product.variants[0].options[color_position]
+          assign colors_thumbnail = 'swatch-' | append: colors_name | handleize | append: '.png'
+          assign thumbnail_url = colors_thumbnail | file_img_url: '32x' | default: ''
+        endif
+
+        assign swatch_product_title = swatch_product.title
+        if swatch_product.metafields.accentuate.plp_title != blank
+            assign swatch_product_title = swatch_product.metafields.accentuate.plp_title | escape
+        endif
+
+        assign title = swatch_product_title
+        if current_variant.title != 'Default Title'
+          assign title = current_variant.title
+        endif
+      -%}
+
+      {
+        "id": {{- current_variant.id | json -}},
+        "url": {{- current_variant.url | json -}},
+        "image_url": {{- product_image_url | json -}},
+        "discounted_price": {{- discounted_price | json -}},
+        "product_title": {{- product_title | json -}},
+        "title": {{- title | json -}},
+        "price": {{- current_variant.price | json -}},
+        "available": {{- current_variant.available -}},
+        "shade_finder_url": {{- shade_finder_url | json -}},
+        "thumbnail_url": {{- thumbnail_url | json -}}
+      }{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+{%- else -%}
+    {%- assign options = variants_json -%}
+{%- endif -%}
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+"id": {{- product.id | json -}},
+"url": {{- product.url | json -}},
+"image_url": {{- product_image_url | json -}},
+"title": {{- product_title | json -}},
+"price": {{- current_variant.price | json -}},
+"discounted_price": {{- discounted_price | json -}},
+"available": {{- current_variant.available -}},
+"options_title": {{- product.options[0] | json -}},
+"shade_finder_url": {{- shade_finder_url | json -}},
+"variants": [
+  {{- variants_json -}}
+],
+"options": [
+  {{- options -}}
+]

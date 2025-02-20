@@ -1,0 +1,115 @@
+{%- liquid 
+    assign video_url = video_url 
+    if video_url == blank and video != blank
+        assign mp4_sources = video.sources | where: 'format', 'mp4'
+        if mp4_sources.size > 0
+            assign video_url = mp4_sources[0].url
+        endif
+        if poster == blank and video.preview_image != blank
+            assign poster = video.preview_image
+        endif
+    endif
+    assign autoplay = autoplay | default: true, allow_false: true
+    assign show_big_play_button = show_big_play_button | default: false
+    assign insideLink = insideLink | default: false
+-%}
+
+{%- if video_url != blank -%}
+    <div 
+        class="video__wrapper {% if wrapper_class != blank %}{{ wrapper_class }}{% endif %}" 
+        x-data="video" 
+        x-intersect.once="initVideo" 
+        x-intersect:leave.half="pauseVideo"
+        {% if autoplay %}
+            x-intersect:enter.half="playVideo"
+        {% endif %}
+    >
+        <video
+            x-ref="video"
+            class="{% if class != blank %}{{ class }}{% else %}absolute-img{% endif %}" 
+            {% if autoplay %}
+                autoplay
+            {% endif %}
+            playsinline 
+            muted 
+            loop
+            preload="none"
+            aria-label="{{ video.alt | default: 'SummerFridays beauty media' }}"
+            {% if poster %}
+                poster="{{- poster | image_url: width: 200 -}}"
+            {% endif %}
+        >
+            <source data-src="{{- video_url -}}" type="video/mp4">
+        </video>
+
+        {%- if play_control or sound_control -%}
+            <div 
+                x-show="!{{ show_big_play_button }} || ({{ show_big_play_button }} && isVideoPlaying)"
+                x-transition:enter="default-transition"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-1"
+                x-transition:leave="default-transition"
+                x-transition:leave-start="opacity-1"
+                x-transition:leave-end="opacity-0"
+                class="video__controls"
+                {% if show_big_play_button == true and autoplay == false %}
+                    style="display: none;"
+                {% endif %}
+            >
+                {%- if sound_control -%}
+                    <{% if insideLink %}div{% else %}button{% endif %}
+                        class="video__button"
+                        :class="{
+                            'video__button--sound-on': !isVideoMuted
+                        }"
+                        type="button"
+                        aria-label="Enable video sound"
+                        :aria-label="isVideoMuted ? 'Enable video sound' : 'Disable video sound'"
+                        @click.prevent="playVideoSoundToggle"
+                    >
+                        {%- render 'icon', name: 'sound' -%}
+
+                        <div class="video__button-cross"></div>
+                    </{% if insideLink %}div{% else %}button{% endif %}>
+                {%- endif -%}
+
+                {%- if play_control -%}
+                    <{% if insideLink %}div{% else %}button{% endif %}
+                        class="video__button"
+                        :class="{
+                            'video__button--paused': !isVideoPlaying
+                        }"
+                        type="button"
+                        aria-label="Pause video"
+                        :aria-label="isVideoPlaying ? 'Pause video' : 'Play video'"
+                        @click.prevent="playVideoToggle"
+                    >
+                        {%- render 'icon', name: 'play-round' -%}
+                        {%- render 'icon', name: 'pause-round' -%}
+                    </{% if insideLink %}div{% else %}button{% endif %}>
+                {%- endif -%}
+            </div>
+        {%- endif -%}
+
+        {%- if show_big_play_button -%}
+            <{% if insideLink %}div{% else %}button{% endif %}
+                x-show="!isVideoPlaying"
+                class="video__big-play-button"
+                type="button"
+                x-transition:enter="default-transition"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-1"
+                x-transition:leave="default-transition"
+                x-transition:leave-start="opacity-1"
+                x-transition:leave-end="opacity-0"
+                aria-label="Play video"
+                @click.prevent="playVideo"
+                {% if autoplay %}
+                    style="display: none;"
+                {% endif %}
+            >
+                {%- render 'icon', name: 'play-round' -%}
+            </{% if insideLink %}div{% else %}button{% endif %}>
+        {%- endif -%}
+    </div>
+{%- endif -%}

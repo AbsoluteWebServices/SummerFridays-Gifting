@@ -1,0 +1,18 @@
+{%- liquid
+    assign seal = product.metafields.product.seal.value
+    if seal != blank
+        assign seal = seal.seal.value
+    endif
+-%}
+{%- if seal != blank -%}
+    <div class="product-card__seal" style="aspect-ratio: {{- seal.aspect_ratio -}}">
+        <img 
+            src="{{- seal | image_url: height: 130 -}}" 
+            alt="{{- seal.alt | default: 'Seal' -}}"
+            width="{{- 65 | times: seal.aspect_ratio | round -}}"
+            height="65"
+            loading="lazy"
+            class="absolute-img"
+        >
+    </div>
+{%- endif -%}

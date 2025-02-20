@@ -1,0 +1,252 @@
+{%- liquid
+    assign padding_top = section.settings.padding_top | default: 0
+    assign padding_bottom = section.settings.padding_bottom | default: 0
+    assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+    assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+    assign id = section.settings.id | escape | strip_html | strip | handleize
+
+    assign stripes = section.settings.stripes | default: false
+    assign media_type = section.settings.media_type | default: 'video'
+    assign video = section.settings.video
+    assign image = section.settings.image 
+    assign gradient_direction = section.settings.gradient_direction | default: 'gradient-y'
+    assign media_hide_mobile = section.settings.media_hide_mobile | default: true, allow_false: true
+    assign content = section.settings.content
+    assign content_alignment = section.settings.content_alignment | default: 'center'
+    assign stripes_img = shop.metaobjects.global_settings['global-settings'].stripes.value
+    assign vertical_alignment = section.settings.vertical_alignment | default: 'top'
+    assign horizontal_alignment = section.settings.horizontal_alignment | default: 'center'
+    assign max_width = section.settings.max_width | default: 40
+    assign body_bg_color = section.settings.body_bg_color | default: 'white'
+    assign html = section.settings.html
+-%}
+
+{%- render 'offset',
+    id: section.id,
+    padding_top: padding_top,
+    padding_bottom: padding_bottom,
+    padding_top_desktop: padding_top_desktop,
+    padding_bottom_desktop: padding_bottom_desktop
+-%}
+
+{%- render 'adastra' with 'styles/sections/media-html.scss' -%}
+
+{%- if id != blank -%}
+    <div id="{{- id -}}"></div>
+{%- endif -%}
+
+<section id="section-{{- section.id -}}">
+    <div class="container">
+        <div class="media-html__inner {% if media_hide_mobile %}media-html__inner--media-hide-mobile{% endif %}">
+            <div class="media-html__media{% if stripes %}media-html__media--stripes{% endif %} {% if gradient_direction != 'gradient-none' %}media-html__media--{{- gradient_direction -}}{% endif %}">
+                {%- if stripes -%}
+                    {%- if stripes_img -%}
+                        {%- render 'img', image: stripes_img -%}
+                    {%- endif -%}
+
+                    <div class="media-html__media-inner">
+                {%- endif -%}
+                    {%- if media_type == 'image' -%}
+                        {%- if image -%}
+                            {%- render 'img', image: image -%}
+                        {%- endif -%}
+                    {%- elsif media_type == 'video' -%}
+                        {%- if video -%}
+                            {%- render 'video', 
+                                video: video,
+                                poster: image
+                            -%}
+                        {%- endif -%}
+                    {%- endif -%}
+                {%- if stripes -%}
+                    </div>
+                {%- endif -%}
+            </div>
+
+            <div class="media-html__body media-html__body--y-{{ vertical_alignment }} media-html__body--x-{{ horizontal_alignment }}" style="background-color: var(--{{ body_bg_color }});">
+                <div class="media-html__body-inner" style="max-width: {{- max_width -}}rem;">
+                    {%- if content != blank -%}
+                        <div class="rte media-html__content media-html__content--{{ content_alignment }}">{{- content -}}</div>
+                    {%- endif -%}
+
+                    {%- if html != blank -%}
+                        <div class="media-html__html {% if content != blank %}media-html__html--with-content{% endif %}">
+                            {{- html -}}
+                        </div>
+                    {%- endif -%}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Media & HTML | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Main Settings"
+        },
+        {
+            "type": "text",
+            "id": "id",
+            "label": "ID",
+            "info": "Use this id to link to this section. Only lowercase letters without spaces."
+        },
+        {
+            "type": "header",
+            "content": "Media Settings"
+        },
+        {
+            "type": "select",
+            "id": "media_type",
+            "label": "Media type",
+            "default": "video",
+            "options": [
+                { "value": "image", "label": "Image" },
+                { "value": "video", "label": "Video" }
+            ]
+        },
+        {
+            "type": "video",
+            "id": "video",
+            "label": "Video",
+            "info": "Format: .mp4"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "With the video type, the image is used as a poster (first frame)"
+        },
+        {
+          "type": "checkbox",
+          "id": "stripes",
+          "label": "Stripes"
+        },
+        {
+            "type": "select",
+            "id": "gradient_direction",
+            "label": "Gradient direction",
+            "default": "gradient-y",
+            "options": [
+                { "value": "gradient-t", "label": "To Top" },
+                { "value": "gradient-b", "label": "To Bottom" },
+                { "value": "gradient-y", "label": "Vertical Sides" },
+                { "value": "gradient-none", "label": "Off" }
+            ]
+        },
+        {
+            "type": "checkbox",
+            "id": "media_hide_mobile",
+            "label": "Hide media on mobile",
+            "default": true
+        },
+        {
+            "type": "header",
+            "content": "Text Settings"
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content",
+            "info": "Hint: use Heading 2 for title, and paragraph for body"
+        },
+        {
+            "type": "select",
+            "id": "content_alignment",
+            "label": "Content alignment",
+            "default": "center",
+            "options": [
+                { "value": "left", "label": "Left" },
+                { "value": "center", "label": "Center" },
+                { "value": "right", "label": "Right" }
+            ]
+        },
+        {
+            "type": "liquid",
+            "id": "html",
+            "label": "Custom HTML"
+        },
+        {
+            "type": "select",
+            "id": "vertical_alignment",
+            "label": "Vertical alignment",
+            "default": "bottom",
+            "options": [
+                { "value": "top", "label": "Top" },
+                { "value": "center", "label": "Center" },
+                { "value": "bottom", "label": "Bottom" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "horizontal_alignment",
+            "label": "Horizontal alignment",
+            "default": "center",
+            "options": [
+                { "value": "left", "label": "Left" },
+                { "value": "center", "label": "Center" },
+                { "value": "right", "label": "Right" }
+            ]
+        },
+        {
+            "type": "number",
+            "id": "max_width",
+            "label": "Max. width",
+            "default": 40,
+            "info": "In rem. 1rem = 10px"
+        },
+        {
+            "type": "select",
+            "id": "body_bg_color",
+            "label": "Body background color",
+            "default": "white",
+            "options": [
+                { "value": "white", "label": "White" },
+                { "value": "chalk", "label": "Chalk" },
+                { "value": "morning-sky", "label": "Morning Sky" }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Media & HTML | AW"
+        }
+    ]
+}
+{% endschema %}

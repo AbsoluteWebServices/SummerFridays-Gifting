@@ -1,0 +1,146 @@
+.btn {
+    font-family: var(--font-body);
+    font-size: var(--font-button-size);
+    font-style: normal;
+    font-weight: 450;
+    line-height: var(--font-button-line-height);
+    letter-spacing: 0.11rem;
+    text-transform: uppercase;
+    padding: .6rem 1.2rem;
+    transition: var(--transition-all);
+    border-width: .1rem;
+    border-radius: .3rem;
+    border-style: solid;
+    min-height: 3rem;
+
+    .btn__inner-loading {
+        display: none;
+    }
+
+    &.loading {
+        pointer-events: none;
+        opacity: .5;
+
+        .btn__inner-default {
+            display: none;
+        }
+
+        .btn__inner-loading {
+            display: inline-block;
+        }
+    }
+
+    &.btn--w-min {
+        min-width: 15rem;
+    }
+
+    &.btn--px-36 {
+        padding-left: 3.6rem;
+        padding-right: 3.6rem;
+    }
+
+    &.btn--center {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: .6rem;
+    }
+
+    &.btn--between {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: .6rem;
+    }
+
+    &.btn--full {
+        width: 100%;
+    }
+
+    &.btn--black {
+        background-color: var(--ink);
+        color: var(--white);
+        border-color: var(--ink);
+
+        &:hover,
+        &:focus {
+            background-color: transparent;
+            color: var(--ink);
+        }
+    }
+
+    &.btn--clay {
+        background-color: var(--clay);
+        border-color: transparent;
+        color: var(--ink);
+
+        &:hover,
+        &:focus {
+            background-color: var(--morning-sky);
+            color: var(--white);
+        }
+    }
+
+    &.btn--chalk {
+        background-color: var(--chalk);
+        border-color: transparent;
+        color: var(--ink);
+
+        &:hover,
+        &:focus {
+            background-color: var(--morning-sky);
+            color: var(--white);
+        }
+    }
+
+    &.btn--morning-sky {
+        background-color: var(--morning-sky);
+        border-color: transparent;
+        color: var(--white);
+
+        &:hover,
+        &:focus {
+            background-color: var(--clay);
+            color: var(--ink);
+        }
+    }
+
+    &.btn--white {
+        background-color: var(--white);
+        color: var(--ink);
+        border-color: var(--white);
+
+        &:hover,
+        &:focus {
+            background-color: var(--morning-sky);
+            color: var(--white);
+            border-color: var(--morning-sky);
+        }
+    }
+
+    &.btn--white-transparent {
+        background-color: transparent;
+        color: var(--white);
+        border-color: var(--white);
+
+        &:hover,
+        &:focus {
+            background-color: var(--morning-sky);
+            color: var(--white);
+            border-color: var(--morning-sky);
+        }
+    }
+
+    &.btn--ink-transparent {
+        background-color: transparent;
+        color: var(--ink);
+        border-color: var(--ink);
+
+        &:hover,
+        &:focus {
+            background-color: var(--ink);
+            color: var(--white);
+        }
+    }
+}

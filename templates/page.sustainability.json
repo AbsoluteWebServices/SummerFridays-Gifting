@@ -1,0 +1,320 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "sticky_menu_DtYDcD": {
+      "type": "sticky-menu",
+      "blocks": {
+        "item_czzPGn": {
+          "type": "item",
+          "settings": {
+            "title": "The Brand",
+            "url": "shopify://pages/about",
+            "active": false
+          }
+        },
+        "item_ddn9Gt": {
+          "type": "item",
+          "settings": {
+            "title": "Sustainability",
+            "url": "shopify://pages/sustainability",
+            "active": true
+          }
+        },
+        "item_fTiCh7": {
+          "type": "item",
+          "settings": {
+            "title": "Recycle with Us",
+            "url": "shopify://pages/recycling-program",
+            "active": false
+          }
+        }
+      },
+      "block_order": [
+        "item_czzPGn",
+        "item_ddn9Gt",
+        "item_fTiCh7"
+      ],
+      "settings": {}
+    },
+    "page_header_cGCNUj": {
+      "type": "page-header",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/Super_Amino_Gel_Cleanser_-_Goop_5_1.jpg",
+        "overlay_opacity": 5,
+        "gradient_direction": "gradient-none",
+        "gradient_percent": 0,
+        "content": "<h1>Sustainability + Impact</h1>",
+        "vertical_alignment": "center",
+        "horizontal_alignment": "center",
+        "container": "none",
+        "button_label": "",
+        "button_url": "",
+        "link_appearance": "button",
+        "arrow_direction": "right"
+      }
+    },
+    "3_pillars_ebyi93": {
+      "type": "3-pillars",
+      "blocks": {
+        "pillar_mijJLR": {
+          "type": "pillar",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/Sustainability-Page-3.jpg",
+            "title": "Mindful Product Materials",
+            "subtitle": "<p>Where possible, we aim to use sustainable product materials—aluminum, glass and sugarcane or post-consumer recycled plastics. Our cartons use FSC-certified paperboard with environmentally-friendly UV inks.</p>"
+          }
+        },
+        "pillar_QzJzQX": {
+          "type": "pillar",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/Sustainability-Page-2.jpg",
+            "title": "Conscious Ingredients",
+            "subtitle": "<p>All of our products are vegan, cruelty-free and formulated to be free from parabens, sulfates, phthalates and other potentially harmful ingredients.</p>"
+          }
+        },
+        "pillar_UUCnp8": {
+          "type": "pillar",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/Sustainability-Page-1.jpg",
+            "title": "Reducing Waste",
+            "subtitle": "<p>We are partnered with Pact Collective to support our efforts to reduce packaging waste and improve our carbon footprint.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "pillar_mijJLR",
+        "pillar_QzJzQX",
+        "pillar_UUCnp8"
+      ],
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4,
+        "content": "",
+        "text_alignment": "center",
+        "font_size": "normal"
+      }
+    },
+    "columns_U7Dz3Y": {
+      "type": "columns",
+      "blocks": {
+        "column_8rGVxD": {
+          "type": "column",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/Sustainability-Recycle.jpg",
+            "eyebrow": "",
+            "title": "<h2>Recycle with Us</h2><p>Send back 5+ empties for recycling, and you'll receive a $25 e-gift card to SummerFridays.com.</p>",
+            "link_appearance": "button",
+            "link_text": "Learn More",
+            "link_url": "https://summerfridays.com/pages/recycling-program?view=recycle-new&preview_theme_id=126694326349",
+            "link_target": "_self",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "text_color": "white",
+            "overlay_opacity": 5,
+            "gradient_direction": "gradient-none",
+            "gradient_percent": 0
+          }
+        },
+        "column_tjiBYX": {
+          "type": "column",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/Sustainability-Feature-About.jpg",
+            "eyebrow": "",
+            "title": "<h2>About Us</h2><p>Essential beauty formulations from California.<br/>For the skin and senses.</p>",
+            "link_appearance": "button",
+            "link_text": "Learn More",
+            "link_url": "https://summerfridays.com/pages/about?view=about-new&preview_theme_id=126694326349",
+            "link_target": "_self",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "text_color": "white",
+            "overlay_opacity": 5,
+            "gradient_direction": "gradient-none",
+            "gradient_percent": 0
+          }
+        }
+      },
+      "block_order": [
+        "column_8rGVxD",
+        "column_tjiBYX"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "aspect_ratio_mobile": "1 / 1",
+        "aspect_ratio_desktop": "1.625 / 1"
+      }
+    },
+    "sustainability_reports_xUBwP6": {
+      "type": "sustainability-reports",
+      "blocks": {
+        "report_BXtPCU": {
+          "type": "Report",
+          "settings": {
+            "image": "shopify://shop_images/Square-Lip-Butter-Balm-Vanilla-Main.jpg",
+            "url": "shopify://products/lip-butter-balm",
+            "report": "<script src=\"https://app.bluebirdclimate.com/embed/summer-fridays?id=A52_QqNR_2XtSyh1V4Z29c1elVZl4DIrMFmLrUI0wQ-Hqi5y0XgHQzCuWc0vSRPFyoFyWZUbeoq2V7HUNB3r2UUw32JvxsfoZk1jSsnvJJOJLuUUkbsLfWZW5y6jMYk\" async=\"\" type=\"text/javascript\"></script>"
+          }
+        },
+        "report_MjtR3H": {
+          "type": "Report",
+          "settings": {
+            "image": "shopify://shop_images/Main_PDP_1-9.jpg",
+            "url": "shopify://products/super-amino-gel-cleanser",
+            "report": "<script src=\"https://app.bluebirdclimate.com/embed/summer-fridays?id=A52_QqNR_2XtHXN0A4d2_M5exAE15zIrZA2NrUJjywqH-H52hi1bRjKrDpgrSRPFyoFyWZUbeoq2V7HUNB3r2UUw32JvxsfoZk1jSsnvJGRFdhz2TUk-Kup20T591xk\" async=\"\" type=\"text/javascript\"></script>"
+          }
+        },
+        "report_G7C8Dp": {
+          "type": "Report",
+          "settings": {
+            "image": "shopify://shop_images/Jet-Lag-Overnight-Eye-Serum-Main-Square.jpg",
+            "url": "shopify://products/jet-lag-overnight-eye-serum",
+            "report": "<script src=\"https://app.bluebirdclimate.com/embed/summer-fridays?id=A52_QqNR_2XtTCUnBNckrJ9exlJg4DIrbQ7YrUJhnQWH9X9x2i1SF2arVZl5SRPFyoFyWZUbeoq2V7HUNB3r2UUw32JvxsfoZk1jSsnvJJskvuVDp_hr_FYQ3WPv_EU\" async=\"\" type=\"text/javascript\"></script>"
+          }
+        },
+        "report_YPNQXt": {
+          "type": "Report",
+          "settings": {
+            "image": "shopify://shop_images/Jet-Lag-Main-Square.jpg",
+            "url": "shopify://products/jet-lag-mask",
+            "report": "<script src=\"https://app.bluebirdclimate.com/embed/summer-fridays?id=A52_QqNR_2XtTnRyUtV2q81eyFAysTIrNl2NrRgznQmH_n4l0yNSSTb6VJZySRPFyoFyWZUbeoq2V7HUNB3r2UUw32JvxsfoZk1jSsnvJNVtROP9oTbRlF8II56MkpU\" async=\"\" type=\"text/javascript\"></script>"
+          }
+        },
+        "report_pKBprB": {
+          "type": "Report",
+          "settings": {
+            "image": "shopify://shop_images/Main_PDP_1-12_17a217ad-88a8-47e7-99a1-075bd8273fdc.jpg",
+            "url": "shopify://products/shadedrops-spf-30-mineral-milk-sunscreen",
+            "report": "<script src=\"https://app.bluebirdclimate.com/embed/summer-fridays?id=A52_QqNR_2XtSnUmDoYk9MleyQE24TIrMAzYrUM0nF6H_nkn0y4GRDapD8l9SRPFyoFyWZUbeoq2V7HUNB3r2UUw32JvxsfoZk1jSsnvJKIZvIRFCSeb7N3K0icBNlY\" async=\"\" type=\"text/javascript\"></script>"
+          }
+        },
+        "report_QicNkM": {
+          "type": "Report",
+          "settings": {
+            "image": "shopify://shop_images/Sheer_Skin_Tint_Main_PDP_1.jpg",
+            "url": "shopify://products/sheer-skin-tint",
+            "report": "<script src=\"https://app.bluebirdclimate.com/embed/summer-fridays?id=A52_QqNR_2XtSSEnAdwu-8pekgVh4DIrZQiHrRtgygWH_npzhylWF2ykXM0vSRPFyoFyWZUbeoq2V7HUNB3r2UUw32JvxsfoZk1jSsnvJJJAFiC4e1ANJfQpJiKT_-w\" async=\"\" type=\"text/javascript\"></script>"
+          }
+        }
+      },
+      "block_order": [
+        "report_BXtPCU",
+        "report_MjtR3H",
+        "report_G7C8Dp",
+        "report_YPNQXt",
+        "report_pKBprB",
+        "report_QicNkM"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Explore the Carbon + Waste Footprint of Best Sellers</h2>"
+      }
+    },
+    "hero_split_EKPe4c": {
+      "type": "hero-split",
+      "blocks": {
+        "media_mtpcnK": {
+          "type": "media",
+          "settings": {
+            "media_type": "image",
+            "image_desktop": "shopify://shop_images/Sustainability-Footer-Desktop.jpg",
+            "image_mobile": "shopify://shop_images/Sustainability-Footer-Mobile.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "media_mtpcnK"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "height_type": "percentage",
+        "height": 80,
+        "deduct_header_height": true,
+        "deduct_announcement_bar_height": false,
+        "aspect_ratio_width": 1,
+        "aspect_ratio_height": 1,
+        "height_type_tablet": "percentage",
+        "height_tablet": 85,
+        "deduct_header_height_tablet": false,
+        "deduct_announcement_bar_height_tablet": true,
+        "aspect_ratio_width_tablet": 16,
+        "aspect_ratio_height_tablet": 9,
+        "height_type_desktop": "percentage",
+        "height_desktop": 80,
+        "deduct_header_height_desktop": false,
+        "deduct_announcement_bar_height_destop": true,
+        "aspect_ratio_width_desktop": 16,
+        "aspect_ratio_height_desktop": 9,
+        "text_color": "white",
+        "title_color": "white",
+        "content_color": "white",
+        "title_font": "primary",
+        "title_tag": "h1",
+        "overlay_opacity": 20,
+        "gradient_direction": "gradient-none",
+        "gradient_percent": 25,
+        "vertical_alignment": "center",
+        "horizontal_alignment": "center",
+        "vertical_alignment_desktop": "center",
+        "horizontal_alignment_desktop": "center",
+        "alignment_container": "full",
+        "alignment_container_desktop": "full",
+        "eyebrow": "",
+        "eyebrow_margin": "normal",
+        "content_above_title": "",
+        "title": "",
+        "title_custom_line_1": "",
+        "title_custom_line_2": "",
+        "title_font_size": 3,
+        "title_font_size_tablet": 3,
+        "title_font_size_desktop": 3,
+        "content": "",
+        "content_font_size": 1,
+        "content_font_size_tablet": 1,
+        "content_font_size_desktop": 1,
+        "button_label": "",
+        "button_url": "",
+        "button_margin": "normal",
+        "btn_style": "regular"
+      }
+    }
+  },
+  "order": [
+    "sticky_menu_DtYDcD",
+    "page_header_cGCNUj",
+    "3_pillars_ebyi93",
+    "columns_U7Dz3Y",
+    "sustainability_reports_xUBwP6",
+    "hero_split_EKPe4c"
+  ]
+}

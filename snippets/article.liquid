@@ -1,0 +1,76 @@
+{% assign accentuate = article.metafields.accentuate %}
+{% assign content = article.content %}
+{% assign excerpt = article.excerpt %}
+{% assign date = article.published_at %}
+{% assign image = article.image %}
+{% assign social_sharing = section.settings.social_sharing_blog %}
+{% assign tags = article.tags %}
+{% assign title = article.title %}
+
+<article 
+    x-data="article"
+    data-split-load-section
+    class='article' 
+    role='article'
+>
+    <div class='container'>
+        <div class='article-hero'>
+            <div class='article-hero__item article-hero__item--image'>
+                <div class='article-hero__image-holder'>
+                    {% if image != blank %}
+                        <img
+                            src='{{ image | img_url: '1000x1000', crop: 'center' }}'
+                            itemprop='image'
+                            class='article-hero__image'
+                            alt='{{ title | escape }}'
+                        >
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class='article-hero__item article-hero__item--content'>
+                <header class='article-hero__info' role='banner'>
+                    {% if tags.size > 0 %}
+                        <p
+                            class='article-hero__category subheader-large'
+                            aria-label='{{ tags.first | strip_html | downcase | escape }}'
+                        >
+                            {{ tags.first | upcase }}
+                        </p>
+                    {% endif %}
+                    <h1>{{ title }}</h1>
+                </header>
+
+                {% if excerpt != blank %}
+                    <div class='article-hero__excerpt rte p-large rte--larger'>
+                        {{ excerpt }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        {%- if accentuate.text_image.size > 0 -%}
+            {%- for text_image in accentuate.text_image -%}
+                <div class="article-sections">
+                    {% render 'article-sections',
+                        accentuate: accentuate,
+                        index: forloop.index0,
+                        social: social_sharing
+                    %}
+                </div>
+            {%- endfor -%}
+        {% elsif content != blank %}
+            <div class="article-sections">
+                {% if content != blank %}
+                    <div x-ref="content" class='article__content rte p-large rte--larger'>
+                        {{ content }}
+                    </div>
+    
+                    {% if social_sharing %}
+                        {% render 'social-sharing' %}
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</article>

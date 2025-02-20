@@ -1,0 +1,91 @@
+section.account {
+    .account-menu {
+        align-items: baseline;
+        border-bottom: .1rem solid var(--ink-40);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        grid-column: 1 / 5;
+        margin: 0 -1.8rem 2.4rem;
+        padding: 2.4rem 1.8rem;
+
+        @media screen and (min-width: 768px) {
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        @media screen and (min-width: 1280px) {
+            border-bottom: none;
+            display: block;
+            padding: 0;
+        }
+
+        &__title {
+            max-width: 50%;
+
+            @media screen and (min-width: 1280px) {
+                max-width: 100%;
+                margin-bottom: 2.4rem;
+            }
+        }
+
+        &__links {
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+            max-width: 50%;
+
+            @media screen and (min-width: 1280px) {
+                align-items: flex-start;
+                max-width: 100%;
+            }
+        }
+
+        &__link {
+            align-items: center;
+            display: none;
+            color: var(--ink-40);
+            justify-content: flex-end;
+            gap: 1.2rem;
+            padding-right: 2rem;
+            transition: var(--transition-all);
+
+            &:hover {
+                color: var(--ink);
+            }
+
+            @media screen and (min-width: 1280px) {
+                display: inline-flex;
+                justify-content: flex-start;
+                padding-right: 0;
+
+                svg {
+                    display: none;
+                }
+            }
+
+            &--active {
+                color: var(--ink);
+                display: inline-flex;
+                order: -1;
+                padding-right: 0;
+
+                @media screen and (min-width: 1280px) {
+                    order: initial;
+                }
+            }
+        }
+
+        .account-menu__links--expanded {
+            .icon-chevron-down {
+                transform: rotate(180deg);
+            }
+
+            .account-menu__link:not(.account-menu__link--active) {
+                display: inline-flex;
+            }
+        }
+    }
+}

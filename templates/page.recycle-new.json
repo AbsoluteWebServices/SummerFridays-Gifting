@@ -1,0 +1,263 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "sticky_menu_gefLNR": {
+      "type": "sticky-menu",
+      "blocks": {
+        "item_6nHBQ9": {
+          "type": "item",
+          "settings": {
+            "title": "The Brand",
+            "url": "shopify://pages/about",
+            "active": false
+          }
+        },
+        "item_px8ywd": {
+          "type": "item",
+          "settings": {
+            "title": "Sustainability",
+            "url": "shopify://pages/sustainability",
+            "active": false
+          }
+        },
+        "item_eMEKqz": {
+          "type": "item",
+          "settings": {
+            "title": "Recycle with Us",
+            "url": "",
+            "active": true
+          }
+        }
+      },
+      "block_order": [
+        "item_6nHBQ9",
+        "item_px8ywd",
+        "item_eMEKqz"
+      ],
+      "settings": {}
+    },
+    "page_header_UbH836": {
+      "type": "page-header",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/rh-desktop.jpg",
+        "overlay_opacity": 10,
+        "gradient_direction": "gradient-none",
+        "gradient_percent": 13,
+        "content": "<h1>Recycle with Us</h1>",
+        "vertical_alignment": "center",
+        "horizontal_alignment": "center",
+        "container": "none",
+        "button_label": "",
+        "button_url": "",
+        "link_appearance": "button",
+        "arrow_direction": "right"
+      }
+    },
+    "content_pkGakU": {
+      "type": "content",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Send back 5 of your empty Summer Fridays products in exchange for a $25 e-gift card to be used on your next purchase on SummerFridays.com.</h2>",
+        "font_size": "normal",
+        "container": "medium",
+        "paragraph_margins": "normal",
+        "heading_alignment": "center",
+        "text_alignment": "center",
+        "text_wrap": "balance"
+      }
+    },
+    "how_it_works_pEArrp": {
+      "type": "how-it-works",
+      "blocks": {
+        "step_R6ztNX": {
+          "type": "step",
+          "settings": {
+            "icon": "<svg aria-label=\"Collect\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewbox=\"0 0 100 100\" fill=\"none\">\n  <path d=\"M0 50C0 22.3883 22.3883 0 50 0C77.6116 0 100 22.3883 100 50\" fill=\"#EEEDEC\"></path>\n  <path d=\"M100 50C100 77.6117 77.6116 100 50 100C22.3883 100 0 77.6117 0 50\" fill=\"#EEEDEC\"></path>\n  <path d=\"M100 51.4563H48.5439V0H50.0003C77.5731 0 100 22.4272 100 50\" fill=\"#7da1c4\"></path>\n  <path d=\"M97.0677 48.5433C96.3104 23.7278 76.2716 3.68892 51.4561 2.93164V48.5433H97.0677Z\" fill=\"#41B7FF\"></path>\n  <path d=\"M97.0878 50.0014C97.0878 23.9917 76.0102 2.91406 50.0005 2.91406C23.9908 2.91406 2.91309 23.9917 2.91309 50.0014\" fill=\"white\"></path>\n  <path d=\"M2.91309 50C2.91309 76.0097 23.9908 97.0874 50.0005 97.0874C76.0102 97.0874 97.0878 76.0097 97.0878 50\" fill=\"white\"></path>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M39.4884 65.0698C39.4884 64.4918 39.9569 64.0233 40.5349 64.0233H50.3023C50.8803 64.0233 51.3488 64.4918 51.3488 65.0698V69.9535C51.3488 70.5315 50.8803 71 50.3023 71H40.5349C39.9569 71 39.4884 70.5315 39.4884 69.9535V65.0698ZM41.5814 66.1163V68.907H49.2558V66.1163H41.5814Z\" fill=\"#000418\"></path>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M36 42.0465C36 41.4685 36.4685 41 37.0465 41H53.7907C54.3687 41 54.8372 41.4685 54.8372 42.0465H53.7907C54.8372 42.0465 54.8372 42.0465 54.8372 42.0465L54.8372 42.0648L54.837 42.1149C54.8369 42.1588 54.8365 42.2233 54.8358 42.3072C54.8344 42.4752 54.8317 42.721 54.8261 43.0351C54.8151 43.6632 54.7931 44.565 54.7492 45.6639C54.6613 47.8603 54.4855 50.8513 54.1331 54.0225C53.7753 57.2431 53.0608 60.0989 52.4372 62.1477C52.125 63.1735 51.8345 64.0005 51.6209 64.5739C51.5141 64.8607 51.4264 65.0843 51.3647 65.2379C51.3338 65.3147 51.3094 65.374 51.2924 65.415L51.2725 65.4625L51.2669 65.4758L51.2646 65.4811C51.2646 65.4811 51.2642 65.482 50.3023 65.0698L51.2646 65.4811C51.0997 65.8659 50.721 66.1163 50.3023 66.1163H40.5349C40.1162 66.1163 39.7379 65.8668 39.573 65.482L40.5349 65.0698C39.573 65.482 39.573 65.482 39.573 65.482L39.5704 65.4758L39.5647 65.4625L39.5448 65.415C39.5278 65.374 39.5034 65.3147 39.4726 65.2379C39.4108 65.0843 39.3231 64.8607 39.2163 64.5739C39.0027 64.0005 38.7122 63.1735 38.4 62.1477C37.7764 60.0989 37.0619 57.2431 36.7041 54.0225C36.3517 50.8513 36.1759 47.8603 36.088 45.6639C36.0441 44.565 36.0221 43.6632 36.0111 43.0351C36.0056 42.721 36.0028 42.4752 36.0014 42.3072C36.0007 42.2233 36.0004 42.1588 36.0002 42.1149L36 42.0648L36 42.048C36 42.048 36 42.0465 37.0465 42.0465H36ZM38.1055 43.093C38.1168 43.7025 38.1383 44.5533 38.1794 45.5803C38.266 47.7444 38.439 50.6836 38.7843 53.7914C39.1241 56.85 39.805 59.5755 40.4023 61.5383C40.7006 62.5184 40.977 63.3047 41.1776 63.8432C41.2013 63.9067 41.2239 63.9668 41.2453 64.0233H49.5919C49.6133 63.9668 49.6359 63.9067 49.6596 63.8432C49.8602 63.3047 50.1366 62.5184 50.4349 61.5383C51.0323 59.5755 51.7131 56.85 52.0529 53.7914C52.3982 50.6836 52.5712 47.7444 52.6578 45.5803C52.6989 44.5533 52.7204 43.7025 52.7317 43.093H38.1055Z\" fill=\"#000418\"></path>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M36.6977 46.2326C36.6977 45.6546 37.1662 45.186 37.7442 45.186H53.093C53.671 45.186 54.1395 45.6546 54.1395 46.2326C54.1395 46.8105 53.671 47.2791 53.093 47.2791H37.7442C37.1662 47.2791 36.6977 46.8105 36.6977 46.2326Z\" fill=\"#000418\"></path>\n  <circle cx=\"56\" cy=\"46\" r=\"10\" fill=\"#000418\"></circle>\n  <path d=\"M56 49.4886C56.9618 49.4886 57.7519 48.8015 57.7519 47.5992C57.7519 46.2939 56.8473 45.7099 55.9771 45.7099C55.1641 45.7099 54.6031 46.145 54.4198 46.6031L53.2634 46.5344L53.813 42H58.6679V43.0878H54.7863L54.5115 45.3092C54.9351 44.9313 55.542 44.7366 56.2634 44.7366C57.7061 44.7366 59 45.7214 59 47.5878C59 49.4656 57.5802 50.4504 55.9886 50.4504C54.0763 50.4504 53.126 49.2023 53 47.8282H54.1908C54.3282 48.8359 54.8664 49.4886 56 49.4886Z\" fill=\"white\"></path>\n</svg>",
+            "title": "Collect",
+            "content": "<p>Collect 5+ Summer Fridays<br/>empties to send in.</p>"
+          }
+        },
+        "step_C3jjiC": {
+          "type": "step",
+          "settings": {
+            "icon": "<svg aria-label=\"Request\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewbox=\"0 0 103 103\" fill=\"none\">\n  <path d=\"M51.5 103C79.9427 103 103 79.9427 103 51.5C103 23.0573 79.9427 0 51.5 0C23.0573 0 0 23.0573 0 51.5C0 79.9427 23.0573 103 51.5 103Z\" fill=\"#EEEDEC\"></path>\n  <path d=\"M102.96 50C102.16 22.3 79.39 0 51.5 0H50V103H51.5C79.39 103 102.16 80.7 102.96 53H103V50H102.96ZM53 3.02C78.56 3.8 99.2 24.44 99.98 50H53V3.02ZM53 99.97V53H99.98C99.2 78.56 78.56 99.2 53 99.98V99.97Z\" fill=\"#7da1c4\"></path>\n  <path d=\"M51.5 100C78.2858 100 100 78.2858 100 51.5C100 24.7142 78.2858 3 51.5 3C24.7142 3 3 24.7142 3 51.5C3 78.2858 24.7142 100 51.5 100Z\" fill=\"white\"></path>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M37 43C37 42.4477 37.4477 42 38 42H64.6667C65.219 42 65.6667 42.4477 65.6667 43V53C65.6667 53.5523 65.219 54 64.6667 54C64.1144 54 63.6667 53.5523 63.6667 53V44H39V62H51.3333C51.8856 62 52.3333 62.4477 52.3333 63C52.3333 63.5523 51.8856 64 51.3333 64H38C37.4477 64 37 63.5523 37 63V43Z\" fill=\"#000418\"></path>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M54.3333 59.6667C54.3333 59.1144 54.781 58.6667 55.3333 58.6667H64.6667C65.219 58.6667 65.6667 59.1144 65.6667 59.6667C65.6667 60.219 65.219 60.6667 64.6667 60.6667H55.3333C54.781 60.6667 54.3333 60.219 54.3333 59.6667Z\" fill=\"#000418\"></path>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M60.6262 55.6262C61.0168 55.2357 61.6499 55.2357 62.0404 55.6262L65.3738 58.9596C65.7643 59.3501 65.7643 59.9832 65.3738 60.3738L62.0404 63.7071C61.6499 64.0976 61.0168 64.0976 60.6262 63.7071C60.2357 63.3166 60.2357 62.6834 60.6262 62.2929L63.2525 59.6667L60.6262 57.0404C60.2357 56.6499 60.2357 56.0168 60.6262 55.6262Z\" fill=\"#000418\"></path>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M37.2001 42.4001C37.5314 41.9582 38.1582 41.8687 38.6001 42.2001L51.3334 51.7501L64.0667 42.2001C64.5086 41.8687 65.1354 41.9582 65.4667 42.4001C65.7981 42.8419 65.7086 43.4687 65.2667 43.8001L51.9334 53.8001C51.5778 54.0667 51.0889 54.0667 50.7334 53.8001L37.4001 43.8001C36.9582 43.4687 36.8687 42.8419 37.2001 42.4001Z\" fill=\"#000418\"></path>\n</svg>",
+            "title": "Request",
+            "content": "<p>Click below to request your<br/>free shipping label.</p>"
+          }
+        },
+        "step_JCbhUq": {
+          "type": "step",
+          "settings": {
+            "icon": "<svg aria-label=\"Ship\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewbox=\"0 0 100 100\" fill=\"none\">\n  <path d=\"M50 100C77.6142 100 100 77.6142 100 50C100 22.3858 77.6142 0 50 0C22.3858 0 0 22.3858 0 50C0 77.6142 22.3858 100 50 100Z\" fill=\"#EEEDEC\"></path>\n  <path d=\"M99.9612 48.5437C99.1845 21.6505 77.0777 0 50 0H48.5437V48.5437H0V50C0 77.0777 21.6505 99.1845 48.5437 99.9612V100H51.4563V99.9612C77.8641 99.2039 99.2039 77.8641 99.9612 51.4563H100V48.5437H99.9612ZM51.4563 2.93204C76.2718 3.68932 96.3107 23.7282 97.068 48.5437H51.4563V2.93204ZM2.93204 51.4563H48.5437V97.068C23.7282 96.3107 3.68932 76.2718 2.93204 51.4563ZM51.4563 97.068V51.4563H97.068C96.3107 76.2718 76.2718 96.3107 51.4563 97.068Z\" fill=\"#7da1c4\"></path>\n  <path d=\"M49.9995 97.0888C76.0051 97.0888 97.0869 76.0071 97.0869 50.0014C97.0869 23.9958 76.0051 2.91406 49.9995 2.91406C23.9938 2.91406 2.91211 23.9958 2.91211 50.0014C2.91211 76.0071 23.9938 97.0888 49.9995 97.0888Z\" fill=\"white\"></path>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M38.2581 56.0968C38.2581 53.9411 40.0056 52.1935 42.1613 52.1935C44.317 52.1935 46.0645 53.9411 46.0645 56.0968C46.0645 58.2524 44.317 60 42.1613 60C40.0056 60 38.2581 58.2524 38.2581 56.0968ZM42.1613 54.3226C41.1814 54.3226 40.3871 55.1169 40.3871 56.0968C40.3871 57.0766 41.1814 57.871 42.1613 57.871C43.1411 57.871 43.9355 57.0766 43.9355 56.0968C43.9355 55.1169 43.1411 54.3226 42.1613 54.3226Z\" fill=\"#000418\"></path>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M54.5806 56.0968C54.5806 53.9411 56.3282 52.1935 58.4839 52.1935C60.6395 52.1935 62.3871 53.9411 62.3871 56.0968C62.3871 58.2524 60.6395 60 58.4839 60C56.3282 60 54.5806 58.2524 54.5806 56.0968ZM58.4839 54.3226C57.504 54.3226 56.7097 55.1169 56.7097 56.0968C56.7097 57.0766 57.504 57.871 58.4839 57.871C59.4637 57.871 60.2581 57.0766 60.2581 56.0968C60.2581 55.1169 59.4637 54.3226 58.4839 54.3226Z\" fill=\"#000418\"></path>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M34 39.0645C34 38.4766 34.4766 38 35.0645 38H55.6452C56.2331 38 56.7097 38.4766 56.7097 39.0645V56.0968C56.7097 56.6847 56.2331 57.1613 55.6452 57.1613H45C44.4121 57.1613 43.9355 56.6847 43.9355 56.0968C43.9355 55.5089 44.4121 55.0323 45 55.0323H54.5806V40.129H36.129V55.0323H39.3226C39.9105 55.0323 40.3871 55.5089 40.3871 56.0968C40.3871 56.6847 39.9105 57.1613 39.3226 57.1613H35.0645C34.4766 57.1613 34 56.6847 34 56.0968V39.0645Z\" fill=\"#000418\"></path>\n  <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M54.5806 44.0323C54.5806 43.4443 55.0572 42.9677 55.6452 42.9677H61.7281C62.0616 42.9677 62.3759 43.1241 62.5771 43.3901L67.1394 49.4224C67.2792 49.6073 67.3548 49.8327 67.3548 50.0645V56.0968C67.3548 56.6847 66.8782 57.1613 66.2903 57.1613H61.8983C61.3104 57.1613 60.8338 56.6847 60.8338 56.0968C60.8338 55.5089 61.3104 55.0323 61.8983 55.0323H65.2258V50.4217L61.1985 45.0968H56.7097V56.0968C56.7097 56.6847 56.2331 57.1613 55.6452 57.1613C55.0572 57.1613 54.5806 56.6847 54.5806 56.0968V44.0323Z\" fill=\"#000418\"></path>\n</svg>",
+            "title": "Ship",
+            "content": "<p>Package and ship 5+ empties<br/>to us for recycling.</p>"
+          }
+        },
+        "step_zxJjpE": {
+          "type": "step",
+          "settings": {
+            "icon": "<svg aria-label=\"Shop\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewbox=\"0 0 100 100\" fill=\"none\">\n  <path d=\"M99.9612 48.5437C99.2039 22.1359 77.8641 0.796116 51.4563 0.038835V0H48.5437V0.038835C22.1359 0.796116 0.796116 22.1359 0.038835 48.5437H0V51.4563H0.038835C0.796116 77.8641 22.1359 99.2039 48.5437 99.9612V100H51.4563V99.9612C77.8641 99.2039 99.2039 77.8641 99.9612 51.4563H100V48.5437H99.9612ZM97.068 48.5437H51.4563V2.93204C76.2718 3.68932 96.3107 23.7282 97.068 48.5437ZM48.5437 2.93204V48.5437H2.93204C3.68932 23.7282 23.7282 3.68932 48.5437 2.93204ZM2.93204 51.4563H48.5437V97.068C23.7282 96.3107 3.68932 76.2718 2.93204 51.4563ZM51.4563 97.068V51.4563H97.068C96.3107 76.2718 76.2718 96.3107 51.4563 97.068Z\" fill=\"#7da1c4\"></path>\n  <path d=\"M49.9995 97.0888C76.0051 97.0888 97.0869 76.0071 97.0869 50.0014C97.0869 23.9958 76.0051 2.91406 49.9995 2.91406C23.9938 2.91406 2.91211 23.9958 2.91211 50.0014C2.91211 76.0071 23.9938 97.0888 49.9995 97.0888Z\" fill=\"white\"></path>\n  <path d=\"M42.4913 37.3532C42.657 37.1309 42.918 37 43.1952 37H57.6342C57.9114 37 58.1724 37.1309 58.3381 37.3532L61.6522 41.7979C61.6852 41.8416 61.7143 41.8886 61.7388 41.9381C61.8018 42.0655 61.8314 42.2033 61.8293 42.3399V58.9512C61.8293 60.0827 60.9121 61 59.7805 61H41.0488C39.9173 61 39 60.0827 39 58.9512V42.3245C39.0001 42.284 39.0029 42.2435 39.0086 42.2032C39.0303 42.0497 39.0916 41.9089 39.1819 41.7916L42.4913 37.3532ZM57.1936 38.7561H43.6358L41.6281 41.4488H59.2013L57.1936 38.7561ZM40.7561 43.2049V58.9512C40.7561 59.1128 40.8872 59.2439 41.0488 59.2439H59.7805C59.9421 59.2439 60.0732 59.1129 60.0732 58.9512V43.2049H40.7561ZM46.8699 46.1902C46.8699 45.7053 46.4767 45.3122 45.9918 45.3122C45.5069 45.3122 45.1138 45.7053 45.1138 46.1902C45.1138 49.1273 47.4822 51.517 50.4146 51.517C53.347 51.517 55.7154 49.1273 55.7154 46.1902C55.7154 45.7053 55.3223 45.3122 54.8373 45.3122C54.3524 45.3122 53.9593 45.7053 53.9593 46.1902C53.9593 48.1671 52.3674 49.7609 50.4146 49.7609C48.4618 49.7609 46.8699 48.1671 46.8699 46.1902Z\" fill=\"#000418\"></path>\n</svg>",
+            "title": "Shop",
+            "content": "<p>Receive a $25 e-gift card via email to help restock your favorites.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_R6ztNX",
+        "step_C3jjiC",
+        "step_JCbhUq",
+        "step_zxJjpE"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>How it Works</h2>",
+        "button_label": "Get your free shipping label",
+        "button_url": "https://summerfridays.com/apps/redo/returns-portal/warranties"
+      }
+    },
+    "media_accordions_jzVRkw": {
+      "type": "media-accordions",
+      "blocks": {
+        "accordion_custom_FFe9YF": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "What products are eligible for our recycling program?",
+            "content": "<p>All Summer Fridays products are eligible for our recycling program with the exception of sample sizes (e.g. – deluxe sample tubes).</p><p>Our recycling program considers limited-edition sets as one full-sized product, so all empties from the set must be returned to be eligible.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_ifPAVd": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "How do I prepare my products for recycling?",
+            "content": "<p>Some of our products need to be rinsed prior to being submitted for recycling. Please refer to each specific product page for more information on how to prepare your Summer Fridays products for recycling.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_zTYYer": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Can I return more than 5 empties?",
+            "content": "<p>Yes! While we require a minimum of 5 empties to qualify for the $25 e-gift card, feel free to send more than 5. Please note that we have a maximum e-gift card allotment of $25 per month for our recycling program.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_e8Nc74": {
+          "type": "accordion_custom",
+          "disabled": true,
+          "settings": {
+            "title": "Does the e-gift card have an expiration date?",
+            "content": "",
+            "badge": ""
+          }
+        },
+        "accordion_custom_RPcXQz": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "How long does it take to receive the e-gift card?",
+            "content": "<p>Your e-gift card will be sent via email 5 business days after your empties have been delivered to us.</p><p>The recycling e-gift card does not expire and can be used towards your next purchase on SummerFridays.com.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_kRFg3p": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Are international customers eligible to participate?",
+            "content": "<p>Our recycling program is only open to US customers currently.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_4UxYy6": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Can I only ship back empties purchased from SummerFridays.com?",
+            "content": "<p>We are partnered with Pact Collective and happy to recycle additional empties from other brands. Feel free to include them with your Summer Fridays empties! However, these will not count towards your e-gift card.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_Bzkk7Y": {
+          "type": "accordion_custom",
+          "disabled": true,
+          "settings": {
+            "title": "Are return labels free?",
+            "content": "",
+            "badge": ""
+          }
+        },
+        "accordion_custom_Q7TCiC": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "How do I receive a return label?",
+            "content": "<p>To receive your free return label to return your empties, <a href=\"https://summerfridays.com/apps/redo/returns-portal/warranties\" target=\"_blank\" title=\"https://summerfridays.com/apps/redo/returns-portal/warranties\">click here</a> (note that by clicking on the link you agree to have your personal information relating to the order shared with our third-party vendor, Redo, whose privacy policy is located <a href=\"https://www.getredo.com/privacy-policy\"><span style=\"text-decoration:underline\">here</span></a>) and follow the steps to receive your return label. </p><p>Please return your empties within 14 days of receiving your return label. The label will expire after that date.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_qAWkBt": {
+          "type": "accordion_custom",
+          "disabled": true,
+          "settings": {
+            "title": "Does my return label expire?",
+            "content": "",
+            "badge": ""
+          }
+        }
+      },
+      "block_order": [
+        "accordion_custom_FFe9YF",
+        "accordion_custom_ifPAVd",
+        "accordion_custom_zTYYer",
+        "accordion_custom_e8Nc74",
+        "accordion_custom_RPcXQz",
+        "accordion_custom_kRFg3p",
+        "accordion_custom_4UxYy6",
+        "accordion_custom_Bzkk7Y",
+        "accordion_custom_Q7TCiC",
+        "accordion_custom_qAWkBt"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "image",
+        "image": "shopify://shop_images/Recycling-FAQ.jpg",
+        "media_aspect_ratio": "dynamic",
+        "stripes": false,
+        "gradient_direction": "gradient-none",
+        "text_color": "black",
+        "content": "",
+        "content_2": "<p>FAQ.</p><h2>For the Curious.<br/>You Asked, We Answered.</h2>",
+        "vertical_alignment": "center",
+        "accordions_bg_color": "chalk",
+        "open_first": false
+      }
+    }
+  },
+  "order": [
+    "sticky_menu_gefLNR",
+    "page_header_UbH836",
+    "content_pkGakU",
+    "how_it_works_pEArrp",
+    "media_accordions_jzVRkw"
+  ]
+}

@@ -1,0 +1,245 @@
+section.account .account__content {
+    .account-orders {
+        border-bottom: .1rem solid var(--ink-40);
+        margin-bottom: 4.2rem;
+        padding-bottom: 4.2rem;
+        position: relative;
+
+        @media screen and (min-width: 768px) {
+            margin-bottom: 2.4rem;
+            padding-bottom: 2.4rem;
+        }
+
+        @media screen and (min-width: 1280px) {
+            margin-bottom: 4.2rem;
+            padding-bottom: 4.2rem;
+        }
+
+        &__entry {
+            position: relative;
+
+            &:not(:last-child) {
+                border-bottom: .1rem solid var(--ink-40);
+                margin-bottom: 2.4rem;
+                padding-bottom: 2.4rem;
+            }
+        }
+
+        .account-orders__name {
+            background-color: var(--morning-sky);
+            color: var(--white);
+            border-radius: .3rem;
+            display: inline-block;
+            margin-bottom: 1.2rem;
+            padding: .3rem .6rem;
+            text-transform: uppercase;
+
+            @media screen and (min-width: 1440px) {
+                margin-bottom: 0;
+            }
+        }
+
+        .account-orders__cta {
+            position: absolute;
+            right: 0;
+            top: .3rem;
+        }
+
+        .account-orders__cancel {
+            font-size: var(--font-cta-textlink-size);
+            letter-spacing: .11rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .account-orders__grid {
+            column-gap: 2rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            row-gap: 2.4rem;
+
+            @media screen and (min-width: 768px) {
+                gap: 8.6rem;
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            @media screen and (min-width: 1440px) {
+                margin-left: 16.2rem;
+                margin-right: 20rem;
+                margin-top: -2rem;
+                gap: 1.8rem;
+                grid-template-columns: repeat(4, 15rem);
+            }
+        }
+
+        .account-orders__subtitle {
+            margin-bottom: .6rem;
+        }
+
+        .account-orders__items {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2.4rem;
+            overflow: auto;
+        }
+
+        .account-orders__image-container {
+            position: relative;
+            border-radius: .3rem;
+            overflow: hidden;
+            width: 9rem;
+            height: 9rem;
+            min-width: 9rem;
+
+            @media only screen and (min-width: 390px) {
+                width: 10rem;
+                height: 10rem;
+                min-width: 10rem;
+            }
+        }
+
+        .account__alert {
+            .btn {
+                display: inline-block;
+                margin-top: 1.2rem;
+            }
+        }
+    }
+
+    .account-order-tab {
+        margin-bottom: 4.8rem;
+
+        .account-orders__cancel {
+            font-size: var(--font-cta-textlink-size);
+            letter-spacing: .11rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .account-orders__grid {
+            column-gap: 2rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            row-gap: 2.4rem;
+
+            @media screen and (min-width: 768px) {
+                gap: 8.6rem;
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            @media screen and (min-width: 1440px) {
+                margin-left: 16.2rem;
+                margin-right: 20rem;
+                margin-top: -2rem;
+                gap: 1.8rem;
+                grid-template-columns: repeat(4, 15rem);
+            }
+        }
+
+        .account-orders__subtitle {
+            margin-bottom: .6rem;
+        }
+
+        .account-orders__items {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2.4rem;
+            overflow: auto;
+        }
+
+        .account-orders__image-container {
+            position: relative;
+            border-radius: .3rem;
+            overflow: hidden;
+            width: 9rem;
+            height: 9rem;
+            min-width: 9rem;
+
+            @media only screen and (min-width: 390px) {
+                width: 10rem;
+                height: 10rem;
+                min-width: 10rem;
+            }
+        }
+
+        .account__alert {
+            .btn {
+                display: inline-block;
+                margin-top: 1.2rem;
+            }
+        }
+
+        .account-orders {
+            &__item {
+                width: 10rem;
+            }
+
+            &__item-title,
+            &__item-price {
+                font-family: var(--font-body);
+                font-size: var(--font-body-size);
+                font-style: normal;
+                font-weight: 450;
+                line-height: var(--font-body-line-height);
+                letter-spacing: .013rem;
+                margin-top: .6rem;
+                color: var(--ink);
+            }
+        }
+
+        .account-addresses {
+            border-bottom: none;
+            display: flex;
+            flex-direction: column;
+            gap: 2.4rem;
+            margin: 2.4rem 0;
+            padding-bottom: 0;
+
+            @media screen and (min-width: 768px) {
+                flex-direction: row;
+                gap: 8.6rem;
+            }
+
+            .form__title {
+                margin-bottom: .6rem;
+            }
+
+            .account-address--billing {
+                border-bottom: .1rem solid var(--ink-40);
+                padding-bottom: 2.4rem;
+
+                @media screen and (min-width: 768px) {
+                    border-bottom: none;
+                    border-right: .1rem solid var(--ink-40);
+                    padding-bottom: 0;
+                    padding-right: 8.6rem;
+                }
+            }
+        }
+
+        .form__return {
+            text-align: center;
+
+            @media screen and (min-width: 768px) {
+                text-align: left;
+            }
+
+            .back-to-account {
+                align-items: center;
+                display: inline-flex;
+                font-size: var(--font-cta-textlink-size);
+                font-weight: 450;
+                letter-spacing: .11rem;
+                line-height: 1.6rem;
+                gap: 1rem;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+section.account {
+    .yotpo-widget-my-rewards-widget,
+    .yotpo-coupons-redemption-widget {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,709 @@
+section.account .account__content {
+    .account-rewards {
+        margin-bottom: 4.8rem;
+        position: relative;
+
+        .yotpo-inner-text:focus {
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
+        .yotpo-message-display-area {
+            height: auto;
+            margin-top: 1.8rem;
+        }
+
+        .yotpo-widget-my-rewards-widget {
+            & :focus {
+                box-shadow: none !important;
+                outline: none !important;
+            }
+
+            .yotpo-logged-in-view {
+                max-width: 100%;
+                padding: 0;
+
+                .yotpo-headline {
+                    display: none;
+                }
+
+                .yotpo-description {
+                    margin-bottom: 1.2rem;
+
+                    .yotpo-inner-text {
+                        color: var(--ink) !important;
+                        font-family: var(--font-primary) !important;
+                        font-size: var(--font-h2-size) !important;
+                        font-style: normal !important;
+                        font-weight: 450 !important;
+                        line-height: var(--font-h2-line-height);
+                        letter-spacing: -.052rem;
+                        text-align: left;
+                    }
+                }
+
+                .yotpo-action-buttons-tile {
+                    .yotpo-primary-button-link {
+                        display: none;
+                    }
+
+                    .yotpo-action-button-widget {
+                        padding: 0;
+                        width: auto;
+
+                        button {
+                            border: none !important;
+                            color: var(--ink) !important;
+                            display: flex;
+                            height: auto;
+                            line-height: 1.3rem !important;
+                            position: absolute;
+                            right: 0;
+                            text-decoration: underline;
+                            text-underline-offset: .2rem;
+                            top: .7rem;
+                            width: auto;
+                            transition: var(--transition-all);
+
+                            &:hover {
+                                text-underline-offset: .4rem;
+                            }
+
+                            .yopto-widget-button-text {
+                                font-family: var(--font-body) !important;
+                                font-size: var(--font-p-small-size) !important;
+                                font-style: normal !important;
+                                font-weight: 450 !important;
+                                line-height: var(--font-p-small-line-height) !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .yotpo-coupons-redemption-widget {
+            .yotpo-coupons-redemption-widget-container {
+                padding: 0;
+
+                .yotpo-coupouns-container {
+                    max-width: 100%;
+                    width: 100%;
+
+                    .yotpo-content-container {
+                        max-width: 100%;
+
+                        .yotpo-headline {
+                            display: none;
+                        }
+
+                        .yotpo-description {
+                            color: var(--ink) !important;
+                            font-family: var(--font-body) !important;
+                            font-size: var(--font-body-size) !important;
+                            font-weight: 450 !important;
+                            letter-spacing: .013rem;
+                            line-height: var(--font-body-line-height);
+                            max-width: 100%;
+                            margin-bottom: 0;
+                            text-align: left;
+                        }
+
+                        .yotpo-points-balance {
+                            display: none;
+                        }
+                    }
+
+                    .yotpo-redemption-options-list {
+                        margin: 3.6rem 0 0;
+                        max-width: 100%;
+
+                        @media screen and (min-width: 768px) {
+                            border-left: .1rem solid var(--ink-40);
+
+                            &:not(:has(.swiper-container)) {
+                                display: flex;
+                                flex-wrap: nowrap;
+                                overflow: auto;
+
+                                .yotpo-redemption-item {
+                                    border-right: .1rem solid var(--ink-40);
+                                    margin: 0;
+                                    padding: 2rem 0;
+                                    width: calc(100% / 3) !important;
+
+                                    @media screen and (min-width: 1280px) {
+                                        padding-bottom: 0;
+                                        padding-top: 4.2rem;
+                                    }
+                                }
+                            }
+                        }
+
+                        .swiper-container {
+                            margin: 0;
+                            padding: 0;
+                            width: 100%;
+
+                            .swiper-pagination,
+                            .swiper-notification {
+                                display: none;
+                            }
+
+                            .swiper-wrapper {
+                                display: grid;
+                                gap: 2.4rem;
+                                transform: none !important;
+
+                                @media screen and (min-width: 768px) {
+                                    display: flex;
+                                    overflow: auto;
+                                    gap: 0;
+                                }
+
+                                .yotpo-redemption-slide-item {
+                                    width: auto !important;
+
+                                    @media screen and (min-width: 768px) {
+                                        border-right: .1rem solid var(--ink-40);
+                                        padding-bottom: 2rem;
+                                        padding-top: 2rem;
+                                        width: calc(100% / 3) !important;
+
+                                        @media screen and (min-width: 1280px) {
+                                            padding-bottom: 0;
+                                            padding-top: 4.2rem;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .yotpo-redemption-option-container {
+                            border-bottom: .1rem solid var(--ink-40);
+                            padding: 0 0 2.4rem;
+                            width: 16rem;
+
+                            @media screen and (min-width: 768px) {
+                                border-bottom: none;
+                                padding-bottom: 0;
+                                width: 15rem;
+                            }
+
+                            .yotpo-redemption-confirmation {
+                                padding: 0;
+
+                                .yotpo-redemption-confirmation-options {
+                                    display: flex;
+                                    gap: 1.2rem;
+                                    margin: 0;
+
+                                    .yotpo-redemption-confirmation-option {
+                                        height: auto;
+                                        margin: 0;
+                                        width: auto;
+
+                                        .yotpo-action-button-widget {
+                                            margin: 0;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .yotpo-redemption-option-reward,
+                            .yotpo-redemption-confirmation-title {
+                                color: var(--ink) !important;
+                                font-family: var(--font-primary) !important;
+                                font-size: var(--font-h2-size) !important;
+                                font-style: normal !important;
+                                font-weight: 450 !important;
+                                font-size: var(--font-h2-line-height);
+                                letter-spacing: -.052rem;
+                                margin-bottom: 1.2rem;
+                                padding-bottom: 0 !important;
+                            }
+
+                            .yotpo-redemption-option-cost {
+                                color: var(--ink) !important;
+                                font-family: var(--font-body) !important;
+                                font-size: var(--font-body-size) !important;
+                                font-weight: 450 !important;
+                                line-height: var(--font-body-line-height) !important;
+                                letter-spacing: .013rem;
+                                text-align: center;
+                            }
+
+                            .yotpo-action-button-widget {
+                                margin-top: 1.2rem;
+
+                                &:has(button:disabled) {
+                                    display: none;
+                                }
+
+                                button {
+                                    background-color: var(--chalk) !important;
+                                    border-color: transparent;
+                                    border-radius: .3rem;
+                                    border-style: solid;
+                                    border-width: .1rem;
+                                    color: var(--ink) !important;
+                                    height: auto;
+                                    line-height: var(--font-cta-textlink-line-height);
+                                    letter-spacing: .11rem;
+                                    margin-top: 0;
+                                    min-height: 3rem;
+                                    padding: .6rem 1.2rem;
+                                    transition: var(--transition-all);
+                                    width: 100%;
+
+                                    &:hover,
+                                    &:focus {
+                                        background-color: var(--morning-sky) !important;
+                                        color: var(--white) !important;
+                                    }
+
+                                    .yopto-widget-button-text {
+                                        font-family: var(--font-body) !important;
+                                        font-size: var(--font-button-size);
+                                        font-style: normal;
+                                        font-weight: 450;
+                                        line-height: var(--font-button-line-height);
+                                        letter-spacing: .11rem;
+                                        text-transform: uppercase;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .yotpo-widget-products-redemption {
+            margin: 0 .6rem 0 !important;
+            padding: 0 !important;
+            max-width: 100% !important;
+
+            .yotpo-widget-products-redemption-container {
+                margin-top: 4.8rem;
+                padding: 0;
+
+                @media screen and (min-width: 768px) {
+                    margin: 8.4rem 0;
+                }
+
+                .yotpo-products-container {
+                    margin: 0;
+                    max-width: 100%;
+
+                    .yotpo-content-container {
+                        margin: 0;
+                        max-width: 100%;
+                        padding: 0;
+
+                        .yotpo-headline {
+                            font-family: var(--font-secondary) !important;
+                            font-size: var(--font-subheader-large-size) !important;
+                            font-style: normal !important;
+                            font-weight: 450 !important;
+                            line-height: var(--font-subheader-large-line-height);
+                            letter-spacing: 0.17rem;
+                            margin-bottom: 2.4rem;
+                            text-align: left;
+                            text-transform: uppercase;
+                        }
+
+                        .yotpo-points-balance {
+                            display: none;
+                        }
+                    }
+
+                    .yotpo-redemption-options-container {
+                        .yotpo-redemption-mobile-carousel,
+                        .yotpo-redemption-options-carousel {
+                            margin: 0;
+                            max-width: 100%;
+                            width: 100%;
+
+                            .swiper-container {
+                                padding: 0;
+
+                                .swiper-wrapper {
+                                    gap: 1.8rem;
+
+                                    &:has(.yotpo-redemption-slider-group-items) {
+                                        gap: .7rem;
+                                    }
+                                }
+
+                                .swiper-pagination {
+                                    align-items: center;
+                                    color: var(--ink) !important;
+                                    display: flex;
+                                    justify-content: center;
+                                    bottom: 0;
+                                    height: .6rem;
+                                    left: 0;
+                                    gap: 1.2rem;
+                                    margin-top: 4.2rem;
+
+                                    .swiper-pagination-bullet {
+                                        margin: 0;
+                                    }
+                                }
+
+                                .yotpo-redemption-slider-group-items {
+                                    column-gap: .7rem;
+                                    margin: 0 !important;
+                                    row-gap: 4.2rem;
+
+                                    @media screen and (min-width: 768px) {
+                                        gap: 1.8rem;
+                                    }
+                                }
+
+                                .yotpo-redemption-slider-item {
+                                    flex-basis: calc(50% - .4rem);
+                                    height: auto;
+                                    padding: 0;
+                                    position: relative;
+                                    width: calc(50% - .4rem);
+
+                                    @media screen and (min-width: 768px) {
+                                        flex-basis: calc(25% - 1.4rem);
+                                        margin: 0;
+                                        width: calc(25% - 1.4rem) !important;
+                                    }
+                                }
+
+                                .yotpo-redemption-option {
+                                    background-color: transparent !important;
+                                    border: none !important;
+                                    border-radius: 0;
+                                    box-shadow: none;
+                                    height: 100%;
+                                    padding: 0;
+                                    position: static;
+
+                                    &:has(.yotpo-action-button-widget) {
+                                        padding-bottom: 6.2rem;
+                                    }
+
+                                    .yotpo-redemption-confirmation {
+                                        display: block;
+                                        margin-top: 1.8rem;
+                                        padding: 0;
+
+                                        .yotpo-redemption-confirmation-title {
+                                            color: var(--ink) !important;
+                                            font-family: var(--font-primary) !important;
+                                            font-size: var(--font-subheader-large-size) !important;
+                                            font-style: normal !important;
+                                            font-weight: 450 !important;
+                                            line-height: var(--font-subheader-large-line-height);
+                                            letter-spacing: -0.027rem;
+                                            margin-bottom: .6rem;
+                                            padding: 0;
+                                        }
+
+                                        .yotpo-redemption-confirmation-options {
+                                            bottom: 0;
+                                            display: flex;
+                                            gap: 1.2rem;
+                                            left: 0;
+                                            margin: 0;
+                                            padding: 0;
+                                            position: absolute;
+                                            right: 0;
+
+                                            .yotpo-redemption-confirmation-option {
+                                                height: auto;
+                                                max-width: 100%;
+                                                width: 100%;
+
+                                                button {
+                                                    background-color: var(--chalk) !important;
+                                                    border-color: transparent;
+                                                    border-radius: .3rem;
+                                                    border-style: solid;
+                                                    border-width: .1rem;
+                                                    color: var(--ink) !important;
+                                                    font-family: var(--font-body);
+                                                    font-size: var(--font-button-size);
+                                                    font-style: normal;
+                                                    font-weight: 450;
+                                                    height: auto;
+                                                    line-height: var(--font-button-line-height);
+                                                    letter-spacing: 0.11rem;
+                                                    min-height: 3rem;
+                                                    padding: .6rem 1.2rem;
+                                                    text-transform: uppercase;
+                                                    transition: var(--transition-all);
+
+                                                    &:hover,
+                                                    &:focus {
+                                                        background-color: var(--morning-sky) !important;
+                                                        color: var(--white) !important;
+                                                    }
+
+                                                    .yotpo-action-button-text {
+                                                        font-family: inherit !important;
+                                                        font-size: inherit !important;
+                                                        text-transform: inherit;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    .yotpo-redemption-option-image-label {
+                                        color: var(--ink) !important;
+                                        font-family: var(--font-body) !important;
+                                        font-size: var(--font-body-size) !important;
+                                        font-style: normal !important;
+                                        font-weight: 450 !important;
+                                        line-height: 1.8rem;
+                                        letter-spacing: 0.013rem;
+                                    }
+
+                                    .yotpo-redemption-option-image {
+                                        border-radius: .3rem;
+                                    }
+
+                                    .yotpo-redemption-option-details {
+                                        margin-top: 1.2rem;
+                                        padding: 0 .6rem;
+
+                                        @media screen and (min-width: 768px) {
+                                            margin-top: 1.8rem;
+                                        }
+
+                                        .yotpo-status-message {
+                                            color: var(--ink) !important;
+                                            font-family: var(--font-primary) !important;
+                                            font-size: var(--font-subheader-large-size) !important;
+                                            font-style: normal !important;
+                                            font-weight: 450 !important;
+                                            height: auto;
+                                            letter-spacing: -0.027rem;
+                                            line-height: var(--font-subheader-large-line-height);
+                                            margin: 0 0 .6rem;
+                                            padding: 0;
+                                        }
+
+                                        .yotpo-redemption-option-details-text {
+                                            display: block;
+
+                                            .yotpo-redemption-option-reward {
+                                                color: var(--ink) !important;
+                                                font-family: var(--font-primary) !important;
+                                                font-size: var(--font-subheader-large-size) !important;
+                                                font-style: normal !important;
+                                                font-weight: 450 !important;
+                                                line-height: var(--font-subheader-large-line-height);
+                                                letter-spacing: -0.027rem;
+                                                margin-bottom: .6rem;
+                                                padding: 0;
+                                            }
+
+                                            .yotpo-redemption-option-cost {
+                                                color: var(--ink) !important;
+                                                font-family: var(--font-body) !important;
+                                                font-size: var(--font-body-size) !important;
+                                                font-style: normal !important;
+                                                font-weight: 450 !important;
+                                                line-height: var(--font-body-line-height);
+                                                letter-spacing: 0.013rem;
+                                            }
+                                        }
+
+                                        .yotpo-action-button-widget {
+                                            bottom: 0;
+                                            left: 0;
+                                            max-width: 100%;
+                                            position: absolute;
+                                            right: 0;
+
+                                            &:has(button:disabled) {
+                                                display: none;
+                                            }
+
+                                            button {
+                                                background-color: var(--chalk) !important;
+                                                border-color: transparent;
+                                                border-radius: .3rem;
+                                                border-style: solid;
+                                                border-width: .1rem;
+                                                color: var(--ink) !important;
+                                                font-family: var(--font-body);
+                                                font-size: var(--font-button-size);
+                                                font-style: normal;
+                                                font-weight: 450;
+                                                height: auto;
+                                                line-height: var(--font-button-line-height);
+                                                letter-spacing: 0.11rem;
+                                                margin: 0;
+                                                min-height: 3rem;
+                                                padding: .6rem 1.2rem;
+                                                text-transform: uppercase;
+                                                transition: var(--transition-all);
+
+                                                &:hover,
+                                                &:focus {
+                                                    background-color: var(--morning-sky) !important;
+                                                    color: var(--white) !important;
+                                                }
+
+                                                .yotpo-action-button-text {
+                                                    font-family: inherit !important;
+                                                    font-size: inherit !important;
+                                                    text-transform: inherit;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .yotpo-carousel-button-next,
+                        .yotpo-carousel-button-prev {
+                            color: var(--ink) !important;
+                            height: 2.5rem;
+                            top: calc(50% - 1.5rem);
+                            width: 2.5rem;
+
+                            &.yotpo-disable-arrow {
+                                display: none;
+                            }
+                        }
+
+                        .yotpo-carousel-button-prev {
+                            left: -2.5rem;
+                        }
+
+                        .yotpo-carousel-button-next {
+                            right: -2.5rem;
+                        }
+                    }
+
+                    .yotpo-mobile-modal {
+                        align-items: center;
+                        background-color: var(--ink-40) !important;
+                        display: flex;
+                        justify-content: center;
+
+                        .yotpo-redemption-option-mobile-modal {
+                            background-color: var(--white);
+                            border-radius: .3rem;
+                            height: auto;
+                            margin: 0 1.8rem;
+                            max-height: 85%;
+                            max-width: 25rem;
+                            overflow: auto;
+
+                            .yotpo-close-button-mobile-modal-container {
+                                background: none;
+                                cursor: pointer;
+                                height: auto;
+                                position: absolute;
+                                right: 1.8rem;
+                                top: 1.8rem;
+                                width: auto;
+
+                                .yotpo-close-button-mobile-modal {
+                                    position: static;
+
+                                    svg {
+                                        height: 1.1rem;
+                                        width: 1.1rem;
+
+                                        path {
+                                            fill: var(--ink);
+                                        }
+                                    }
+                                }
+                            }
+
+                            .yotpo-redemption-option-image-mobile-modal {
+                                background-repeat: no-repeat;
+                                border-radius: .3rem .3rem 0 0;
+                                height: 25rem;
+                                margin: 0;
+                                width: 25rem;
+                            }
+
+                            .yotpo-redemption-option-details-mobile-modal {
+                                padding: 1.8rem;
+
+                                .yotpo-redemption-option-reward-mobile-modal,
+                                .yotpo-redemption-option-not-enough-points-text-mobile-modal,
+                                .yotpo-redemption-cost-mobile-modal {
+                                    color: var(--ink) !important;
+                                    font-family: var(--font-body) !important;
+                                    font-size: var(--font-body-size) !important;
+                                    font-style: normal !important;
+                                    font-weight: 450 !important;
+                                    line-height: var(--font-body-line-height);
+                                    letter-spacing: 0.013rem;
+                                    padding: 0;
+                                }
+
+                                .yotpo-redemption-option-footer-mobile-modal {
+                                    background-color: transparent !important;
+                                    border: none;
+                                    display: block;
+                                    margin-top: 1.8rem;
+                                    padding: 0;
+                                    position: static;
+
+                                    .yotpo-action-button-widget {
+                                        margin-top: 1.8rem;
+                                        max-width: 100%;
+
+                                        &:has(button:disabled) {
+                                            display: none;
+                                        }
+
+                                        button {
+                                            background-color: var(--chalk) !important;
+                                            border-color: transparent;
+                                            border-radius: .3rem;
+                                            border-style: solid;
+                                            border-width: .1rem;
+                                            color: var(--ink) !important;
+                                            height: auto;
+                                            line-height: var(--font-cta-textlink-line-height);
+                                            letter-spacing: .11rem;
+                                            margin-top: 0;
+                                            min-height: 3rem;
+                                            padding: .6rem 1.2rem;
+                                            transition: var(--transition-all);
+                                            width: 100%;
+
+                                            &:hover,
+                                            &:focus {
+                                                background-color: var(--morning-sky) !important;
+                                                color: var(--white) !important;
+                                            }
+
+                                            .yotpo-action-button-text {
+                                                font-family: var(--font-body) !important;
+                                                font-size: var(--font-button-size);
+                                                font-style: normal;
+                                                font-weight: 450;
+                                                line-height: var(--font-button-line-height);
+                                                letter-spacing: .11rem;
+                                                text-transform: uppercase;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

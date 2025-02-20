@@ -1,0 +1,117 @@
+{%- liquid 
+    assign coming_soon = product.metafields.product.enable_coming_soon | default: false
+    assign notify_me = product.metafields.product.enable_notify_me | default: false
+-%}
+
+{%- if coming_soon or notify_me -%}
+    {%- render 'adastra' with 'styles/sections/product-nm-cs.scss' -%}
+
+    {%- liquid 
+        assign settings = shop.metaobjects.global_settings['global-settings']
+        assign nm_content = settings.notify_me_content | metafield_tag
+        assign cs_content = settings.coming_soon_content | metafield_tag
+        assign notify_me_coming_soon_checkbox_label = settings.notify_me_coming_soon_checkbox_label.value | escape | strip_html | strip
+        assign notify_me_coming_soon_legal_text = settings.notify_me_coming_soon_legal_text | metafield_tag
+        assign notify_me_klaviyo_list_id = settings.notify_me_klaviyo_list_id.value | escape | strip_html | strip | default: 'Xcp8cA'
+        assign coming_soon_klaviyo_list_id = settings.coming_soon_klaviyo_list_id.value | escape | strip_html | strip | default: 'WQ4UBK'
+    -%}
+
+    {%- capture nm_cs_modal_content -%}
+        <div class="product__nm-cs-wrapper">
+            <div class="rte rte--smaller">
+                <h2>{{ product.title }}</h2>
+
+                <template x-if="popup === 'notify-me'">
+                    <div>
+                        {{- nm_content -}}
+                    </div>
+                </template>
+
+                <template x-if="popup === 'coming-soon'">
+                    <div>
+                        {{- cs_content -}}
+                    </div>
+                </template>
+            </div>
+
+            <div class="product__nm-cs-form-wrapper">
+                <form
+                    x-data="nmCSForm"
+                    data-split-load-section
+                    :class="loading ? 'loading' : ''"
+                    @submit.prevent="handleForm"
+                >
+                    <input x-model="popup" type="hidden" name="popup">
+                    <input type="hidden" name="klaviyo_list_id" :value="popup === 'notify-me' ? '{{ notify_me_klaviyo_list_id }}' : popup === 'coming-soon' ? '{{ coming_soon_klaviyo_list_id }}' : ''">
+                    <input type="hidden" name="product_title" value="{{- product.title -}}">
+                    <input type="hidden" name="variant_id" :value="variantId || variant?.id || product?.variant_default_id || {{ product.selected_or_first_available_variant.id -}}">
+
+                    <div class="form__group">
+                        <input 
+                            class="form__field"
+                            name="email"
+                            type="email"
+                            spellcheck="false"
+                            autocapitalize="off"
+                            autofocus 
+                            required
+                            placeholder="{{- 'products.product.email' | t -}}"
+                            aria-label="{{- 'products.product.email' | t -}}"
+                        >
+                    </div>
+
+                    <div class="form__group form__group--double-margin">
+                        <input 
+                            class="form__field"
+                            name="phone"
+                            type="tel"
+                            placeholder="{{- 'products.product.phone' | t -}}"
+                            aria-label="{{- 'products.product.phone' | t -}}"
+                        >
+                    </div>
+
+                    {%- if notify_me_coming_soon_checkbox_label != blank -%}
+                        <div class="form__group form__group--checkbox form__group--double-margin">
+                            <input id="agreement" type="checkbox" name="agreement" class="visually-hidden">
+                            <label for="agreement" class="checkbox-default">
+                                {{- notify_me_coming_soon_checkbox_label -}}
+                                {%- render 'icon', name: 'checkmark' -%}
+                            </label>
+                        </div>
+                    {%- endif -%}
+
+                    {%- if notify_me_coming_soon_legal_text != blank -%}
+                        <div class="form__group form__group--double-margin">
+                            <div class="rte rte--smaller p-small">
+                                {{- notify_me_coming_soon_legal_text -}}
+                            </div>
+                        </div>
+                    {%- endif -%}
+
+                    <div
+                        x-show="(error || success) && message"
+                        class="form__group form__group--double-margin alert-message"
+                        :class="success ? 'alert-message--success' : 'alert-message--error'"
+                        aria-role="alert"
+                        style="display: none;"
+                        x-transition.duration.300ms
+                        x-transition
+                        x-text="message"
+                    ></div>
+
+                    <div class="form__group form__group--double-margin">
+                        <button class="btn btn--center btn--full btn--black" type="submit">
+                            {{- 'products.product.submit' | t -}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {%- endcapture -%}
+
+    {%- render 'modal', 
+        id: 'nm-cs',
+        content: nm_cs_modal_content,
+        style: 'white'
+    -%}
+{%- endif -%}

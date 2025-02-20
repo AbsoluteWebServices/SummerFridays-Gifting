@@ -1,0 +1,92 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4
+      }
+    },
+    "yotpo_widget_MX3iEM": {
+      "type": "yotpo-widget",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "widget_id": "166040",
+        "class": "",
+        "hide_for_registered_customer": false,
+        "container": true,
+        "yotpo_script_needed": false
+      }
+    },
+    "accordions_NNGTrm": {
+      "type": "accordions",
+      "blocks": {
+        "accordion_C3mtja": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I refer a friend?",
+            "content": "<p>Referring a friend is easy! Just input your friend's email address so we can send them their first time offer via email. </p>"
+          }
+        },
+        "accordion_waMtxT": {
+          "type": "accordion",
+          "settings": {
+            "title": "When do I receive my referral points?",
+            "content": "<p>Once your friend places a successful order, you will be awarded points. It may take up to 60 days to receive points from a referral to ensure the order is received and no returns or refunds are submitted.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_C3mtja",
+        "accordion_waMtxT"
+      ],
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4,
+        "content": "<p>FAQ.</p><h2>For the Curious.<br/>You Asked, We Anwsered.</h2>",
+        "open_first": true,
+        "bg_color": "chalk",
+        "container": "page"
+      }
+    },
+    "content_NryRTy": {
+      "type": "content",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 3,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 6,
+        "content": "<h3>IMPORTANT NOTE: </h3><p>Please note that referring yourself, creating fake email addresses or circular referrals is considered fraudulent behavior. Summer Fridays reserves the right to deactivate any loyalty account for suspicion of fraud. </p><p>Summer Fridays reserves the right to deactivate any loyalty account for suspicion of fraud. Selling points, circular referrals and/or fake referrals to accumulate points outside the parameters of the program framework are considered fraud. There is a zero tolerance policy. Any member suspected of partaking in activities such as these will be deactivated and blocked from the program indefinitely.</p>",
+        "font_size": "normal",
+        "container": "page",
+        "paragraph_margins": "normal",
+        "heading_alignment": "center",
+        "text_alignment": "center",
+        "text_wrap": "normal"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "yotpo_widget_MX3iEM",
+    "accordions_NNGTrm",
+    "content_NryRTy"
+  ]
+}

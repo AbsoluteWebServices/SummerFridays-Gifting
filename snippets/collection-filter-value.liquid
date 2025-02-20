@@ -1,0 +1,34 @@
+<li
+    {% if without_input %}
+        x-show="!open"
+        x-transition
+    {% endif %}
+>
+    {%- unless without_input -%}
+        <input 
+            id="filter-{{- index -}}-{{- filter.param_name -}}" 
+            class="visually-hidden"
+            type="checkbox" 
+            name="{{- filter.param_name -}}" 
+            value="{{- filter.value -}}"
+            {% if filter.active %}
+                checked
+            {% elsif filter.count == 0 %}
+                disabled
+            {% endif %}
+            @change="fetchAndRender(null)"
+        >
+    {%- endunless -%}
+
+    <label for="filter-{{- index -}}-{{- filter.param_name -}}" class="collection-filters__filter-option-label superscript-normal {% if filter.active %}collection-filters__filter-option-label--active{% endif %}">
+        {%- if icon != blank -%}
+            {{- icon -}}
+        {%- endif -%}
+
+        {{- filter.label -}}
+
+        {%- if filter.active -%}
+            {%- render 'icon', name: 'times' -%}
+        {%- endif -%}
+    </label>
+</li>
