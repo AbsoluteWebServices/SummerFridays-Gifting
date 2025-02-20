@@ -11,9 +11,9 @@
     "npm": ">=10.2.4"
   },
   "scripts": {
-    "dev": "adastra dev --live-reload=off --store=summerfridaysbeauty.myshopify.com",
+    "dev": "adastra dev --live-reload=off --store=summer-fridays-community-gifting.myshopify.com",
     "build": "adastra build",
-    "deploy": "shopify theme push --ignore assets/adastra.manifest.json --ignore config/*_data.json --ignore templates/*json --ignore templates/customers/*.json --ignore package.json --ignore package-lock.json --ignore jsconfig.* --ignore tsconfig.* --ignore ./*.config.* --ignore src/ --ignore misc/ --ignore node_modules --store=summerfridaysbeauty.myshopify.com"
+    "deploy": "shopify theme push --ignore assets/adastra.manifest.json --ignore config/*_data.json --ignore templates/*json --ignore templates/customers/*.json --ignore package.json --ignore package-lock.json --ignore jsconfig.* --ignore tsconfig.* --ignore ./*.config.* --ignore src/ --ignore misc/ --ignore node_modules --store=summer-fridays-community-gifting.myshopify.com"
   },
   "dependencies": {
     "@alpinejs/focus": "^3.13.7",
