@@ -9,6 +9,25 @@
  */
 {
   "current": {
+    "font_body_size": 16,
+    "font_body_line_height": 20,
+    "font_cta_textlink_size": 13,
+    "font_cta_textlink_line_height": 18,
+    "font_p_small_size": 12,
+    "font_p_small_line_height": 15,
+    "font_p_normal_size": 16,
+    "font_p_normal_line_height": 20,
+    "font_p_large_size": 18,
+    "font_p_large_line_height": 24,
+    "font_subheader_large_size": 19,
+    "font_subheader_large_line_height": 24,
+    "font_subheader_small_size": 16,
+    "font_subheader_small_line_height": 20,
+    "font_superscript_normal_size": 13,
+    "font_superscript_normal_line_height": 15,
+    "font_input_size_desktop": 13,
+    "font_button_size": 13,
+    "font_button_line_height": 17,
     "color_morning_sky": "#5e82ab",
     "color_accent_blue": "#7da1c4",
     "sections": {
