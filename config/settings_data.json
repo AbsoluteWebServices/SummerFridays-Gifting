@@ -10,6 +10,7 @@
 {
   "current": {
     "color_morning_sky": "#5e82ab",
+    "color_accent_blue": "#7da1c4",
     "sections": {
       "announcement": {
         "type": "announcement",
