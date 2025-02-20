@@ -1,0 +1,67 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "sections": {
+      "announcement": {
+        "type": "announcement",
+        "settings": {}
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "handles_header_cover_hero": "",
+          "menu_right_desktop": ""
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "custom_title": "Éte Eternal",
+          "linklist_title_1": "Shop",
+          "linklist_1": "footer",
+          "linklist_title_2": "About",
+          "linklist_2": "",
+          "linklist_title_3": "Information",
+          "linklist_3": "",
+          "linklist_title_4": "Account",
+          "linklist_4": "",
+          "linklist_copyright": "",
+          "media_type": "video",
+          "newsletter_title": "Stay up to date",
+          "list_id": "Xcp8cA",
+          "custom_source": "Coming Soon",
+          "signup_unit_id": "73377"
+        }
+      },
+      "minicart": {
+        "type": "minicart",
+        "settings": {}
+      },
+      "newsletter-popup": {
+        "type": "newsletter-popup",
+        "settings": {
+          "enable": false,
+          "logo": "",
+          "title": "",
+          "subtitle": "",
+          "content": "",
+          "media_type": "video",
+          "delay": 5,
+          "hide_days": 7,
+          "list_id": "Xcp8cA",
+          "custom_source": "Newsletter Popup",
+          "signup_unit_id": "73377"
+        }
+      }
+    },
+    "content_for_index": []
+  }
+}
