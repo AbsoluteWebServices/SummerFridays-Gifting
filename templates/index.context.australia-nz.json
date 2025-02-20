@@ -12,29 +12,5 @@
   "context": {
     "market": "australia-nz"
   },
-  "sections": {
-    "hero_split_6TqU7z": {
-      "disabled": false,
-      "settings": {
-        "title_font": "primary",
-        "title": "Hey Australia,",
-        "content": "<p>Find your Summer Fridays skincare essentials at MECCA.com</p>",
-        "button_url": "https://www.mecca.com/"
-      },
-      "blocks": {
-        "media_Bqaqyw": {
-          "settings": {
-            "image_desktop": "shopify://shop_images/SF_MALIBU_FILM_LOWRES-000018550018_1.jpg",
-            "image_mobile": "shopify://shop_images/SF_MALIBU_FILM_LOWRES-000018550018_1_39d2b771-809a-40b9-944f-33f00c9724e3.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "media_Bqaqyw"
-      ]
-    }
-  },
-  "order": [
-    "hero_split_6TqU7z"
-  ]
+  "sections": {}
 }
