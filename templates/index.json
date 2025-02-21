@@ -92,6 +92,32 @@
         ]
       }
     },
+    "recommendations_hH4erC": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 2.4,
+        "padding_bottom": 2.4,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "id": "",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Treatments + Serums</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "jet-lag-deep-hydration-serum",
+          "jet-lag-overnight-eye-serum",
+          "cc-me-serum",
+          "midnight-ritual-retinol-renewal-serum",
+          "light-aura-vitamin-c-peptide-eye-cream",
+          "heavenly-sixteen-all-in-one-face-oil"
+        ]
+      }
+    },
     "image_gallery_JECmdJ": {
       "type": "image-gallery",
       "blocks": {
@@ -182,6 +208,7 @@
     "recommendations_PU8itr",
     "recommendations_7367ed",
     "recommendations_QGDy9r",
+    "recommendations_hH4erC",
     "image_gallery_JECmdJ"
   ]
 }
