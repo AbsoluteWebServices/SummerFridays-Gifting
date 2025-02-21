@@ -12,6 +12,7 @@
     endif
 
     assign menu_right_desktop = linklists[section.settings.menu_right_desktop]
+    assign search_enable = section.settings.search_enable | default: false
 -%}
 
 <header 
@@ -37,7 +38,9 @@
                     </div>
 				</button>
 
-				{%- render 'header-search-button', id: 'open-search-drawer-btn' -%}
+                {%- if search_enable -%}
+				    {%- render 'header-search-button', id: 'open-search-drawer-btn' -%}
+                {%- endif -%}
 
 				{%- if desktop_menu_items.size > 0 -%}
 					<nav class="desktop-menu__main" aria-label="Desktop main navigation">
@@ -270,7 +273,9 @@
                 
                 {%- render 'country-selector' -%}
 
-                {%- render 'header-search-button', id: 'open-search-drawer-btn-desktop' -%}
+                {%- if search_enable -%}
+                    {%- render 'header-search-button', id: 'open-search-drawer-btn-desktop' -%}
+                {%- endif -%}
 
 				<button
                     x-show="Boolean($store?.Cart)"
@@ -294,8 +299,10 @@
 			</div>
 		</div>
 	</div>
-
-    {%- render 'predictive-search' -%}
+    
+    {%- if search_enable -%}
+        {%- render 'predictive-search' -%}
+    {%- endif -%}
 
     {%- render 'mobile-menu' -%}
 </header>
@@ -314,6 +321,12 @@
             "type": "link_list",
             "id": "menu_right_desktop",
             "label": "Menu right (desktop)"
+        },
+        {
+            "type": "checkbox",
+            "id": "search_enable",
+            "label": "Enable search",
+            "default": false
         }
     ],
     "blocks": [

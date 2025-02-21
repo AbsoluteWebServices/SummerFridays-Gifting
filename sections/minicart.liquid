@@ -73,9 +73,9 @@
         </div> 
 
         <div class="minicart__main scrollbar" data-allow-scroll>
-            <template x-if="$store?.Cart?.cart?.items?.length">
+            {% comment %} <template x-if="$store?.Cart?.cart?.items?.length">
                 {%- render 'minicart-loyalty-points' -%}
-            </template>
+            </template> {% endcomment %}
 
             <template x-if="$store?.Cart?.cart?.items?.length">
                 <div class="minicart__main-block minicart__items">
