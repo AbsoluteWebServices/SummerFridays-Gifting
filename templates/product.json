@@ -11,8 +11,7 @@
   "sections": {
     "main": {
       "type": "product-sf",
-      "settings": {
-      }
+      "settings": {}
     },
     "recommendations_WxdKaz": {
       "type": "recommendations",
@@ -30,22 +29,18 @@
         "button_label": "",
         "button_url": "",
         "limit": 8,
-        "products": [
-
-        ]
+        "products": []
       }
     },
     "product_reviews_KXKNcg": {
       "type": "product-reviews",
+      "disabled": true,
       "settings": {
         "padding_top": 0,
         "padding_bottom": 4.2,
         "padding_top_desktop": 0,
         "padding_bottom_desktop": 8.4,
-        "cta_text": "Write a Review",
-        "verified_buyer_text": "Verified Buyer",
-        "filters_text": "Filters",
-        "clear_filters_text": "Clear Filters"
+        "content": "<h2>Reviews</h2>"
       }
     },
     "image_gallery_JECmdJ": {
@@ -55,49 +50,56 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/i1.jpg",
-            "url": "#"
+            "url": "#",
+            "open_in_new_tab": true
           }
         },
         "image_T8FAhK": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/i2.jpg",
-            "url": ""
+            "url": "",
+            "open_in_new_tab": true
           }
         },
         "image_XaNWiR": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/i3.jpg",
-            "url": "#"
+            "url": "#",
+            "open_in_new_tab": true
           }
         },
         "image_fVhwhy": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/i4.jpg",
-            "url": "#"
+            "url": "#",
+            "open_in_new_tab": true
           }
         },
         "image_zVJiYB": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/i5.jpg",
-            "url": "#"
+            "url": "#",
+            "open_in_new_tab": true
           }
         },
         "image_XkNCzn": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/i6.jpg",
-            "url": "#"
+            "url": "#",
+            "open_in_new_tab": true
           }
         },
         "image_DUK8r8": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/i7.jpg",
-            "url": "#"
+            "url": "#",
+            "open_in_new_tab": true
           }
         }
       },
@@ -120,6 +122,8 @@
         "images_type": "spirit-gallery-api",
         "embed": "<script src=\"https://cdn.dashhudson.com/web/js/board-embed.js\" type=\"text/javascript\" data-name=\"dhboard\" data-gallery-id=\"62141\" data-row-size=\"4\" data-gap-size=\"1\" data-row-limit=\"1\" data-mobile-row-size=\"4\" data-mobile-gap-size=\"1\"></script>",
         "spirit_gallery_id": "3794955",
+        "force": false,
+        "open_in_new_tab": true,
         "limit": 8,
         "spirit_gallery_image_url": "https://www.instagram.com/summerfridays/"
       }
