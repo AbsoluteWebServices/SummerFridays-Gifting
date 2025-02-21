@@ -239,6 +239,52 @@
         ]
       }
     },
+    "recommendations_8adQXj": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 2.4,
+        "padding_bottom": 2.4,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "id": "",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Sets + Gifts</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "jet-lag-on-the-go-set",
+          "mini-jet-lag-mask",
+          "mini-cloud-dew-gel-cream"
+        ]
+      }
+    },
+    "recommendations_kjtW9H": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 2.4,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 8.4,
+        "id": "",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Apparel + Accessories</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "self-care-daily-planner",
+          "tube-key",
+          "summer-fridays-gift-card"
+        ]
+      }
+    },
     "image_gallery_JECmdJ": {
       "type": "image-gallery",
       "blocks": {
@@ -335,6 +381,8 @@
     "recommendations_4HmgHg",
     "recommendations_D96dTf",
     "recommendations_gb4KeG",
+    "recommendations_8adQXj",
+    "recommendations_kjtW9H",
     "image_gallery_JECmdJ"
   ]
 }
