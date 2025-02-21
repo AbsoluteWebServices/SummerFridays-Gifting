@@ -55,7 +55,8 @@
         ],
         "settings": {
           "handles_header_cover_hero": "",
-          "menu_right_desktop": ""
+          "menu_right_desktop": "",
+          "search_enable": false
         }
       },
       "footer": {
@@ -100,5 +101,10 @@
       }
     },
     "content_for_index": []
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".template-index .sticky-menu-wrapper {position: initial;}"
+    ]
   }
 }
