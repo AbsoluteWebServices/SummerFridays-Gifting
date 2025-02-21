@@ -141,6 +141,40 @@
         ]
       }
     },
+    "recommendations_wdRjWD": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 2.4,
+        "padding_bottom": 2.4,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "id": "",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Lip Care</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "lip-butter-balm",
+          "lip-butter-balm-sweet-mint",
+          "lip-butter-balm-pink-sugar",
+          "lip-butter-balm-birthday-cake",
+          "lip-butter-balm-vanilla-beige",
+          "lip-butter-balm-iced-coffee",
+          "lip-butter-balm-brown-sugar",
+          "lip-butter-balm-cherry",
+          "lip-butter-balm-poppy",
+          "dream-lip-oil-pink-cloud",
+          "dream-lip-oil-blush-dreams",
+          "dream-lip-oil-mauve",
+          "dream-lip-oil-rosewood-nights",
+          "sephora-birthday-gift"
+        ]
+      }
+    },
     "image_gallery_JECmdJ": {
       "type": "image-gallery",
       "blocks": {
@@ -233,6 +267,7 @@
     "recommendations_QGDy9r",
     "recommendations_hH4erC",
     "recommendations_JrftXc",
+    "recommendations_wdRjWD",
     "image_gallery_JECmdJ"
   ]
 }
