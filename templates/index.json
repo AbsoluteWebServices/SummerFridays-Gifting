@@ -9,12 +9,42 @@
  */
 {
   "sections": {
+    "recommendations_PU8itr": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "id": "",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Lip</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 10,
+        "products": [
+          "lip-butter-balm-cherry",
+          "lip-butter-balm-iced-coffee",
+          "lip-butter-balm-pink-sugar",
+          "lip-butter-balm-poppy",
+          "lip-butter-balm-sweet-mint",
+          "lip-butter-balm",
+          "lip-butter-balm-brown-sugar",
+          "lip-butter-balm-birthday-cake",
+          "lip-butter-balm-vanilla-beige"
+        ]
+      }
+    },
     "image_gallery_JECmdJ": {
       "type": "image-gallery",
       "blocks": {
         "image_fPbKXF": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/13-1.jpg",
             "url": "https://www.instagram.com/summerfridays/",
             "open_in_new_tab": true
           }
@@ -22,6 +52,7 @@
         "image_T8FAhK": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/JESSIKA_BARE_SAND_875.jpg",
             "url": "https://www.instagram.com/summerfridays/",
             "open_in_new_tab": true
           }
@@ -29,6 +60,7 @@
         "image_XaNWiR": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/IMG_0018.jpg",
             "url": "https://www.instagram.com/summerfridays/",
             "open_in_new_tab": true
           }
@@ -36,6 +68,7 @@
         "image_fVhwhy": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/MONICA_MIDNIGHT_BERRY_1808.jpg",
             "url": "https://www.instagram.com/summerfridays/",
             "open_in_new_tab": true
           }
@@ -43,6 +76,7 @@
         "image_zVJiYB": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/24_05_11_SummerFridays_LipOil0799.jpg",
             "url": "https://www.instagram.com/summerfridays/",
             "open_in_new_tab": true
           }
@@ -50,6 +84,7 @@
         "image_XkNCzn": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Summer_Friday_s.jpg",
             "url": "https://www.instagram.com/summerfridays/",
             "open_in_new_tab": true
           }
@@ -57,6 +92,7 @@
         "image_DUK8r8": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/41.jpg",
             "url": "https://www.instagram.com/summerfridays/",
             "open_in_new_tab": true
           }
@@ -85,35 +121,6 @@
         "open_in_new_tab": true,
         "limit": 8,
         "spirit_gallery_image_url": "https://www.instagram.com/summerfridays/"
-      }
-    },
-    "recommendations_PU8itr": {
-      "type": "recommendations",
-      "settings": {
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "id": "",
-        "layout": "grid",
-        "source": "custom",
-        "subscription_mode": false,
-        "content": "<h2>Lip</h2>",
-        "content_related": "",
-        "button_label": "",
-        "button_url": "",
-        "limit": 10,
-        "products": [
-          "lip-butter-balm-cherry",
-          "lip-butter-balm-iced-coffee",
-          "lip-butter-balm-pink-sugar",
-          "lip-butter-balm-poppy",
-          "lip-butter-balm-sweet-mint",
-          "lip-butter-balm",
-          "lip-butter-balm-brown-sugar",
-          "lip-butter-balm-birthday-cake",
-          "lip-butter-balm-vanilla-beige"
-        ]
       }
     }
   },
