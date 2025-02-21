@@ -34,6 +34,64 @@
         ]
       }
     },
+    "recommendations_7367ed": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 2.4,
+        "padding_bottom": 2.4,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "id": "",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Best Sellers</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "jumbo-jet-lag-mask",
+          "jet-lag-overnight-eye-serum",
+          "shadedrops-spf-30-mineral-milk-sunscreen",
+          "lip-butter-balm-iced-coffee",
+          "sheer-skin-tint",
+          "rich-cushion-cream",
+          "lip-butter-balm",
+          "dream-lip-oil-pink-cloud",
+          "cloud-dew-gel-cream",
+          "cc-me-serum",
+          "light-aura-vitamin-c-peptide-eye-cream",
+          "super-amino-gel-cleanser"
+        ]
+      }
+    },
+    "recommendations_QGDy9r": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 2.4,
+        "padding_bottom": 2.4,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "id": "",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Moisturizers</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "jet-lag-soothing-hydration-mist",
+          "jet-lag-deep-hydration-serum",
+          "jumbo-jet-lag-mask",
+          "rich-cushion-cream",
+          "cloud-dew-gel-cream",
+          "heavenly-sixteen-all-in-one-face-oil"
+        ]
+      }
+    },
     "image_gallery_JECmdJ": {
       "type": "image-gallery",
       "blocks": {
@@ -118,43 +176,12 @@
         "limit": 8,
         "spirit_gallery_image_url": "https://www.instagram.com/summerfridays/"
       }
-    },
-    "recommendations_7367ed": {
-      "type": "recommendations",
-      "settings": {
-        "padding_top": 2.4,
-        "padding_bottom": 2.4,
-        "padding_top_desktop": 4.2,
-        "padding_bottom_desktop": 4.2,
-        "id": "",
-        "layout": "grid",
-        "source": "custom",
-        "subscription_mode": false,
-        "content": "<h2>Best Sellers</h2>",
-        "content_related": "",
-        "button_label": "",
-        "button_url": "",
-        "limit": 50,
-        "products": [
-          "jumbo-jet-lag-mask",
-          "jet-lag-overnight-eye-serum",
-          "shadedrops-spf-30-mineral-milk-sunscreen",
-          "lip-butter-balm-iced-coffee",
-          "sheer-skin-tint",
-          "rich-cushion-cream",
-          "lip-butter-balm",
-          "dream-lip-oil-pink-cloud",
-          "cloud-dew-gel-cream",
-          "cc-me-serum",
-          "light-aura-vitamin-c-peptide-eye-cream",
-          "super-amino-gel-cleanser"
-        ]
-      }
     }
   },
   "order": [
     "recommendations_PU8itr",
-    "image_gallery_JECmdJ",
-    "recommendations_7367ed"
+    "recommendations_7367ed",
+    "recommendations_QGDy9r",
+    "image_gallery_JECmdJ"
   ]
 }
