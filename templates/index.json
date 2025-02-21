@@ -9,6 +9,113 @@
  */
 {
   "sections": {
+    "sticky_menu_ybPdGW": {
+      "type": "sticky-menu",
+      "blocks": {
+        "item_wJxapY": {
+          "type": "item",
+          "settings": {
+            "title": "New Arrivals",
+            "url": "#new-arrivals",
+            "active": false
+          }
+        },
+        "item_fNfLBt": {
+          "type": "item",
+          "settings": {
+            "title": "Best Sellers",
+            "url": "#best-sellers",
+            "active": false
+          }
+        },
+        "item_wfkQ7E": {
+          "type": "item",
+          "settings": {
+            "title": "Moisturizers",
+            "url": "#moisturizers",
+            "active": false
+          }
+        },
+        "item_6EtDNB": {
+          "type": "item",
+          "settings": {
+            "title": "Treatments + Serums",
+            "url": "#treatments-serums",
+            "active": false
+          }
+        },
+        "item_wjkgA8": {
+          "type": "item",
+          "settings": {
+            "title": "Makeup",
+            "url": "#makeup",
+            "active": false
+          }
+        },
+        "item_88JiPH": {
+          "type": "item",
+          "settings": {
+            "title": "Lip Care",
+            "url": "#lip-care",
+            "active": false
+          }
+        },
+        "item_ghX3hB": {
+          "type": "item",
+          "settings": {
+            "title": "Sunscreen",
+            "url": "#sunscreen",
+            "active": false
+          }
+        },
+        "item_MQtPrt": {
+          "type": "item",
+          "settings": {
+            "title": "Cleanser",
+            "url": "#cleanser",
+            "active": false
+          }
+        },
+        "item_hWnYgi": {
+          "type": "item",
+          "settings": {
+            "title": "Bodycare",
+            "url": "#bodycare",
+            "active": false
+          }
+        },
+        "item_4Dwczf": {
+          "type": "item",
+          "settings": {
+            "title": "Sets + Gifts",
+            "url": "#sets-gifts",
+            "active": false
+          }
+        },
+        "item_qFPa3e": {
+          "type": "item",
+          "settings": {
+            "title": "Apparel + Accessories",
+            "url": "#apparel-accessories",
+            "active": false
+          }
+        }
+      },
+      "block_order": [
+        "item_wJxapY",
+        "item_fNfLBt",
+        "item_wfkQ7E",
+        "item_6EtDNB",
+        "item_wjkgA8",
+        "item_88JiPH",
+        "item_ghX3hB",
+        "item_MQtPrt",
+        "item_hWnYgi",
+        "item_4Dwczf",
+        "item_qFPa3e"
+      ],
+      "settings": {}
+    },
     "recommendations_PU8itr": {
       "type": "recommendations",
       "settings": {
@@ -372,6 +479,7 @@
     }
   },
   "order": [
+    "sticky_menu_ybPdGW",
     "recommendations_PU8itr",
     "recommendations_7367ed",
     "recommendations_QGDy9r",
