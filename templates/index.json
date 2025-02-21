@@ -121,9 +121,9 @@
       "type": "recommendations",
       "settings": {
         "padding_top": 2.4,
-        "padding_bottom": 2.4,
+        "padding_bottom": 0,
         "padding_top_desktop": 4.8,
-        "padding_bottom_desktop": 4.2,
+        "padding_bottom_desktop": 0,
         "id": "new-arrivals",
         "layout": "grid",
         "source": "custom",
@@ -145,10 +145,10 @@
     "recommendations_7367ed": {
       "type": "recommendations",
       "settings": {
-        "padding_top": 2.4,
-        "padding_bottom": 2.4,
-        "padding_top_desktop": 4.2,
-        "padding_bottom_desktop": 4.2,
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
         "id": "best-sellers",
         "layout": "grid",
         "source": "custom",
@@ -177,10 +177,10 @@
     "recommendations_QGDy9r": {
       "type": "recommendations",
       "settings": {
-        "padding_top": 2.4,
-        "padding_bottom": 2.4,
-        "padding_top_desktop": 4.2,
-        "padding_bottom_desktop": 4.2,
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
         "id": "moisturizers",
         "layout": "grid",
         "source": "custom",
@@ -203,10 +203,10 @@
     "recommendations_hH4erC": {
       "type": "recommendations",
       "settings": {
-        "padding_top": 2.4,
-        "padding_bottom": 2.4,
-        "padding_top_desktop": 4.2,
-        "padding_bottom_desktop": 4.2,
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
         "id": "treatments-serums",
         "layout": "grid",
         "source": "custom",
@@ -229,10 +229,10 @@
     "recommendations_JrftXc": {
       "type": "recommendations",
       "settings": {
-        "padding_top": 2.4,
-        "padding_bottom": 2.4,
-        "padding_top_desktop": 4.2,
-        "padding_bottom_desktop": 4.2,
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
         "id": "makeup",
         "layout": "grid",
         "source": "custom",
@@ -252,10 +252,10 @@
     "recommendations_wdRjWD": {
       "type": "recommendations",
       "settings": {
-        "padding_top": 2.4,
-        "padding_bottom": 2.4,
-        "padding_top_desktop": 4.2,
-        "padding_bottom_desktop": 4.2,
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
         "id": "lip-care",
         "layout": "grid",
         "source": "custom",
@@ -286,10 +286,10 @@
     "recommendations_4HmgHg": {
       "type": "recommendations",
       "settings": {
-        "padding_top": 2.4,
-        "padding_bottom": 2.4,
-        "padding_top_desktop": 4.2,
-        "padding_bottom_desktop": 4.2,
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
         "id": "sunscreen",
         "layout": "grid",
         "source": "custom",
@@ -307,10 +307,10 @@
     "recommendations_D96dTf": {
       "type": "recommendations",
       "settings": {
-        "padding_top": 2.4,
-        "padding_bottom": 2.4,
-        "padding_top_desktop": 4.2,
-        "padding_bottom_desktop": 4.2,
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
         "id": "cleanser",
         "layout": "grid",
         "source": "custom",
@@ -328,10 +328,10 @@
     "recommendations_gb4KeG": {
       "type": "recommendations",
       "settings": {
-        "padding_top": 2.4,
-        "padding_bottom": 2.4,
-        "padding_top_desktop": 4.2,
-        "padding_bottom_desktop": 4.2,
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
         "id": "bodycare",
         "layout": "grid",
         "source": "custom",
@@ -350,10 +350,10 @@
     "recommendations_8adQXj": {
       "type": "recommendations",
       "settings": {
-        "padding_top": 2.4,
-        "padding_bottom": 2.4,
-        "padding_top_desktop": 4.2,
-        "padding_bottom_desktop": 4.2,
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
         "id": "sets-gifts",
         "layout": "grid",
         "source": "custom",
@@ -373,9 +373,9 @@
     "recommendations_kjtW9H": {
       "type": "recommendations",
       "settings": {
-        "padding_top": 2.4,
+        "padding_top": 4.8,
         "padding_bottom": 4.8,
-        "padding_top_desktop": 4.2,
+        "padding_top_desktop": 8.4,
         "padding_bottom_desktop": 8.4,
         "id": "apparel-accessories",
         "layout": "grid",
