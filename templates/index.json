@@ -120,9 +120,9 @@
     "recommendations_PU8itr": {
       "type": "recommendations",
       "settings": {
-        "padding_top": 4.8,
+        "padding_top": 2.4,
         "padding_bottom": 2.4,
-        "padding_top_desktop": 8.4,
+        "padding_top_desktop": 4.8,
         "padding_bottom_desktop": 4.2,
         "id": "new-arrivals",
         "layout": "grid",
