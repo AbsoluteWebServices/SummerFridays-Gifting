@@ -134,8 +134,21 @@
         "content_related": "",
         "button_label": "",
         "button_url": "",
-        "limit": 10,
-        "products": []
+        "limit": 50,
+        "products": [
+          "jumbo-jet-lag-mask",
+          "jet-lag-overnight-eye-serum",
+          "shadedrops-spf-30-mineral-milk-sunscreen",
+          "lip-butter-balm-iced-coffee",
+          "sheer-skin-tint",
+          "rich-cushion-cream",
+          "lip-butter-balm",
+          "dream-lip-oil-pink-cloud",
+          "cloud-dew-gel-cream",
+          "cc-me-serum",
+          "light-aura-vitamin-c-peptide-eye-cream",
+          "super-amino-gel-cleanser"
+        ]
       }
     }
   },
