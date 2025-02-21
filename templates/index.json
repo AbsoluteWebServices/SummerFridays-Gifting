@@ -118,6 +118,29 @@
         ]
       }
     },
+    "recommendations_JrftXc": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 2.4,
+        "padding_bottom": 2.4,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "id": "",
+        "layout": "grid",
+        "source": "complementary",
+        "subscription_mode": false,
+        "content": "<h2>Makeup</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "sheer-skin-tint",
+          "lip-butter-balm",
+          "dream-lip-oil-pink-cloud"
+        ]
+      }
+    },
     "image_gallery_JECmdJ": {
       "type": "image-gallery",
       "blocks": {
@@ -209,6 +232,7 @@
     "recommendations_7367ed",
     "recommendations_QGDy9r",
     "recommendations_hH4erC",
+    "recommendations_JrftXc",
     "image_gallery_JECmdJ"
   ]
 }
