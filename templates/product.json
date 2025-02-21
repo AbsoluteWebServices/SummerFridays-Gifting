@@ -32,17 +32,6 @@
         "products": []
       }
     },
-    "product_reviews_KXKNcg": {
-      "type": "product-reviews",
-      "disabled": true,
-      "settings": {
-        "padding_top": 0,
-        "padding_bottom": 4.2,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 8.4,
-        "content": "<h2>Reviews</h2>"
-      }
-    },
     "image_gallery_JECmdJ": {
       "type": "image-gallery",
       "blocks": {
@@ -132,7 +121,6 @@
   "order": [
     "main",
     "recommendations_WxdKaz",
-    "product_reviews_KXKNcg",
     "image_gallery_JECmdJ"
   ]
 }
