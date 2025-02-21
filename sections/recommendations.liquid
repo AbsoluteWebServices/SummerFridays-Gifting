@@ -13,7 +13,7 @@
     assign content = section.settings.content 
     assign button_label = section.settings.button_label | escape | strip_html
     assign button_url = section.settings.button_url
-    assign limit = section.settings.limit | default: 8
+    assign limit = section.settings.limit | default: 50
     assign fetch_required = false
 
     case source
@@ -244,7 +244,7 @@
             "type": "range",
             "info": "Recommended amount: 6-10",
             "min": 1,
-            "max": 10,
+            "max": 50,
             "step": 1,
             "default": 8
         },
@@ -252,7 +252,7 @@
           "type": "product_list",
           "id": "products",
           "label": "Products",
-          "limit": 10
+          "limit": 50
         }
     ],
     "presets": [
