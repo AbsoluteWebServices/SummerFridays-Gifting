@@ -1,0 +1,139 @@
+{%- if enable and products != blank -%}
+    <div class="minicart__main-block">
+        {%- if title != blank -%}
+            <div class="minicart__upsells-title-wrapper">
+                <span class="subheader-small">{{- title -}}</span>
+            </div>
+        {%- endif -%}
+
+        <ul class="list-reset">
+            {%- for product in products -%}
+                {%- liquid 
+                    assign donation = product.metafields.donation
+                    assign organization_url = donation.organization_url
+                    assign organization = donation.organization | strip_html | escape | strip | default: product.title
+                    assign description = donation.description
+                -%}
+                <li class="minicart__donations-item">
+                    <div 
+                        x-data="{
+                            showDD: false
+                        }"
+                        x-show="Boolean(($store?.Cart?.cart?.items || []).find((item) => item.productId === {{ product.id }})) === false"
+                        class="minicart__donations"
+                        x-transition
+                        x-init="$watch('showDD', value => value && $el.scrollIntoView({behavior: 'smooth'}))"
+                    >
+                        <div class="minicart__donations-checkbox-wrapper">
+                            <input 
+                                x-model="showDD"
+                                id="minicart-donations-{{- product.id -}}-{{- forloop.index -}}"
+                                type="checkbox" 
+                                class="visually-hidden"
+                            >
+                            <label for="minicart-donations-{{- product.id -}}-{{- forloop.index -}}">
+                                <div class="fake-radio">
+                                    <div></div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="minicart__donations-body">
+                            <div class="minicart__donations-title-wrapper {% if organization_url != blank %}a-underline-wrapper a-underline-style-2{% endif %}">
+                                <label for="minicart-donations-{{- product.id -}}-{{- forloop.index -}}" class="cta-textlink">
+                                    {{- cta -}}
+                                </label>
+
+                                {%- if organization != blank -%}
+                                    {%- if organization_url != blank -%}
+                                        <a 
+                                            href="{{- organization_url -}}" 
+                                            title="{{- organization -}}" 
+                                            aria-label="Visit {{ organization }}" 
+                                            class="superscript-normal"
+                                            target="_blank"
+                                        >
+                                    {%- else -%}
+                                        <span class="superscript-normal">
+                                    {%- endif -%}
+
+                                        {{- organization -}}
+
+                                    {%- if organization_url != blank -%}
+                                        </a>
+                                    {%- else -%}
+                                        </span>
+                                    {%- endif -%}
+                                {%- endif -%}
+                            </div>
+
+                            {%- if description != blank -%}
+                                <div class="superscript-normal rte minicart__donations-description">
+                                    {{- description | metafield_tag -}}
+                                </div>
+                            {%- endif -%}
+
+                            <div 
+                                x-show="showDD"
+                                class="minicart__donations-selector-wrapper"
+                                x-transition
+                                style="display: none;"
+                            >
+                                <div
+                                    x-data="{
+                                        open: false
+                                    }"
+                                    class="select-wrapper select-wrapper--bordered"
+                                    @click.outside="open = false"
+                                >
+                                    <button
+                                        id="minicart-donations-selector-toggle-btn-{{- product.id -}}-{{- forloop.index -}}"
+                                        type="button"
+                                        class="p-normal select-toggle-btn"
+                                        aria-haspopup="true"
+                                        aria-controls="minicart-donations-selector-{{- product.id -}}-{{- forloop.index -}}"
+                                        :aria-expanded="open"
+                                        @click.prevent="open = ! open; open && $el.scrollIntoView({behavior: 'smooth'})" 
+                                    >
+                                        {{- 'minicart.general.select_donation' | t -}}
+                                        {%- render 'icon', name: 'chevron-down' -%}
+                                    </button>
+
+                                    <ul 
+                                        id="minicart-donations-selector-{{- product.id -}}-{{- forloop.index -}}"
+                                        class="dropdown-content scrollbar list-reset"
+                                        :data-open="open"
+                                        aria-labelledby="minicart-donations-selector-toggle-btn-{{- product.id -}}-{{- forloop.index -}}"
+                                        :style="open && { height: $el.scrollHeight + 1 + 'px' }"
+                                        @resize.window="if (!open) { return; } $el.style.height = 'auto'"
+                                    >
+                                        {%- for variant in product.variants -%}
+                                            <li>
+                                                <form 
+                                                    action="/cart/add"
+                                                    method="POST"
+                                                    enctype="multipart/form-data"
+                                                    @submit.prevent="$store.Cart.addToCart(event); open = false"
+                                                >
+                                                    <input type="hidden" name="id" value="{{- variant.id -}}">
+                                                    <input type="hidden" name="quantity" value="1">
+
+                                                    <button 
+                                                        class="select-option p-normal" 
+                                                        type="submit"
+                                                    >
+                                                        {{- variant.price | money_without_trailing_zeros -}}
+                                                    </button>
+                                                </form>
+                                            </li>
+                                        {%- endfor -%}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {%- endfor -%}
+        </ul>
+    </div>
+{%- endif -%}

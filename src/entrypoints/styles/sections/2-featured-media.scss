@@ -1,0 +1,36 @@
+.two-featured-media__wrapper {
+    @media only screen and (min-width: 768px) {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.8rem;
+    }
+}
+
+.two-featured-media__media {
+    position: relative;
+    border-radius: .3rem;
+    overflow: hidden;
+    width: 100%;
+    max-height: calc(95svh - var(--header-height-mobile) - var(--announcement-height, 0));
+    aspect-ratio: 1 / 1.25;
+
+    &.two-featured-media__media--landscape {
+        aspect-ratio: 1.5 / 1;
+    }
+
+    &:last-child {
+        margin-top: 4.2rem;
+        margin-left: auto;
+        max-width: 73.74%;
+
+        @media only screen and (min-width: 768px) {
+            margin-top: 0;
+            margin-left: 0;
+            max-width: 100%;
+        }
+    }
+ 
+    @media only screen and (min-width: 1280px) {
+        max-height: calc(95svh - var(--header-height-desktop) - var(--announcement-height, 0));
+    }
+}

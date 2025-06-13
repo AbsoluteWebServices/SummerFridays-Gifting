@@ -1,0 +1,40 @@
+{%- liquid
+    assign metafields = product.metafields.accentuate
+    assign custom_variants = metafields.variant_product
+    assign custom_variant_title = metafields.variant_title
+-%}
+
+{%- if custom_variants.size > 0 -%}
+    <div class="product-info__custom-variants-wrapper">
+        <ul class="list-reset product-info__custom-variants">
+            {%- for custom_variant in custom_variants -%}
+                {%- liquid
+                    assign custom_variant_product = all_products[custom_variant] 
+                    assign custom_variant_label = custom_variant_title[forloop.index0] | default: custom_variant_product.title
+                    assign custom_variant_product_url = custom_variant_product.url
+
+                    assign custom_variant_active = false
+                    if product.handle == custom_variant_product.handle
+                        assign custom_variant_active = true
+                    endif
+                -%}
+
+                {%- if custom_variant_product_url != blank -%}
+                    <li>
+                        <a 
+                            class="superscript-normal product-info__custom-variant {% if custom_variant_active %}product-info__custom-variant--active{% endif %}" 
+                            href="{{ custom_variant_product.url }}" 
+                            title="{{ custom_variant_label }}"
+                            aria-label="Select size: {{ custom_variant_label }}"
+                            {% if custom_variant_active %}
+                                aria-current="page"
+                            {% endif %}
+                        >
+                            {{ custom_variant_label }}
+                        </a>
+                    </li>
+                {%- endif -%}
+            {%- endfor -%}
+        </ul>
+    </div>
+{%- endif -%}

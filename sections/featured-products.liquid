@@ -1,0 +1,214 @@
+{%- if section.settings.products != blank -%}
+    {%- liquid
+        assign padding_top = section.settings.padding_top | default: 0
+        assign padding_bottom = section.settings.padding_bottom | default: 0
+        assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+        assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+        assign content = section.settings.content
+        assign products = section.settings.products
+    -%}
+
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/featured-products.scss' -%}
+
+    {%- assign products_count = 0 -%}
+
+    {%- capture slides_html -%}
+        {%- for prod in products -%}
+            {%- liquid 
+                # Product Media
+                assign hover_media = prod.metafields.product.featured_tiktok_main_media.value
+                if hover_media == blank 
+                    assign hover_media = prod.metafields.custom.main_image_on_plp.value
+                endif
+                if hover_media == blank 
+                    assign hover_media = prod.media | first
+                endif
+
+                assign main_media = prod.metafields.product.featured_tiktok_hover_media.value
+                if main_media == blank 
+                    assign main_media = prod.metafields.custom.hover_media_on_plp.value
+                endif
+                if main_media == blank 
+                    assign main_media = prod.media | first
+                endif
+
+                assign products_count = products_count | plus: 1
+            -%}
+            <div class="swiper-slide featured-products__slide">
+                <a 
+                    href="{{ prod.url }}"
+                    class="featured-products__media product-card__media-wrapper--with-hover"
+                    aria-label="Go to {{ prod.title }}"
+                >
+                    <div class="product-card__media-main">
+                        {%- if main_media != blank -%}
+                            {%- if main_media.media_type == 'video' -%}
+                                {%- render 'video', video: main_media, sound_control: true, insideLink: true -%}
+                            {%- else -%}
+                                <picture>
+                                    <source srcset="{{ main_media | image_url: width: 1000 }}" media="(min-width: 1024px)" data-source-desktop>
+                                    <source srcset="{{ main_media | image_url: width: 658 }}" media="(min-width: 576px)" data-source-tablet>
+                                    <source srcset="{{ main_media | image_url: width: 568 }}" data-source-mobile>
+                                    
+                                    <img
+                                        class="absolute-img"
+                                        src="{{ main_media | image_url: width: 568 }}"
+                                        height="300"
+                                        width="300"
+                                        loading="{%- if lazyload -%}lazy{%- else -%}eager{%- endif -%}"
+                                        alt="{{ main_media.alt | default: product.title }}">
+                                </picture>
+                            {%- endif -%}
+                        {%- endif -%}
+                    </div>
+        
+                    <div class="product-card__media-hover">
+                        {%- if hover_media != blank -%}
+                            {%- if hover_media.media_type == 'video' -%}
+                                {%- render 'video', video: hover_media, sound_control: true, insideLink: true -%}
+                            {%- else -%}
+                                <picture>
+                                    <source srcset="{{ hover_media | image_url: width: 1000 }}" media="(min-width: 1024px)">
+                                    <source srcset="{{ hover_media | image_url: width: 658 }}" media="(min-width: 576px)">
+                                    <source srcset="{{ hover_media | image_url: width: 568 }}">
+                                    
+                                    <img
+                                        class="absolute-img"
+                                        src="{{ hover_media | image_url: width: 568 }}"
+                                        height="300"
+                                        width="300"
+                                        loading="{%- if lazyload -%}lazy{%- else -%}eager{%- endif -%}"
+                                        alt="{{ hover_media.alt | default: product.title }}">
+                                </picture>
+                            {%- endif -%}
+                        {%- endif -%}
+                    </div>
+                </a>
+
+                {%- render 'product-card-small', 
+                    product: prod, 
+                    lazyload: true,
+                    inHiddenOverflow: false,
+                    style: 2,
+                    top: true,
+                    btnColor: 'chalk',
+                    featuredProduct: true
+                -%}
+            </div>
+        {%- endfor -%}
+    {%- endcapture -%}
+
+    <section 
+        x-data="featuredProducts"
+        data-split-load-section
+        id="section-{{- section.id -}}"
+    >
+        {%- if content != blank -%}
+            <div class="container">
+                <div class="rte featured-products__content">
+                    {{- content -}}
+                </div>
+            </div>
+        {%- endif -%}
+
+        <div
+            class="swiper featured-products__slider swiper-horizontal"
+            x-ref="slider"
+            x-intersect.once="initSlider"
+        >
+            <div class="swiper-wrapper">
+                {{- slides_html -}}
+                {%- if products_count < 8 -%}
+                    {{- slides_html -}}
+                {%- endif -%}
+            </div>
+
+            <button
+                class="swiper-nav-btn swiper-nav-btn--prev hover-opacity"
+                type="button"
+                aria-label="Go to the previous slide"
+                data-swiper-prev
+            >
+                {%- render 'icon', name: 'swiper-chevron' -%}
+            </button>
+
+            <button
+                class="swiper-nav-btn swiper-nav-btn--next hover-opacity"
+                type="button"
+                aria-label="Go to the next slide"
+                data-swiper-next
+            >
+                {%- render 'icon', name: 'swiper-chevron' -%}
+            </button>
+        </div>
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Featured Products | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Section Settings"
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content",
+            "info": "Hint: use Heading 2 for title, and paragraph for body"
+        },
+        {
+            "type": "product_list",
+            "id": "products",
+            "label": "Products"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Featured Products | AW"
+        }
+    ]
+}
+{% endschema %}

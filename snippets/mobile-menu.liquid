@@ -1,0 +1,237 @@
+<template x-teleport="body">
+    <div
+        id="mobile-menu"
+        class="mobile-menu"
+        x-trap="mmOpen"
+        x-cloak
+        x-show="mmOpen"
+        x-transition:enter="default-transition"
+        x-transition:enter-start="mobile-menu--hidden opacity-0"
+        x-transition:enter-end="mobile-menu--opened opacity-1"
+        x-transition:leave="default-transition"
+        x-transition:leave-start="mobile-menu--opened opacity-1"
+        x-transition:leave-end="mobile-menu--hidden opacity-0"
+        aria-labelledby="open-mobile-menu-btn"
+        @click.outside="mmOpen = false"
+        style="display: none;"
+    >
+        <div class="mobile-menu__body" data-allow-scroll>
+            <div class="container">
+                <div class="mobile-menu__header">
+                    <button
+                        class="header__mobile-menu-btn"
+                        type="button"
+                        aria-controls="mobile-menu"
+                        :aria-expanded="mmOpen"
+                        aria-label="Toggle mobile menu"
+                        @click.prevent="mmOpen = ! mmOpen"
+                    >
+                        <div class="header__mobile-menu-btn-inner">
+                            {%- render 'icon', name: 'line', class: 'header__mobile-menu-btn-line--animate' -%}
+						    {%- render 'icon', name: 'line', class: 'header__mobile-menu-btn-line--animate' -%}
+                        </div>
+                    </button>
+                </div>
+
+                {%- if section.blocks.size > 0 -%}
+                    <nav class="mobile-menu__main" aria-label="Mobile main navigation">
+                        <ul class="mobile-menu__main-menu list-reset">
+                            {%- for block in section.blocks -%}
+                                {%- assign dropdown_index = 0 -%}
+                                {%- case block.type -%}
+                                    {%- when 'menu_item' -%}
+                                        {%- liquid 
+                                            assign visible_on = block.settings.visible_on | default: 'all'
+                                            if visible_on == 'desktop'
+                                                continue
+                                            endif
+                                            
+                                            assign menu_title = block.settings.title | escape 
+                                            assign menu_url = block.settings.url 
+                                            if menu_title == blank or menu_url == blank
+                                                continue 
+                                            endif
+
+                                            assign submenu_type = block.settings.submenu_type | default: 'no'
+                                        -%}
+                                        <li>
+                                            {%- case submenu_type -%}
+                                                {%- when 'no' -%}
+                                                    <a 
+                                                        href="{{- menu_url -}}"
+                                                        class="mobile-menu__link"
+                                                        aria-label="Go to {{ menu_title -}}"
+                                                    >{{- menu_title -}}</a>
+
+                                                {%- when 'about' -%}
+                                                    {%- liquid 
+                                                        assign about_submenu_handle = block.settings.about_submenu
+                                                        if about_submenu_handle == blank
+                                                            continue
+                                                        endif
+                                                        
+                                                        assign about_submenu = linklists[about_submenu_handle]
+                                                        if about_submenu == blank or about_submenu == nil 
+                                                            continue
+                                                        endif
+
+                                                        if about_submenu.links.size < 1
+                                                            continue
+                                                        endif
+
+                                                        assign dropdown_index = dropdown_index | plus: 1
+                                                    -%}
+                                                    <div
+                                                        x-data="{ open: {% if dropdown_index == 1 %}true{% else %}false{% endif %} }"
+                                                    >
+                                                        <button
+                                                            id="submenu-toggle-btn-{{ block.id }}"
+                                                            class="subheader-large mobile-menu__btn-toggle"
+                                                            type="button"
+                                                            aria-haspopup="true"
+                                                            aria-controls="submenu-{{ block.id }}"
+                                                            :aria-expanded="open"
+                                                            @click.prevent="open = ! open; open && $el.scrollIntoView({behavior: 'smooth'})"
+                                                        >
+                                                            {{- menu_title -}}
+
+                                                            {%- render 'plus-icon' -%}
+                                                        </button>
+
+                                                        <ul
+                                                            id="submenu-{{ block.id }}"
+                                                            class="mobile-menu__submenu dropdown-content list-reset"
+                                                            :data-open="open"
+                                                            aria-labelledby="submenu-toggle-btn-{{ block.id }}"
+                                                            :style="open && { height: $el.scrollHeight ? $el.scrollHeight + 'px' : 'auto' }"
+                                                            @resize.window="if (!open) { return; } $el.style.height = 'auto'"
+                                                        >
+                                                            {%- for link in about_submenu.links -%}
+                                                                {%- if link.url == blank or link.title == blank -%}
+                                                                    {%- continue -%}
+                                                                {%- endif -%}
+                                                                <li>
+                                                                    <a 
+                                                                        href="{{- link.url -}}"
+                                                                        class="mobile-menu__link"
+                                                                        aria-label="Go to {{ link.title -}}"
+                                                                    >{{- link.title -}}</a>
+                                                                </li>
+                                                            {%- endfor -%}
+                                                        </ul>
+                                                    </div>
+                                                
+                                                {%- when 'mega' -%}
+                                                    {%- for i in (1..3) -%}
+                                                        {%- capture menu_i -%}megamenu_col_{{ i }}_menu{%- endcapture -%}
+                                                        {%- capture skin_type_i -%}megamenu_col_{{ i }}_by_skin_type{%- endcapture -%}
+                                                        {%- capture ingredients_i -%}megamenu_col_{{ i }}_by_ingredients{%- endcapture -%}
+                                                        {%- capture menu_title_i -%}megamenu_col_{{ i }}_title{%- endcapture -%}
+                                                        {%- liquid 
+                                                            assign menu = nil
+                                                            assign menu_handle = block.settings[menu_i]
+                                                            if menu_handle != blank
+                                                                assign menu = linklists[menu_handle]
+                                                            endif
+
+                                                            assign skin_type_menu = block.settings[skin_type_i]
+                                                            assign ingredients_menu = block.settings[ingredients_i]
+
+                                                            unless skin_type_menu or ingredients_menu or menu.links.size > 0
+                                                                continue
+                                                            endunless
+
+                                                            assign menu_title_mega = block.settings[menu_title_i] | escape | default: menu_title
+
+                                                            assign dropdown_index = dropdown_index | plus: 1
+                                                        -%}
+                                                        <div
+                                                            x-data="{ open: {% if dropdown_index == 1 %}true{% else %}false{% endif %} }"
+                                                        >
+                                                            <button
+                                                                id="submenu-toggle-btn-{{ block.id }}-{{ i }}"
+                                                                class="subheader-large mobile-menu__btn-toggle"
+                                                                type="button"
+                                                                aria-haspopup="true"
+                                                                aria-controls="submenu-{{ block.id }}-{{ i }}"
+                                                                :aria-expanded="open"
+                                                                @click.prevent="open = ! open; open && $el.scrollIntoView({behavior: 'smooth'})"
+                                                            >
+                                                                {{- menu_title_mega -}}
+            
+                                                                {%- render 'plus-icon' -%}
+                                                            </button>
+
+                                                            <ul
+                                                                id="submenu-{{ block.id }}-{{ i }}"
+                                                                class="mobile-menu__submenu dropdown-content list-reset"
+                                                                :data-open="open"
+                                                                aria-labelledby="submenu-toggle-btn-{{ block.id }}-{{ i }}"
+                                                                :style="open && { height: $el.scrollHeight ? $el.scrollHeight + 'px' : 'auto' }"
+                                                                @resize.window="if (!open) { return; } $el.style.height = 'auto'"
+                                                            >
+                                                                {%- if menu.links.size > 0 -%}
+                                                                    {%- for link in menu.links -%}
+                                                                        {%- if link.url == blank or link.title == blank -%}
+                                                                            {%- continue -%}
+                                                                        {%- endif -%}
+                                                                        <li>
+                                                                            <a 
+                                                                                href="{{- link.url -}}"
+                                                                                class="mobile-menu__link"
+                                                                                aria-label="Go to {{ link.title -}}"
+                                                                            >{{- link.title -}}</a>
+                                                                        </li>
+                                                                    {%- endfor -%}
+                                                                {%- endif -%}
+
+                                                                {%- assign settings = shop.metaobjects.global_settings['global-settings'] -%}
+                                                                {%- if settings != blank -%}
+                                                                    {%- if skin_type_menu -%}
+                                                                        {%- render 'mobile-menu-metaobject-items',
+                                                                            settings: settings,
+                                                                            key: 'skin_types'
+                                                                        -%}
+                                                                    {%- endif -%}
+
+                                                                    {%- if ingredients_menu -%}
+                                                                        {%- render 'mobile-menu-metaobject-items',
+                                                                            settings: settings,
+                                                                            key: 'ingredients'
+                                                                        -%}
+                                                                    {%- endif -%}
+                                                                {%- endif -%}
+                                                            </ul>
+                                                        </div>
+                                                    {%- endfor -%}
+                                            {%- endcase -%}
+                                        </li>
+
+                                    {%- when 'banner' -%}
+                                        {%- liquid 
+                                            assign banner_image = block.settings.banner_image
+                                            unless banner_image 
+                                                continue
+                                            endunless
+                                        -%}
+
+                                        <li>
+                                            {%- render 'menu-banner', block: block -%}
+                                        </li>
+                                {%- endcase -%}
+                            {%- endfor -%}
+                        </ul>
+                    </nav>
+                {%- endif -%}
+
+                {%- render 'country-selector', id: 'localization-form-mobile' -%}
+            </div>
+        </div>
+
+        <div class="mobile-menu__footer">
+            <div class="container mobile-menu__footer-inner">
+                <a href="{{- routes.account_url -}}" class="btn btn--center btn--full btn--white">{{- 'layout.customer.account' | t -}}</a>
+            </div>
+        </div>
+    </div>
+</template>

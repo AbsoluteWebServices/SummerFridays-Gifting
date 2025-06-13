@@ -1,0 +1,84 @@
+.register-wrapper {
+    margin: 8.4rem 0;
+
+    @media only screen and (min-width: 1280px) {
+        margin: 2.4rem 0;
+    }
+
+    .media-col {
+        display: none;
+
+        @media only screen and (min-width: 768px) {
+            display: block;
+        }
+
+        .main-image {
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+
+    .form {
+        grid-column: 1 / 5;
+
+        @media only screen and (min-width: 1280px) {
+            grid-column: 10 / 16;
+        }
+
+        .errors ul {
+            margin-bottom: 1.8rem;
+            padding-left: 1.2rem;
+        }
+
+        .form__title {
+            margin-bottom: 1.8rem;
+            text-align: center;
+        }
+
+        .form__group {
+            margin-bottom: .6rem;
+
+            &:not(.form__group--checkbox) input {
+                border-color: var(--clay);
+            }
+        }
+
+        .form__group--checkbox {
+            align-items: flex-start;
+            display: flex;
+        }
+
+        .form__group--email-marketing {
+            margin-bottom: 1.4rem;
+            margin-top: 2.4rem;
+        }
+
+        .form__button {
+            margin-bottom: .7rem;
+            margin-top: 1.8rem;
+
+            & + .form__terms {
+                text-align: center;
+
+                @media only screen and (min-width: 768px) {
+                    br {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .form__return {
+            margin-top: 3.6rem;
+            text-align: center;
+        }
+
+        .back-to-login {
+            align-items: center;
+            display: inline-flex;
+            gap: 1rem;
+            text-transform: uppercase;
+        }
+    }
+}

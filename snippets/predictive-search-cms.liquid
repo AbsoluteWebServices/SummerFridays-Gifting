@@ -1,0 +1,66 @@
+<template x-if="($store.Search.searchResults?.cms || []).length">
+    <div class="predictive-search__main-block predictive-search__main-block--fullwidth predictive-search__main-block--chalk-40">
+        <div class="predictive-search__block-title">
+            <span class="subheader-small">{{- 'general.search.related_blog_posts' | t -}}</span>
+        </div>
+
+        <div 
+            x-intersect.once="initCMSSlider"
+            id="predictive-search-cms-slider"
+            class="swiper predictive-search__cms-slider"
+        >
+            <div class="swiper-wrapper">
+                <template
+                    x-for="(cms, index) in $store.Search.searchResults.cms.slice(0,3)"
+                    :key="`search-result-cms-${ index }`"
+                >
+                    <div class="swiper-slide">
+                        <div class="predictive-search__cms">
+                            <div>
+                                <a
+                                    :href="cms.url"
+                                    class="predictive-search__cms-image scale-img"
+                                    :aria-label="`Go to ${ cms.name }`"
+                                >
+                                    <template x-if="cms.imageUrl">
+                                        <img 
+                                            :src="`${ cms.imageUrl }&width=280`" 
+                                            :alt="cms.name"
+                                            width="140"
+                                            height="140"
+                                            class="absolute-img"
+                                        >
+                                    </template>
+                                </a>
+
+                                <div>
+                                    <a
+                                        :href="cms.url"
+                                        class="p-large hover-opacity"
+                                        :aria-label="`Go to ${ cms.name }`"
+                                        x-text="cms.name"
+                                    ></a>
+                                </div>
+
+                                <template x-if="cms.shortDesc">
+                                    <p class="p-normal predictive-search__cms-description" x-text="`${ cms.shortDesc.trim().substring(0, 40) }${ cms.shortDesc.trim().length > 40 ? '...' : ''}`"></p>
+                                </template>
+                            </div>
+
+                            <div>
+                                <a
+                                    :href="cms.url"
+                                    class="cta-textlink cta-link-with-arrow cta-link-with-arrow--right"
+                                    :aria-label="`Go to ${ cms.name }`"
+                                >
+                                    {{- 'general.search.read_more' | t -}}
+                                    {%- render 'icon', name: 'arrow-right' -%}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

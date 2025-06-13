@@ -1,0 +1,96 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_split_wgqhRh": {
+      "type": "hero-split",
+      "blocks": {
+        "media_Y3WCKx": {
+          "type": "media",
+          "settings": {
+            "media_type": "image",
+            "image_desktop": "shopify://shop_images/articles.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "media_Y3WCKx"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "height_type": "percentage",
+        "height": 100,
+        "deduct_header_height": true,
+        "deduct_announcement_bar_height": true,
+        "aspect_ratio_width": 1,
+        "aspect_ratio_height": 1,
+        "height_type_tablet": "percentage",
+        "height_tablet": 100,
+        "deduct_header_height_tablet": false,
+        "deduct_announcement_bar_height_tablet": true,
+        "aspect_ratio_width_tablet": 16,
+        "aspect_ratio_height_tablet": 9,
+        "height_type_desktop": "percentage",
+        "height_desktop": 100,
+        "deduct_header_height_desktop": false,
+        "deduct_announcement_bar_height_destop": true,
+        "aspect_ratio_width_desktop": 16,
+        "aspect_ratio_height_desktop": 9,
+        "text_color": "white",
+        "title_color": "white",
+        "content_color": "white",
+        "title_font": "primary",
+        "title_tag": "h1",
+        "overlay_opacity": 0,
+        "gradient_direction": "gradient-t",
+        "gradient_percent": 25,
+        "vertical_alignment": "bottom",
+        "horizontal_alignment": "left",
+        "vertical_alignment_desktop": "bottom",
+        "horizontal_alignment_desktop": "left",
+        "alignment_container": "full",
+        "alignment_container_desktop": "full",
+        "eyebrow": "Products",
+        "eyebrow_margin": "smaller",
+        "content_above_title": "",
+        "title": "Introducing Dream Lip Oil",
+        "title_custom_line_1": "",
+        "title_custom_line_2": "",
+        "title_font_size": 3,
+        "title_font_size_tablet": 3,
+        "title_font_size_desktop": 3,
+        "content": "",
+        "content_font_size": 1,
+        "content_font_size_tablet": 1,
+        "content_font_size_desktop": 1,
+        "button_label": "READ",
+        "button_url": "shopify://blogs/blog/introducing-dream-lip-oil",
+        "button_margin": "normal",
+        "btn_style": "with_arrow"
+      }
+    },
+    "main": {
+      "type": "articles",
+      "settings": {
+        "padding_top": 2.4,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 8.4
+      }
+    }
+  },
+  "order": [
+    "hero_split_wgqhRh",
+    "main"
+  ]
+}

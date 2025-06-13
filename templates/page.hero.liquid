@@ -1,0 +1,18 @@
+{% assign meta = page.metafields.accentuate %}
+{% assign title = meta.page_hero_title | default: page.title %}
+
+<div class="page">
+  {% render 'page-hero',
+    image: meta.page_hero_image_desktop[0].src,
+    image_mobile: meta.page_hero_image_mobile[0].src,
+    ns: 'page-hero',
+    tag: 'h1',
+    title: title,
+  %}
+
+  {% if page.content != blank %}
+    <div class="rte page-content page-wrap">
+      {{ page.content }}
+    </div>
+  {% endif %}
+</div>

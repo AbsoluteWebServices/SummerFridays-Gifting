@@ -1,0 +1,150 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "page-header",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/join-our-team.jpg",
+        "image_mobile": "shopify://shop_images/join-out-team-mobile.jpg",
+        "overlay_opacity": 20,
+        "content": "<h1>Join Our Team</h1>"
+      }
+    },
+    "content_HhR34E": {
+      "type": "content",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Lorem ipsum dolor sit amet consectetur. Nisl volutpat quam proin pharetra tincidunt dictum in gravida lacus. Lorem nisi pellentesque pharetra amet sit sit tristique dolor. Nulla diam nibh risus rhoncus morbi molestie. Magna ut in tristique nunc. Dapibus arcu pellentesque non neque orci. </h2>"
+      }
+    },
+    "jobs_ptmeEz": {
+      "type": "jobs",
+      "blocks": {
+        "job_AfiUXt": {
+          "type": "job",
+          "settings": {
+            "position": "marketing manager",
+            "location": "New York, NY",
+            "url": "#"
+          }
+        },
+        "job_bQc3BQ": {
+          "type": "job",
+          "settings": {
+            "position": "Social media coordinator",
+            "location": "Remote",
+            "url": "#"
+          }
+        },
+        "job_BBmjxh": {
+          "type": "job",
+          "settings": {
+            "position": "Marketing summer intern",
+            "location": "Los Angeles, CA",
+            "url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "job_AfiUXt",
+        "job_bQc3BQ",
+        "job_BBmjxh"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Marketing</h2>"
+      }
+    },
+    "jobs_yPn3bB": {
+      "type": "jobs",
+      "blocks": {
+        "job_yqTxye": {
+          "type": "job",
+          "settings": {
+            "position": "Front end engineer",
+            "location": "Los Angeles, CA",
+            "url": "#"
+          }
+        },
+        "job_JaTKM7": {
+          "type": "job",
+          "settings": {
+            "position": "Front end engineering manager",
+            "location": "Los Angeles, CA",
+            "url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "job_yqTxye",
+        "job_JaTKM7"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Technology</h2>"
+      }
+    },
+    "jobs_Nq38TL": {
+      "type": "jobs",
+      "blocks": {
+        "job_VBMhYK": {
+          "type": "job",
+          "settings": {
+            "position": "Manger of operations",
+            "location": "Remote",
+            "url": "#"
+          }
+        },
+        "job_ErjYRb": {
+          "type": "job",
+          "settings": {
+            "position": "Assistant to the Chief operating officer",
+            "location": "Los Angeles, CA",
+            "url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "job_VBMhYK",
+        "job_ErjYRb"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Operations</h2>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "content_HhR34E",
+    "jobs_ptmeEz",
+    "jobs_yPn3bB",
+    "jobs_Nq38TL"
+  ]
+}

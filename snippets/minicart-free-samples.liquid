@@ -1,0 +1,86 @@
+<template x-if="$store?.Cart?.showFreeSamples()"> 
+    <div class="minicart__main-block minicart__samples">
+        <div class="minicart__upsells-title-wrapper">
+            <span class="subheader-small">{{- title -}}</span>
+
+            <div
+                x-show="$store.Cart.freeSamples().length > 3" 
+                class="minicart__upsells-nav-wrapper"
+                x-transition.opacity 
+                x-transition.duration.300ms
+            >
+                <button
+                    class="minicart__upsells-nav-btn swiper-button-disabled hover-opacity"
+                    type="button"
+                    aria-label="Go to the previous slide"
+                    data-free-samples-slider-prev
+                >
+                    {%- render 'icon', name: 'swiper-arrow-left' -%}
+                </button>
+
+                <button
+                    class="minicart__upsells-nav-btn hover-opacity"
+                    type="button"
+                    aria-label="Go to the next slide"
+                    data-free-samples-slider-next
+                >
+                    {%- render 'icon', name: 'swiper-arrow-right' -%}
+                </button>
+            </div>
+        </div>
+
+        <div
+            class="swiper swiper-horizontal"
+            :data-free-samples-slider="$store.Cart.freeSamples().length > 3"
+            x-intersect.once="$store.Cart.initFreeSamplesSlider()"
+        >
+            <div class="swiper-wrapper">
+                <template x-for="product in $store.Cart.freeSamples()" :key="`free-sample-${ product.variant_id }`">
+                    <div class="swiper-slide">
+                        <div class="minicart__free-sample">
+                            <div>
+                                <div class="minicart__free-sample-image">
+                                    <template x-if="product.image_url">
+                                        <img 
+                                            :src="product.image_url" 
+                                            :alt="`${ product.title } image`"
+                                            width="100"
+                                            height="100"
+                                            loading="lazy"
+                                            class="absolute-img"
+                                        >
+                                    </template>
+                                </div>
+
+                                <p class="superscript-normal" x-html="product.title_html.replace('Sample', '').replace('sample', '')"></p>
+                            </div>
+
+                            <div class="minicart__free-sample-atc-wrapper">
+                                <form 
+                                    action="/cart/add"
+                                    method="POST"
+                                    enctype="multipart/form-data"
+                                    @submit.prevent="$store.Cart.addToCart(event)"
+                                >
+                                    <input type="hidden" name="id" :value="product.variant_id">
+                                    <input type="hidden" name="quantity" value="1">
+
+                                    <button
+                                        class="cta-textlink minicart__free-sample-atc-btn hover-opacity"
+                                        type="submit"
+                                        title="{{- 'minicart.general.add' | t -}}"
+                                        aria-label="Add to cart"
+                                    >
+                                        {{- 'minicart.general.add' | t -}}
+
+                                        {%- render 'icon', name: 'plus' -%}
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,128 @@
+{%- assign products_per_page = products_per_page | default: 50 -%}
+{%- if collection.products_count -%}
+    {%- liquid 
+        assign infinite_scroll = infinite_scroll | default: true, allow_false: true
+
+        assign filters_applied = false
+        if collection.sort_by != blank
+            assign filters_applied = true
+        endif    
+
+        if filters_applied == false and collection.filters.size > 0
+            for filter in collection.filters
+                if filter.active_values.size == 0 or filter.active_values == blank
+                    continue
+                endif
+
+                assign filters_applied = true
+                break
+            endfor
+        endif
+
+        assign custom_product_cards = collection.metafields.collection.custom_product_tiles.value
+        assign positions = '' | split: ','
+        for custom_product_card in custom_product_cards
+            assign position = custom_product_card.position.value | default: '1' | split: ','
+            assign positions = positions | concat: position
+        endfor
+    -%}
+
+    {%- paginate collection.products by products_per_page -%}
+        {%- unless filters_applied -%}
+            {%- liquid  
+                assign disruptor_positions = '' | split: ',' 
+                if section.blocks.size > 0
+                    for block in section.blocks
+                        assign disruptor_video = block.settings.video 
+                        assign disruptor_image = block.settings.image 
+                        if disruptor_video == blank and disruptor_image == blank 
+                            continue
+                        endif
+
+                        if paginate.current_page != 1
+                            continue 
+                        endif
+
+                        assign disruptor_position = block.settings.position | default: 1 | append: ''
+                        if disruptor_position <= 0
+                            assign disruptor_position = 1 | append: ''
+                        endif
+                        
+                        assign disruptor_position = disruptor_position | split: ','
+                        assign disruptor_positions = disruptor_positions | concat: disruptor_position
+                    endfor
+                endif    
+            -%}
+        {%- endunless -%}
+        <div 
+            x-ref="productsContainer"
+            class="collection__products"
+            aria-live="polite" 
+            role="region"
+            aria-label="{{ collection.title }} products list"
+            data-js-replace
+        >
+            {%- for product in collection.products -%}
+                {%- liquid
+                    assign lazyload = false
+                    if forloop.index > 4
+                        assign lazyload = true
+                    endif
+
+                    assign current_position = forloop.index | append: ''
+                    assign current_position_integer = forloop.index
+
+                    if positions.size > 0
+                        if positions contains current_position
+                            for custom_product_card in custom_product_cards
+                                if custom_product_card.position.value == forloop.index
+                                    render 'product-card-custom', product: custom_product_card, lazyload: lazyload
+                                endif
+                            endfor
+                        endif
+                    endif
+                -%}
+
+                {%- unless filters_applied -%}
+                    {%- if disruptor_positions contains current_position or disruptor_positions contains current_position_integer -%}
+                        {%- for block in section.blocks -%}
+                            {%- liquid 
+                                unless block.settings.position == current_position_integer and paginate.current_page == 1
+                                    continue 
+                                endunless
+
+                                render 'disruptor', block: block, lazyload: lazyload
+                            -%}
+                        {%- endfor -%}
+                    {%- endif -%}
+                {%- endunless -%}
+
+                {%- render 'product-card', 
+                    product: product, 
+                    lazyload: lazyload
+                -%}
+            {%- endfor -%}
+        </div>
+
+        <div data-js-replace data-replace-load-more>
+            {%- if paginate.next.url != blank -%}
+                {%- if infinite_scroll -%}
+                    <div x-intersect="loadMore('{{- paginate.next.url  -}}')" class="collection__load-more-intersect"></div>
+                {%- else -%}
+                    <div class="collection__load-more-btn-wrapper">
+                        <button 
+                            type="button"
+                            class="btn btn--center btn--clay"
+                            aria-label="{{- 'collections.general.load_more' | t -}}"
+                            @click.prevent="loadMore('{{- paginate.next.url  -}}')"
+                        >
+                            {{- 'collections.general.load_more' | t -}}
+                        </button>
+                    </div>
+                {%- endif -%}
+            {%- endif -%}
+        </div>
+    {%- endpaginate -%}
+{%- else -%}
+    No products found.
+{%- endif -%}

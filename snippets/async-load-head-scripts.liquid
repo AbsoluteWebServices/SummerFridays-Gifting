@@ -1,0 +1,170 @@
+<template id="shopify_header_scripts">
+    <head>
+        {{- wrapped_content_for_header -}}
+    </head>
+</template>
+
+<script>
+    (() => {
+        const shopify_header_scripts = document?.getElementById('shopify_header_scripts');
+        if (!shopify_header_scripts) {
+            return;
+        }
+
+        const temp = document.createElement('div');
+        if (!temp) {
+            return;
+        }
+
+        temp.innerHTML = shopify_header_scripts
+            ?.innerHTML
+            ?.replaceAll('<head>', '')
+            ?.replaceAll('<\/head>', '');
+
+        let elements = temp.children;
+        if (!elements) {
+            return;
+        }
+
+        if (!elements?.length) {
+            return;
+        }
+
+        let lazyElements = []
+
+        // Loop through each element
+        for (let i = 0; i < elements.length; i++) {
+            // Create a new element
+            const newElement = document.createElement(elements[i].tagName)
+            // Get all the attributes of the element
+            const attributes = elements[i].attributes
+            // Insert the innerHTML of the element
+            if (elements[i].innerHTML) {
+                newElement.innerHTML = elements[i].innerHTML || "";
+            }
+            // Loop through each attribute
+            for (let j = 0; j < attributes.length; j++) {
+                let attribute = attributes[j];
+
+                newElement.setAttribute(attribute.name, attribute.value)
+            }
+
+            let immediate = [
+                newElement?.id === 'web-pixels-manager-setup',
+                newElement?.classList?.contains('analytics'),
+                newElement?.innerText?.includes('window.ShopifyAnalytics'),
+                newElement?.innerText?.includes('Shopify.shop = '),
+                newElement?.innerText?.includes('__st'),
+                newElement?.innerText?.includes('PreviewBarInjectorLoader'),
+                newElement?.src?.includes('preview_bar_injector'),
+                newElement?.src?.includes('load_feature'),
+                newElement?.src?.includes('gdfot'),
+                newElement?.src?.includes('attn'),
+                (window.location.href.includes('/pages/skincare-quiz') || window.location.href.includes('/pages/shade-finder') || window.location.href.includes('quiz')) && newElement?.src?.includes('okendo'),
+            ]?.includes(true);
+
+            switch (newElement.tagName) {
+                case "SCRIPT": {
+                    if ([
+                        
+                    ]?.includes(newElement?.src)) {
+                        continue;
+                    }
+
+                    if (!!newElement?.src?.includes("app.latest.en.")) {
+                        continue;
+                    }
+
+                    if (!!newElement?.src?.includes("checkout-web")) {
+                        continue;
+                    }
+
+                    if (!!newElement?.innerText?.includes("fullstory.com")) {
+                        continue;
+                    }
+
+                    {%- if template.name == "account" -%}
+                        if ([
+
+                        ]?.includes(newElement?.src)) {
+                            continue;
+                        }
+                    {%- endif -%}
+
+                    if (newElement.tagName === 'SCRIPT' && !immediate) {
+                        lazyElements.push(newElement)
+                    } else {
+                        document.head.appendChild(newElement)
+                    }
+                }
+                break;
+                case "LINK": {
+                    if ([
+                        
+                    ]?.includes(newElement?.href)) {
+                        continue;
+                    }
+
+                    if (!!newElement?.href?.includes("app.latest.en.")) {
+                        continue;
+                    }
+
+
+                    document.head.appendChild(newElement);
+                }
+                break;
+                default: {
+                    document.head.appendChild(newElement);
+                }
+            }
+        }
+
+        setTimeout(() => {
+            window.dispatchEvent(new Event('head-sync-scripts-loaded'));
+            document.dispatchEvent(new Event('head-sync-scripts-loaded'));
+        }, 1000);
+
+        let loaded = false
+        const lazyLoadShopifyScripts = function () {
+            if (!!loaded) {
+                return;
+            }
+
+            loaded = true
+            lazyElements?.forEach(function (element) {
+                document?.head?.appendChild(element)
+            });
+
+            setTimeout(function () {
+                window.dispatchEvent(new Event('head-lazy-scripts-loaded'));
+                document.dispatchEvent(new Event('head-lazy-scripts-loaded'));
+            }, 1000)
+        }
+
+        window.addEventListener('scroll', lazyLoadShopifyScripts, {
+            once: true,
+            passive: true,
+        });
+
+        const eventNames = [
+            'keydown',
+            'touchstart',
+            'mouseover',
+        ];
+
+        if (!eventNames) {
+            return;
+        }
+
+        if (!eventNames?.length) {
+            return;
+        }
+
+        eventNames?.forEach((eventName) => {
+            document.addEventListener(eventName, lazyLoadShopifyScripts, {
+                once: true,
+                passive: true,
+            });
+        });
+    })()
+</script>

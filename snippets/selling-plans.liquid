@@ -1,0 +1,128 @@
+{%- liquid
+	assign current_selling_plan = product.selected_or_first_available_selling_plan_allocation.selling_plan
+-%}
+
+{%- if product.selling_plan_groups.size > 0 -%}
+  	<input 
+        x-model="sellingPlanId"
+        type="hidden" 
+        name="selling_plan" 
+        value="{{- current_selling_plan.id -}}"
+    >
+
+	{%- for selling_plan_group in product.selling_plan_groups -%}
+		{%- liquid
+			assign first_available_discount_value = selling_plan_group.selling_plans[0].price_adjustments[0].value
+            assign first_available_discount_value_percent = first_available_discount_value | append: '%'
+			assign price_modifier = 100 | minus: first_available_discount_value | divided_by: 100.00
+			assign discounted_price = current_variant.price | times: price_modifier | money
+		-%}
+
+		<div class="product__selling-plans">
+			{%- unless product.requires_selling_plan -%}
+				<div class="product__selling-plans-type-wrapper">
+					<input 
+                        x-model="purchaseType"
+						id="purchase-type-one-time-{{- selling_plan_group.id -}}"
+						type="radio"
+						name="purchase_type"
+						value="onetime"
+						class="visually-hidden"
+						aria-label="One-time purchase"
+						checked
+					>
+
+					<label 
+						for="purchase-type-one-time-{{- selling_plan_group.id -}}"
+						class="product__selling-plans-type"
+					>
+						<div class="fake-radio">
+							<div></div>
+						</div>
+
+						<span class="superscript-normal">
+							{{ 'products.product.buy_once' | t }} - {{ current_variant.price | money_without_trailing_zeros }}
+						</span>
+					</label>
+				</div>
+			{%- endunless -%}
+
+			<div class="product__selling-plans-type-wrapper">
+				<input 
+                    x-model="purchaseType"
+					id="purchase-type-subscription-{{- selling_plan_group.id -}}"
+					type="radio"
+					name="purchase_type"
+					value="subscription"
+					class="visually-hidden"
+					aria-label="{{ 'products.product.subscribe' | t: discount: first_available_discount_value_percent }} - {{ discounted_price }}"
+					{% if product.requires_selling_plan %}
+						checked 
+					{% endif %}
+				>
+
+				<label 
+				for="purchase-type-subscription-{{- selling_plan_group.id -}}"
+				class="product__selling-plans-type"
+				>
+					<div class="fake-radio">
+						<div></div>
+					</div>
+
+					<span class="superscript-normal">
+						{{ 'products.product.subscribe' | t: discount: first_available_discount_value_percent }} - {{ discounted_price }} 
+					</span>
+				</label>
+			</div>
+
+		</div>
+
+		<div 
+			x-data="{ open: false }"
+			x-show="purchaseType === 'subscription'"
+			class="superscript-normal select-wrapper select-wrapper--absolute select-wrapper--bordered"
+			x-transition.duration.300ms
+        	x-transition.opacity
+			style="display: none;"
+		>
+			<button
+				id="selling-plans-toggle-btn-{{- selling_plan_group.id -}}"
+				class="select-toggle-btn"
+				type="button"
+				aria-haspopup="true"
+				aria-controls="selling-plans-selector-{{- selling_plan_group.id -}}"
+				:aria-expanded="open"
+				@click.prevent="open = ! open"
+			>
+                <span x-text="sellingPlan?.name ? sellingPlan.name : '{{- current_selling_plan.name -}}'">{{- current_selling_plan.name -}}</span>
+
+                <span class="product__selling-plans-selector-btn-text">
+                    {{- 'products.product.save_cancel' | t: discount: first_available_discount_value_percent -}}
+				    {%- render 'icon', name: 'chevron-down' -%}
+                </span>
+			</button>
+
+			<ul 
+				id="selling-plans-selector-{{- selling_plan_group.id -}}"
+				class="product__selling-plans-selector-dropdown dropdown-content list-reset"
+				:data-open="open"
+				aria-labelledby="selling-plans-toggle-btn-{{- selling_plan_group.id -}}"
+				:style="open && { height: $el.scrollHeight + 'px' }"
+				@resize.window="if (!open) { return; } $el.style.height = 'auto'"
+			>
+				{%- for selling_plan in selling_plan_group.selling_plans -%}
+					<li>
+						<button
+							type="button"
+							class="product__selling-plan-button"
+							aria-label="{{- selling_plan.name -}}"
+                            @click.prevent="selectSelectPlan({{ selling_plan.id }}); open = false"
+						>
+							{{- selling_plan.name -}}
+						</button>
+					</li>
+				{%- endfor -%}
+			</ul>
+		</div>
+	{%- endfor -%}
+{%- endif -%}

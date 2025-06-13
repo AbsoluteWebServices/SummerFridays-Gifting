@@ -1,0 +1,31 @@
+<ul class="reviews__items">
+    <template x-for="review in reviewsData">
+        <li class="reviews__item">
+            <div class="reviews__author">
+                <div class="reviews__name h2" x-text="review.user.displayName"></div>
+                <template x-if="review.verifiedBuyer">
+                    <div class="reviews__verified p-small">
+                        <span>{% render 'icon', name: 'circle-checkmark' %}</span>
+                        <span>{{ verified_buyer_text }}</span>
+                    </div>
+                </template>
+                <template x-if="review.customFields">
+                    <div class="reviews__custom-fields">
+                        <template x-for="customField in Object.values(review.customFields)">
+                            <div class="p-small" x-text="`${ customField.title }: ${ customField.value }`"></div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+            <div class="reviews__content-wrapper">
+                <div class="reviews__icons reviews__icons--small">
+                    {% render 'icon', name: 'stars' %}
+                    <div class="reviews__icons-percent" :style="{ maxWidth: `calc(100% - (((5 - ${ review.score }) / 5) * 100%))` }">
+                        {% render 'icon', name: 'stars' %}
+                    </div>
+                </div>
+                <div x-text="review.content"></div>
+            </div>
+        </li>
+    </template>
+</ul>

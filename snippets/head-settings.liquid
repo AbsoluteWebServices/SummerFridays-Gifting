@@ -1,0 +1,67 @@
+<script>
+  document.documentElement.className = document.documentElement.className.replace('no-js', 'js')
+
+  window.freeShipping = ''
+  window.theme = {
+    strings: {
+      addToCart: {{ 'products.product.add_to_cart' | t | json }},
+      soldOut: {{ 'products.product.sold_out' | t | json }},
+      unavailable: {{ 'products.product.unavailable' | t | json }},
+      shipping_method_message: {{ 'shopify.checkout.general.shipping_method_message' | t | json }},
+      shipping_method_message_url: {{ 'shopify.checkout.general.shipping_method_message_url' | t | json }},
+      shipping_method_message_url_label: {{ 'shopify.checkout.general.shipping_method_message_url_label' | t | json }}
+    },
+    moneyFormat: {{ shop.money_format | json }}
+  }
+
+  {% if settings.free_shipping_amount != blank %}
+    {% assign amount = settings.free_shipping_amount | split: '.' %}
+
+    {% if amount != blank %}
+      window.freeShipping = {
+        amount: '{{ amount[0] | plus: 0 | times: 100 }}'
+      }
+    {% endif  %}
+  {% endif %}
+
+  {% assign sample_amount = settings.sample_amount | split: '.' %}
+  {% capture sample_amount_decimal %}{{ sample_amount[0] }}.0{% endcapture %}
+  {% assign sample_limit = sample_amount_decimal | plus: 0 | times: 100 %}
+  {% assign sample_enable = settings.sample_enable | default: false %}
+  window.sample = {
+    'enabled': {{ sample_enable }},
+    'threshold': {{ sample_limit | json }}
+  }
+
+  window.cartDonation = null
+  {% if settings.donation_enabled %}
+    window.cartDonation = {
+      cartText: {{ settings.donation_cart_text | json }},
+      productId: {{ all_products[settings.donation_product].id | json }},
+      checkboxText: {{ settings.donation_text | json }},
+      variantId: {{ all_products[settings.donation_product].first_available_variant.id | json }},
+      lightboxDescription: {{ settings.donation_lightbox_descripton | json }},
+      lightboxTitle: {{ settings.donation_lightbox_title | json }},
+      lightboxCTA: {{ settings.donation_lightbox_cta | json }},
+      variants: [
+        {% for v in all_products[settings.donation_product].variants %}
+            {% if v.available %}
+                {
+                    id: {{ v.id | json }},
+                    title: {{ v.title | json }},
+                    checkbox_label: {{ v.metafields.accentuate.checkbox_label | default: '' | json }},
+                },
+            {% endif %}
+        {% endfor %}
+      ]
+    }
+  {% endif %}
+</script>
+
+<style data-styles="custom-properties">
+  :root {
+    --black: #2b2b2b;
+    --border-color: var(--ink);
+    --font-family-sans-serif: 'Futura', Helvetica, Arial, sans-serif;
+  }
+</style>

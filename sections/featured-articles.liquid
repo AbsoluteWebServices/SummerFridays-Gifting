@@ -1,0 +1,215 @@
+{%- if section.blocks.size > 0 -%}
+    {%- liquid
+        assign padding_top = section.settings.padding_top | default: 0
+        assign padding_bottom = section.settings.padding_bottom | default: 0
+        assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+        assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+        assign content = section.settings.content
+        assign text_alignment = section.settings.text_alignment | default: 'center'
+        assign button_label = section.settings.button_label | escape 
+        assign button_url = section.settings.button_url
+    -%}
+
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/featured-articles.scss' -%}
+
+    <section 
+        id='section-{{- section.id -}}'
+    >
+        <div class='container container--smaller-tablet'>
+            {%- if content != blank -%}
+                <div class="rte rte--smaller featured-articles__content featured-articles__content--{{- text_alignment -}}">
+                    {{- content -}}
+                </div>
+            {%- endif -%}
+
+            <div class="featured-articles__items">
+                {%- for block in section.blocks -%}
+                    {%- liquid 
+                        assign handle = block.settings.article
+                        if handle == blank
+                            continue
+                        endif
+
+                        assign post = articles[handle]
+                        if post.title == blank
+                            continue
+                        endif
+
+                        assign accentuate = post.metafields.accentuate
+
+                        assign target_blank = false
+                        assign url = post.url
+                        assign title = post.title
+
+                        assign category = '' 
+                        if post.tags.size > 0
+                            assign category = post.tags.first
+                        endif
+
+                        if accentuate.press_article_url != blank
+                            assign target_blank = true
+                            assign url = accentuate.press_article_url
+                            assign category = post.title
+                            assign title = post.content
+                        endif
+                    -%}
+                    <article class="featured-articles__item">
+                        <a 
+                            href="{{- url -}}" 
+                            aria-label="{{- post.title }} 
+                            {% if target_blank %} - open in a new tab{% endif %}" 
+                            class="featured-articles__item-image scale-img"
+                            {% if target_blank %}
+                                target="_blank"
+                            {% endif %}
+                        >
+                            <img 
+                                src="{{- post.image |  image_url: width: 300 -}}" 
+                                alt="{{- post.image.alt | default: post.title -}}"
+                                width="150"
+                                height="150"
+                                class="absolute-img"
+                                loading="lazy"
+                            >
+                        </a>
+
+                        <div class="featured-articles__item-body">
+                            {%- if category != blank -%}
+                                <p class="superscript-normal featured-articles__item-category">{{- category -}}</p>
+                            {%- endif -%}
+
+                            <div>
+                                <a 
+                                    href="{{- url -}}" 
+                                    class="subheader-large hover-opacity featured-articles__item-title"
+                                    aria-label="{{- post.title }} {% if target_blank %} - open in a new tab{% endif %}"
+                                    {% if target_blank %}
+                                        target="_blank"
+                                    {% endif %}
+                                >{{- title | strip_html | truncate: 60 -}}</a>
+                            </div>
+
+                            <a 
+                                href="{{- url -}}" 
+                                class="featured-articles__item-rm cta-textlink hover-opacity hover-arrow"
+                                aria-label="{{- post.title }} {% if target_blank %} - open in a new tab{% endif %}"
+                                {% if target_blank %}
+                                    target="_blank"
+                                {% endif %}
+                            >
+                                {{- 'blogs.article.read_more' | t -}}
+                                {%- render 'icon', name: 'arrow-right' -%}
+                            </a>
+                        </div>
+                    </article>
+                {%- endfor -%}
+            </div>
+
+            {%- if button_label != blank and button_url != blank -%}
+                <div class="featured-articles__btn-wrapper">
+                    <a href="{{- button_url -}}" aria-label="{{- button_label -}}" class="featured-articles__btn btn btn--w-min btn--chalk btn--center hover-arrow">
+                        {{- button_label -}}
+                        {%- render 'icon', name: 'arrow-right' -%}
+                    </a>
+                 </div>
+            {%- endif -%}
+        </div>
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Featured Articles | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Settings"
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content"
+        },
+        {
+            "type": "select",
+            "id": "text_alignment",
+            "label": "Text alignment",
+            "default": "center",
+            "options": [
+                { "value": "left", "label": "Left" },
+                { "value": "center", "label": "Center" },
+                { "value": "right", "label": "Right" }
+            ]
+        },
+        {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+        },
+        {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Featured Articles | AW"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Article",
+            "type": "article",
+            "settings": [
+                {
+                    "type": "article",
+                    "id": "article",
+                    "label": "Article"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

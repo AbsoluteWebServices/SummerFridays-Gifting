@@ -1,0 +1,166 @@
+{%- if section.blocks.size > 0 -%}
+    {%- liquid
+        assign padding_top = section.settings.padding_top | default: 0
+        assign padding_bottom = section.settings.padding_bottom | default: 0
+        assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+        assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+        assign content = section.settings.content
+        assign button_label = section.settings.button_label | escape | strip_html
+        assign button_url = section.settings.button_url
+
+        assign item_width_desktop = 100.00 | divided_by: section.blocks.size
+        if section.blocks.size > 4
+            assign item_width_desktop = 25
+        endif
+    -%}
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/how-it-works.scss' -%}
+
+    <section id='section-{{- section.id -}}'>
+        <div class='container'>
+            {%- if content != blank -%}
+                <div class='rte how-it-works__content'>
+                    {{- content -}}
+                </div>
+            {%- endif -%}
+
+            <ul 
+                class="how-it-works__items list-reset"
+                style="--item-width-desktop: {{- item_width_desktop -}}%;"
+            >
+                {%- for block in section.blocks -%}
+                    {%- liquid 
+                        assign icon = block.settings.icon
+                        assign title = block.settings.title | escape | strip_html
+                        assign content = block.settings.content 
+                    -%}
+                    <li
+                        class="how-it-works__item"
+                    >
+                        <div class="how-it-works__item-icon">
+                            {%- if icon != blank -%}
+                                {{- icon -}}
+                            {%- endif -%}
+                        </div>
+
+                        <div class="how-it-works__item-body">
+                            {%- if title != blank -%}
+                                <p class="subheader-large">{{- title -}}</p>
+                            {%- endif -%}
+
+                            {%- if content != blank -%}
+                                <div class="{% if title != blank %}how-it-works__item-content{% endif %} rte rte--smaller">
+                                    {{- content -}}
+                                </div>
+                            {%- endif -%}
+                        </div>
+                    </li>
+                {%- endfor -%}
+            </ul>
+
+            {%- if button_label != blank and button_url != blank -%}
+                <div class="how-it-works__btn-wrapper">
+                    <a href="{{- button_url -}}" aria-label="{{- button_label -}}" class="btn btn--px-36 btn--chalk btn--center hover-arrow">
+                        {{- button_label -}}
+                        {%- render 'icon', name: 'arrow-right' -%}
+                    </a>
+                </div>
+            {%- endif -%}
+        </div>
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "How It Works | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Settings"
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content"
+        },
+        {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+        },
+        {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+        }
+    ],
+    "presets": [
+        {
+            "name": "How It Works | AW"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Step",
+            "type": "step",
+            "settings": [
+                {
+                    "type": "html",
+                    "id": "icon",
+                    "label": "Icon (SVG)"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "content",
+                    "label": "Content"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

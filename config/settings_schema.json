@@ -1,0 +1,753 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Summer Fridays by AW",
+    "theme_version": "2022-09-30-1",
+    "theme_author": "AW",
+    "theme_documentation_url": "https:\/\/github.com\/AbsoluteWebServices\/SummerFridays",
+    "theme_support_url": "https:\/\/www.absoluteweb.com"
+  },
+  {
+    "name": "Account",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "richtext",
+        "id": "account_register_terms",
+        "label": "Register Terms",
+        "default": "<p>By creating an account, you accept the <a href=\/pages\/terms>Terms of Service<\/a> and <a href=\/pages\/privacy>Privacy Policy<\/a><\/p>"
+      },
+      {
+        "type": "header",
+        "content": "Images"
+      },
+      {
+        "type": "image_picker",
+        "id": "account_image",
+        "label": "All account forms",
+        "info": "Use this image for all: login, register and password pages."
+      },
+      {
+        "type": "image_picker",
+        "id": "account_image_login",
+        "label": "Login"
+      },
+      {
+        "type": "image_picker",
+        "id": "account_image_activate",
+        "label": "Activate"
+      },
+      {
+        "type": "image_picker",
+        "id": "account_image_register",
+        "label": "Register"
+      },
+      {
+        "type": "image_picker",
+        "id": "account_image_reset_password",
+        "label": "Reset Password"
+      },
+      {
+        "type": "header",
+        "content": "Subscriptions"
+      },
+      {
+        "type": "checkbox",
+        "id": "acc_subs_custom_message_enable",
+        "label": "Enable custom message",
+        "default": true
+      },
+      {
+        "type": "richtext",
+        "id": "acc_subs_custom_message",
+        "label": "Custom message"
+      },
+      {
+        "type": "header",
+        "content": "No Subscriptions Products"
+      },
+      {
+        "type": "richtext",
+        "id": "acc_subs_content",
+        "label": "Content",
+        "info": "Hint: use Heading 2 for title, and paragraph for body",
+        "default": "<p>RECOMMENDED SUBSCRIPTIONS</p>"
+      },
+      {
+        "id": "acc_subs_limit",
+        "label": "Limit",
+        "type": "range",
+        "info": "Recommended amount: 6-10",
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "default": 8
+      },
+      {
+        "type": "product_list",
+        "id": "acc_subs_products",
+        "label": "Products",
+        "limit": 10
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "select",
+        "id": "font_primary",
+        "label": "Font primary",
+        "options": [
+          {
+            "value": "futura-pt",
+            "label": "Futura PT"
+          }
+        ],
+        "default": "futura-pt"
+      },
+      {
+        "type": "select",
+        "id": "font_secondary",
+        "label": "Font secondary",
+        "options": [
+          {
+            "value": "futura-pt",
+            "label": "Futura PT"
+          }
+        ],
+        "default": "futura-pt"
+      },
+      {
+        "type": "select",
+        "id": "font_body",
+        "label": "Font body",
+        "options": [
+          {
+            "value": "futura-pt",
+            "label": "Futura PT"
+          }
+        ],
+        "default": "futura-pt"
+      },
+      {
+        "type": "header",
+        "content": "Sizes"
+      },
+      {
+        "type": "number",
+        "id": "font_body_size",
+        "label": "Body font size",
+        "default": 13
+      },
+      {
+        "type": "number",
+        "id": "font_body_line_height",
+        "label": "Body line height",
+        "default": 18
+      },
+      {
+        "type": "number",
+        "id": "font_h1_size",
+        "label": "Heading 1 size",
+        "default": 30
+      },
+      {
+        "type": "number",
+        "id": "font_h1_line_height",
+        "label": "Heading 1 line height",
+        "default": 36
+      },
+      {
+        "type": "number",
+        "id": "font_h1_larger_size_mobile",
+        "label": "Heading 1 (larger) size (mobile)",
+        "default": 38
+      },
+      {
+        "type": "number",
+        "id": "font_h1_larger_line_height_mobile",
+        "label": "Heading 1 (larger) line height (mobile)",
+        "default": 45
+      },
+      {
+        "type": "number",
+        "id": "font_h1_larger_size_desktop",
+        "label": "Heading 1 (larger) size (desktop)",
+        "default": 45
+      },
+      {
+        "type": "number",
+        "id": "font_h1_larger_line_height_desktop",
+        "label": "Heading 1 (larger) line height (desktop)",
+        "default": 52
+      },
+      {
+        "type": "number",
+        "id": "font_h2_size",
+        "label": "Heading 2 size",
+        "default": 26
+      },
+      {
+        "type": "number",
+        "id": "font_h2_line_height",
+        "label": "Heading 2 line height",
+        "default": 30
+      },
+      {
+        "type": "number",
+        "id": "font_h2_larger_size_mobile",
+        "label": "Heading 2 (larger) size (mobile)",
+        "default": 38
+      },
+      {
+        "type": "number",
+        "id": "font_h2_larger_line_height_mobile",
+        "label": "Heading 2 (larger) line height (mobile)",
+        "default": 45
+      },
+      {
+        "type": "number",
+        "id": "font_h2_larger_size_desktop",
+        "label": "Heading 2 (larger) size (desktop)",
+        "default": 45
+      },
+      {
+        "type": "number",
+        "id": "font_h2_larger_line_height_desktop",
+        "label": "Heading 2 (larger) line height (desktop)",
+        "default": 52
+      },
+      {
+        "type": "number",
+        "id": "font_hero_title_size_mobile",
+        "label": "Hero title size (mobile)",
+        "default": 38
+      },
+      {
+        "type": "number",
+        "id": "font_hero_title_line_height_mobile",
+        "label": "Hero title line height (mobile)",
+        "default": 45
+      },
+      {
+        "type": "number",
+        "id": "font_hero_title_size_desktop",
+        "label": "Hero title size (desktop)",
+        "default": 45
+      },
+      {
+        "type": "number",
+        "id": "font_hero_title_line_height_desktop",
+        "label": "Hero title line height (desktop)",
+        "default": 52
+      },
+      {
+        "type": "number",
+        "id": "font_pinyon_title_size_mobile",
+        "label": "Pinyon title size (mobile)",
+        "default": 55
+      },
+      {
+        "type": "number",
+        "id": "font_pinyon_title_line_height_mobile",
+        "label": "Pinyon title line height (mobile)",
+        "default": 55
+      },
+      {
+        "type": "number",
+        "id": "font_pinyon_title_size_desktop",
+        "label": "Pinyon title size (desktop)",
+        "default": 80
+      },
+      {
+        "type": "number",
+        "id": "font_pinyon_title_line_height_desktop",
+        "label": "Pinyon title line height (desktop)",
+        "default": 86
+      },
+      {
+        "type": "number",
+        "id": "font_h3_size",
+        "label": "Heading 3 size",
+        "default": 18
+      },
+      {
+        "type": "number",
+        "id": "font_h3_line_height",
+        "label": "Heading 3 line height",
+        "default": 23
+      },
+      {
+        "type": "number",
+        "id": "font_h4_size",
+        "label": "Heading 4 size",
+        "default": 14
+      },
+      {
+        "type": "number",
+        "id": "font_h4_line_height",
+        "label": "Heading 4 line height",
+        "default": 17
+      },
+      {
+        "type": "number",
+        "id": "font_cta_textlink_size",
+        "label": "CTA textlink size",
+        "default": 11
+      },
+      {
+        "type": "number",
+        "id": "font_cta_textlink_line_height",
+        "label": "CTA textlink line height",
+        "default": 16
+      },
+      {
+        "type": "number",
+        "id": "font_p_small_size",
+        "label": "Paragraph (small) size",
+        "default": 10
+      },
+      {
+        "type": "number",
+        "id": "font_p_small_line_height",
+        "label": "Paragraph (small) line height",
+        "default": 13
+      },
+      {
+        "type": "number",
+        "id": "font_p_normal_size",
+        "label": "Paragraph (normal) size",
+        "default": 13
+      },
+      {
+        "type": "number",
+        "id": "font_p_normal_line_height",
+        "label": "Paragraph (normal) line height",
+        "default": 18
+      },
+      {
+        "type": "number",
+        "id": "font_p_large_size",
+        "label": "Paragraph (large) size",
+        "default": 16
+      },
+      {
+        "type": "number",
+        "id": "font_p_large_line_height",
+        "label": "Paragraph (large) line height",
+        "default": 22
+      },
+      {
+        "type": "number",
+        "id": "font_subheader_large_size",
+        "label": "Subheader (large) size",
+        "default": 17
+      },
+      {
+        "type": "number",
+        "id": "font_subheader_large_line_height",
+        "label": "Subheader (large) line height",
+        "default": 22
+      },
+      {
+        "type": "number",
+        "id": "font_subheader_small_size",
+        "label": "Subheader (small) size",
+        "default": 13
+      },
+      {
+        "type": "number",
+        "id": "font_subheader_small_line_height",
+        "label": "Subheader (small) line height",
+        "default": 17
+      },
+      {
+        "type": "number",
+        "id": "font_superscript_normal_size",
+        "label": "Superscript (normal) size",
+        "default": 11
+      },
+      {
+        "type": "number",
+        "id": "font_superscript_normal_line_height",
+        "label": "Superscript (normal) line height",
+        "default": 13
+      },
+      {
+        "type": "number",
+        "id": "font_input_size_desktop",
+        "label": "Input size (desktop)",
+        "default": 11
+      },
+      {
+        "type": "number",
+        "id": "font_footer_custom_title_size",
+        "label": "Footer custom title size",
+        "default": 45
+      },
+      {
+        "type": "number",
+        "id": "font_footer_custom_title_line_height",
+        "label": "Footer custom title line height",
+        "default": 45
+      },
+      {
+        "type": "number",
+        "id": "font_button_size",
+        "label": "Button size",
+        "default": 11
+      },
+      {
+        "type": "number",
+        "id": "font_button_line_height",
+        "label": "Button line height",
+        "default": 16
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_white",
+        "label": "White",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "color_ink",
+        "label": "Ink",
+        "default": "#000418"
+      },
+      {
+        "type": "color",
+        "id": "color_chalk",
+        "label": "Chalk",
+        "default": "#EEEDEC"
+      },
+      {
+        "type": "color",
+        "id": "color_morning_sky",
+        "label": "Morning Sky",
+        "default": "#D1EEFE"
+      },
+      {
+        "type": "color",
+        "id": "color_clay",
+        "label": "Clay",
+        "default": "#D5D1CA"
+      },
+      {
+        "type": "text",
+        "id": "color_ink_40",
+        "label": "Ink 40%",
+        "default": "rgba(0, 4, 24, 0.30)"
+      },
+      {
+        "type": "text",
+        "id": "color_chalk_40",
+        "label": "Chalk 40%",
+        "default": "rgba(238, 237, 236, 0.40)"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_blue",
+        "label": "Accent Blue",
+        "default": "#41B7FF"
+      },
+      {
+        "type": "color",
+        "id": "color_orange",
+        "label": "Orange",
+        "default": "#FD6210"
+      },
+      {
+        "type": "color",
+        "id": "color_yellow",
+        "label": "Yellow",
+        "default": "#EEEB7B"
+      },
+      {
+        "type": "color",
+        "id": "color_red",
+        "label": "Red",
+        "default": "#EA3333"
+      },
+      {
+        "type": "color",
+        "id": "color_afternoon_sky",
+        "label": "Afternoon Sky",
+        "default": "#ACD5E9"
+      },
+      {
+        "type": "color",
+        "id": "color_skeleton_1",
+        "label": "Skeleton Background Color",
+        "default": "#F6F7F8"
+      },
+      {
+        "type": "color",
+        "id": "color_skeleton_2",
+        "label": "Skeleton Highlight Color",
+        "default": "#EDEEF1"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Enable cart notes",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Product",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "subscription_widget_override_enable",
+        "label": "Enable subscription widget overrides (thru Metaobject)",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Donation",
+    "settings": [
+      {
+        "id": "donation_enabled",
+        "label": "Enable Donation",
+        "type": "checkbox"
+      },
+      {
+        "id": "donation_cart_text",
+        "label": "Additional description in cart",
+        "type": "richtext"
+      },
+      {
+        "id": "donation_text",
+        "label": "Checkbox Text",
+        "type": "richtext"
+      },
+      {
+        "id": "donation_product",
+        "label": "Donation Product",
+        "type": "product"
+      },
+      {
+        "id": "donation_lightbox_title",
+        "label": "Lightbox Title",
+        "type": "text"
+      },
+      {
+        "id": "donation_lightbox_descripton",
+        "label": "Lightbox Message",
+        "type": "richtext"
+      },
+      {
+        "default": "Donate Now",
+        "id": "donation_lightbox_cta",
+        "label": "Lightbox Button CTA",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  },
+  {
+    "name": "Free Samples",
+    "settings": [
+      {
+        "default": true,
+        "label": "Show free sample",
+        "id": "sample_enable",
+        "type": "checkbox"
+      },
+      {
+        "default": "75.00",
+        "id": "sample_amount",
+        "info": "This is the minimum amount required",
+        "label": "Free Sample Amount",
+        "type": "text"
+      },
+      {
+        "default": "Free Sample",
+        "label": "Free Sample Title",
+        "id": "sample_title",
+        "type": "text"
+      },
+      {
+        "default": "Select 1 of ${items.length}",
+        "label": "Free Sample Subtitle",
+        "info": "Example: Select 1 of ${items.length}",
+        "id": "sample_subtitle",
+        "type": "text"
+      },
+      {
+        "id": "sample_collection",
+        "label": "Free Sample Collection",
+        "type": "collection"
+      }
+    ]
+  },
+  {
+    "name": "Mini Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "minicart_button_action",
+        "label": "Button Action",
+        "options": [
+          {
+            "value": "checkout",
+            "label": "Continue to checkout"
+          },
+          {
+            "value": "cart",
+            "label": "Continue to cart"
+          }
+        ],
+        "default": "checkout"
+      },
+      {
+        "type": "header",
+        "content": "Message"
+      },
+      {
+        "default": "<p>You're <$X> away from free shipping<\/p>",
+        "id": "minicart_message",
+        "info": "Example: You're <$X> away from free shipping",
+        "label": "Message",
+        "type": "richtext"
+      },
+      {
+        "default": "<p>You've earned free shipping<\/p>",
+        "id": "minicart_qualifies_message",
+        "label": "Qualifies Message",
+        "type": "richtext"
+      },
+      {
+        "type": "header",
+        "content": "Upsell"
+      },
+      {
+        "type": "checkbox",
+        "id": "minicart_upsell_enabled",
+        "label": "Enable mini cart upsell",
+        "default": false
+      },
+      {
+        "type": "product",
+        "id": "minicart_upsell_product",
+        "label": "Upsell Product"
+      },
+      {
+        "default": "You might also like",
+        "type": "text",
+        "id": "minicart_upsell_title",
+        "label": "Title"
+      }
+    ]
+  },
+  {
+    "name": "Shipping",
+    "settings": [
+      {
+        "type": "text",
+        "id": "free_shipping_amount",
+        "label": "Free Shipping Amount",
+        "info": "This is for free shipping promotions",
+        "default": "50.00"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Sharing links"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "TikTok link"
+      },
+      {
+        "type": "text",
+        "id": "social_x_link",
+        "label": "X link"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook link"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest link"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram link"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat_link",
+        "label": "Snapchat link"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_link",
+        "label": "Tumblr link"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "Youtube link"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_link",
+        "label": "Vimeo link"
+      }
+    ]
+  },
+  {
+    "name": "Tags",
+    "settings": [
+      {
+        "type": "text",
+        "id": "yotpo_app_key",
+        "label": "Yotpo App Key",
+        "default": "hAnCQ8TdC1im1AlyOrM2vMEn3Fdg8zmmdzJ4M32n"
+      },
+      {
+        "type": "text",
+        "id": "swell_id",
+        "label": "Yotpo Swell ID",
+        "default": "_aa8IRw0lW3QmL3GpyGpOA"
+      }
+    ]
+  }
+]

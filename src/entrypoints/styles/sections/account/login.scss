@@ -1,0 +1,277 @@
+.login-wrapper {
+    background-color: var(--white);
+    padding-bottom: 8.4rem;
+
+    @media only screen and (min-width: 1280px) {
+        padding: 2.4rem 0;
+    }
+
+    .two-cols-wrapper {
+        @media only screen and (min-width: 1280px) {
+            &:has(.form--recover:target) {
+                align-items: inherit;
+            }
+        }
+    }
+
+    .media-col {
+        display: none;
+
+        @media only screen and (min-width: 768px) {
+            display: block;
+            margin-bottom: 0;
+        }
+
+        .main-image {
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+
+    .form-success {
+        &--hide {
+            display: none;
+        }
+    }
+
+    .form {
+        padding-top: 8.4rem;
+
+        @media screen and (min-width: 768px) {
+            padding-top: 5.5rem;
+        }
+        
+        @media screen and (min-width: 1280px) {
+            padding-top: 0;
+        }
+
+        &.form--recover {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+            justify-content: center;
+
+            &:target {
+                display: flex;
+
+                & + .form--login {
+                    display: none;
+                }
+            }
+
+            &:has(.form-success) {
+                display: flex;
+
+                &:not(:target) {
+                    height: auto;
+
+                    .form__title,
+                    .form__copy,
+                    .form__group,
+                    .form__button,
+                    .form__return {
+                        display: none;
+                    }
+                }
+            }
+
+            .form-success {
+                font-style: italic;
+                margin-bottom: 2.4rem;
+                text-align: center;
+            }
+
+            .form__title {
+                margin-bottom: .6rem;
+            }
+
+            .form__copy {
+                margin-bottom: 1.8rem;
+                text-align: center;
+            }
+
+            .form__button {
+                margin-top: .8rem;
+            }
+
+            .form__return {
+                margin-top: 3.6rem;
+                text-align: center;
+            }
+        }
+
+        .errors ul {
+            margin-bottom: 1.8rem;
+            padding-left: 1.2rem;
+        }
+
+        .form__title {
+            margin-bottom: 1.8rem;
+            text-align: center;
+        }
+
+        .form__group {
+            margin-bottom: .6rem;
+
+            &:not(.form__group--checkbox) input {
+                border-color: var(--clay);
+            }
+        }
+
+        .form__recover {
+            margin: 1.2rem 0;
+            text-align: center;
+        }
+
+        .form__button {
+            margin-bottom: .6rem;
+        }
+
+        .back-to-login {
+            align-items: center;
+            display: inline-flex;
+            gap: 1rem;
+            text-transform: uppercase;
+        }
+    }
+
+    .account-create {
+        margin-top: 4.5rem;
+        text-align: center;
+
+        @media only screen and (min-width: 1280px) {
+            margin-top: 7rem;
+        }
+
+        .form__title {
+            margin-bottom: .6rem;
+        }
+
+        .form__button {
+            margin: 2.4rem 0 1.2rem;
+        }
+    }
+
+    .account__passwordless-login-btn-wrapper .yotpo-widget-subscriptions-customer-portal {
+        background-color: transparent;
+        padding: 0;
+
+        .yotpo-email-link-container {
+            margin: 0;
+            max-width: 100%;
+        }
+
+        .yotpo-email-link-action,
+        button.yotpo-customized-button {
+            background-color: var(--chalk) !important;
+            border-color: transparent !important;
+            border-radius: .3rem !important;
+            border-style: solid !important;
+            border-width: .1rem !important;
+            color: var(--ink) !important;
+            display: block;
+            font-family: var(--font-body) !important;
+            font-size: var(--font-cta-textlink-size) !important;
+            font-style: normal !important;
+            font-weight: 450 !important;
+            letter-spacing: 0.11rem;
+            line-height: var(--font-cta-textlink-line-height) !important;
+            min-height: 3rem;
+            padding: .6rem 1.2rem !important;
+            text-transform: uppercase;
+            transition: var(--transition-all) !important;
+
+            &:hover,
+            &:focus {
+                background-color: var(--morning-sky) !important;
+                color: var(--white) !important;
+            }
+        }
+
+        .yotpo-send-link-main-title-text {
+            font-family: var(--font-body) !important;
+            font-size: var(--font-body-size) !important;
+        }
+
+        .yotpo-email-link-form {
+            display: block;
+
+            input {
+                background-color: transparent;
+                border: .1rem solid var(--clay) !important;
+                border-radius: .3rem;
+                color: var(--ink);
+                font-family: var(--font-body);
+                font-size: 1.6rem;
+                font-style: normal;
+                font-weight: 450;
+                height: auto;
+                letter-spacing: 0.05rem;
+                line-height: normal;
+                margin-right: 0;
+                min-height: 3rem;
+                padding: .6rem 1.2rem;
+                width: 100%;
+
+                &::placeholder {
+                    color: var(--ink);
+                }
+
+                @media only screen and (min-width: 1280px) {
+                    font-size: var(--font-input-size);
+                    letter-spacing: 0.011rem;
+                }
+            }
+
+            button.yotpo-customized-button {
+                margin-top: 1.2rem;
+                width: 100% !important;
+
+                .yotpo-customized-text {
+                    color: inherit !important;
+                    font-family: inherit !important;
+                    font-size: inherit !important;
+                }
+            }
+        }
+
+        .yotpo-email-link-form-error-container {
+            font-family: var(--font-body) !important;
+            font-size: var(--font-body-size);
+            margin-top: -1rem;
+
+            svg {
+                margin: 0;
+                top: .1rem;
+            }
+
+            .yotpo-email-link-form-error-text {
+                font-family: inherit !important;
+            }
+        }
+
+        .yotpo-email-link-success {
+            font-family: var(--font-body) !important;
+            font-size: var(--font-body-size);
+            gap: .6rem;
+
+            .yotpo-round-success-icon {
+                height: 2rem;
+                width: 2rem;
+            }
+
+            .yotpo-customized-text,
+            > div {
+                font-family: inherit !important;
+                font-size: inherit !important;
+
+                &.yotpo-email-link-reset {
+                    cursor: pointer;
+                    text-decoration: underline;
+                    text-underline-offset: .2rem;
+                }
+            }
+        }
+    }
+}

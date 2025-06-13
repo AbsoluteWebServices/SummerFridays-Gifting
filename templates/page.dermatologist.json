@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_split_QdViVM": {
+      "type": "image-split",
+      "settings": {
+        "padding_top": 2,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 2.2,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/9761d90ef8323253d2d9553cb9815cde.jpg",
+        "media_aspect_ratio_mobile": "square",
+        "media_aspect_ratio_desktop": "taller",
+        "media_fullwidth_mobile": false,
+        "media_caption": "",
+        "content": "<h1>Meet our Consulting Dermatologist %%<em>Dr. Laura Scott</em>%!%</h1><p>Dr. Laura Scott is a Harvard-educated, board-certified dermatologist now based in San Diego, CA.</p>",
+        "content_smaller": "<p>She previously served as the Associate Director of the Skin of Color Division at the University of Miami. Her passions include dermatology for melanated skin and pregnancy, postpartum, and pediatric dermatology - she loves connecting with parents and children as a mom of 4 herself!</p>",
+        "content_left": "",
+        "content_right": "",
+        "content_bottom": "",
+        "products": [
+
+        ],
+        "content_justify_on_desktop": "top",
+        "content_secondary": "",
+        "content_secondary_position_desktop": "top",
+        "content_secondary_layout": "text_media",
+        "vertical_alignment": "center",
+        "layout_desktop": "media_text",
+        "layout_mobile": "media_text"
+      }
+    },
+    "image_split_jdaHnt": {
+      "type": "image-split",
+      "blocks": {
+        "title_content_6pATUb": {
+          "type": "title_content",
+          "settings": {
+            "title": "SF: What are the best products for acne?",
+            "content": "<p>Duis nec cursus quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et volutpat ipsum, id pretium tortor. Praesent non egestas dui, eu blandit ante. Vivamus fringilla magna nec risus feugiat dictum. Pellentesque molestie rhoncus ante, id finibus massa fringilla tincidunt. Cras dictum vestibulum nulla ac viverra. Integer tempus pretium blandit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam sed ipsum ut est pulvinar interdum quis sit amet risus. Praesent mattis tincidunt magna, sed fermentum lorem placerat sit amet.</p>"
+          }
+        },
+        "title_content_H6BTEf": {
+          "type": "title_content",
+          "settings": {
+            "title": "SF: What do you recommend for anti-aging?",
+            "content": "<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam sed ipsum ut est pulvinar interdum quis sit amet risus. Praesent mattis tincidunt magna, sed fermentum lorem placerat sit amet.</p>"
+          }
+        },
+        "title_content_ka7D8j": {
+          "type": "title_content",
+          "settings": {
+            "title": "SF: What has been your Favorite Product recently?",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pretium maximus nisi, sit amet semper ligula congue vel. Quisque condimentum nunc fringilla sem mollis pulvinar. Sed quis tortor finibus, consequat libero venenatis, rutrum ipsum.</p>"
+          }
+        },
+        "title_content_iBB7GQ": {
+          "type": "title_content",
+          "settings": {
+            "title": "SF: What is your Daily Skincare Routine?",
+            "content": "<p>Duis nec cursus quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et volutpat ipsum, id pretium tortor. Praesent non egestas dui, eu blandit ante. Vivamus fringilla magna nec risus feugiat dictum. Pellentesque molestie rhoncus ante, id finibus massa fringilla tincidunt. Cras dictum vestibulum nulla ac viverra. Integer tempus pretium blandit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam sed ipsum ut est pulvinar interdum quis sit amet risus. Praesent mattis tincidunt magna, sed fermentum lorem placerat sit amet.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "title_content_6pATUb",
+        "title_content_H6BTEf",
+        "title_content_ka7D8j",
+        "title_content_iBB7GQ"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/35de4d0ddcc43579e22bd0a67343834b_1.jpg",
+        "media_aspect_ratio_mobile": "square",
+        "media_aspect_ratio_desktop": "taller",
+        "media_fullwidth_mobile": false,
+        "media_caption": "",
+        "content": "",
+        "content_smaller": "",
+        "content_left": "",
+        "content_right": "",
+        "content_bottom": "",
+        "products": [
+
+        ],
+        "content_justify_on_desktop": "space-between",
+        "content_secondary": "",
+        "content_secondary_position_desktop": "bottom",
+        "content_secondary_layout": "text_media",
+        "vertical_alignment": "center",
+        "layout_desktop": "text_media",
+        "layout_mobile": "media_text"
+      }
+    },
+    "content_qY6De7": {
+      "type": "content",
+      "custom_css": [
+        "@media only screen and (min-width: 1280px) {.container {max-width: 77rem; }}"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>“I’ve always felt that Summer Fridays is very thoughtful about their approach to skincare. I really align with the brand’s values of creating products that are not only effective, but also beautiful, intentional, and experiential.”</h2>",
+        "font_size": "normal",
+        "container": "blog",
+        "paragraph_margins": "normal",
+        "heading_alignment": "center",
+        "text_alignment": "center",
+        "text_wrap": "balance"
+      }
+    },
+    "how_to_use_R4qdic": {
+      "type": "how-to-use",
+      "blocks": {
+        "cards_dkQQUb": {
+          "type": "cards",
+          "settings": {
+            "main_media_type": "video",
+            "main_image": "shopify://shop_images/PDP-How-To-Use-JLM.jpg",
+            "main_video": "shopify://files/videos/Jet Lag Camp - Clip 12.mp4",
+            "secondary_media_type": "image",
+            "secondary_image": "shopify://shop_images/PDP-How-To-Use-JLM.jpg",
+            "title": "<h2>See Dr. Scott’s Travel Routine</h2>",
+            "subtitle": "",
+            "content": "<p>Meet <a href=\"https://www.instagram.com/laurascottandco\" target=\"_blank\" title=\"https://www.instagram.com/laurascottandco\">@laurascottandco</a>’s travel essential for skin-loving moisture on the go.</p><p>Jet Lag Mask is made with skin-quenching hyaluronic acid for a firm, plump look and healthy glow. Plus, it’s infused with niacinamide to create brighter, more even skin tone and texture.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "cards_dkQQUb"
+      ],
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "bg_color": "chalk"
+      }
+    },
+    "recommendations_JFAibQ": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4,
+        "id": "",
+        "layout": "slider",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Dr. Scott’s Favorite Products</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 8,
+        "products": [
+          "rich-cushion-cream",
+          "jet-lag-mask",
+          "jet-lag-deep-hydration-serum",
+          "cloud-dew-gel-cream"
+        ]
+      }
+    }
+  },
+  "order": [
+    "image_split_QdViVM",
+    "image_split_jdaHnt",
+    "content_qY6De7",
+    "how_to_use_R4qdic",
+    "recommendations_JFAibQ"
+  ]
+}

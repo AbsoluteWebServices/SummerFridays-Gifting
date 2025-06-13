@@ -1,0 +1,148 @@
+{%- liquid
+    assign padding_top = section.settings.padding_top | default: 0
+    assign padding_bottom = section.settings.padding_bottom | default: 0
+    assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+    assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+    assign title = section.settings.title
+    assign subtitle = section.settings.subtitle
+-%}
+
+{%- render 'offset',
+    id: section.id,
+    padding_top: padding_top,
+    padding_bottom: padding_bottom,
+    padding_top_desktop: padding_top_desktop,
+    padding_bottom_desktop: padding_bottom_desktop
+-%}
+
+{%- render 'adastra' with 'styles/sections/terms-conditions.scss' -%}
+
+<section id="section-{{- section.id -}}">
+    <div class="container container--page">
+        <div class="terms-conditions">
+            {%- if title != blank -%}
+                <div class="terms-conditions__title rte">{{- title -}}</div>
+            {% endif %}
+
+            {%- if subtitle != blank -%}
+                <div class="terms-conditions__subtitle rte">{{- subtitle -}}</div>
+            {%- endif -%}
+
+            {%- if section.blocks.size > 0 -%}
+                <ul class="terms-conditions__items list-reset">
+                    {%- for block in section.blocks -%}
+                        {%- liquid
+                            assign text = block.settings.text
+                            assign url = block.settings.url
+                            assign target = block.settings.target
+                        -%}
+                        <li class="terms-conditions__item">
+                            {%- if text -%}
+                                <a 
+                                    href="{{- url -}}" 
+                                    title="{{- text -}}" 
+                                    target="{{- target -}}" 
+                                    class="terms-conditions__link cta-textlink cta-link-with-arrow cta-link-with-arrow--right"
+                                    aria-label="{{- text -}}"
+                                >
+                                    {{- text -}}
+                                    {%- render 'icon', name: 'arrow-right' -%}
+                                </a>
+                            {%- endif -%}
+                        </li>
+                    {%- endfor -%}
+                </div>
+            {%- endif -%}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Links | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 4,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 4,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 8,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 8,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Settings"
+        },
+        {
+            "type": "richtext",
+            "id": "title",
+            "label": "Title",
+            "default": "<h1>Sweepstakes Terms & Conditions</h1>"
+        },
+        {
+            "type": "richtext",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "<h2>Please click on a Sweepstakes for complete Sweepstakes Terms & Conditions</h2>"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "link",
+            "name": "Link",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "text",
+                    "label": "Text"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "URL"
+                },
+                {
+                    "type": "select",
+                    "id": "target",
+                    "label": "Open In",
+                    "default": "_self",
+                    "options": [
+                        { "label": "New Tab", "value": "_blank" },
+                        { "label": "Current Tab", "value": "_self" }
+                    ]
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Links | AW"
+        }
+    ]
+}
+{% endschema %}

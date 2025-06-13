@@ -1,0 +1,229 @@
+{%- assign steps = section.blocks | where: 'type', 'step' -%}
+{%- if section.settings.product != blank or steps.size > 0 -%}
+    {%- liquid
+        assign padding_top = section.settings.padding_top | default: 0
+        assign padding_bottom = section.settings.padding_bottom | default: 0
+        assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+        assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+        assign available = section.settings.available | default: false
+        assign media = section.blocks
+        assign badge = section.settings.badge | escape
+        assign title = section.settings.title | escape
+        assign description = section.settings.description
+        assign bundle_discount_text = section.settings.bundle_discount_text | escape
+        assign footer_text = section.settings.footer_text
+        assign custom_link_label = section.settings.custom_link_label | escape 
+        assign custom_link_url = section.settings.custom_link_url
+
+        assign bundle_image = section.blocks | where: 'type', 'Image' | first
+    -%}
+
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/bundle.scss' -%}
+
+    <section
+        x-data="bundle"
+        data-split-load-section
+        id='section-{{ section.id }}'
+    >
+        <div class="bundle__wrapper">
+            <div class="bundle__media">
+                {%- render 'bundle-product-gallery',
+                    media: media
+                -%}
+            </div>
+
+            <div class='bundle__info'>
+                <div class="bundle__info-inner">
+                    <div class='bundle__header'>
+                        {%- if badge != blank -%}
+                            <div class="bundle__badge-wrapper">
+                                <span class='bundle__badge subheader-small'>
+                                    {{- badge -}}
+                                </span>
+                            </div>
+                        {%- endif -%}
+
+                        {%- if title != blank -%}
+                            <h1>{{- title -}}</h1>
+                        {%- endif -%}
+
+                        {%- if description != blank -%}
+                            <div class='bundle__description rte rte--smaller'>{{- description -}}</div>
+                        {%- endif -%}
+                    </div>
+
+                    {%- render 'product-bundle-2',
+                        available: available,
+                        steps: steps,
+                        bundle_image: bundle_image.settings.image,
+                        bundle_title: title,
+                        bundle_discount_text: bundle_discount_text,
+                        custom_link_label: custom_link_label,
+                        custom_link_url: custom_link_url
+                    -%}
+
+                    {%- if footer_text != blank -%}
+                        <div class='bundle__footer-text rte rte--smaller'>{{- footer_text -}}</div>
+                    {%- endif -%}
+                </div>
+            </div>
+        </div>
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Bundle Main | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "checkbox",
+            "id": "available",
+            "label": "Available",
+            "info": "Uncheck to make the bundle 'Sold Out'",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "badge",
+            "label": "Badge"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "text",
+            "id": "custom_link_label",
+            "label": "Custom link label"
+        },
+        {
+            "type": "url",
+            "id": "custom_link_url",
+            "label": "Custom link URL"
+        },
+        {
+            "type": "richtext",
+            "id": "footer_text",
+            "label": "Footer text/note"
+        },
+        {
+            "type": "text",
+            "id": "bundle_discount_text",
+            "label": "Bundle Discount text",
+            "default": "Discount Applied"
+        },
+        {
+            "type": "product",
+            "id": "product",
+            "label": "Main product",
+            "info": "Select the main bundle product; it must have the metafields configured."
+        }
+    ],
+    "blocks": [
+        {
+            "type": "Image",
+            "name": "image",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        },
+        {
+            "type": "Video",
+            "name": "video",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "video_url",
+                    "label": "Video URL",
+                    "info": "Format: .mp4; must be compressed."
+                }
+            ]
+        },
+        {
+            "type": "step",
+            "name": "step",
+            "settings": [
+                {
+                    "type": "collection",
+                    "id": "collection",
+                    "label": "Collection",
+                    "info": "Select a collection to pull products from."
+                },
+                {
+                    "type": "text",
+                    "id": "select_your_text",
+                    "label": "Select your text"
+                },
+                {
+                    "type": "text",
+                    "id": "custom_link_title",
+                    "label": "Custom link title",
+                    "default": "Not sure? Learn more.",
+                    "info": "Underneath the selector."
+                },
+                {
+                    "type": "url",
+                    "id": "custom_link",
+                    "label": "Custom link",
+                    "info": "Underneath the selector. Leave blank to disable."
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Bundle Main | AW"
+        }
+    ]
+}
+{% endschema %}

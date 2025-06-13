@@ -1,0 +1,18 @@
+{%- assign badge = badge -%}
+{%- if badge != blank -%}
+    <div class="subheader-small product-card__badge">
+        {{- badge | upcase -}}
+    </div>
+{%- else -%}
+    {%- assign accentuate = product.metafields.accentuate -%}
+    {%- if accentuate.badge != blank -%}
+        <div class="subheader-small product-card__badge {% if modifier != blank %}product-card__badge--{{- modifier -}}{% endif %}">
+            {%- assign badge_handle = accentuate.badge | handle %}
+            {%- if badge_handle == 'value' -%}
+                Value
+            {%- else -%}
+                {{- accentuate.badge | upcase -}}
+            {%- endif -%}
+        </div>
+    {%- endif -%}
+{%- endif -%}

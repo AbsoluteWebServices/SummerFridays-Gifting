@@ -1,0 +1,63 @@
+{%- liquid
+    assign current_selling_plan = product.selected_or_first_available_selling_plan_allocation.selling_plan
+    assign inHiddenOverflow = inHiddenOverflow | default: false
+    assign top = top | default: false
+    assign id = section.id | default: ''
+    assign selling_plan_allocations = current_variant.selling_plan_allocations
+-%}
+
+<div 
+    x-show="selling_plans?.length"
+    x-data="{
+        open: false
+    }"
+    class="superscript-normal select-wrapper {% unless inHiddenOverflow %}select-wrapper--absolute{% endunless %} select-wrapper--bordered product-card__selector-wrapper"
+    @click.outside="open = false"
+    x-transition:enter="default-transition"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-1"
+    x-transition:leave="default-transition"
+    x-transition:leave-start="opacity-1"
+    x-transition:leave-end="opacity-0"
+    {% if current_selling_plan == blank or selling_plan_allocations == blank %}
+        style="display: none;"
+    {% endif %}
+>
+    <button
+        id="product-card-selling-plan-selector-btn-{{- product.id -}}-{{ id }}"
+        class="product-card__selector-btn p-normal select-toggle-btn {% if top %}select-toggle-btn--top{% endif %}"
+        type="button"
+        aria-haspopup="true"
+        aria-controls="product-card-selling-plan-selector-{{- product.id -}}"
+        :aria-expanded="open"
+        @click.prevent="open = ! open"
+    >
+        <span x-text="selling_plan ? selling_plan.name : '{{- current_selling_plan.name -}}'">{{- current_selling_plan.name -}}</span>
+        {%- render 'icon', name: 'chevron-down' -%}
+    </button>
+
+    <ul 
+        id="product-card-selling-plan-selector-{{- product.id -}}"
+        class="dropdown-content {% if top %}dropdown-content--top{% endif %} list-reset"
+        :data-open="open"
+        aria-labelledby="product-card-selling-plan-selector-btn-{{- product.id -}}-{{ id }}"
+        :style="open && { height: $el.scrollHeight + 'px' }"
+        @resize.window="if (!open) { return; } $el.style.height = 'auto'"
+    >
+        <template x-for="(sp, i) in selling_plans" :key="'{{- product.id -}}-{{ id }}-' + i">
+            <li>
+                <label class="select-option p-normal" @click="open = false">
+                    <input 
+                        x-model="selling_plan_id"
+                        name="selling_plan" 
+                        type="radio" 
+                        class="visually-hidden" 
+                        :value="sp.id"
+                        @change="open = false; updateSellingPlan(sp.id)"
+                    >
+                    <span x-text="sp.name"></span>
+                </label>
+            </li>
+        </template>
+    </ul>
+</div>

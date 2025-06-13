@@ -1,0 +1,63 @@
+{%- liquid
+    assign current_variant = product.selected_or_first_available_variant
+    assign price = current_variant.price
+-%}
+<form 
+    action="/cart/add"
+    method="POST"
+    enctype="multipart/form-data"
+    @submit.prevent="$store.Cart.addToCart(event)"
+>
+    <select 
+        x-model="variantId"
+        name="id" 
+        class="visually-hidden"
+        aria-label="Select product variant"
+    >
+        {%- for variant in product.variants -%}
+            <option 
+                value="{{- variant.id -}}"
+                {% if variant.id == current_variant.id %}
+                    selected
+                {% endif %}
+            >{{- variant.name -}}</option>
+        {%- endfor -%}
+    </select>
+
+    {%- render 'product-swatches', current_variant: current_variant -%} 
+
+    {%- render 'product-custom-button' -%}
+
+    {%- render 'selling-plans', current_variant: current_variant -%}
+
+    {%- if product.type == 'Gift Card' -%}
+        {%- render 'gift-card-form', current_variant: current_variant -%}
+    {%- endif -%}
+
+    {%- render 'product-action-button', current_variant: current_variant, price: price -%}
+
+    {%- unless product.type == 'Gift Card' -%}
+        <div class="product__placements">
+            <afterpay-placement
+                id="afterpay-placement-pdp"
+                class="superscript-normal afterpay-placement"
+                data-locale="{{- shop_locale.iso_code -}}"
+                data-currency="{{- cart.currency.iso_code -}}"
+                data-amount="{{- price | money_without_currency -}}"
+                :data-amount="price() ? (price() / 100) : {{ price | money_without_currency }}"
+                data-badge-theme="white-on-black"
+                data-size="xs"
+            ></afterpay-placement>
+
+            <catch-callout 
+                price="{{- price -}}"
+                :price="price() ? price() : {{ price }}"
+                class="superscript-normal catch-callout"
+                page-type="product"
+                or-prefix
+                theme="light-mono"
+                border-style="none-no-padding" 
+            />
+        </div>
+    {%- endunless -%}
+</form>

@@ -1,0 +1,63 @@
+.coming-soon-hero__wrapper {
+    position: relative;
+}
+
+.coming-soon-hero__blocks {
+    position: relative;
+    z-index: 2;
+    margin-top: -100svh;
+    text-align: center;
+}
+
+.coming-soon-hero__block-content-btn {
+    position: absolute;
+    z-index: 5;
+    bottom: calc(var(--header-height-mobile) + var(--announcement-height) + 3rem);
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--white);
+
+    @media only screen and (min-width: 768px) {
+        bottom: calc(var(--header-height-mobile) + var(--announcement-height) + 7.2rem);
+    }
+
+    @media only screen and (min-width: 1280px) {
+        bottom: calc(var(--header-height-mobile) + var(--announcement-height) + 8.8rem);
+    }
+}
+
+.coming-soon-hero__block {
+    position: relative;
+    height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.8rem;
+
+    @media only screen and (min-width: 1280px) {
+        padding: 6rem;
+    }
+}
+
+.coming-soon-hero__content {
+    margin-bottom: calc(var(--header-height-mobile) + var(--announcement-height, 0rem));
+
+    @media only screen and (min-width: 1280px) {
+        margin-bottom: calc(var(--header-height-desktop) + var(--announcement-height, 0rem));
+    }
+}
+
+.coming-soon-hero__media {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100svh;
+}
+
+.coming-soon-hero__form {
+    max-width: 53rem;
+    margin: 0 auto;
+}

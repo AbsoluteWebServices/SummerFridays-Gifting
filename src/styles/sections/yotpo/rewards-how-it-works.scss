@@ -1,0 +1,152 @@
+.yotpo-widget-my-rewards-widget {
+    margin: 0 .6rem;
+
+    @media screen and (min-width: 768px) {
+        margin: 0 auto;
+        max-width: 59.4rem;
+    }
+
+    @media screen and (min-width: 1280px) {
+        margin: 0 auto;
+        max-width: 77.2rem;
+    }
+
+    .yotpo-rewards-guide-tile-wrapper {
+        max-width: 100%;
+
+        .yotpo-tile-box {
+            margin: 0;
+            padding: 0 !important;
+            width: 100% !important;
+
+            .yotpo-info {
+                margin: 0;
+                max-width: 100%;
+
+                .yotpo-headline {
+                    margin-bottom: 2.4rem;
+
+                    @media screen and (min-width: 1280px) {
+                        margin-bottom: 3.6rem;
+                    }
+
+                    .yotpo-inner-text {
+                        color: var(--ink) !important;
+                        font-family: var(--font-primary) !important;
+                        font-size: var(--font-h2-size) !important;
+                        font-style: normal !important;
+                        font-weight: 450 !important;
+                        line-height: var(--font-h2-line-height);
+                        letter-spacing: -0.052rem;
+                        text-align: center;
+                    }
+                }
+            }
+
+            .yotpo-reward-steps-list {
+                counter-reset: steps;
+                display: flex;
+                flex-direction: column;
+                gap: 3.2rem;
+
+                @media screen and (min-width: 768px) {
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    justify-content: center;
+                    gap: 1.8rem;
+                }
+
+                @media screen and (min-width: 1280px) {
+                    gap: 3.3rem;
+                }
+
+                .yotpo-reward-steps-item {
+                    counter-increment: steps;
+                    min-width: auto;
+                    padding: 0;
+                    width: 100%;
+
+                    &.yotpo-reward-steps-item-1 {
+                        .yotpo-step-icon:before {
+                            background:
+                                radial-gradient(closest-side, white 95%, transparent 80% 100%),
+                                conic-gradient(var(--morning-sky) 33%, var(--chalk) 0);
+                        }
+                    }
+
+                    &.yotpo-reward-steps-item-2 {
+                        .yotpo-step-icon:before {
+                            background:
+                                radial-gradient(closest-side, white 95%, transparent 80% 100%),
+                                conic-gradient(var(--morning-sky) 66%, var(--chalk) 0);
+                        }
+                    }
+
+                    &.yotpo-reward-steps-item-3 {
+                        .yotpo-step-icon:before {
+                            background:
+                                radial-gradient(closest-side, white 95%, transparent 80% 100%),
+                                conic-gradient(var(--morning-sky) 100%, var(--chalk) 0);
+                        }
+                    }
+
+                    .yotpo-step-icons {
+                        color: var(--ink) !important;
+                        margin-bottom: 1.2rem;
+
+                        .yotpo-step-icon {
+                            height: auto;
+                            position: relative;
+
+                            &:before {
+                                align-items: center;
+                                border-radius: 50%;
+                                content: counter(steps);
+                                display: inline-flex;
+                                font-family: var(--font-primary);
+                                font-size: var(--font-h1-size);
+                                font-weight: 450;
+                                justify-content: center;
+                                line-height: var(--font-h1-line-height);
+                                letter-spacing: -.075rem;
+                                height: 10rem;
+                                width: 10rem;
+                            }
+
+                            > * {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    .yotpo-reward-steps-title {
+                        margin-bottom: .6rem;
+
+                        .yotpo-inner-text {
+                            color: var(--ink) !important;
+                            font-family: var(--font-secondary) !important;
+                            font-size: var(--font-subheader-large-size) !important;
+                            font-style: normal !important;
+                            font-weight: 450 !important;
+                            line-height: var(--font-subheader-large-line-height);
+                            letter-spacing: 0.17rem;
+                            text-transform: uppercase;
+                        }
+                    }
+
+                    .yotpo-reward-steps-description {
+                        .yotpo-inner-text {
+                            color: var(--ink) !important;
+                            font-family: var(--font-body) !important;
+                            font-size: var(--font-body-size) !important;
+                            font-style: normal !important;
+                            font-weight: 450 !important;
+                            line-height: 1.8rem;
+                            letter-spacing: 0.013rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

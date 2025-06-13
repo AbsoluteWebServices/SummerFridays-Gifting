@@ -1,0 +1,207 @@
+{%- if section.settings.products != blank -%}
+    {%- liquid
+        assign padding_top = section.settings.padding_top | default: 0
+        assign padding_bottom = section.settings.padding_bottom | default: 0
+        assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+        assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+        assign media_type = section.settings.media_type | default: 'video'
+        assign video = section.settings.video
+        assign image = section.settings.image 
+        assign gradient_direction = section.settings.gradient_direction | default: 'gradient-y'
+        assign text_color = section.settings.text_color | default: 'white'
+        assign content = section.settings.content | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>' 
+        assign products = section.settings.products
+    -%}
+
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/product-slider-and-image.scss' -%}
+
+    <section 
+        x-data="productSliderAndImage"
+        data-split-load-section
+        id="section-{{- section.id -}}"
+    >
+        <div class="container">
+            <div class="ps-image__inner">
+                <div class="ps-image__media {% if gradient_direction != 'gradient-none' %}ps-image__media--{{- gradient_direction -}}{% endif %}">
+                    {%- if content != blank -%}
+                        <div class="rte ps-image__content" {% if text_color != 'black' %}style="color:var(--{{- text_color -}});{% endif %}">{{- content -}}</div>
+                    {%- endif -%}
+
+                    {%- if media_type == 'image' -%}
+                        {%- if image -%}
+                            {%- render 'img', image: image -%}
+                        {%- endif -%}
+                    {%- elsif media_type == 'video' -%}
+                        {%- if video -%}
+                            {%- render 'video', 
+                                video: video,
+                                poster: image
+                            -%}
+                        {%- endif -%}
+                    {%- endif -%}
+                </div>
+
+                <div class="ps-image__products">
+                    <div x-ref="slider" x-intersect.once="initSlider" class="ps-image__products-slider-wrapper">
+                        <div 
+                            class="swiper"
+                        >
+                            <div class="swiper-wrapper">
+                                {%- for prod in products -%}
+                                    <div class="swiper-slide">
+                                        {%- render 'product-card',  
+                                            product: prod, 
+                                            lazyload: true,
+                                            disableLandscape: true,
+                                            top: true
+                                        -%}
+                                    </div>
+                                {%- endfor -%}
+                            </div>
+                        </div>
+
+                        <button
+                            data-swiper-prev
+                            class="swiper-nav-btn swiper-nav-btn--prev hover-opacity"
+                            type="button"
+                            aria-label="Go to the previous slide"
+                        >
+                            {%- render 'icon', name: 'swiper-chevron' -%}
+                        </button>
+        
+                        <button
+                            data-swiper-next
+                            class="swiper-nav-btn swiper-nav-btn--next hover-opacity"
+                            type="button"
+                            aria-label="Go to the next slide"
+                        >
+                            {%- render 'icon', name: 'swiper-chevron' -%}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Product Slider & Image",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Media Settings"
+        },
+        {
+            "type": "select",
+            "id": "media_type",
+            "label": "Media type",
+            "default": "video",
+            "options": [
+                { "value": "image", "label": "Image" },
+                { "value": "video", "label": "Video" }
+            ]
+        },
+        {
+            "type": "video",
+            "id": "video",
+            "label": "Video",
+            "info": "Format: .mp4"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "With the video type, the image is used as a poster (first frame)"
+        },
+        {
+            "type": "select",
+            "id": "gradient_direction",
+            "label": "Gradient direction",
+            "default": "gradient-y",
+            "options": [
+                { "value": "gradient-t", "label": "To Top" },
+                { "value": "gradient-b", "label": "To Bottom" },
+                { "value": "gradient-y", "label": "Vertical Sides" },
+                { "value": "gradient-none", "label": "Off" }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Text Settings"
+        },
+        {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "white",
+            "options": [
+                { "value": "black", "label": "Black" },
+                { "value": "white", "label": "White"}
+            ]
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content",
+            "info": "Hint: use Heading 2 for title, and paragraph for body"
+        },
+        {
+            "type": "header",
+            "content": "Product Slider Settings"
+        },
+        {
+            "type": "product_list",
+            "id": "products",
+            "label": "Products",
+            "info": "Add at least 2 products."
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product Slider & Image | AW"
+        }
+    ]
+}
+{% endschema %}

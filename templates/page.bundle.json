@@ -1,0 +1,247 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "bundle-main": {
+      "type": "bundle-main",
+      "blocks": {
+        "765e2373-1563-4149-976f-906fc2687e00": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/Dream-Routine-Bundle-Main.jpg"
+          }
+        },
+        "fa48fb7d-d127-4e28-954c-e4b5c3835d4e": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/Dream-Lip-Set-Goop_1ba262b1-9ae5-4da1-8596-771537930323.jpg"
+          }
+        },
+        "751658a7-8c1c-4ddf-b5a1-3490e42f6a0d": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/Dream-Lip-Set-4.jpg"
+          }
+        },
+        "f31eb85a-33d9-49ae-8df8-a4c4176b21c8": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/Dream-Lip-Set-3_615fd884-394e-4d71-b20b-3fffc383980d.jpg"
+          }
+        },
+        "image_ik6Lgi": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/the-lip-set-model.jpg"
+          }
+        },
+        "af640f7d-3724-4c59-9e52-2850ddff647d": {
+          "type": "step",
+          "settings": {
+            "collection": "bundle-step-1-mini-cloud",
+            "select_your_text": "Select Your Shade",
+            "custom_link_title": "Not sure? Learn more.",
+            "custom_link": ""
+          }
+        },
+        "a3ef30c9-dda7-46c5-8e52-3b193a63646e": {
+          "type": "step",
+          "settings": {
+            "collection": "bundle-step-3-sheer-skin-tint",
+            "select_your_text": "Select Your Shade",
+            "custom_link_title": "",
+            "custom_link": ""
+          }
+        },
+        "step_wzkwmd": {
+          "type": "step",
+          "settings": {
+            "collection": "bundle-step-4-bonus-sample",
+            "select_your_text": "",
+            "custom_link_title": "",
+            "custom_link": ""
+          }
+        },
+        "step_JPiwGb": {
+          "type": "step",
+          "settings": {
+            "collection": "bundle-step-2-moisturizer",
+            "select_your_text": "",
+            "custom_link_title": "",
+            "custom_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "765e2373-1563-4149-976f-906fc2687e00",
+        "fa48fb7d-d127-4e28-954c-e4b5c3835d4e",
+        "751658a7-8c1c-4ddf-b5a1-3490e42f6a0d",
+        "f31eb85a-33d9-49ae-8df8-a4c4176b21c8",
+        "image_ik6Lgi",
+        "af640f7d-3724-4c59-9e52-2850ddff647d",
+        "a3ef30c9-dda7-46c5-8e52-3b193a63646e",
+        "step_wzkwmd",
+        "step_JPiwGb"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "available": true,
+        "badge": "BUILD YOUR BUNDLE",
+        "title": "Dream Routine Bundle",
+        "description": "<p>Where skincare meets makeup. Select your go-to shades of Dream Lip Oil and Sheer Skin Tint—plus, receive a limited-edition Glossy Pouch in Midnight Berry and our award-winning Mini Cloud Dew Gel Cream Moisturizer.</p>",
+        "custom_link_label": "",
+        "custom_link_url": "",
+        "footer_text": "<p><em>*Orders including this bundle are excluded from all discounts and promotions. See our return policy </em><a href=\"https://summerfridays.com/pages/returns-exchanges\" target=\"_blank\" title=\"https://summerfridays.com/pages/returns-exchanges\"><em>here</em></a><em>.</em></p>",
+        "bundle_discount_text": "Discount Applied",
+        "product": "glossy-pouch-in-midnight-berry"
+      }
+    },
+    "how_to_use_Aq7T6c": {
+      "type": "how-to-use",
+      "blocks": {
+        "cards_3wN97j": {
+          "type": "cards",
+          "settings": {
+            "main_media_type": "video",
+            "main_video": "shopify://files/videos/DLO_HowtoUse_e0aa311d-80a5-4afc-93ae-85b421cf81fb.mp4",
+            "secondary_media_type": "image",
+            "secondary_image": "shopify://shop_images/PDP-DLO_HowTo.jpg",
+            "title": "<h2>How to Use<br/><em>Dream Lip Oil</em></h2>",
+            "subtitle": "",
+            "content": "<p>Apply to bare lips or layer over your favorite lip color or liner for added dimension.</p>"
+          }
+        },
+        "cards_r3xi9r": {
+          "type": "cards",
+          "settings": {
+            "main_media_type": "video",
+            "main_video": "shopify://files/videos/Sheer Skin Tint-HowToUse_v2.mp4",
+            "secondary_media_type": "image",
+            "secondary_image": "shopify://shop_images/Howto-SST.jpg",
+            "title": "<h2>How to Use<br/><em>Sheer Skin Tint</em></h2>",
+            "subtitle": "",
+            "content": "<p>Shake well before using. Smooth over skin in the AM after your daily skincare and SPF products. Lightweight formula can be layered if more coverage is desired.</p>"
+          }
+        },
+        "cards_JHQ4pH": {
+          "type": "cards",
+          "settings": {
+            "main_media_type": "video",
+            "main_video": "shopify://files/videos/CloudDew_HowtoUse_8f1b7e62-f52b-43b4-8011-0f262bada5ae.mp4",
+            "secondary_media_type": "image",
+            "secondary_image": "shopify://shop_images/PDP-How-To-Cloud-Dew.jpg",
+            "title": "<h2>How to Use<br/><em>Cloud Dew Gel Cream Moisturizer</em></h2>",
+            "subtitle": "",
+            "content": "<p>Apply to cleansed skin and massage in gently with fingertips.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "cards_3wN97j",
+        "cards_r3xi9r",
+        "cards_JHQ4pH"
+      ],
+      "settings": {
+        "padding_top": 3,
+        "padding_bottom": 3,
+        "padding_top_desktop": 6,
+        "padding_bottom_desktop": 6,
+        "slider_type": "all",
+        "bg_color": "chalk"
+      }
+    },
+    "recommendations_DqBeKf": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "id": "",
+        "layout": "slider",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>You May Also Like</h2>",
+        "content_related": "",
+        "button_label": "Shop now",
+        "button_url": "",
+        "limit": 10,
+        "products": [
+          "cloud-dew-gel-cream",
+          "rich-cushion-cream",
+          "jet-lag-mask",
+          "jet-lag-soothing-hydration-mist",
+          "sheer-skin-tint",
+          "lip-butter-balm-pink-sugar"
+        ]
+      }
+    },
+    "media_accordions_nHwQe9": {
+      "type": "media-accordions",
+      "blocks": {
+        "accordion_custom_LD8ht9": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Join the Self-Care Club",
+            "content": "<p>Earn points every time you shop when you join our rewards program. Redeem points for exclusive discounts, early access to sales and free products. <a href=\"/pages/rewards\" title=\"Summer Fridays Self-Care Club & Rewards\">Learn more.</a></p>",
+            "badge": "Rewards"
+          }
+        },
+        "accordion_custom_qb6cVK": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Subscribe & Save",
+            "content": "<p>Enjoy 15% off and free shipping when you subscribe to your favorite skincare and hybrid-makeup essentials. Cancel, pause or edit any time. <a href=\"/pages/subscription\" title=\"Subscribe + Save\">Learn more.</a></p>",
+            "badge": "Get 15% Off"
+          }
+        },
+        "accordion_custom_pCGbAr": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Recycle with Us",
+            "content": "<p>Send back five or more empties for recycling, and you'll receive a $25 e-gift card to use on your next SummerFridays.com purchase. <a href=\"/pages/recycling-program\" title=\"Recycling Program\">Learn more.</a></p>",
+            "badge": "Get $25 back"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_custom_LD8ht9",
+        "accordion_custom_qb6cVK",
+        "accordion_custom_pCGbAr"
+      ],
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 0,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 0,
+        "media_type": "image",
+        "image": "shopify://shop_images/HP-Footer.jpg",
+        "media_aspect_ratio": "square",
+        "stripes": true,
+        "gradient_direction": "gradient-none",
+        "text_color": "white",
+        "content": "<h2>Essential beauty formulations from California.</h2><h3>For the skin and senses.</h3>",
+        "content_2": "",
+        "vertical_alignment": "center",
+        "accordions_bg_color": "white",
+        "open_first": true
+      }
+    }
+  },
+  "order": [
+    "bundle-main",
+    "how_to_use_Aq7T6c",
+    "recommendations_DqBeKf",
+    "media_accordions_nHwQe9"
+  ]
+}

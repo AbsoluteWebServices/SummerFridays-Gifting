@@ -1,0 +1,285 @@
+$ns: '.article';
+
+#{$ns} {
+    &__content {
+        position: relative;
+
+        @media only screen and (min-width: 768px) {
+            padding: 0 3.5rem;
+        }
+
+        @media only screen and (min-width: 1280px) {
+            padding: 0 6rem;
+        }
+
+        > iframe {
+            max-width: 100% !important;
+        }
+
+        .video {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+
+            iframe,
+            object,
+            embed {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+        }
+
+        + .social-sharing {
+            padding: 4.2rem 0;
+
+            @media only screen and (min-width: 768px) {
+                padding: 4.2rem 4.2rem;
+            }
+
+            @media only screen and (min-width: 1280px) {
+                padding: 4.2rem 4.2rem 4.2rem;
+            }
+        }
+    }
+
+    &-hero {
+        @media only screen and (min-width: 768px) {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        &__category {
+            margin-bottom: 2.4rem;
+        }
+
+        &__excerpt {
+            max-width: 60rem;
+            padding-top: 2rem;
+
+            @media only screen and (min-width: 768px) {
+                margin-top: auto;
+            }
+        }
+
+        &__image {
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        &__image-holder {
+            padding-top: 100%;
+            position: relative;
+
+            @media only screen and (min-width: 1280px) {
+                padding-top: 87.5%;
+            }
+        }
+
+        &__info {
+            max-width: 60rem;
+        }
+
+        &__item {
+            @media only screen and (min-width: 768px) {
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+            }
+
+            &--content {
+                padding-top: 3rem;
+
+                @media only screen and (min-width: 768px) {
+                    padding: 0 0 0 3rem;
+                }
+
+                @media only screen and (min-width: 768px) {
+                    padding: 2rem 0 2rem 6rem;
+                }
+
+                @media only screen and (min-width: 1280px) {
+                    padding: 4rem 0 4rem 10rem;
+                }
+            }
+        }
+    }
+}
+
+#{$ns}-sections {
+    & > div {
+        margin-top: 4.2rem;
+
+        @media only screen and (min-width: 1280px) {
+            margin-top: 8.4rem;
+        }
+    }
+
+    &__caption {
+        display: block;
+        font-style: italic;
+        line-height: 1.2;
+        margin-top: 1.2rem;
+        padding-left: 1.4rem;
+        position: relative;
+
+        &:before {
+            background: var(--ink);
+            content: '';
+            height: .6rem;
+            left: 0;
+            position: absolute;
+            top: .3rem;
+            width: .6rem;
+        }
+
+        @media only screen and (min-width: 768px) {
+            margin-top: 2.4rem;
+            padding-left: 2rem;
+
+            &:before {
+                height: 1rem;
+                top: .2rem;
+                width: 1rem;
+            }
+        }
+
+        @media only screen and (min-width: 1280px) {
+            padding-left: 3rem;
+
+            &:before {
+                height: 1.4rem;
+                top: 0;
+                width: 1.4rem;
+            }
+        }
+    }
+}
+
+// Double image
+#{$ns}-double-image {
+    &__item {
+        @media only screen and (min-width: 768px) {
+            width: 50%;
+        }
+    }
+
+    &__list {
+        @media only screen and (min-width: 768px) {
+            display: flex;
+            flex-flow: row wrap;
+        }
+    }
+
+    &__picture {
+        &,
+        * {
+            display: block;
+            height: auto;
+            width: 100%;
+        }
+    }
+
+    .social-sharing {
+        margin-top: 4.2rem;
+    }
+}
+
+// Single image
+#{$ns}-single-image {
+    &__picture {
+        &,
+        * {
+            display: block;
+            height: auto;
+            width: 100%;
+        }
+    }
+
+    .social-sharing {
+        margin-top: 4.2rem;
+    }
+}
+
+// Text image
+#{$ns}-text-image {
+    &__item {
+        @media only screen and (min-width: 768px) {
+            padding: 0 2rem;
+            width: 50%;
+        }
+
+        @media only screen and (min-width: 768px) {
+            padding: 0 4rem;
+        }
+
+        @media only screen and (min-width: 1280px) {
+            padding: 0 6rem;
+        }
+
+        &--content {
+            padding-top: 2.4rem;
+
+            @media only screen and (min-width: 1280px) {
+                padding-top: 4.2rem;
+            }
+
+            .social-sharing {
+                margin-top: 4.2rem;                
+            }
+        }
+    }
+
+    &__link {
+        color: var(--ink);
+        display: block;
+    }
+
+    &__list {
+        @media only screen and (min-width: 768px) {
+            display: flex;
+
+            &--left {
+                flex-flow: row wrap;
+            }
+
+            &--right {
+                flex-flow: row-reverse wrap;
+            }
+        }
+    }
+
+    &__picture {
+        &,
+        * {
+            display: block;
+            height: auto;
+            width: 100%;
+        }
+    }
+
+    &__product-info {
+        border: .1rem solid var(--ink);
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        padding: 1.5rem 2rem;
+    }
+
+    &__product-title {
+        padding-right: 1rem;
+    }
+}

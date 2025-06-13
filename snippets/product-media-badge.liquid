@@ -1,0 +1,11 @@
+{%- assign accentuate = product.metafields.accentuate -%}
+{%- if accentuate.badge != blank -%}
+    <div class="subheader-small product-media__badge {% if modifier != blank %}product-media__badge--{{- modifier -}}{% endif %}">
+        {%- assign badge_handle = accentuate.badge | handle %}
+        {%- if badge_handle == 'value' -%}
+            Value
+        {%- else -%}
+            {{- accentuate.badge | upcase -}}
+        {%- endif -%}
+    </div>
+{%- endif -%}

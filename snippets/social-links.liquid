@@ -1,0 +1,22 @@
+{%- assign social_accounts = 'X, Instagram, TikTok, Facebook, Pinterest, Snapchat, Tumblr, YouTube, Vimeo' | split: ', ' -%}
+<ul class="list-reset {{ classes }}">
+    {%- for social in social_accounts -%}
+        {%- assign social_handle = social | handleize -%}
+        {%- capture social_link_key -%}social_{{ social_handle }}_link{%- endcapture -%}
+        {%- assign social_link = settings[social_link_key] -%}
+        {%- if social_link != blank -%}
+            <li>
+                <a
+                    href="{{ social_link }}"
+                    class="hover-opacity"
+                    title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}"
+                    aria-label="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}"
+                    target="_blank"
+                >
+                    {%- render 'icon', name: social_handle -%}
+                    <span class="visually-hidden">{{ social }}</span>
+                </a>
+            </li>
+        {%- endif -%}
+    {%- endfor -%}
+</ul>

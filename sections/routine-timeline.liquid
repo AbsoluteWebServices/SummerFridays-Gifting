@@ -1,0 +1,184 @@
+{%- if section.blocks.size > 0 -%}
+    {%- liquid
+        assign padding_top = section.settings.padding_top | default: 0
+        assign padding_bottom = section.settings.padding_bottom | default: 0
+        assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+        assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+        assign content = section.settings.content | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>'
+        assign hide_last_step_on_desktop = section.settings.hide_last_step_on_desktop | default: false
+        assign hide_last_step_on_mobile = section.settings.hide_last_step_on_mobile | default: false
+
+        assign amount_of_steps_desktop = section.blocks.size 
+        if hide_last_step_on_desktop
+            assign amount_of_steps_desktop = section.blocks.size | minus: 1
+        endif
+        assign step_width_desktop = 100.00 | divided_by: amount_of_steps_desktop
+    -%}
+
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/routine-timeline.scss' -%}
+
+    <section 
+        id="section-{{- section.id -}}"
+    >
+        <div class="container">
+            <div class="routine-timeline__inner">
+                {%- if content != blank -%}
+                    <div class="routine-timeline__content rte">
+                        {{- content -}}
+                    </div>
+                {%- endif -%}
+
+                <div class="routine-timeline__steps {% if hide_last_step_on_mobile %}routine-timeline__steps--last-hidden-m{% endif %} {% if hide_last_step_on_desktop %}routine-timeline__steps--last-hidden{% endif %}">
+                    {%- assign pre_last_index = section.blocks.size | minus: 1 -%}
+                    {%- for block in section.blocks -%}
+                        {%- liquid 
+                            assign title = block.settings.title
+                            assign show_dot = block.settings.show_dot | default: true, allow_false: true
+                            assign active = block.settings.active | default: false
+                            assign content = block.settings.content
+                            assign product = block.settings.product
+                            assign width_desktop = block.settings.width_desktop | default: step_width_desktop
+                        -%}
+
+                        <div 
+                            class="routine-timeline__step {% unless show_dot %}routine-timeline__step--hide-dot{% endunless %} {% if active %}routine-timeline__step--active{% endif %} {% if forloop.last and hide_last_step_on_desktop %}routine-timeline__step--last-hidden{% endif %} {% if forloop.index == pre_last_index %}routine-timeline__step--pre-last{% endif %}"
+                            style="--step-width-desktop: {{- width_desktop -}}%;"
+                        >
+                            {%- if title != blank -%}
+                                <div class="subheader-small routine-timeline__step-title">{{- title -}}</div>
+                            {%- endif -%}
+
+                            {%- if content != blank -%}
+                                <div class="rte routine-timeline__step-content">{{- content -}}</div>
+                            {%- endif -%}
+
+                            {%- if product.title != blank -%}
+                                <div class="routine-timeline__step-product">
+                                    {%- render 'product-card-informational', product: product -%}
+                                </div>
+                            {%- endif -%}
+                        </div>
+                    {%- endfor -%}
+                </div>
+            </div>
+        </div>
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Routine Timeline | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Main Settings"
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content",
+            "info": "Hint: use Heading 2 for title, and paragraph for body"
+        },
+        {
+            "type": "checkbox",
+            "id": "hide_last_step_on_mobile",
+            "label": "Hide the last step on mobile"
+        },
+        {
+            "type": "checkbox",
+            "id": "hide_last_step_on_desktop",
+            "label": "Hide the last step on desktop"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Step",
+            "type": "step",
+            "settings": [
+                {
+                    "type": "checkbox",
+                    "id": "active",
+                    "label": "Active"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "show_dot",
+                    "label": "Show dot",
+                    "default": true
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "content",
+                    "label": "Content"
+                },
+                {
+                    "type": "product",
+                    "id": "product",
+                    "label": "Product"
+                },
+                {
+                    "type": "range",
+                    "id": "width_desktop",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "%",
+                    "label": "Step width on desktop",
+                    "default": 0
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Routine Timeline | AW"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,394 @@
+{%- liquid
+    assign padding_top = section.settings.padding_top | default: 0
+    assign padding_bottom = section.settings.padding_bottom | default: 0
+    assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+    assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+    assign media_type = section.settings.media_type | default: 'image'
+    assign lazyload = section.settings.lazyload | default: false
+    assign image = section.settings.image
+    assign video = section.settings.video
+    assign media_aspect_ratio_mobile = section.settings.media_aspect_ratio_mobile | default: 'square'
+    assign media_aspect_ratio_desktop = section.settings.media_aspect_ratio_desktop | default: 'taller'
+    assign media_caption = section.settings.media_caption
+    assign media_fullwidth_mobile = section.settings.media_fullwidth_mobile | default: true, allow_false: true
+    assign content = section.settings.content | replace: '%%', '<div class="image-split__text-right">' | replace: '%!%', '</div>'
+    #assign content = section.settings.content | replace: '<%>', 'ddd'
+    assign content_justify_on_desktop = section.settings.content_justify_on_desktop | default: 'space-between'
+    assign content_smaller = section.settings.content_smaller
+    assign content_left = section.settings.content_left
+    assign content_right = section.settings.content_right
+    assign content_bottom = section.settings.content_bottom
+    assign image_secondary = section.settings.image_secondary
+    assign content_secondary = section.settings.content_secondary
+    assign content_secondary_position_desktop = section.settings.content_secondary_position_desktop | default: 'bottom'
+    assign content_secondary_layout = section.settings.content_secondary_layout | default: 'text_media'
+    assign products = section.settings.products
+    assign vertical_alignment = section.settings.vertical_alignment | default: 'center'
+    assign layout_desktop = section.settings.layout_desktop | default: 'media_text'
+    assign layout_mobile = section.settings.layout_mobile | default: 'media_text'
+    assign loading = 'eager'
+    if lazyload == true
+        assign loading = 'lazy'
+    endif
+-%}
+
+{%- render 'offset',
+    id: section.id,
+    padding_top: padding_top,
+    padding_bottom: padding_bottom,
+    padding_top_desktop: padding_top_desktop,
+    padding_bottom_desktop: padding_bottom_desktop
+-%}
+
+{%- render 'adastra' with 'styles/sections/image-split.scss' -%}
+
+<section id='section-{{- section.id -}}'>
+    <div class='container container--smaller-tablet'>
+        <div class='image-split__wrapper image-split__wrapper--desktop-layout-{{- layout_desktop }} image-split__wrapper--mobile-layout-{{- layout_mobile }} image-split__wrapper--y-{{- vertical_alignment -}}'>
+            <div class='image-split__media-col'>
+                <div class='image-split__media image-split__media--ar-m-{{ media_aspect_ratio_mobile }} image-split__media--ar-d-{{ media_aspect_ratio_desktop }} {% if media_fullwidth_mobile %}image-split__media--w-full-mobile{% endif %}'>
+                    {%- if media_type == 'image' -%}
+                        {%- if image -%}
+                            {%- render 'img', image: image, loading: loading -%}
+                        {%- endif -%}
+                    {%- elsif media_type == 'video' -%}
+                        {%- if video -%}
+                            {%- render 'video', video: video, poster: image -%}
+                        {%- endif -%}
+                    {%- endif -%}
+                </div>
+                {%- if media_caption != blank -%}
+                    <div class='image-split__media-caption rte rte--smaller'>
+                        {{- media_caption -}}
+                    </div>
+                {%- endif -%}
+            </div>
+
+            <div class='image-split__content-col'>
+                <div class='image-split__content image-split__content--justify-d-{{ content_justify_on_desktop }}'>
+                    <div class='image-split__content-inner'>
+                        {%- if content != blank or content_smaller != blank -%}
+                            <div class='image-split__content-rte-wrapper'>
+                                {%- if content != blank -%}
+                                    <div class='rte rte--smaller p-large'>{{- content -}}</div>
+                                {%- endif -%}
+
+                                {%- if content_smaller != blank -%}
+                                    <div class='rte rte--smaller'>{{- content_smaller -}}</div>
+                                {%- endif -%}
+                            </div>
+                        {%- endif -%}
+
+                        {%- if content_left != blank and content_right != blank -%}
+                            <div class='image-split__content-columns'>
+                                <div class='rte rte--smaller'>{{- content_left -}}</div>
+                                <div class='rte rte--smaller'>{{- content_right -}}</div>
+                            </div>
+                        {%- endif -%}
+
+                        {%- if content_bottom != blank -%}
+                            <div class='rte rte--smaller'>{{- content_bottom -}}</div>
+                        {%- endif -%}
+                    </div>
+
+                    {%- if section.blocks.size > 0 -%}
+                        <div class="image-split__text-content-items">
+                            {%- for block in section.blocks -%}
+                                {%- liquid 
+                                    assign text_content_title = block.settings.title | escape | strip_html
+                                    assign text_content_content = block.settings.content
+                                    if text_content_title == blank or text_content_content == blank
+                                        continue
+                                    endif
+                                -%}
+                                <div class="image-split__text-content-item">
+                                    <div class="subheader-small">{{- text_content_title -}}</div>
+                                    <div class="image-split__text-content-item-content rte rte--smaller">
+                                        {{- text_content_content -}}
+                                    </div>
+                                </div>
+                            {%- endfor -%}
+                        </div>
+                    {%- endif -%}
+
+                    {%- if products != blank -%}
+                        <div class='image-split__products'>
+                            {%- for product in products -%}
+                                {%- assign id = section.id | append: '-' | append: product.id -%}
+                                <div class='image-split__product'>
+                                    {%- render 'product-card-small', product: product, id: id -%}
+                                </div>
+                            {%- endfor -%}
+                        </div>
+                    {%- endif -%}
+
+                    {%- if content_secondary != blank or image_secondary -%}
+                        {%- capture content_secondary_html -%}
+                            {%- if content_secondary != blank -%}
+                                <div class='rte rte--smaller'>{{- content_secondary -}}</div>
+                            {%- endif -%}
+                        {%- endcapture -%}
+
+                        {%- capture image_secondary_html -%}
+                            {%- if image_secondary -%}
+                                <div class='image-split__secondary-img'>
+                                    <img
+                                        src='{{- image_secondary |  image_url: width: 500 -}}'
+                                        alt='{{- image_secondary.alt | default: 'Image Split secondary image' -}}'
+                                        class='absolute-img'
+                                        width='250'
+                                        height='300'
+                                        loading='lazy'
+                                    >
+                                </div>
+                            {%- endif -%}
+                        {%- endcapture -%}
+                        <div class='image-split__content-secondary image-split__content-secondary--pos-d-{{ content_secondary_position_desktop }} image-split__content-secondary--layout-{{ content_secondary_layout }}'>
+                            {%- if content_secondary_layout == 'text_media' -%}
+                                {{- content_secondary_html -}}
+                                {{- image_secondary_html -}}
+                            {%- else -%}
+                                {{- image_secondary_html -}}
+                                {{- content_secondary_html -}}
+                            {%- endif -%}
+                        </div>
+                    {%- endif -%}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Image Split | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Settings"
+        },
+        {
+            "type": "select",
+            "id": "media_type",
+            "label": "Media type",
+            "default": "video",
+            "options": [
+                { "value": "image", "label": "Image" },
+                { "value": "video", "label": "Video" }
+            ]
+        },
+        {
+            "type": "checkbox",
+            "id": "lazyload",
+            "label": "Lazyload",
+            "default": false,
+            "info": "Enable if the media is below the fold."
+        },
+        {
+            "type": "video",
+            "id": "video",
+            "label": "Video",
+            "info": "Format: .mp4"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "With the video type, the image is used as a poster (first frame)"
+        },
+        {
+            "type": "select",
+            "id": "media_aspect_ratio_mobile",
+            "label": "Media aspect ratio (mobile)",
+            "default": "square",
+            "options": [
+                { "value": "square", "label": "Square" },
+                { "value": "taller", "label": "Taller" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "media_aspect_ratio_desktop",
+            "label": "Media aspect ratio (desktop)",
+            "default": "taller",
+            "options": [
+                { "value": "square", "label": "Square" },
+                { "value": "taller", "label": "Taller" }
+            ]
+        },
+        {
+            "type": "checkbox",
+            "id": "media_fullwidth_mobile",
+            "label": "Media fullwidth on mobile",
+            "default": true
+        },
+        {
+            "type": "richtext",
+            "id": "media_caption",
+            "label": "Media caption"
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content (larger, 16px)",
+            "info": "Hint: use H2 for the title, paragraph for regular text; Wrap the text in %% and %!% to right align it on a new line, e. g., %%text%!%"
+        },
+        {
+            "type": "richtext",
+            "id": "content_smaller",
+            "label": "Content (smaller, 13px)",
+            "info": "Hint: use H2 for the title, paragraph for regular text"
+        },
+        {
+            "type": "richtext",
+            "id": "content_left",
+            "label": "Content (left column)",
+            "info": "It shows only if both Content (left column) and Content (right column) are filled out."
+        },
+        {
+            "type": "richtext",
+            "id": "content_right",
+            "label": "Content (right column)",
+            "info": "It shows only if both Content (left column) and Content (right column) are filled out."
+        },
+        {
+            "type": "richtext",
+            "id": "content_bottom",
+            "label": "Content (bottom)"
+        },
+        {
+            "type": "product_list",
+            "id": "products",
+            "label": "Cross-sell products"
+        },
+        {
+            "type": "select",
+            "id": "content_justify_on_desktop",
+            "label": "Content justify on desktop",
+            "default": "space-between",
+            "options": [
+                { "value": "top", "label": "Top" },
+                { "value": "bottom", "label": "Bottom" },
+                { "value": "space-between", "label": "Space between" }
+            ]
+        },
+        {
+            "type": "image_picker",
+            "id": "image_secondary",
+            "label": "Image (secondary)"
+        },
+        {
+            "type": "richtext",
+            "id": "content_secondary",
+            "label": "Content (secondary)"
+        },
+        {
+            "type": "select",
+            "id": "content_secondary_position_desktop",
+            "label": "Secondary content position on desktop",
+            "default": "bottom",
+            "options": [
+                { "value": "top", "label": "Top" },
+                { "value": "bottom", "label": "Bottom" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "content_secondary_layout",
+            "label": "Secondary content layout",
+            "default": "text_media",
+            "options": [
+                { "value": "media_text", "label": "Media - Text" },
+                { "value": "text_media", "label": "Text - Media" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "vertical_alignment",
+            "label": "Vertical alignment",
+            "default": "top",
+            "options": [
+                { "value": "top", "label": "Top" },
+                { "value": "center", "label": "Center" },
+                { "value": "bottom", "label": "Bottom" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "layout_desktop",
+            "label": "Layout desktop",
+            "default": "media_text",
+            "options": [
+                { "value": "media_text", "label": "Media - Text" },
+                { "value": "text_media", "label": "Text - Media" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "layout_mobile",
+            "label": "Layout mobile",
+            "default": "media_text",
+            "options": [
+                { "value": "media_text", "label": "Media - Text" },
+                { "value": "text_media", "label": "Text - Media" }
+            ]
+        }
+    ],
+    "blocks": [
+        {
+            "type": "title_content",
+            "name": "Title & content",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "content",
+                    "label": "Content"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Image Split | AW"
+        }
+    ]
+}
+{% endschema %}

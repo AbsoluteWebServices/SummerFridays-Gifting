@@ -1,0 +1,21 @@
+<picture>
+    <source srcset="{{ image_desktop | image_url }}" media="(min-width: 768px)">
+    <source srcset="{{ image_mobile | image_url: width: 768 }}">
+    
+    <img
+        class="absolute-img"
+        src="{{ image_mobile | image_url: width: 768 }}"
+        height="{{ image_mobile.height }}"
+        width="{{ image_mobile.width }}"
+        loading="{%- if loading -%}{{- loading -}}{%- else -%}lazy{%- endif -%}"
+        alt="{{ image_mobile.alt | default: 'Image' }}"
+        style="
+            {%- if image_mobile.presentation.focal_point != blank -%}
+                --mobile-object-position: {{ image_mobile.presentation.focal_point }};
+            {%- endif -%}
+            {%- if image_desktop.presentation.focal_point != blank -%}
+                --desktop-object-position: {{ image_desktop.presentation.focal_point }};
+            {%- endif -%}
+        "
+    >
+</picture>

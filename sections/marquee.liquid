@@ -1,0 +1,289 @@
+{%- if section.blocks.size > 0 -%}
+    {%- liquid
+        assign padding_top = section.settings.padding_top | default: 0
+        assign padding_bottom = section.settings.padding_bottom | default: 0
+        assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+        assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+        assign content = section.settings.content | replace: 'Summer Fridays', '<span class="nowrap">Summer Fridays</span>'
+        assign font_size = section.settings.font_size | default: 'normal'
+        assign font_p_size = section.settings.font_p_size | default: 'larger'
+        assign text_alignment = section.settings.text_alignment | default: 'center'
+    -%}
+
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/marquee.scss' -%}
+
+    {%- capture loop -%}
+        {%- assign index = 0 -%}
+        {%- assign with_content = false -%}
+        {%- for block in section.blocks -%}
+            {%- liquid 
+                assign media_type = block.settings.media_type | default: 'image'
+                assign image = block.settings.image
+                assign video = block.settings.video
+
+                if media_type == 'image' and image == blank
+                    continue
+                endif
+
+                if media_type == 'video' and video == blank
+                    continue
+                endif
+
+                assign title = block.settings.title | escape | strip_html
+                assign subtitle = block.settings.subtitle | escape | strip_html
+                assign badge = block.settings.badge | escape | strip_html
+                assign url = block.settings.url
+
+                assign index = index | plus: 1
+
+                assign default_alt = 'SummerFridays beauty marquee ' | append: forloop.index 
+            -%}
+            <div 
+                class="marquee__slide" 
+                style="--marquee-slide-index: {{- index -}};"
+                {% if url != blank %}
+                    data-autoplay-pause
+                {% endif %}
+            >
+                {%- if url != blank -%}
+                    <a href="{{- url -}}" aria-label="{% if media_type == 'image' %}{{ image.alt | default: default_alt }}{% else %}{{ video.alt | default: default_alt }}{% endif %} {% if title != blank %}{{ title -}}{% endif %}" class="marquee__media scale-img">
+                {%- else -%}
+                    <div class="marquee__media">
+                {%- endif -%}
+                        {%- if badge != blank -%}
+                            <div class="subheader-small product-card__badge">
+                                {{- badge -}}
+                            </div>
+                        {%- endif -%}
+
+                        {%- if media_type == 'image' -%}
+                            {%- if image -%}
+                                <img 
+                                    src="{{- image |  image_url: width: 500 -}}" 
+                                    alt="{{- image.alt | default: 'Marquee image' -}}"
+                                    width="250"
+                                    height="250"
+                                    loading="lazy"
+                                    class="absolute-img"
+                                >
+                            {%- endif -%}
+                        {%- elsif media_type == 'video' -%}
+                            {%- if video -%}
+                                {%- render 'video', 
+                                    video: video,
+                                    poster: image
+                                -%}
+                            {%- endif -%}
+                        {%- endif -%}
+                {%- if url != blank -%}
+                    </a>
+
+                    {%- if title != blank -%}
+                        {%- assign with_content = true -%}
+                        <div class="marquee__slide-content a-underline-wrapper a-underline-style-1">
+                            <h4>
+                                <a href="{{- url -}}" aria-label="{{- title -}}" class="marquee__slide-title">
+                                    {{- title -}}
+                                </a>
+                            </h4>
+
+                            {%- if subtitle != blank -%}
+                                <p class="superscript-normal marquee__slide-subtitle">{{- subtitle -}}</p>
+                            {%- endif -%}
+                        </div>
+                    {%- endif -%}
+                {%- else -%}
+                    </div>
+                {%- endif -%}
+            </div>
+        {%- endfor -%}
+    {%- endcapture -%}
+
+    <section 
+        id='section-{{- section.id -}}'
+        x-data="marquee"
+        data-split-load-section
+    >
+        {%- if content != blank -%}
+            <div class='container container--smaller-tablet'>
+                <div class="rte {% if font_p_size == 'larger' %}p-large{% endif %} {% if font_size == 'larger' %}rte--larger{% endif %} marquee__content marquee__content--{{- text_alignment -}}">
+                    {{- content -}}
+                </div>
+            </div>
+        {%- endif -%}
+
+        <div 
+            class="marquee__loops"
+        >
+            <div 
+                class="marquee__loop {% if with_content %}marquee__loop--with-content{% endif %}"
+                :class="{
+                    'marquee__loop--paused': !isScrolling || !isScrollingHover
+                }"
+                style="--marquee-amount-of-slides: {{- index -}};"
+            >
+                {{- loop -}}
+
+                <div class="video__controls">
+                    <button
+                        class="video__button"
+                        :class="{
+                            'video__button--paused': !isScrolling || !isScrollingHover
+                        }"
+                        type="button"
+                        aria-label="Pause scrolling"
+                        :aria-label="isScrolling || isScrollingHover ? 'Pause scrolling' : 'Play scrolling'"
+                        @click.prevent="toggleScroll"
+                    >
+                        {%- render 'icon', name: 'play-round' -%}
+                        {%- render 'icon', name: 'pause-round' -%}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Marquee | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Settings"
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content"
+        },
+        {
+            "type": "select",
+            "id": "text_alignment",
+            "label": "Text alignment",
+            "default": "center",
+            "options": [
+                { "value": "left", "label": "Left" },
+                { "value": "center", "label": "Center" },
+                { "value": "right", "label": "Right" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "font_size",
+            "label": "Font headings size",
+            "default": "normal",
+            "options": [
+                { "value": "normal", "label": "Normal" },
+                { "value": "larger", "label": "Larger" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "font_p_size",
+            "label": "Font paragraph size",
+            "default": "larger",
+            "options": [
+                { "value": "normal", "label": "Normal" },
+                { "value": "larger", "label": "Larger" }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Marquee | AW"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Item",
+            "type": "item",
+            "settings": [
+                {
+                    "type": "select",
+                    "id": "media_type",
+                    "label": "Media type",
+                    "default": "video",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "video",
+                    "id": "video",
+                    "label": "Video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image",
+                    "info": "With the video type, the image is used as a poster (first frame)"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "subtitle",
+                    "label": "Subtitle"
+                },
+                {
+                    "type": "text",
+                    "id": "badge",
+                    "label": "Badge"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "URL"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

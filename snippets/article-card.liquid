@@ -1,0 +1,65 @@
+{%- liquid 
+    assign accentuate = article.metafields.accentuate
+
+    assign target_blank = false
+    assign url = article.url
+    assign title = article.title
+
+    assign category = '' 
+    if article.tags.size > 0
+        assign category = article.tags.first
+    endif
+
+    if accentuate.press_article_url != blank
+        assign target_blank = true
+        assign url = accentuate.press_article_url
+        assign category = article.title
+        assign title = article.content
+    endif
+-%}
+
+<article>
+    <a 
+        href="{{- url -}}"
+        class="article__image scale-img"
+        aria-label="{{- article.title }} {% if target_blank %} - open in a new tab{% endif %}"
+        {% if target_blank %}
+            target="_blank"
+        {% endif %}
+    >
+        {%- if article.image -%}
+            {%- render 'img', image: article.image, loading: loading -%}
+        {%- endif -%}
+    </a>
+
+    <div class="article__body">
+        {%- if category != blank -%}
+            <div class="article__category">{{- category -}}</div>
+        {%- endif -%}
+
+        <h3 class="subheader-large">
+            <a 
+                href="{{- url -}}" 
+                class="hover-opacity"
+                aria-label="{{- article.title }} {% if target_blank %} - open in a new tab{% endif %}"
+                {% if target_blank %}
+                    target="_blank"
+                {% endif %}
+            >
+                {{- title -}}
+            </a>
+        </h3>
+
+        <a 
+            href="{{- url -}}" 
+            class="article__rm cta-textlink hover-opacity hover-arrow"
+            aria-label="{{- article.title }} {% if target_blank %} - open in a new tab{% endif %}"
+            {% if target_blank %}
+                target="_blank"
+            {% endif %}
+        >
+            {{- 'blogs.article.read_more' | t -}}
+            {%- render 'icon', name: 'arrow-right' -%}
+        </a>
+    </div>
+</article>

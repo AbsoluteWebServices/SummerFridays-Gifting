@@ -1,0 +1,588 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product-sf",
+      "settings": {}
+    },
+    "before_after_PMJJiN": {
+      "type": "before-after",
+      "blocks": {
+        "result_bFHTDL": {
+          "type": "result",
+          "settings": {
+            "result": 100,
+            "fact": "<p>of participants saw an increase in moisturization and hydration 8 hours after application.</p>"
+          }
+        },
+        "result_iVTb8A": {
+          "type": "result",
+          "settings": {
+            "result": 97,
+            "fact": "<p>thought their skin was softer, smoother and soothed 8 hours <br/>after application.</p>"
+          }
+        },
+        "result_fr4pgk": {
+          "type": "result",
+          "settings": {
+            "result": 94,
+            "fact": "<p>noticed an improvement in overall skin texture 8 hours after application.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "result_bFHTDL",
+        "result_iVTb8A",
+        "result_fr4pgk"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 2.4,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "content": "<h2>The Results Are In</h2>",
+        "note": "<p>* In a consumer study with 33 participants (aged 25 - 55) using Jet Lag Mask:</p>",
+        "functionality": "static-media",
+        "before_image": "shopify://shop_images/PDP-Clinicals-Cover-JL-Mist.jpg",
+        "before_label": "",
+        "after_image": "shopify://shop_images/PDP-Clinicals-Cover-JL-Mist.jpg",
+        "after_label": "",
+        "media_type": "image",
+        "lazyload": true,
+        "image": "shopify://shop_images/PDP-Clinicals-Cover-JL-Mist.jpg"
+      }
+    },
+    "how_to_use_R4qdic": {
+      "type": "how-to-use",
+      "blocks": {
+        "cards_dkQQUb": {
+          "type": "cards",
+          "settings": {
+            "main_media_type": "video",
+            "main_video": "shopify://files/videos/Jet Lag Mist - Nikki Cruz - Application -1 _8231a799-c38a-4a00-8298-8f39f0fa3fb3.mp4",
+            "secondary_media_type": "image",
+            "secondary_image": "shopify://shop_images/PDP-How-To-Use-JL-Mist.jpg",
+            "title": "<h2>How to Use <br/><em>Jet Lag Skin Soothing Hydration Mist</em></h2>",
+            "subtitle": "",
+            "content": "<p>With eyes closed, hold the product 12 in/30 cm away from the face and gently mist. Use as the first step in your skincare routine, after makeup application, or as needed throughout the day.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "cards_dkQQUb"
+      ],
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "slider_type": "all",
+        "bg_color": "morning-sky",
+        "text_color": "white"
+      }
+    },
+    "routine_timeline_rztmEX": {
+      "type": "routine-timeline",
+      "blocks": {
+        "step_paHa7d": {
+          "type": "step",
+          "settings": {
+            "active": true,
+            "show_dot": true,
+            "title": "step 1: Prep",
+            "content": "<h2>Jet Lag Skin Soothing Hydration Mist</h2>",
+            "product": "",
+            "width_desktop": 47
+          }
+        },
+        "step_TXqapJ": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "step 2: Treat",
+            "content": "<p>Explore <a href=\"/products/jet-lag-deep-hydration-serum\" target=\"_blank\" title=\"Jet Lag™ Deep Hydration Serum\">Jet Lag Deep Hydration Serum</a></p>",
+            "product": "",
+            "width_desktop": 42
+          }
+        },
+        "step_HLfHNq": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "step 3: Moisturize",
+            "content": "<p>Explore <a href=\"/products/rich-cushion-cream\" title=\"Rich Cushion Cream\">Rich Cushion Cream</a></p>",
+            "product": "",
+            "width_desktop": 31
+          }
+        },
+        "step_iYyXQW": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "step 4: Protect",
+            "content": "<p>Explore <a href=\"/products/shadedrops-spf-30-mineral-milk-sunscreen\" title=\"ShadeDrops Broad Spectrum SPF 30 Mineral Milk Sunscreen\">ShadeDrops Mineral Milk Sunscreen</a></p>",
+            "product": "",
+            "width_desktop": 45
+          }
+        },
+        "step_m74qxJ": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "",
+            "content": "",
+            "product": "",
+            "width_desktop": 0
+          }
+        }
+      },
+      "block_order": [
+        "step_paHa7d",
+        "step_TXqapJ",
+        "step_HLfHNq",
+        "step_iYyXQW",
+        "step_m74qxJ"
+      ],
+      "settings": {
+        "padding_top": 2.4,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "content": "<h2>Adding Jet Lag Skin Soothing Hydration Mist to Your Routine</h2>",
+        "hide_last_step_on_mobile": true,
+        "hide_last_step_on_desktop": true
+      }
+    },
+    "media_accordions_cRnD8x": {
+      "type": "media-accordions",
+      "blocks": {
+        "accordion_ingredient_Mtt8nU": {
+          "type": "accordion_ingredient",
+          "settings": {
+            "handle": "glycerin",
+            "title": "",
+            "content": "<p>A super-powered humectant that attracts and locks in moisture for lasting dryness relief that helps skin feel soft and supple.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_4BGyJW": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "SKIN SOOTHING COMPLEX",
+            "content": "<p>Our combination of allantoin, bisabolol, panthenol, and cucumber extract helps to soothe and comfort stressed skin.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_gqVLAt": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "SKIN BARRIER SUPPORT COMPLEX",
+            "content": "<p>Our formulation of Ceramide NP and plant-derived Squalane moisturizes and helps to support a healthy skin barrier.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_HJggiC": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "ANTIOXIDANT COMPLEX",
+            "content": "<p>Formulated with Green Tea Extract, Vitamin E and Ectoin helps to protect against free radical damage and maintain water balance. </p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_T9gxqq": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Full Ingredient List",
+            "content": "<p>Water/Aqua/Eau, Glycerin, Propanediol, Pentylene Glycol, 1,2-Hexanediol, Panthenol, Aloe Barbadensis Leaf Juice, Ceramide NP, Ectoin, Camellia Sinensis Leaf Extract, Centella Asiatica Extract, Cucumis Sativus (Cucumber) Fruit Extract, Allantoin, Squalane, Butyrospermum Parkii (Shea) Butter, Olea Europaea (Olive) Fruit Oil, Tocopheryl Acetate, Ethylhexylglycerin, Butylene Glycol, Hydrogenated Lecithin, Behenyl Alcohol, Polyglyceryl-3 Methylglucose Distearate, Cetearyl Alcohol, Inulin Lauryl Carbamate, Glycolipids, Caprylic/Capric Triglyceride, Methyl Diisopropyl Propionamide, Citric Acid, Sodium Benzoate, Potassium Sorbate, Tocopherol.<br/><br/>Keep out of eyes. For external use only.</p>",
+            "badge": ""
+          }
+        }
+      },
+      "block_order": [
+        "accordion_ingredient_Mtt8nU",
+        "accordion_custom_4BGyJW",
+        "accordion_custom_gqVLAt",
+        "accordion_custom_HJggiC",
+        "accordion_custom_T9gxqq"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "media_type": "image",
+        "image": "shopify://shop_images/PDP-JL-Mist-Supplemental-Goop.jpg",
+        "media_aspect_ratio": "square",
+        "stripes": false,
+        "gradient_direction": "gradient-none",
+        "text_color": "black",
+        "content": "",
+        "content_2": "<h2>Key Ingredients</h2>",
+        "vertical_alignment": "center",
+        "accordions_bg_color": "white",
+        "open_first": true
+      }
+    },
+    "product_slider_and_image_ga4iC4": {
+      "type": "product-slider-and-image",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "media_type": "image",
+        "image": "shopify://shop_images/PDP-Collection-Cover-JL-Serum.jpg",
+        "gradient_direction": "gradient-b",
+        "text_color": "white",
+        "content": "<h2>Explore the Jet Lag Collection</h2>",
+        "products": [
+          "jet-lag-deep-hydration-serum",
+          "jet-lag-mask",
+          "jet-lag-overnight-eye-serum"
+        ]
+      }
+    },
+    "image_gallery_BrXVHH": {
+      "type": "image-gallery",
+      "blocks": {
+        "image_49myHe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PDP-Social-Carousel-JL-Serum-1.jpg",
+            "url": "#",
+            "open_in_new_tab": true
+          }
+        },
+        "image_MbjefF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PDP-Social-Carousel-JL-Mist.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_Xr3KDj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PDP-Social-Carousel-JL-Mist-2.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_wfrXYM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PDP-Social-Carousel-JL-Mist-3.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_jTiiqz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/labor-day-model-hp.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_bKEkN7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Jet-Lag-Duo-Close-Up.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_ft6HBF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PDP-Social-Carousel-JLM-2.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_NyBWi8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Jet-Lag-Mist-Serum-Teaser-Mobile.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "image_49myHe",
+        "image_MbjefF",
+        "image_Xr3KDj",
+        "image_wfrXYM",
+        "image_jTiiqz",
+        "image_bKEkN7",
+        "image_ft6HBF",
+        "image_NyBWi8"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 2.4,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "background_color": "transparent",
+        "content": "",
+        "images_type": "shopify-images",
+        "embed": "",
+        "spirit_gallery_id": "",
+        "force": false,
+        "open_in_new_tab": true,
+        "limit": 8,
+        "spirit_gallery_image_url": ""
+      }
+    },
+    "2_blocks_with_accordions_UmckdJ": {
+      "type": "2-blocks-with-accordions",
+      "blocks": {
+        "block_1_6mzkw6": {
+          "type": "block_1",
+          "settings": {
+            "title": "Recycle with us an receive a $25 E-Gift Card",
+            "content": "<p>Send back 5+ of your empty Summer Fridays products in exchange for a $25 e-gift card to be used on your next purchase on SummerFridays.com. Learn more <a href=\"/pages/recycling-program\" target=\"_blank\" title=\"Recycling Program\">here</a>.</p>",
+            "html": "",
+            "image": "shopify://shop_images/Jet-Lag-Mask-Empty_8df86097-7192-439b-9461-6691d9a503f0.jpg"
+          }
+        },
+        "block_1_CtX3MD": {
+          "type": "block_1",
+          "settings": {
+            "title": "Recycling Instructions",
+            "content": "",
+            "html": "<script src=\"https://app.bluebirdclimate.com/embed/summer-fridays?id=A52_QqNR_2XtT3ZxBtYv_c5ewFJq6zIrZg3frRthnwWH9H0igX9aR2z5Cpt5SRPFyoFyWZUbeoq2VqHEOR_u1kY72mdyy5zH1YkvfDzgj7ewzE30kawZfQ\" async=\"\" type=\"text/javascript\"></script>"
+          }
+        },
+        "block_1_6X4eXk": {
+          "type": "block_1",
+          "settings": {
+            "title": "Sustainability",
+            "content": "<p>Learn more about sustainability <a href=\"/pages/sustainability\" title=\"Sustainability\">here</a>.</p>",
+            "html": ""
+          }
+        },
+        "block_2_dEtQXW": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Jet Lag Skin Soothing Hydration Mist vegan and cruelty-free?",
+            "content": "<p>Yes, Summer Fridays products are not tested on animals or contain any animal by-products.</p>",
+            "html": ""
+          }
+        },
+        "block_2_wipdLf": {
+          "type": "block_2",
+          "disabled": true,
+          "settings": {
+            "title": "Is Jet Lag Skin Soothing Hydration Mist gluten-free?",
+            "content": "<p>Jet Lag Skin Soothing Hydration Mist is formulated without gluten. It’s important to note that while all Summer Fridays products are formulated to be gluten-free, we cannot guarantee that they have been produced in a gluten-free facility. However, The National Celiac Association has stated that unless cosmetic products are ingested, there should not be an issue with gluten in topical products. <br/><br/>Please see <a href=\"https://nationalceliac.org/celiac-disease-questions/using-gluten-free-skin-body-products-someone-celiac-disease/\">here</a> for additional information. As always, if there is concern, we recommend that you consult with your physician/healthcare provider prior to use.</p>",
+            "html": ""
+          }
+        },
+        "block_2_PFnEJE": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Jet Lag Skin Soothing Hydration Mist non-comedogenic?",
+            "content": "<p>Yes, Jet Lag Skin Soothing Hydration Mist is non-comedogenic, which means it will not clog pores.</p>",
+            "html": ""
+          }
+        },
+        "block_2_acezwF": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Jet Lag Skin Soothing Hydration Mist suitable for all skin types?",
+            "content": "<p>Yes, Jet Lag Skin Soothing Hydration Mist is suitable for all skin types, including sensitive skin.</p>",
+            "html": ""
+          }
+        },
+        "block_2_xY79XQ": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Jet Lag Skin Soothing Hydration Mist fragrance-free?",
+            "content": "<p>Yes, Jet Lag Skin Soothing Hydration Mist is formulated without fragrance.</p>",
+            "html": ""
+          }
+        },
+        "block_2_QfifeU": {
+          "type": "block_2",
+          "settings": {
+            "title": "Can I use Jet Lag Skin Soothing Hydration Mist with AHAs or BHAs?",
+            "content": "<p>Yes. Jet Lag Skin Soothing Hydration Mist can be used with AHAs and BHAs.<br/><br/>We recommend applying AHAs and BHAs prior to applying Jet Lag  Skin Soothing Hydration Mist.</p>",
+            "html": ""
+          }
+        },
+        "block_2_a3MNp4": {
+          "type": "block_2",
+          "settings": {
+            "title": "Can I use Jet Lag Skin Soothing Hydration Mist with retinol?",
+            "content": "<p>Yes. Jet Lag Skin Soothing Hydration Mist can be used with retinol and retinol derivatives.<br/>We recommend applying Jet Lag Skin Soothing Hydration Mist prior to applying retinol.</p>",
+            "html": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_1_6mzkw6",
+        "block_1_CtX3MD",
+        "block_1_6X4eXk",
+        "block_2_dEtQXW",
+        "block_2_wipdLf",
+        "block_2_PFnEJE",
+        "block_2_acezwF",
+        "block_2_xY79XQ",
+        "block_2_QfifeU",
+        "block_2_a3MNp4"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "block_1_type": "accordions",
+        "block_1_accordion_open": true,
+        "block_1_background_color": "morning-sky",
+        "block_1_background_color_opacity": 100,
+        "block_1_title_top": "How to recycle",
+        "block_1_title": "<h2>We Love Our Planet.<br/>Help us keep our home a little cleaner.</h2>",
+        "block_2_type": "accordions",
+        "block_2_accordion_open": false,
+        "block_2_background_color": "chalk",
+        "block_2_background_color_opacity": 100,
+        "block_2_title_top": "FAQ.",
+        "block_2_title": "<h2>For the Curious.<br/>You Asked, We Answered.</h2>"
+      }
+    },
+    "content_PwAtdT": {
+      "type": "content",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 3,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 4.2,
+        "content": "<p>For more information, please see <a href=\"https://summerfridays.com/pages/faqs?hcUrl=%2Fen-US%2Farticles%2Fself-care-club-165598\" target=\"_blank\"><span style=\"text-decoration:underline\">here</span></a>.</p>",
+        "font_size": "normal",
+        "container": "page",
+        "paragraph_margins": "normal",
+        "heading_alignment": "center",
+        "text_alignment": "center",
+        "text_wrap": "normal"
+      }
+    },
+    "recommendations_WxdKaz": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "id": "",
+        "layout": "slider",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>You May Also Like</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 10,
+        "products": [
+          "sheer-skin-tint",
+          "rich-cushion-cream",
+          "shadedrops-spf-30-mineral-milk-sunscreen",
+          "lip-butter-balm-sweet-mint",
+          "jet-lag-deep-hydration-serum",
+          "jet-lag-overnight-eye-serum",
+          "jet-lag-mask"
+        ]
+      }
+    },
+    "product_reviews_KXKNcg": {
+      "type": "product-reviews",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "content": "<h2>Reviews</h2>"
+      }
+    },
+    "media_accordions_idnTmW": {
+      "type": "media-accordions",
+      "blocks": {
+        "accordion_custom_Rj98gn": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Join the Self-Care Club",
+            "content": "<p>Earn points every time you shop when you join our rewards program. Redeem points for exclusive discounts, early access to sales and free products. <a href=\"/pages/rewards\" title=\"Summer Fridays Self-Care Club & Rewards\">Learn more.</a></p>",
+            "badge": "Rewards"
+          }
+        },
+        "accordion_custom_e7p9yg": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Subscribe & Save",
+            "content": "<p>Enjoy 15% off and free shipping when you subscribe to your favorite skincare and hybrid-makeup essentials. Cancel, pause or edit any time. <a href=\"/pages/subscription\" title=\"Subscribe + Save\">Learn more.</a></p>",
+            "badge": "Get 15% Off"
+          }
+        },
+        "accordion_custom_VhKMVz": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Recycle with Us",
+            "content": "<p>Send back five or more empties for recycling, and you'll receive a $25 e-gift card to use on your next SummerFridays.com purchase. <a href=\"/pages/recycling-program\" title=\"Recycling Program\">Learn more.</a></p>",
+            "badge": "Get 15% Off"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_custom_Rj98gn",
+        "accordion_custom_e7p9yg",
+        "accordion_custom_VhKMVz"
+      ],
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 0,
+        "media_type": "image",
+        "image": "shopify://shop_images/HP-Footer.jpg",
+        "media_aspect_ratio": "square",
+        "stripes": true,
+        "gradient_direction": "gradient-none",
+        "text_color": "white",
+        "content": "<h2>Essential beauty formulations from California.</h2><h3>For the skin and senses.</h3>",
+        "content_2": "",
+        "vertical_alignment": "center",
+        "accordions_bg_color": "white",
+        "open_first": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "before_after_PMJJiN",
+    "how_to_use_R4qdic",
+    "routine_timeline_rztmEX",
+    "media_accordions_cRnD8x",
+    "product_slider_and_image_ga4iC4",
+    "image_gallery_BrXVHH",
+    "2_blocks_with_accordions_UmckdJ",
+    "content_PwAtdT",
+    "recommendations_WxdKaz",
+    "product_reviews_KXKNcg",
+    "media_accordions_idnTmW"
+  ]
+}

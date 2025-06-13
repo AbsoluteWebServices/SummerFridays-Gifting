@@ -1,0 +1,586 @@
+{%- liquid
+	render 'adastra' with 'styles/sections/header-not-critical.scss'
+	assign desktop_menu_items = section.blocks | where: 'type', 'menu_item'
+    assign banner_block = section.blocks | where: 'type', 'banner'
+
+    assign is_header_cover_hero_section = false
+    assign template_handle = template.name | handle
+    assign handles_header_cover_hero = section.settings.handles_header_cover_hero | strip
+
+    if handles_header_cover_hero contains template_handle
+        assign is_header_cover_hero_section = true
+    endif
+
+    assign menu_right_desktop = linklists[section.settings.menu_right_desktop]
+    assign search_enable = section.settings.search_enable | default: false
+-%}
+
+<header 
+    x-data="header({{ is_header_cover_hero_section | json }})"
+    class="header{% if is_header_cover_hero_section %} header--cover-hero{% endif %}"
+    data-split-load-section
+>
+	<div class="container">
+		<div class="header__inner">
+			<div class="header__left">
+				<button
+					id="open-mobile-menu-btn"
+					class="header__mobile-menu-btn header__mobile-menu-btn--menu"
+					type="button"
+					aria-controls="mobile-menu"
+					:aria-expanded="mmOpen"
+					aria-label="Open mobile menu drawer"
+					@click.prevent="mmOpen = ! mmOpen"
+				>
+                    <div class="header__mobile-menu-btn-inner">
+                        {%- render 'icon', name: 'line' -%}
+						{%- render 'icon', name: 'line' -%}
+                    </div>
+				</button>
+
+                {%- if search_enable -%}
+				    {%- render 'header-search-button', id: 'open-search-drawer-btn' -%}
+                {%- endif -%}
+
+				{%- if desktop_menu_items.size > 0 -%}
+					<nav class="desktop-menu__main" aria-label="Desktop main navigation">
+						<ul class="desktop-menu__main-menu list-reset">
+							{%- for block in desktop_menu_items -%}
+								{%- liquid 
+                                    assign visible_on = block.settings.visible_on | default: 'all'
+                                    if visible_on == 'mobile'
+                                        continue
+                                    endif
+
+									assign menu_title = block.settings.title | escape 
+									assign menu_url = block.settings.url 
+									if menu_title == blank or menu_url == blank
+										continue 
+									endif
+
+									assign submenu_type = block.settings.submenu_type | default: 'no'
+								-%}
+								<li 
+									{% unless submenu_type == 'no' %}
+										data-show-submenu
+									{% endunless %}
+								>
+									<a 
+										href="{{- menu_url -}}" 
+										class="p-normal desktop-menu__link" 
+										aria-label="Go to {{ menu_title }}"
+									>
+										{{- menu_title -}}
+									</a>
+
+									{%- unless submenu_type == 'no' -%}
+										<div class="desktop-menu__submenu desktop-menu__submenu--{{ submenu_type }}">
+											{%- case submenu_type -%}
+												{%- when 'about' -%}
+                                                    {%- liquid
+                                                        assign about_media_type = block.settings.about_media_type | default: 'image'
+                                                        assign about_image = block.settings.about_image
+                                                        assign about_video = block.settings.about_video
+                                                        assign about_overlay_opacity = block.settings.about_overlay_opacity | default: 20 | divided_by: 100.0
+                                                        assign about_eyebrow = block.settings.about_eyebrow | escape | strip_html
+                                                        assign about_content = block.settings.about_content 
+                                                        assign about_button_label = block.settings.about_button_label | escape | strip_html
+                                                        assign about_button_url = block.settings.about_button_url
+                                                        assign about_submenu = linklists[block.settings.about_submenu]
+                                                    -%}
+                                                    <div class="desktop-menu__submenu-about-inner">
+                                                        <div class="desktop-menu__submenu-about-media">
+                                                            {%- if about_overlay_opacity > 0 -%}
+                                                                <div class="overlay" style="opacity: {{- about_overlay_opacity -}};"></div>
+                                                            {%- endif -%}
+
+                                                            {%- if about_media_type == 'image' -%}
+                                                                {%- if about_image -%}
+                                                                    {%- render 'img', image: about_image -%}
+                                                                {%- endif -%}
+                                                            {%- elsif about_media_type == 'video' -%}
+                                                                {%- if about_video -%}
+                                                                    {%- render 'video', 
+                                                                        video: about_video,
+                                                                        poster: about_image
+                                                                    -%}
+                                                                {%- endif -%}
+                                                            {%- endif -%}
+
+                                                            {%- if about_content != blank -%}
+                                                                <div class="desktop-menu__submenu-about-media-body">
+                                                                    {%- if about_eyebrow != blank -%}
+                                                                        <p class="subheader-small desktop-menu__submenu-about-eyebrow">
+                                                                            {{- about_eyebrow -}}
+                                                                        </p>
+                                                                    {%- endif -%}
+
+                                                                    <div class="rte rte--smaller">
+                                                                        {{- about_content -}}
+                                                                    </div>
+
+                                                                    {%- if about_button_label != blank and about_button_url != blank -%}
+                                                                        <a href="{{- about_button_url -}}" aria-label="{{- about_button_label }}{% if about_eyebrow != blank %} {{ about_eyebrow -}}{% endif %}" class="btn btn--w-min btn--white-transparent btn--center">
+                                                                            {{- about_button_label -}}
+                                                                            {%- render 'icon', name: 'arrow-right' -%}
+                                                                        </a>
+                                                                    {%- endif -%}
+                                                                </div>
+                                                            {%- endif -%}
+                                                        </div>
+
+                                                        <div class="desktop-menu__submenu-about-menu">
+                                                            {%- if about_submenu.links.size > 0 -%}
+                                                                <ul class="desktop-menu__submenu-about-menu-items a-underline-wrapper a-underline-style-1 list-reset">
+                                                                    {%- for link in about_submenu.links -%}
+                                                                        <li class="desktop-menu__submenu-about-menu-item">
+                                                                            <a href="{{- link.url -}}" class="subheader-large" aria-label="{{- link.title -}}">
+                                                                                {{- link.title -}}
+                                                                            </a>
+                                                                        </li>
+                                                                    {%- endfor -%}
+                                                                </ul>
+                                                            {%- endif -%}
+                                                        </div>
+                                                    </div>
+
+												{%- when 'mega' -%}
+													<div class="desktop-menu__submenu-mega-inner">
+														{%- for i in (1..3) -%}
+															{%- capture menu_i -%}megamenu_col_{{ i }}_menu{%- endcapture -%}
+															{%- capture skin_type_i -%}megamenu_col_{{ i }}_by_skin_type{%- endcapture -%}
+															{%- capture ingredients_i -%}megamenu_col_{{ i }}_by_ingredients{%- endcapture -%}
+															{%- capture menu_title_i -%}megamenu_col_{{ i }}_title{%- endcapture -%}
+															{%- liquid 
+																assign menu = nil
+																assign menu_handle = block.settings[menu_i]
+																if menu_handle != blank
+																	assign menu = linklists[menu_handle]
+																endif
+	
+																assign skin_type_menu = block.settings[skin_type_i]
+																assign ingredients_menu = block.settings[ingredients_i]
+	
+																unless skin_type_menu or ingredients_menu or menu.links.size > 0
+																	continue
+																endunless
+	
+																assign menu_title_mega = block.settings[menu_title_i] | escape | default: menu_title
+															-%}
+															<div class="desktop-menu__submenu-mega-col">
+																<ul class="desktop-menu__submenu-items a-underline-wrapper a-underline-style-1 list-reset">
+																	{%- if menu.links.size > 0 -%}
+																		{%- for link in menu.links -%}
+																			{%- if link.url == blank or link.title == blank -%}
+																				{%- continue -%}
+																			{%- endif -%}
+																			<li class="desktop-menu__submenu-link-wrapper">
+																				<a 
+																					href="{{- link.url -}}"
+																					class="subheader-small desktop-menu__submenu-link"
+																					aria-label="Go to {{ link.title -}}"
+																				>{{- link.title -}}</a>
+																			</li>
+																		{%- endfor -%}
+																	{%- endif -%}
+	
+																	{%- assign settings = shop.metaobjects.global_settings['global-settings'] -%}
+																	{%- if settings != blank -%} 
+																		{%- if skin_type_menu -%}
+																			{%- if menu_title_mega != blank -%}
+																				<li class="desktop-menu__submenu-link-wrapper">
+																					<span class="subheader-small desktop-menu__submenu-link">
+																						{{- menu_title_mega -}}
+																					</span>
+																				</li>
+																			{%- endif -%}
+																			
+																			{%- render 'mobile-menu-metaobject-items',
+																				settings: settings,
+																				key: 'skin_types',
+																				class: 'desktop-menu__submenu-link'
+																			-%}
+																		{%- endif -%}
+	
+																		{%- if ingredients_menu -%}
+																			{%- if menu_title_mega != blank -%}
+																				<li class="desktop-menu__submenu-link-wrapper">
+																					<span class="subheader-small desktop-menu__submenu-link">
+																						{{- menu_title_mega -}}
+																					</span>
+																				</li>
+																			{%- endif -%}
+
+																			{%- render 'mobile-menu-metaobject-items',
+																				settings: settings,
+																				key: 'ingredients',
+																				class: 'desktop-menu__submenu-link'
+																			-%}
+																		{%- endif -%}
+																	{%- endif -%}
+																</ul>
+															</div>
+														{%- endfor -%}
+
+                                                        {%- if banner_block.size > 0 -%}
+                                                            {%- liquid 
+                                                                assign banner = banner_block | first
+                                                                assign banner_image = banner.settings.banner_image
+                                                            -%}
+
+                                                            {%- if banner_image -%}
+                                                                <div class="desktop-menu__submenu-mega-banner">
+                                                                    {%- render 'menu-banner', block: banner -%}
+                                                                </div>
+                                                            {%- endif -%}
+                                                        {%- endif -%}
+													</div>
+											{%- endcase -%}
+										</div>
+									{%- endunless -%}
+								</li>
+							{%- endfor -%}
+						</ul>
+					</nav>
+				{%- endif -%}
+			</div> 
+
+			<div class="header__center">
+				<a 
+					href="{{- routes.root_url -}}" 
+					class="header__logo"
+					aria-label="Go to the homepage of {{ shop.name -}}"
+				>
+                    <span class="header__logo-mobile">
+                        {%- render 'icon', name: 'logo-mobile' -%}
+                    </span>
+                    <span class="header__logo-desktop">
+                        {%- render 'icon', name: 'logo-desktop' -%}
+                    </span>
+				</a>
+			</div>
+
+			<div class="header__right">
+                {%- if menu_right_desktop.links.size > 0 -%}
+                    <ul class="header__right-menu-right list-reset a-underline-wrapper a-underline-style-1">
+                        {%- for link in menu_right_desktop.links -%}
+                            <li>
+                                <a href="{{- link.url -}}" aria-label="{{- link.title -}}" class="desktop-menu__link">{{- link.title -}}</a>
+                            </li>
+                        {%- endfor -%}
+                    </ul>
+                {%- endif -%}
+                
+                {%- render 'country-selector' -%}
+
+                {%- if search_enable -%}
+                    {%- render 'header-search-button', id: 'open-search-drawer-btn-desktop' -%}
+                {%- endif -%}
+
+				<button
+                    x-show="Boolean($store?.Cart)"
+					id="open-minicart"
+					class="header__mobile-menu-btn"
+					type="button"
+					aria-controls="minicart"
+					:aria-expanded="$store?.Cart?.opened"
+					aria-label="Toggle minicart"
+                    aria-haspopup="dialog" 
+                    @click.prevent="$store.Cart.open()"
+				>
+					{%- render 'icon', name: 'cart' -%}
+					<span 
+                        x-text="$store?.Cart?.cart ? ($store.Cart.cart.item_count || 0) : '{{- cart.item_count -}}'"
+                        class="header__cart-count"
+                    >
+						{{- cart.item_count -}}
+					</span>
+				</button>
+			</div>
+		</div>
+	</div>
+    
+    {%- if search_enable -%}
+        {%- render 'predictive-search' -%}
+    {%- endif -%}
+
+    {%- render 'mobile-menu' -%}
+</header>
+
+{% schema %}
+{
+    "name": "Header",
+    "settings": [
+        {
+            "type": "textarea",
+            "id": "handles_header_cover_hero",
+            "label": "Handles",
+            "info": "Specify page handles where the header covers the hero section. Comma separated."
+        },
+        {
+            "type": "link_list",
+            "id": "menu_right_desktop",
+            "label": "Menu right (desktop)"
+        },
+        {
+            "type": "checkbox",
+            "id": "search_enable",
+            "label": "Enable search",
+            "default": false
+        }
+    ],
+    "blocks": [
+        {
+            "type": "menu_item",
+            "name": "Menu item",
+            "settings": [
+                {
+                    "id": "visible_on",
+                    "label": "Visible on",
+                    "type": "select",
+                    "options": [
+                        {
+                            "value": "all",
+                            "label": "All"
+                        },
+                        {
+                            "value": "mobile",
+                            "label": "Mobile"
+                        },
+                        {
+                            "value": "desktop",
+                            "label": "Desktop"
+                        }
+                    ],
+                    "default": "all"
+                },
+                {
+                    "id": "title",
+                    "label": "Title",
+                    "type": "text"
+                },
+                {
+                    "id": "url",
+                    "label": "URL",
+                    "type": "url"
+                },
+                {
+                    "id": "submenu_type",
+                    "label": "Submenu type",
+                    "type": "select",
+                    "options": [
+                        {
+                            "value": "no",
+                            "label": "No submenu"
+                        },
+                        {
+                            "value": "about",
+                            "label": "About"
+                        },
+                        {
+                            "value": "mega",
+                            "label": "Megamenu"
+                        }
+                    ],
+                    "default": "no"
+                },
+                {
+                    "type": "header",
+                    "content": "About submenu"
+                },
+                {
+                    "type": "select",
+                    "id": "about_media_type",
+                    "label": "Media type",
+                    "default": "video",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "video",
+                    "id": "about_video",
+                    "label": "Video",
+                    "info": "Format: .mp4"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "about_image",
+                    "label": "Image",
+                    "info": "With the video type, the image is used as a poster (first frame)"
+                },
+                {
+                  "type": "range",
+                  "id": "about_overlay_opacity",
+                  "min": 0,
+                  "max": 100,
+                  "step": 1,
+                  "unit": "%",
+                  "label": "Overlay opacity",
+                  "default": 20
+                },
+                {
+                  "type": "text",
+                  "id": "about_eyebrow",
+                  "label": "Eyebrow"
+                },
+                {
+                  "type": "richtext",
+                  "id": "about_content",
+                  "label": "Content"
+                },
+                {
+                    "type": "text",
+                    "id": "about_button_label",
+                    "label": "Button label"
+                },
+                {
+                    "type": "url",
+                    "id": "about_button_url",
+                    "label": "Button URL"
+                },
+                {
+                    "type": "link_list",
+                    "id": "about_submenu",
+                    "label": "Menu"
+                },
+                {
+                    "type": "header",
+                    "content": "Megamenu"
+                },
+                {
+                    "type": "header",
+                    "content": "Megamenu column 1"
+                },
+                {
+                    "type": "text",
+                    "id": "megamenu_col_1_title",
+                    "label": "Menu title"
+                },
+                {
+                    "type": "link_list",
+                    "id": "megamenu_col_1_menu",
+                    "label": "Menu"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "megamenu_col_1_by_skin_type",
+                    "label": "Show By skin type menu",
+                    "info": "The menu consists of the skin type metaobjects"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "megamenu_col_1_by_ingredients",
+                    "label": "Show By ingridients menu",
+                    "info": "The menu consists of the ingredients metaobjects"
+                },
+                {
+                    "type": "header",
+                    "content": "Megamenu column 2"
+                },
+                {
+                    "type": "text",
+                    "id": "megamenu_col_2_title",
+                    "label": "Menu title"
+                },
+                {
+                    "type": "link_list",
+                    "id": "megamenu_col_2_menu",
+                    "label": "Menu"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "megamenu_col_2_by_skin_type",
+                    "label": "Show By skin type menu",
+                    "info": "The menu consists of the skin type metaobjects"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "megamenu_col_2_by_ingredients",
+                    "label": "Show By ingridients menu",
+                    "info": "The menu consists of the ingredients metaobjects"
+                },
+                {
+                    "type": "header",
+                    "content": "Megamenu column 3"
+                },
+                {
+                    "type": "text",
+                    "id": "megamenu_col_3_title",
+                    "label": "Menu title"
+                },
+                {
+                    "type": "link_list",
+                    "id": "megamenu_col_3_menu",
+                    "label": "Menu"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "megamenu_col_3_by_skin_type",
+                    "label": "Show By skin type menu",
+                    "info": "The menu consists of the skin type metaobjects"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "megamenu_col_3_by_ingredients",
+                    "label": "Show By ingridients menu",
+                    "info": "The menu consists of the ingredients metaobjects"
+                },
+                {
+                    "type": "header",
+                    "content": "Megamenu column 4"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "megamenu_col_4_show_banner",
+                    "label": "Show banner",
+                    "info": "The banner from the Banner block"
+                }
+            ]
+        },
+        {
+            "type": "banner",
+            "name": "Banner",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "banner_image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "banner_title_top",
+                    "label": "Title top"
+                },
+                {
+                    "type": "text",
+                    "id": "banner_title",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "banner_button_1_label",
+                    "label": "Button 1 label"
+                },
+                {
+                    "type": "url",
+                    "id": "banner_button_1_url",
+                    "label": "Button 1 URL"
+                },
+                {
+                    "type": "text",
+                    "id": "banner_button_2_label",
+                    "label": "Button 2 label"
+                },
+                {
+                    "type": "url",
+                    "id": "banner_button_2_url",
+                    "label": "Button 2 URL"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

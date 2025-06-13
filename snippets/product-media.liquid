@@ -1,0 +1,343 @@
+{%- liquid
+    assign current_variant = product.selected_or_first_available_variant
+    assign variant_media = current_variant.metafields.variant.media.value
+    assign custom_media = product.metafields.product.custom_media.value 
+-%}
+
+{%- if variant_media != blank or custom_media != blank or product.media.size > 0 -%}
+    <div 
+        class="product-media__wrapper"
+        x-intersect.once="initSliders"
+    >
+        {%- render 'product-media-seal' -%}
+
+        {%- render 'product-media-badge' -%}
+        
+        <div 
+            x-ref="slider"
+            class="product-media__slider swiper"
+        >
+            <div class="swiper-wrapper">
+                {%- assign index = 0 -%}
+                {%- if variant_media != blank -%}
+                    {%- for media in variant_media -%}
+                        {%- liquid
+                            assign loading = 'lazy'
+                            if forloop.first and index == 0
+                                assign loading = 'eager'
+                            endif
+
+                            assign index = index | plus: 1
+                        -%}
+
+                        <div class="swiper-slide">
+                            {%- case media.media_type -%}
+                                {%- when 'image' -%}
+                                    {%- render 'img', image: media, loading: loading -%}
+                                
+                                {%- when 'video' -%}
+                                    {%- render 'video', video: media -%}
+                            {%- endcase -%}
+                        </div>
+                    {%- endfor -%}
+                {%- else -%}
+                    {%- if custom_media != blank -%}
+                        {%- for media in custom_media -%}
+                            {%- liquid
+                                assign main_media = media.main_media.value
+                                if main_media == blank
+                                    continue
+                                endif
+
+                                assign alt = media.alt.value | strip
+                                if alt contains '-exclude-'
+                                    continue
+                                endif
+
+                                unless alt == blank or alt == current_variant.title or alt == product.title or alt contains '-include-'
+                                    continue
+                                endunless
+
+                                assign loading = 'lazy'
+                                if index == 1
+                                    assign loading = 'eager'
+                                endif
+
+                                assign background_media = media.background_media.value
+
+                                assign index = index | plus: 1
+                            -%}
+
+                            <div class="swiper-slide">
+                                {%- case background_media.media_type -%}
+                                    {%- when 'image' -%}
+                                        {%- render 'img', image: background_media, loading: loading, class: 'product-custom-media__bg' -%}
+                                    
+                                    {%- when 'video' -%}
+                                        {%- render 'video', video: background_media, poster: background_media.preview_image, wrapper_class: 'product-custom-media__bg' -%}
+                                {%- endcase -%}
+
+                                {%- case main_media.media_type -%}
+                                    {%- when 'image' -%}
+                                        {%- render 'img', image: main_media, loading: loading, class: 'product-custom-media__main' -%}
+                                    
+                                    {%- when 'video' -%}
+                                        {%- render 'video', video: main_media, poster: main_media.preview_image, wrapper_class: 'product-custom-media__main' -%}
+                                {%- endcase -%}
+                            </div>
+                        {%- endfor -%}
+                    {%- endif -%}
+
+                    {%- if product.media.size > 0  -%}
+                        {%- for media in product.media -%}
+                            {%- liquid
+                                if media.alt contains '-exclude-'
+                                    continue
+                                endif
+
+                                unless media.alt == blank or media.alt == current_variant.title or media.alt == product.title or media.alt contains '-include-'
+                                    continue
+                                endunless
+
+                                assign loading = 'lazy'
+                                if forloop.first and index == 0
+                                    assign loading = 'eager'
+                                endif
+
+                                assign index = index | plus: 1
+                            -%}
+
+                            <div class="swiper-slide">
+                                {%- case media.media_type -%}
+                                    {%- when 'image' -%}
+                                        {%- render 'img', image: media, loading: loading -%}
+                                    
+                                    {%- when 'video' -%}
+                                        {%- render 'video', video: media -%}
+                                {%- endcase -%}
+                            </div>
+                        {%- endfor -%}
+                    {%- endif -%}
+                {%- endif -%}
+            </div>
+
+            <div class="product-media__slider-nav">
+                <button
+                    class="product-media__slider-nav-btn"
+                    type="button"
+                    aria-label="Go to the previous slide"
+                    data-swiper-prev
+                >
+                    {%- render 'icon', name: 'swiper-arrow-left' -%}
+                </button>
+
+                <button
+                    class="product-media__slider-nav-btn"
+                    type="button"
+                    aria-label="Go to the next slide"
+                    data-swiper-next
+                >
+                    {%- render 'icon', name: 'swiper-arrow-right' -%}
+                </button>
+            </div>
+        </div>
+
+        <div class="product-media__thumbs-wrapper">
+            <div 
+                x-ref="thumbSlider"
+                class="product-media__thumbs swiper swiper-vertical"
+            >
+                <div class="swiper-wrapper">
+                    {%- assign index = 0 -%}
+                    {%- if variant_media != blank -%}
+                        {%- for media in variant_media -%}
+                            {%- liquid 
+                                assign loading = 'lazy'
+                                if index < 6
+                                    assign loading = 'eager'
+                                endif
+                                
+                                assign index = index | plus: 1
+                            -%}
+                            <div class="swiper-slide">
+                                {%- case media.media_type -%}
+                                    {%- when 'image' -%}
+                                        <img
+                                            src="{{ media | image_url: width: 260 }}"
+                                            width="130"
+                                            height="130"
+                                            class="absolute-img"
+                                            alt="{{ media.alt | default: 'Product Thumbnail' }}"
+                                            {% if loading == 'lazy' %}
+                                                loading="lazy"
+                                            {% endif %}
+                                        >
+                                    
+                                    {%- when 'video' -%}
+                                        {%- assign preview_image = media.preview_image -%}
+
+                                        {%- if preview_image -%}
+                                            <img
+                                                src="{{ preview_image | image_url: width: 260 }}"
+                                                width="130"
+                                                height="130"
+                                                class="absolute-img"
+                                                alt="Product Thumbnail"
+                                                {% if loading == 'lazy' %}
+                                                    loading="lazy"
+                                                {% endif %}
+                                            >
+
+                                            {%- render 'icon', name: 'play-round', class: 'icon-play-thumbnail' -%}
+                                        {%- else -%}
+                                            {%- render 'video', video: media -%}
+                                        {%- endif -%}
+                                {%- endcase -%}
+                            </div>
+                        {%- endfor -%}
+                    {%- else -%}
+                        {%- if custom_media != blank -%}
+                            {%- for media in custom_media -%}
+                                {%- liquid
+                                    assign main_media = media.main_media.value
+                                    if main_media == blank
+                                        continue
+                                    endif
+
+                                    assign alt = media.alt.value | strip
+                                    if alt contains '-exclude-'
+                                        continue
+                                    endif
+
+                                    unless alt == blank or alt == current_variant.title or alt == product.title or alt contains '-include-'
+                                        continue
+                                    endunless
+
+                                    assign media_type = main_media.media_type
+
+                                    if main_media.media_type == 'video'
+                                        assign main_media = main_media.preview_image
+                                    endif
+
+                                    assign background_media = media.background_media.value
+                                    if background_media.media_type == 'video'
+                                        assign background_media = background_media.preview_image
+                                    endif
+        
+                                    assign loading = 'lazy'
+                                    if index < 6
+                                        assign loading = 'eager'
+                                    endif
+                                    
+                                    assign index = index | plus: 1
+                                -%}
+        
+                                <div class="swiper-slide">
+                                    {%- if background_media -%}
+                                        <img
+                                            src="{{ background_media | image_url: width: 260 }}"
+                                            width="130"
+                                            height="130"
+                                            class="absolute-img product-custom-media__bg"
+                                            alt="{{ alt | default: product.title }}"
+                                            {% if loading == 'lazy' %}
+                                                loading="lazy"
+                                            {% endif %}
+                                        >
+                                    {%- endif -%}
+
+                                    <img
+                                        src="{{ main_media | image_url: width: 260 }}"
+                                        width="130"
+                                        height="130"
+                                        class="absolute-img product-custom-media__main"
+                                        alt="{{ alt | default: product.title }}"
+                                        {% if loading == 'lazy' %}
+                                            loading="lazy"
+                                        {% endif %}
+                                    >
+
+                                    {%- if media_type == 'video' -%}
+                                        {%- render 'icon', name: 'play-round', class: 'icon-play-thumbnail' -%}
+                                    {%- endif -%}
+                                </div>
+                            {%- endfor -%}
+                        {%- endif -%}
+
+                        {%- if product.media.size > 0  -%}
+                            {%- for media in product.media -%}
+                                {%- liquid 
+                                    if media.alt contains '-exclude-'
+                                        continue
+                                    endif
+
+                                    unless media.alt == blank or media.alt == current_variant.title or media.alt == product.title or media.alt contains '-include-'
+                                        continue
+                                    endunless
+
+                                    assign loading = 'lazy'
+                                    if index < 6
+                                        assign loading = 'eager'
+                                    endif
+
+                                    assign index = index | plus: 1
+                                -%}
+
+                                <div class="swiper-slide">
+                                    {%- case media.media_type -%}
+                                        {%- when 'image' -%}
+                                            <img
+                                                src="{{ media | image_url: width: 260 }}"
+                                                width="130"
+                                                height="130"
+                                                class="absolute-img"
+                                                alt="{{ media.alt | default: 'Product Thumbnail' }}"
+                                                {% if loading == 'lazy' %}
+                                                    loading="lazy"
+                                                {% endif %}
+                                            >
+                                        
+                                        {%- when 'video' -%}
+                                            {%- assign preview_image = media.preview_image -%}
+
+                                            {%- if preview_image -%}
+                                                <img
+                                                    src="{{ preview_image | image_url: width: 260 }}"
+                                                    width="130"
+                                                    height="130"
+                                                    class="absolute-img"
+                                                    alt="Product Thumbnail"
+                                                    {% if loading == 'lazy' %}
+                                                        loading="lazy"
+                                                    {% endif %}
+                                                >
+
+                                                {%- render 'icon', name: 'play-round', class: 'icon-play-thumbnail' -%}
+                                            {%- else -%}
+                                                {%- render 'video', video: media -%}
+                                            {%- endif -%}
+                                    {%- endcase -%}
+                                </div>
+                            {%- endfor -%}
+                        {%- endif -%}
+                    {%- endif -%}
+                </div> 
+            </div>
+
+            <button
+                x-show="product && totalMediaCount ? totalMediaCount > 4 : {{ index }} > 4"
+                type="button"
+                class="product-media__thumbs-next hover-opacity"
+                aria-label="Go to next thumbnail"
+                @click.prevent="goToNextThumb"
+                x-transition.duration.300ms
+                x-transition.opacity
+                {% if index < 5 %}
+                    style="display: none;"
+                {% endif %}
+            >
+                {%- render 'icon', name: 'chevron-down' -%}
+            </button>
+        </div>
+    </div>
+{%- endif -%}

@@ -1,0 +1,5 @@
+{%- layout none -%}
+{%- paginate pages by 50 -%}
+{%- for page in pages -%}
+{"id":{{ page.id | json }},"title":{{ page.title | json }},"author":{{ page.author | json }},"url":{{ page.url | json }},"published_at":"{{ page.published_at }}","content":{{ page.content | strip_newlines | strip_html | truncate: 200 | json }}}
+{% endfor %}{%- endpaginate -%}

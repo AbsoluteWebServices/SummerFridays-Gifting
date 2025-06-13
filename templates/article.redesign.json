@@ -1,0 +1,326 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_split_4hp6Rw": {
+      "type": "hero-split",
+      "blocks": {
+        "media_i9J8t4": {
+          "type": "media",
+          "settings": {
+            "media_type": "video",
+            "video_desktop": "shopify://files/videos/Beach-Sunset.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "media_i9J8t4"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "height": 100,
+        "deduct_header_height": true,
+        "deduct_announcement_bar_height": true,
+        "text_color": "white",
+        "title_color": "white",
+        "content_color": "white",
+        "title_font": "primary",
+        "title_tag": "h1",
+        "overlay_opacity": 20,
+        "gradient_direction": "gradient-none",
+        "gradient_percent": 25,
+        "vertical_alignment": "center",
+        "horizontal_alignment": "center",
+        "vertical_alignment_desktop": "center",
+        "horizontal_alignment_desktop": "center",
+        "eyebrow": "Products",
+        "eyebrow_margin": "normal",
+        "content_above_title": "",
+        "title": "Introducing Jet Lag Overnight Eye Serum",
+        "title_custom_line_1": "",
+        "title_custom_line_2": "",
+        "content": "",
+        "button_label": "",
+        "button_url": "",
+        "button_margin": "normal",
+        "btn_style": "regular"
+      }
+    },
+    "image_split_6gWxjf": {
+      "type": "image-split",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/is.jpg",
+        "media_fullwidth_mobile": false,
+        "media_caption": "",
+        "content": "<h2>Introducing the best nighttime eye serum around, and our newest product, Jet Lag Overnight Eye Serum. </h2><p>Jet Lag Overnight Eye Serum is the first product addition to our iconic Jet Lag Collection, following our award-winning and community-loved Jet Lag Mask. Just like Jet Lag Mask, this under eye serum was formulated to leave the skin feeling ultra-hydrated, soothed, and nourished.</p>",
+        "content_smaller": "<p>This rich, emollient nighttime eye serum helps to visibly minimize fine lines for a smoother, firmer look with regular use. Powered by super-hydrating glycerin, barrier-supporting ceramides and a gentle retinoid blend, it works hard overnight to nourish and hydrate the eye area while you’re sleeping for the ultimate well-rested appearance. Like all of our products, this under eye serum is non-comedogenic, so you don’t have to worry about waking up to clogged pores.</p>",
+        "content_left": "",
+        "content_right": "",
+        "content_bottom": "",
+        "products": [
+          "jet-lag-overnight-eye-serum",
+          "jet-lag-mask"
+        ],
+        "content_secondary": "",
+        "vertical_alignment": "top",
+        "layout_desktop": "text_media",
+        "layout_mobile": "text_media"
+      }
+    },
+    "content_mXUFDG": {
+      "type": "content",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Find Your Eye Product</h2><p>If you already swear by our award-winning<a href=\"/products/light-aura-vitamin-c-peptide-eye-cream\" title=\"Light Aura Vitamin C + Peptide Eye Cream\"> Light Aura Vitamin C + Peptide Eye Cream</a>, you may be wondering how Jet Lag Overnight Eye Serum is different, and if you actually need both in your routine.</p><p>Light Aura Eye Cream was formulated to brighten and depuff the eye area, leaving it perfectly primed for makeup or concealer, and an essential step for your morning routine. Powered by a vitamin C and peptide blend, it visibly brightens the entire eye area, while caffeine helps de-puff, for a refreshed and replenished look.</p><p>Jet Lag Overnight Eye Serum was formulated to be used only at night due to its gentle-yet-effective retinol blend, that helps to improve the appearance of wrinkles. Over time, the skin around the eye area will appear less crepey and more even.<br/>Add both products to your AM and PM routines for your brightest, most-hydrated eyes yet.</p>",
+        "font_size": "normal",
+        "container": "small",
+        "paragraph_margins": "normal",
+        "heading_alignment": "center",
+        "text_alignment": "left",
+        "text_wrap": "normal"
+      }
+    },
+    "media_with_caption_7irLaT": {
+      "type": "media-with-caption",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "video",
+        "lazyload": false,
+        "video": "shopify://files/videos/Beach-Sunset.mp4",
+        "autoplay": false,
+        "show_big_play_button": true,
+        "play_control": true,
+        "sound_control": true,
+        "image": "shopify://shop_images/Dream_Oasis_-_Model_1.png",
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur <a href=\"#\" title=\"#\">adipiscing elit</a>.</p>"
+      }
+    },
+    "results_tT3Hp6": {
+      "type": "results",
+      "blocks": {
+        "result_VFX4wy": {
+          "type": "result",
+          "settings": {
+            "result": 100,
+            "fact": "<p>showed a significant improvement in fine lines and wrinkles after 2 weeks of use*</p>"
+          }
+        },
+        "result_8CFYmC": {
+          "type": "result",
+          "settings": {
+            "result": 97,
+            "fact": "<p>showed a significant improvement in firmness after 2 weeks of use*</p>"
+          }
+        },
+        "result_fCVEqc": {
+          "type": "result",
+          "settings": {
+            "result": 94,
+            "fact": "<p>agreed that after using this serum, the skin around their eyes has a visibly smoother texture after 4 weeks**</p>"
+          }
+        },
+        "ingredient_8LKpEA": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Glycerin",
+            "content": "<p>Jet Lag Overnight Eye Serum’s multi-tasking, ultra-hydrating gel formula includes Glycerin to attract and lock in moisture. The super-powered humectant provides lasting dryness relief, for a soft and supple feel.</p>"
+          }
+        },
+        "ingredient_ghJhFi": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Retinol and Retinyl Linoleate",
+            "content": "<p>Penetrates deep into the skin to help improve the appearance of fine lines and wrinkles, while <br/>being gentle enough for all skin types. These powerful, plant-based vitamin A derivatives also help to improve discoloration around the delicate eye area.</p>"
+          }
+        },
+        "ingredient_9iUqrT": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Licorice Root Extract",
+            "content": "<p>Soothes the look of inflammation and helps reduce the appearance of puffiness around the eye area.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "result_VFX4wy",
+        "result_8CFYmC",
+        "result_fCVEqc",
+        "ingredient_8LKpEA",
+        "ingredient_ghJhFi",
+        "ingredient_9iUqrT"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content_mobile": "",
+        "content": "<h2>The Results</h2>",
+        "note": "<p>**In an independent consumer use study, with 31 participants aged 32 – 60</p>",
+        "key_ingredients_title": "<h2>Key Ingredients</h2>",
+        "content_below_results": "",
+        "media_type": "image",
+        "image": "shopify://shop_images/results.jpg",
+        "media_fit": "contain"
+      }
+    },
+    "image_gallery_BrXVHH": {
+      "type": "image-gallery",
+      "blocks": {
+        "image_49myHe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i6.jpg",
+            "url": "#"
+          }
+        },
+        "image_MbjefF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i7.jpg",
+            "url": ""
+          }
+        },
+        "image_wfrXYM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i8.jpg",
+            "url": ""
+          }
+        },
+        "image_jTiiqz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i9.jpg",
+            "url": ""
+          }
+        },
+        "image_bKEkN7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i10.jpg",
+            "url": ""
+          }
+        },
+        "image_ft6HBF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i1.jpg",
+            "url": ""
+          }
+        },
+        "image_NyBWi8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i4.jpg",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_49myHe",
+        "image_MbjefF",
+        "image_wfrXYM",
+        "image_jTiiqz",
+        "image_bKEkN7",
+        "image_ft6HBF",
+        "image_NyBWi8"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "background_color": "transparent",
+        "content": "",
+        "images_type": "shopify-images",
+        "embed": "",
+        "spirit_gallery_id": "",
+        "limit": 8,
+        "spirit_gallery_image_url": ""
+      }
+    },
+    "image_split_8Jrptn": {
+      "type": "image-split",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/image_917f3893-722e-45d5-8706-e0dcc08a92ea.jpg",
+        "media_fullwidth_mobile": false,
+        "media_caption": "<p>Lorem ipsum dolor sit amet, consectetur <a href=\"#\" title=\"#\">adipiscing elit</a>.</p>",
+        "content": "",
+        "content_smaller": "<h2>How to Use</h2>",
+        "content_left": "<p>AM<br/>Gently apply Light Aura Vitamin C + Peptide Eye Cream around the eye area. Follow with your favorite moisturizer, SPF and makeup routine.</p>",
+        "content_right": "<p>PM<br/>In the PM, gently apply a small amount of Jet Lag Overnight Eye Serum around the contour of each eye.</p>",
+        "content_bottom": "<p>You can use Jet Lag Overnight Eye Serum every night, every other night, or incorporate it into your skin cycling routine — whatever works best for you and your skin.</p><p>If your skin concerns include dehydration, loss of firmness, fine lines and wrinkles around the eye area, Jet Lag Overnight Eye Serum will quickly earn a spot in your nighttime skincare routine. We can’t wait for it to become your new favorite product—it’s truly the best overnight eye serum.</p>",
+        "products": [
+
+        ],
+        "content_secondary": "",
+        "vertical_alignment": "center",
+        "layout_desktop": "text_media",
+        "layout_mobile": "media_text"
+      }
+    },
+    "recommendations_qj337L": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "layout": "slider",
+        "source": "custom",
+        "content": "<h2>Related Products</h2>",
+        "content_related": "<h2>Related Products</h2>",
+        "limit": 8,
+        "products": [
+          "babymoon-belly-balm",
+          "cc-me-serum",
+          "dream-lip-oil-pink-cloud",
+          "jet-lag-mask",
+          "jumbo-jet-lag-mask",
+          "jet-lag-deep-hydration-serum",
+          "lip-butter-balm-cherry",
+          "lip-butter-balm-hot-cocoa"
+        ]
+      }
+    }
+  },
+  "order": [
+    "hero_split_4hp6Rw",
+    "image_split_6gWxjf",
+    "content_mXUFDG",
+    "media_with_caption_7irLaT",
+    "results_tT3Hp6",
+    "image_gallery_BrXVHH",
+    "image_split_8Jrptn",
+    "recommendations_qj337L"
+  ]
+}

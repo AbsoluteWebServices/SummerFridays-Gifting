@@ -1,0 +1,212 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "2-cols-media-text",
+      "blocks": {
+        "table_row_zQcakT": {
+          "type": "table_row",
+          "settings": {
+            "title": "Name",
+            "content": "<p>Tylynn Nguyen</p>"
+          }
+        },
+        "table_row_KXKWR4": {
+          "type": "table_row",
+          "settings": {
+            "title": "Occupation",
+            "content": "<p>Model, Lingerie Designer, Mother</p>"
+          }
+        },
+        "table_row_fDEgYh": {
+          "type": "table_row",
+          "settings": {
+            "title": "Based in",
+            "content": "<p>Los Angeles, CA</p>"
+          }
+        },
+        "table_row_wKJPxf": {
+          "type": "table_row",
+          "settings": {
+            "title": "Star Sign",
+            "content": "<p>Cancer</p>"
+          }
+        },
+        "table_row_6xRLnh": {
+          "type": "table_row",
+          "settings": {
+            "title": "Can’t Live W/O",
+            "content": "<p>My Children. Lotus, Czar, and Hunter<br/>I always have a shade of <a href=\"/products/dream-lip-oil-pink-cloud\" title=\"Dream Lip Oil Pink Cloud\">Dream Lip Oil</a><a href=\"/products/sheer-skin-tint\" title=\"Sheer Skin Tint\"><br/></a>My iCal for planning my days</p>"
+          }
+        },
+        "table_row_with_socials_HM3GyD": {
+          "type": "table_row_with_socials",
+          "settings": {
+            "title": "Handle",
+            "content": "<p>@tylynnnguyen</p>",
+            "tiktok_url": "",
+            "instagram_url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "table_row_zQcakT",
+        "table_row_KXKWR4",
+        "table_row_fDEgYh",
+        "table_row_wKJPxf",
+        "table_row_6xRLnh",
+        "table_row_with_socials_HM3GyD"
+      ],
+      "settings": {
+        "padding_top": 2,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 2.4,
+        "padding_bottom_desktop": 2.4,
+        "container": "blog",
+        "paddings_tablet": true,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/tylynn-nguyen_1.jpg",
+        "eyebrow": "",
+        "bg_color": "white",
+        "content": "<h1>Getting Ready With</h1>",
+        "font_size": "larger",
+        "custom_signature": "TyLynn Nguyen",
+        "text_alignment": "left",
+        "button_label": "",
+        "button_url": "",
+        "html": ""
+      }
+    },
+    "video_cross_sell_4EkQw6": {
+      "type": "video-cross-sell",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>For a dreamy flush of color, anywhere —</h2>",
+        "font_size": "larger",
+        "button_label": "View More Details",
+        "button_url": "#",
+        "media_type": "video",
+        "lazyload": true,
+        "video": "shopify://files/videos/Jet Lag Deep Hydration Serum - Christine  (1).mp4",
+        "autoplay": true,
+        "play_control": true,
+        "sound_control": true,
+        "content_secondary": "<h2>TyLynn wears <em>Dream Lip Oil</em></h2><p>“The lip oil of my dreams! I take Sumer Fridays’ Dream Lip Oil everywhere! In 4 beautiful shades…I’m wearing them all!”</p>",
+        "font_size_secondary": "larger",
+        "products": [
+          "dream-lip-oil-pink-cloud"
+        ]
+      }
+    },
+    "image_split_QdViVM": {
+      "type": "image-split",
+      "blocks": {
+        "title_content_W9nDDY": {
+          "type": "title_content",
+          "settings": {
+            "title": "SF: When you were younger, who inspired you most?",
+            "content": "<p>My mother inspired me most as a child. Her style, make-up, jewelry... all of it used to create these lavish fantasies in my mind about what glamour was. She was in the army so she had this incredible juxtaposition in personality I really love.</p>"
+          }
+        },
+        "title_content_BxGB7t": {
+          "type": "title_content",
+          "settings": {
+            "title": "SF: Describe what beauty is to you?",
+            "content": "<p>Beauty is God’s promises. Beauty is my children’s laughter. Beauty is my husband kissing me on my neck. Beauty is pure expressions of love.</p>"
+          }
+        },
+        "title_content_HpEG36": {
+          "type": "title_content",
+          "settings": {
+            "title": "SF: What is your morning routine?",
+            "content": "<p>I wake up, kiss my husband, wash my face, brush my teeth, get back in bed and wait for my kids to run into our room (usually around 6am), get back up, get dressed, get the kids dressed and teeth brushed, make breakfast, pack lunch, take the kids to school, then head into my office. I love the morning. I feel like these are the routines my children will remember the most.</p>"
+          }
+        },
+        "title_content_ip7k6T": {
+          "type": "title_content",
+          "settings": {
+            "title": "SF: What was one of the most transformative memories for you in the last decade? And in the last year?",
+            "content": "<p>My most transformative memory was the year 2015. I was pregnant with my 2nd child and wasn’t in love with my job at the time. I was a model. I sat down at my sewing machine and asked God for guidance. I went to school for Fashion Design and I heard a strong “Remember. This is why you went to school.” I started sewing and created my first bra and panty samples for my line. Greatest time of my life. This year my most transformative memories have been getting pregnant with my 3rd child and my Paris trip to show my SS18 collection. I’m really excited for all that is to come. And grateful for the ups and downs I’ve experienced thus far.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "title_content_W9nDDY",
+        "title_content_BxGB7t",
+        "title_content_HpEG36",
+        "title_content_ip7k6T"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "image",
+        "lazyload": true,
+        "image": "shopify://shop_images/317446c1f2d6910860733d637f829c31.jpg",
+        "media_aspect_ratio_mobile": "square",
+        "media_aspect_ratio_desktop": "taller",
+        "media_fullwidth_mobile": false,
+        "media_caption": "",
+        "content": "",
+        "content_smaller": "",
+        "content_left": "",
+        "content_right": "",
+        "content_bottom": "",
+        "products": [
+
+        ],
+        "content_justify_on_desktop": "top",
+        "image_secondary": "shopify://shop_images/s_1.jpg",
+        "content_secondary": "<p>“I love all 4 shades, but if I had to choose...I never go anywhere without the Pink Cloud nowadays. The shade is just so natural and soft.”</p>",
+        "content_secondary_position_desktop": "top",
+        "content_secondary_layout": "media_text",
+        "vertical_alignment": "top",
+        "layout_desktop": "text_media",
+        "layout_mobile": "media_text"
+      }
+    },
+    "recommendations_JFAibQ": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "id": "",
+        "layout": "slider",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Dream Lip Oil</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 8,
+        "products": [
+          "dream-lip-oil-pink-cloud",
+          "dream-lip-oil-blush-dreams",
+          "dream-lip-oil-rosewood-nights",
+          "dream-lip-oil-mauve"
+        ]
+      }
+    }
+  },
+  "order": [
+    "main",
+    "video_cross_sell_4EkQw6",
+    "image_split_QdViVM",
+    "recommendations_JFAibQ"
+  ]
+}

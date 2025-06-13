@@ -1,0 +1,4 @@
+src/assets/*.js
+src/scripts/boost-pfs-filter.js
+src/scripts/vendor/*.js
+src/scripts/modernizr.min.js

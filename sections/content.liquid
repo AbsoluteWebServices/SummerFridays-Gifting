@@ -1,0 +1,153 @@
+{%- liquid
+    assign padding_top = section.settings.padding_top | default: 0
+    assign padding_bottom = section.settings.padding_bottom | default: 0
+    assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+    assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+    assign content = section.settings.content
+    assign font_size = section.settings.font_size | default: 'normal'
+    assign container = section.settings.container | default: 'page'
+    assign paragraph_margins = section.settings.paragraph_margins | default: 'normal'
+    assign heading_alignment = section.settings.heading_alignment | default: 'left'
+    assign text_alignment = section.settings.text_alignment | default: 'left'
+    assign text_wrap = section.settings.text_wrap | default: 'normal'
+-%}
+
+{%- if content != blank -%}
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    <section id="section-{{- section.id -}}">
+        <div class="container container--{{- container -}}">
+            <div class="rte rte--wrap-{{- text_wrap }} rte--{{- paragraph_margins }} {% if font_size == 'larger' %}p-large rte--larger{% endif %} rte--h-{{- heading_alignment }} rte--p-{{- text_alignment }}">
+                {{- content -}}
+            </div>
+        </div>
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Content | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Settings"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+            "type": "select",
+            "id": "font_size",
+            "label": "Font size",
+            "default": "normal",
+            "options": [
+                { "value": "normal", "label": "Normal" },
+                { "value": "larger", "label": "Larger" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "container",
+            "label": "Container",
+            "default": "page",
+            "options": [
+                { "value": "page", "label": "Page" },
+                { "value": "blog", "label": "Blog" },
+                { "value": "small", "label": "Small" },
+                { "value": "medium", "label": "Medium" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "paragraph_margins",
+            "label": "Paragraph margins",
+            "default": "normal",
+            "options": [
+                { "value": "smaller", "label": "Smaller" },
+                { "value": "normal", "label": "Normal" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "heading_alignment",
+            "label": "Heading alignment",
+            "default": "left",
+            "info": "Heading 1-6",
+            "options": [
+                { "value": "left", "label": "Left" },
+                { "value": "center", "label": "Center" },
+                { "value": "right", "label": "Right" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "text_alignment",
+            "label": "Text alignment",
+            "default": "left",
+            "info": "Paragraph, lists",
+            "options": [
+                { "value": "left", "label": "Left" },
+                { "value": "center", "label": "Center" },
+                { "value": "right", "label": "Right" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "text_wrap",
+            "label": "Text wrap",
+            "default": "normal",
+            "info": "Balance makes lines equal.",
+            "options": [
+                { "value": "normal", "label": "Normal" },
+                { "value": "balance", "label": "Balance" }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Content | AW"
+        }
+    ]
+}
+{% endschema %}

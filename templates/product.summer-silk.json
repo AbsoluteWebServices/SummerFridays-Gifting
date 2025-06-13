@@ -1,0 +1,525 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product-sf",
+      "settings": {}
+    },
+    "before_after_PMJJiN": {
+      "type": "before-after",
+      "blocks": {
+        "result_Tmjhqd": {
+          "type": "result",
+          "settings": {
+            "result": 100,
+            "fact": "<p>of participants saw an increase in moisturization and hydration 8 hours after application.*</p>"
+          }
+        },
+        "result_iVTb8A": {
+          "type": "result",
+          "settings": {
+            "result": 97,
+            "fact": "<p>thought their skin was softer, smoother, and soothed 8 hours after application.*</p>"
+          }
+        },
+        "result_fr4pgk": {
+          "type": "result",
+          "settings": {
+            "result": 94,
+            "fact": "<p>noticed an improvement in overall skin texture 8 hours after application.*</p>"
+          }
+        }
+      },
+      "block_order": [
+        "result_Tmjhqd",
+        "result_iVTb8A",
+        "result_fr4pgk"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 2.4,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "content": "<h2>The Results Are In</h2>",
+        "note": "<p>*In a consumer study with 33 participants aged 25 to 55.</p>",
+        "functionality": "static-media",
+        "before_image": "shopify://shop_images/PDP-Clinicals-JLM.jpg",
+        "before_label": "",
+        "after_image": "shopify://shop_images/PDP-Clinicals-JLM.jpg",
+        "after_label": "",
+        "media_type": "image",
+        "lazyload": true,
+        "image": "shopify://shop_images/PDP-Clinicals-JLM.jpg"
+      }
+    },
+    "how_to_use_R4qdic": {
+      "type": "how-to-use",
+      "blocks": {
+        "cards_dkQQUb": {
+          "type": "cards",
+          "settings": {
+            "main_media_type": "video",
+            "main_video": "shopify://files/videos/SummerSilk_HowtoUse_f883dce5-1795-4376-84b1-1d0d124f8c14.mp4",
+            "secondary_media_type": "image",
+            "secondary_image": "shopify://shop_images/PDP-How-To-Summer-Silk.jpg",
+            "title": "<h2>How to Use <br/><em>Summer Silk Nourishing Body Lotion</em></h2>",
+            "subtitle": "",
+            "content": "<p>Slather on generously whenever, wherever your body craves rich, comforting moisture.<br/><br/>Tip: Apply to still-damp skin after your bath or shower to help seal in hydration.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "cards_dkQQUb"
+      ],
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "slider_type": "all",
+        "bg_color": "morning-sky",
+        "text_color": "white"
+      }
+    },
+    "routine_timeline_rztmEX": {
+      "type": "routine-timeline",
+      "blocks": {
+        "step_HLfHNq": {
+          "type": "step",
+          "settings": {
+            "active": true,
+            "show_dot": true,
+            "title": "step 1: Moisturize",
+            "content": "<h2>Summer Silk Nourishing Body Lotion</h2>",
+            "product": "",
+            "width_desktop": 25
+          }
+        },
+        "step_GekV36": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "step 2: Hydrate",
+            "content": "<p>Explore <a href=\"/products/babymoon-belly-balm\" title=\"Babymoon Belly Balm\">Babymoon Belly Balm</a></p>",
+            "product": "",
+            "width_desktop": 15
+          }
+        }
+      },
+      "block_order": [
+        "step_HLfHNq",
+        "step_GekV36"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 2.4,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "content": "<h2>Adding Summer Silk to your <em>Routine</em></h2>",
+        "hide_last_step_on_mobile": false,
+        "hide_last_step_on_desktop": false
+      }
+    },
+    "media_accordions_cRnD8x": {
+      "type": "media-accordions",
+      "blocks": {
+        "accordion_custom_7dU7ci": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "PLANT-DERIVED BUTTERS",
+            "content": "<p>Highly emollient Cocoa Butter and Shea Butter, both rich in essential fatty acids, deliver moisture deep into skin's surface and help lock in lasting hydration with no greasy after-feel.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_THwJVA": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "ALL-NATURAL OILS",
+            "content": "<p>Our antioxidant-rich blend of Grapeseed, Argan, Linseed and Rosehip oils absorbs quickly to nourish and protect so skin stays silky smooth.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_gPAH9M": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "CERAMIDES",
+            "content": "<p>This complex of lipids, similar to those found naturally in skin, helps strengthen skin's natural protective barrier so moisture stays in.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_bfnF6Q": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "HYALURONIC ACID + GLYCERIN",
+            "content": "<p>This hydrating duo of humectants helps attract water for more hydrated skin all day long while strengthening the skin's moisture barrier.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_T9gxqq": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Full Ingredient List",
+            "content": "<p>Water/Aqua/EAU, Caprylic/Capric Triglyceride, Glycerin, Propanediol, Cetearyl Alcohol, Silica, Hydroxyethyl Acrylate/Sodium Acryloyldimethyl Taurate Copolymer, Butyrospermum ParkII (Shea) Butter, Ceramide NP, Ceramide NS, Ceramide AP, Ceramide EOP, Ceramide EOS, Acetyl Hexapeptide-8, Sodium Lauroyl Oat Amino Acids, Saccharide Isomerate, Sodium Hyaluronate, Vitis Vinifera (Grape) Seed Oil, Rosa Canina Seed Oil, Argania Spinosa Kernel Oil, Theobroma Cacao (Cocoa) Seed Butter, Linum Usitatissimum (Linseed) Seed Oil, Fragaria Vesca (Strawberry) Fruit Extract, Hibiscus Rosa-Sinensis Flower Extract, Caprooyl Phytosphingosine, Caprooyl Sphingosine, Squalane, Tocopheryl Acetate, Tocopherol, Ethylhexylglycerin, Polyglyceryl-2 Stearate, Glyceryl Stearate, Sodium Phytate, Sorbitan Isostearate, Polysorbate 60, Ceteareth-25, Cetyl Alcohol, Stearyl Alcohol, Behenic Acid, Cholesterol, Fragrance/Parfum, Potassium Sorbate, Phenoxyethanol, Sodium Citrate, Citric Acid, Acetic Acid, Coumarin.<br/><br/>For external use only.</p>",
+            "badge": ""
+          }
+        }
+      },
+      "block_order": [
+        "accordion_custom_7dU7ci",
+        "accordion_custom_THwJVA",
+        "accordion_custom_gPAH9M",
+        "accordion_custom_bfnF6Q",
+        "accordion_custom_T9gxqq"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "media_type": "image",
+        "image": "shopify://shop_images/PDP-Summer-Silk-Ingredients.jpg",
+        "media_aspect_ratio": "square",
+        "stripes": false,
+        "gradient_direction": "gradient-none",
+        "text_color": "black",
+        "content": "",
+        "content_2": "<h2>Key Ingredients</h2>",
+        "vertical_alignment": "center",
+        "accordions_bg_color": "white",
+        "open_first": true
+      }
+    },
+    "product_slider_and_image_ga4iC4": {
+      "type": "product-slider-and-image",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "media_type": "image",
+        "image": "shopify://shop_images/PDP-Collection-Cover-JL-Serum.jpg",
+        "gradient_direction": "gradient-b",
+        "text_color": "white",
+        "content": "<h2>Introducing the Jet Lag™ Collection</h2>",
+        "products": [
+          "jet-lag-overnight-eye-serum",
+          "jumbo-jet-lag-mask"
+        ]
+      }
+    },
+    "image_gallery_BrXVHH": {
+      "type": "image-gallery",
+      "blocks": {
+        "image_CKVnW4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PDP-Social-Carousel-JLM-1.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_MbjefF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PDP-Social-Carousel-JLM-3.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_49myHe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PDP-Social-Carousel-JLM-2.jpg",
+            "url": "#",
+            "open_in_new_tab": true
+          }
+        },
+        "image_wfrXYM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PDP-Social-Carousel-JLM-4.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_jTiiqz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/The-Now-Blog-Header-MobiLE.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_bKEkN7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PDP-Social-Carousel-JLM-5.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_ft6HBF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PDP-Social-Carousel-JL-Mist-3.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_NyBWi8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Jet-Lag-Collection-Sets-HP-Launch-1.png",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "image_CKVnW4",
+        "image_MbjefF",
+        "image_49myHe",
+        "image_wfrXYM",
+        "image_jTiiqz",
+        "image_bKEkN7",
+        "image_ft6HBF",
+        "image_NyBWi8"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 2.4,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "background_color": "transparent",
+        "content": "",
+        "images_type": "shopify-images",
+        "embed": "",
+        "spirit_gallery_id": "",
+        "force": false,
+        "open_in_new_tab": true,
+        "limit": 8,
+        "spirit_gallery_image_url": ""
+      }
+    },
+    "2_blocks_with_accordions_UmckdJ": {
+      "type": "2-blocks-with-accordions",
+      "blocks": {
+        "block_1_MWgQXc": {
+          "type": "block_1",
+          "settings": {
+            "title": "Recycle with us and receive a $25 E-Gift Card",
+            "content": "<p>Send back 5+ of your empty Summer Fridays products in exchange for a $25 e-gift card to be used on your next purchase on SummerFridays.com. Learn more <a href=\"/pages/recycling-program\" target=\"_blank\" title=\"Recycling Program\">here.</a></p>",
+            "html": "",
+            "image": "shopify://shop_images/Jet-Lag-Mask-Empty_8df86097-7192-439b-9461-6691d9a503f0.jpg"
+          }
+        },
+        "block_1_6mzkw6": {
+          "type": "block_1",
+          "settings": {
+            "title": "Recycling Instructions",
+            "content": "",
+            "html": "<script src=\"https://app.bluebirdclimate.com/embed/summer-fridays?id=A52_QqNR_2XtTXMiUNJy_MtewlRj6jIrZAndrUM1nw6HqC5w0ClUEjWuW54pSRPFyoFyWZUbeoq2VqHEOR_u1kY72mdyy5zHIp5MCVTmj_Cfuc4QwsGM3Q\" async=\"\" type=\"text/javascript\"></script>"
+          }
+        },
+        "block_1_6X4eXk": {
+          "type": "block_1",
+          "settings": {
+            "title": "Sustainability",
+            "content": "<p>Learn more about sustainability <a href=\"/pages/sustainability\" title=\"Sustainability\">here</a>.</p>",
+            "html": ""
+          }
+        },
+        "block_2_dEtQXW": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Summer Silk Nourishing Body Lotion vegan and cruelty-free?",
+            "content": "<p>Yes, Summer Fridays products are not tested on animals or contain any animal by-products.</p>",
+            "html": ""
+          }
+        },
+        "block_2_wipdLf": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Summer Silk Nourishing Body Lotion gluten-free?",
+            "content": "<p>Summer Silk Nourishing Body Lotion is formulated without gluten. It’s important to note that while all Summer Fridays products are formulated to be gluten-free, we cannot guarantee that they have been produced in a gluten-free facility. However, The National Celiac Association has stated that unless cosmetic products are ingested, there should not be an issue with gluten in topical products. </p><p>Please see <a href=\"https://nationalceliac.org/celiac-disease-questions/using-gluten-free-skin-body-products-someone-celiac-disease/\">here</a> for additional information. As always, if there is concern, we recommend that you consult with your physician/healthcare provider prior to use.<br/></p>",
+            "html": ""
+          }
+        },
+        "block_2_xY79XQ": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Summer Silk Nourishing Body Lotion suitable for all skin types?",
+            "content": "<p>Yes, Summer Silk Nourishing Body Lotion is suitable for all skin types, including sensitive skin.</p>",
+            "html": ""
+          }
+        },
+        "block_2_dnfwT7": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Summer Silk Nourishing Body Lotion ok to use on my face?",
+            "content": "<p>We do not recommend using Summer Skin on your face. This has not been tested for use on face.</p>",
+            "html": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_1_MWgQXc",
+        "block_1_6mzkw6",
+        "block_1_6X4eXk",
+        "block_2_dEtQXW",
+        "block_2_wipdLf",
+        "block_2_xY79XQ",
+        "block_2_dnfwT7"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "block_1_type": "accordions",
+        "block_1_accordion_open": true,
+        "block_1_background_color": "morning-sky",
+        "block_1_background_color_opacity": 100,
+        "block_1_title_top": "How to recycle",
+        "block_1_title": "<h2>We Love Our Planet.<br/>Help us keep our home a little cleaner.</h2>",
+        "block_2_type": "accordions",
+        "block_2_accordion_open": false,
+        "block_2_background_color": "chalk",
+        "block_2_background_color_opacity": 100,
+        "block_2_title_top": "FAQ.",
+        "block_2_title": "<h2>For the Curious.<br/>You Asked, We Answered.</h2>"
+      }
+    },
+    "content_6bqDng": {
+      "type": "content",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 3,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 4.2,
+        "content": "<p>For more information, please see <a href=\"https://summerfridays.com/pages/faqs?hcUrl=%2Fen-US%2Farticles%2Fself-care-club-165598\" target=\"_blank\"><span style=\"text-decoration:underline\">here</span></a>.</p>",
+        "font_size": "normal",
+        "container": "page",
+        "paragraph_margins": "normal",
+        "heading_alignment": "center",
+        "text_alignment": "center",
+        "text_wrap": "normal"
+      }
+    },
+    "recommendations_WxdKaz": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "id": "",
+        "layout": "slider",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>You May Also Like</h2>",
+        "content_related": "<h2>You May Also Like</h2>",
+        "button_label": "",
+        "button_url": "",
+        "limit": 8,
+        "products": [
+          "babymoon-belly-balm",
+          "cloud-dew-gel-cream",
+          "rich-cushion-cream",
+          "heavenly-sixteen-all-in-one-face-oil",
+          "jet-lag-soothing-hydration-mist",
+          "jet-lag-mask",
+          "jet-lag-deep-hydration-serum"
+        ]
+      }
+    },
+    "product_reviews_KXKNcg": {
+      "type": "product-reviews",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "content": "<h2>Reviews</h2>"
+      }
+    },
+    "media_accordions_V7DAMn": {
+      "type": "media-accordions",
+      "blocks": {
+        "accordion_custom_eLWLeV": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Join the Self-Care Club",
+            "content": "<p>Earn points every time you shop when you join our rewards program. Redeem points for exclusive discounts, early access to sales and free products. <a href=\"/pages/rewards\" title=\"Summer Fridays Self-Care Club & Rewards\">Learn more.</a></p>",
+            "badge": "Rewards"
+          }
+        },
+        "accordion_custom_bVbD7w": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Subscribe & Save",
+            "content": "<p>Enjoy 15% off and free shipping when you subscribe to your favorite skincare and hybrid-makeup essentials. Cancel, pause or edit any time. <a href=\"/pages/subscription\" title=\"Subscribe + Save\">Learn more.</a></p>",
+            "badge": "Get 15% Off"
+          }
+        },
+        "accordion_custom_YyUNkk": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Recycle with Us",
+            "content": "<p>Send back five or more empties for recycling, and you'll receive a $25 e-gift card to use on your next SummerFridays.com purchase. <a href=\"/pages/recycling-program\" title=\"Recycling Program\">Learn more.</a></p>",
+            "badge": "Get $25 back"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_custom_eLWLeV",
+        "accordion_custom_bVbD7w",
+        "accordion_custom_YyUNkk"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "media_type": "image",
+        "image": "shopify://shop_images/HP-Footer.jpg",
+        "media_aspect_ratio": "square",
+        "stripes": true,
+        "gradient_direction": "gradient-none",
+        "text_color": "white",
+        "content": "<h2>Essential beauty formulations from California.</h2><h3>For the skin and senses.</h3>",
+        "content_2": "",
+        "vertical_alignment": "center",
+        "accordions_bg_color": "white",
+        "open_first": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "before_after_PMJJiN",
+    "how_to_use_R4qdic",
+    "routine_timeline_rztmEX",
+    "media_accordions_cRnD8x",
+    "product_slider_and_image_ga4iC4",
+    "image_gallery_BrXVHH",
+    "2_blocks_with_accordions_UmckdJ",
+    "content_6bqDng",
+    "recommendations_WxdKaz",
+    "product_reviews_KXKNcg",
+    "media_accordions_V7DAMn"
+  ]
+}

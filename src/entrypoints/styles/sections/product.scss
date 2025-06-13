@@ -1,0 +1,43 @@
+@import '@/styles/snippets/product-media.scss';
+@import '@/styles/snippets/product-info.scss';
+@import '@/styles/snippets/product-cross-sells.scss';
+
+.product__wrapper {
+    @media only screen and (min-width: 768px) {
+        display: grid;
+        grid-template-columns: 50% 1fr;
+        margin-bottom: 2.4rem;
+    }
+
+    @media only screen and (min-width: 1280px) {
+        grid-template-columns: 62.5% 1fr;
+        margin-bottom: 0;
+    }
+
+    @media only screen and (min-width: 1440px) {
+        display: flex;
+    }
+}
+
+.product__media {
+    @media only screen and (min-width: 1440px) {
+        min-width: 50rem;
+    }
+}
+
+.product__info {
+    padding: 2.4rem 1.8rem;
+
+    @media only screen and (min-width: 768px) {
+        padding: 4.4rem 1.8rem 4rem 1.8rem;
+    }
+    
+    @media only screen and (min-width: 1280px) {
+        padding: 10rem 6rem 10rem 2rem;
+    }
+
+    @media only screen and (min-width: 1440px) {
+        padding: 10rem 7rem;
+        flex-grow: 1;
+    }
+} 

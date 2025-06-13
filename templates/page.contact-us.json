@@ -1,0 +1,37 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rewards-history": {
+      "type": "rewards-history",
+      "settings": {}
+    },
+    "content_erEi8Q": {
+      "type": "content",
+      "settings": {
+        "padding_top": 3,
+        "padding_bottom": 3,
+        "padding_top_desktop": 6,
+        "padding_bottom_desktop": 6,
+        "content": "<p>TEst</p>",
+        "font_size": "normal",
+        "container": "page",
+        "paragraph_margins": "normal",
+        "heading_alignment": "left",
+        "text_alignment": "left",
+        "text_wrap": "normal"
+      }
+    }
+  },
+  "order": [
+    "rewards-history",
+    "content_erEi8Q"
+  ]
+}

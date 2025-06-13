@@ -1,0 +1,131 @@
+{%- liquid
+    assign padding_top = section.settings.padding_top | default: 0
+    assign padding_bottom = section.settings.padding_bottom | default: 0
+    assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+    assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+    assign articles_per_page = 8
+-%}
+
+{%- render 'offset',
+    id: section.id,
+    padding_top: padding_top,
+    padding_bottom: padding_bottom,
+    padding_top_desktop: padding_top_desktop,
+    padding_bottom_desktop: padding_bottom_desktop
+-%}
+
+{%- render 'adastra' with 'styles/sections/articles.scss' -%}
+ 
+<section 
+    id="section-{{- section.id -}}"
+    x-data="articles"
+    data-split-load-section
+>
+    <div 
+        class="container container--blog"
+    >
+        {%- if blog.articles_count < 1 -%}
+            <p>{{- 'blogs.general.no_articles_found' | t -}}</p>
+        {%- else -%}
+            {%- paginate blog.articles by articles_per_page -%}
+                {%- if blog.all_tags.size > 0 -%}
+                    <ul class="articles__tags list-reset">
+                            <li class="articles__tag {% unless canonical_url contains 'tagged' %}articles__tag--active{% endunless %} superscript-normal">
+                                <a href="{{- blog.url -}}" aria-label="All" title="All">All</a>
+                            </li>
+
+                        {%- for tag in blog.all_tags -%}
+                            <li class="articles__tag {% if current_tags contains tag %}articles__tag--active{% endif %} superscript-normal">
+                                <a href="{{- blog.url }}/tagged/{{ tag | handle -}}" aria-label="{{- tag -}}" title="{{- tag -}}">{{- tag -}}</a>
+                            </li>
+                        {%- endfor -%}
+                    </ul>
+                {%- endif -%}
+
+                <div 
+                    class="articles"
+                    data-articles-container
+                    {% if paginate.next.url != blank %}
+                        data-next-url="{{- paginate.next.url -}}"
+                    {% endif %}
+                >
+                    {%- for article in blog.articles -%}
+                        {%- liquid  
+                            assign loading = 'eager' 
+                            if forloop.index > 2
+                                assign loading = 'lazy'
+                            endif
+                        -%}
+                        <div class="article">
+                            {%- render 'article-card', article: article, loading: loading -%}
+                        </div>
+                    {%- endfor -%}
+                </div>
+
+                {%- if paginate.next.url != blank -%}
+                    <div
+                        x-show="nextURL"
+                        class="articles__load-more-wrapper"
+                        x-transition.opacity 
+                        x-transition.duration.300ms
+                    >
+                        <button
+                            class="btn btn--center btn--w-min btn--chalk"
+                            type="button"
+                            :disabled="loading"
+                            @click.prevent="loadMore"
+                        >
+                            {{- 'blogs.general.load_more' | t -}}
+                        </button>
+                    </div>
+                {%- endif -%}
+            {%- endpaginate -%}
+        {%- endif -%}
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Articles | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Articles | AW"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,27 @@
+body .shopify-challenge__container {
+    margin: 4rem auto;
+    max-width: 56.2rem;
+    padding: 0 1.8rem;
+    @media only screen and (min-width: 1280px) {
+        max-width: 65rem;
+    }
+    .shopify-challenge__message {
+        margin-bottom: 1.2rem;
+    }
+    .h-captcha {
+        margin-bottom: 1.2rem;
+    }
+    .shopify-challenge__button {
+        background-color: var(--chalk);
+        border-color: transparent;
+        color: var(--ink);
+        cursor: pointer;
+        min-width: 15rem;
+        width: auto;
+        &:hover,
+        &:focus {
+            background-color: var(--morning-sky);
+            color: var(--white);
+        }
+    }
+}

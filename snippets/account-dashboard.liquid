@@ -1,0 +1,74 @@
+<h1 class="form__title visually-hidden">
+  {{ 'customer.account.title' | t }}
+</h1>
+
+<div class="account-orders">
+  <h2 class="form__title subheader-large">
+    {{ 'customer.orders.title' | t }}
+  </h2>
+
+  {% paginate customer.orders by 20 %}
+    {% if customer.orders.size != 0 %}
+      <div class="account-orders__entries">
+        {% for order in customer.orders %}
+          {%- render 'account-order-history-item', order: order -%}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="account__alert">
+        <p class="form__copy">{{ 'customer.orders.none' | t }}</p>
+        <a href="/collections/all" class="button btn btn--chalk">Start Shopping</a>
+      </div>
+    {% endif %}
+  {% endpaginate %}
+</div>
+
+<div class="account-addresses">
+  <h2 class="form__title subheader-large">
+    {{ 'customer.account.details' | t }}
+  </h2>
+
+  <div class="addresses-list">
+    <div class="address address-default">
+      <div class="form__copy">{{ customer.default_address | format_address }}</div>
+
+      <div class="a-underline-wrapper a-underline-style-2">
+        <a href="/account/addresses" class="form__link p-small">
+          {{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})
+        </a>
+      </div>
+    </div>
+
+    {% if customer.addresses_count > 1 %}
+      <div class="address address-additional">
+        {% assign is_additional_address_show = false %}
+
+        {% for address in customer.addresses %}
+          {% if is_additional_address_show == false and address != customer.default_address %}
+            <div class="form__copy">{{ address | format_address }}</div>
+
+            {% assign is_additional_address_show = true %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="account-rewards">
+  <h2 class="form__title subheader-large">
+    {{ 'customer.account.rewards' | t }}
+  </h2>
+
+  <div class="yotpo-widget-instance" data-yotpo-instance-id="54905"></div>
+  <div class="yotpo-widget-instance" data-yotpo-instance-id="28710"></div>
+
+  <div
+    id="swell-customer-identification"
+    data-authenticated="true"
+    data-email="{{ customer.email }}"
+    data-id="{{ customer.id }}"
+    data-tags="{{ customer.tags | json }}"
+    style="display: none;"
+  ></div>
+</div>

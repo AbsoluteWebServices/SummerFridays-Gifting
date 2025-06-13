@@ -1,0 +1,216 @@
+{%- liquid 
+    assign inHiddenOverflow = inHiddenOverflow | default: false
+    assign disableLandscape = disableLandscape | default: false
+    assign top = top | default: false
+    assign subscription_mode = subscription_mode | default: false
+    assign priceModifier = 1
+    if subscription_mode == true 
+        assign current_selling_plan = product.selected_or_first_available_selling_plan_allocation.selling_plan
+        if current_selling_plan != blank 
+            assign first_available_discount_value = current_selling_plan.price_adjustments[0].value
+            assign priceModifier = 100 | minus: first_available_discount_value | divided_by: 100.00
+        endif
+    endif
+    assign current_variant = product.selected_or_first_available_variant
+
+    assign current_variant_price = current_variant.price
+    assign current_variant_price = current_variant_price | times: priceModifier
+    assign default_price = current_variant_price | money_without_trailing_zeros
+    assign price = price | default: default_price
+
+    if product.variants.size > 1
+        if product.price_min < product.price_max
+            assign price_min = product.price_min | times: priceModifier | money_without_trailing_zeros
+            assign price_max = product.price_max | times: priceModifier | money_without_trailing_zeros
+
+            assign price = price_min | append: '-' | append: price_max
+        endif
+    endif
+
+    # Product Card: Landscape
+    assign landscape = product.metafields.product.product_card_landscape | default: false
+    if disableLandscape 
+        assign landscape = false
+    endif
+
+    # Product Media
+    assign main_media = product.media | first
+    if product.metafields.custom.main_image_on_plp != blank
+        assign main_media = product.metafields.custom.main_image_on_plp.value
+    endif
+
+    assign hover_media = product.media[1] 
+    if product.metafields.custom.hover_media_on_plp != blank
+        assign hover_media = product.metafields.custom.hover_media_on_plp.value
+    endif
+ 
+    # Product Title
+    assign product_title = product.title
+    if product.metafields.accentuate.plp_title != blank
+        assign product_title = product.metafields.accentuate.plp_title | escape
+    endif
+    assign product_title = product_title | split: ' - ' | first | strip
+    assign product_title_html = product_title | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>'
+
+    # Variant Title
+    assign variant_title = ''
+    assign hide_variant_title = current_variant.metafields.variant.hide_variant_title | default: false
+    if current_variant.title != 'Default Title'
+        assign variant_title = current_variant.title
+
+        assign variant_title_override = current_variant.metafields.variant.variant_title_override | escape 
+        if variant_title_override != blank 
+            assign variant_title = variant_title_override
+        endif
+    endif
+
+    assign button_color = button_color | default: 'chalk'
+
+    # Product Subtitle
+    assign product_subtitle = product.metafields.accentuate.product_type | escape
+
+    # Redirect to PLP
+    assign redirect_to_plp = product.metafields.product.redirect_to_plp | default: false
+-%}
+
+{%- if subscription_mode == true -%}
+    {%- assign selling_plan_allocations = current_variant.selling_plan_allocations -%}
+    {%- capture selling_plans_array -%}
+        [
+            {%- for selling_plan_allocation in selling_plan_allocations -%}
+                {%- liquid 
+                    assign selling_plan = selling_plan_allocation.selling_plan 
+                    assign first_available_discount_value = selling_plan.price_adjustments[0].value
+                    assign price_modifier = 100 | minus: first_available_discount_value | divided_by: 100.00
+                -%}
+                {
+                    name: '{{ selling_plan.name }}',
+                    id: {{- selling_plan.id -}},
+                    priceModifier: {{- price_modifier -}}
+                }{% unless forloop.last %},{% endunless %}
+            {%- endfor -%}
+        ]
+    {%- endcapture -%}
+{%- endif -%}
+
+<div 
+    x-data="productCard({{ current_variant.id }}, {{- priceModifier -}}, {{- selling_plans_array | default: false -}})"
+    class="product-card {% if landscape %}product-card--landscape{% endif %}"
+>
+    <div class="product-card__top">
+        <a 
+            {% unless landscape %}
+                x-ref="productCardMediaContainer"
+            {% endunless %}
+            href="{{- product.url -}}" 
+            :href="data?.url ? data.url : '{{ product.url }}'"
+            class="product-card__media-wrapper {% if hover_media != blank %}product-card__media-wrapper--with-hover{% endif %}" 
+            aria-label="Go to {{ product_title }}"
+            :aria-label="`Go to ${ data?.title || '{{ product_title }}' }`"
+        >
+            {%- render 'product-card-seal', product: product -%}
+
+            {%- render 'badge', product: product -%}
+
+            <div x-ref="mainMedia" class="product-card__media-main">
+                {%- if main_media != blank -%}
+                    {%- if main_media.media_type == 'video' -%}
+                        {%- render 'video', video: main_media -%}
+                    {%- else -%}
+                        <picture>
+                            <source srcset="{{ main_media | image_url: width: 1000 }}" media="(min-width: 1024px)" data-source-desktop>
+                            <source srcset="{{ main_media | image_url: width: 658 }}" media="(min-width: 576px)" data-source-tablet>
+                            <source srcset="{{ main_media | image_url: width: 568 }}" data-source-mobile>
+                            
+                            <img
+                                class="absolute-img"
+                                src="{{ main_media | image_url: width: 568 }}"
+                                height="300"
+                                width="300"
+                                loading="{%- if lazyload -%}lazy{%- else -%}eager{%- endif -%}"
+                                alt="{{ main_media.alt | default: product.title }}">
+                        </picture>
+                    {%- endif -%}
+                {%- endif -%}
+            </div>
+
+            <div x-ref="hoverMedia" class="product-card__media-hover">
+                {%- if hover_media != blank -%}
+                    {%- if hover_media.media_type == 'video' -%}
+                        {%- render 'video', video: hover_media -%}
+                    {%- else -%}
+                        <picture>
+                            <source srcset="{{ hover_media | image_url: width: 1000 }}" media="(min-width: 1024px)">
+                            <source srcset="{{ hover_media | image_url: width: 658 }}" media="(min-width: 576px)">
+                            <source srcset="{{ hover_media | image_url: width: 568 }}">
+                            
+                            <img
+                                class="absolute-img"
+                                src="{{ hover_media | image_url: width: 568 }}"
+                                height="300"
+                                width="300"
+                                loading="{%- if lazyload -%}lazy{%- else -%}eager{%- endif -%}"
+                                alt="{{ hover_media.alt | default: product.title }}">
+                        </picture>
+                    {%- endif -%}
+                {%- endif -%}
+            </div>
+        </a>
+
+        <div class="product-card__title-wrapper">
+            <h3 class="product-card__title">
+                <a 
+                    href="{{- product.url -}}" 
+                    :href="data?.url ? data.url : '{{ product.url }}'"
+                    class="hover-opacity" 
+                    aria-label="Go to {{ product_title }}"
+                    :aria-label="`Go to ${ data?.title || '{{ product_title }}' }`"
+                    x-html="data ? (data.title_html ? data.title_html : '') : '{{ product_title_html }}'"
+                >
+                    {{- product_title_html -}}
+                </a>
+            </h3>
+
+            {%- render 'product-card-custom-badge', product: product -%}
+        </div>
+
+        <p 
+            x-show="data?.variant_title || Boolean('{{ variant_title }}')"
+            class="product-card__variant-title superscript-normal"
+            {% if variant_title == blank %}
+                style="display: none;"
+            {% endif %}
+            x-text="data ? (data.variant_title ? data.variant_title : '') : '{{ variant_title }}'"
+        >
+            {{- variant_title -}}
+        </p>
+
+        <p 
+            x-show="data?.subtitle || Boolean(`{{ product_subtitle }}`)"
+            class="product-card__subtitle"
+            {% if product_subtitle == blank %}
+                style="display: none;"
+            {% endif %}
+            x-text="data ? (data.subtitle ? data.subtitle : '') : `{{ product_subtitle }}`"
+        >
+            {{- product_subtitle -}}
+        </p>
+    </div>
+
+    <div class="product-card__bottom">
+        {%- if redirect_to_plp -%}
+            <a
+                href="{{- product.url -}}"
+                class="btn btn--full btn--between btn--{{- button_color -}}"
+                aria-label="Go to {{ product.title }}"
+            >
+                <span>{{- 'products.product.shop_now' | t -}}</span>
+                <span x-text="data?.price ? window.Shopify.formatMoney(data.price * priceModifier) : initialized ? '{{- default_price -}}' : '{{- price -}}'">
+                    {{- price -}}
+                </span>
+            </a>
+        {%- else -%}
+            {%- render 'product-card-form', product: product, landscape: landscape, inHiddenOverflow: inHiddenOverflow, top: top, subscription_mode: subscription_mode, priceModifier: priceModifier -%}
+        {%- endif -%}
+    </div>
+</div>

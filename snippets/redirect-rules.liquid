@@ -1,0 +1,48 @@
+{%- liquid 
+    assign redirect = false
+    assign redirect_url = '/'
+    case template.name
+        when 'product'
+            assign show_only_for_admins = product.metafields.product.show_only_for_admins | default: false
+            if show_only_for_admins
+                assign redirect = true
+                if customer
+                    if customer.tags.size > 0
+                        for tag in customer.tags 
+                            if tag == 'admin'
+                                assign redirect = false
+                                break
+                            endif
+                        endfor
+                    endif
+                endif
+
+                if redirect == true
+                    assign product_redirect_url = product.metafields.product.redirect_url
+                    if product_redirect_url != blank
+                        assign redirect_url = product_redirect_url
+                    endif
+                endif
+            endif
+
+            if redirect == false
+                assign product_redirect_url = product.metafields.product.redirect_url
+                if product_redirect_url != blank
+                    assign redirect_url = product_redirect_url
+                    assign redirect = true
+                endif
+            endif
+
+            if redirect == false
+                if product.type == 'Sample' or product.price == 0
+                    #assign redirect = true
+                endif
+            endif
+    endcase
+-%}
+
+{%- if redirect -%}
+    <script>
+        window.location.href = "{{ redirect_url }}";
+    </script>
+{%- endif -%}

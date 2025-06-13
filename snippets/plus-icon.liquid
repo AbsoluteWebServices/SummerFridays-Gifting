@@ -1,0 +1,10 @@
+{%- liquid 
+    assign fill = fill | default: 'black' 
+    assign size = size | default: 10
+-%}
+<div class="plus-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="{{ size }}" height="{{ size }}" viewBox="0 0 12 12" fill="none" aria-label="Plus">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.02423 5.0969e-07C6.34491 0.000420803 6.60453 0.260725 6.60411 0.581406L6.58991 11.4201C6.58949 11.7408 6.32918 12.0004 6.0085 12C5.68782 11.9996 5.4282 11.7393 5.42862 11.4186L5.44282 0.579884C5.44324 0.259203 5.70355 -0.00041983 6.02423 5.0969e-07Z" fill="var(--{{ fill }})"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0 6C0 5.67932 0.259964 5.41935 0.580645 5.41935H11.4194C11.74 5.41935 12 5.67932 12 6C12 6.32068 11.74 6.58065 11.4194 6.58065H0.580645C0.259964 6.58065 0 6.32068 0 6Z" fill="var(--{{ fill }})"/>
+    </svg>
+</div>

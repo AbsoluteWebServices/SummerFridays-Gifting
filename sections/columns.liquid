@@ -1,0 +1,316 @@
+{%- if section.blocks.size > 0 -%}
+    {%- liquid
+        assign padding_top = section.settings.padding_top | default: 0
+        assign padding_bottom = section.settings.padding_bottom | default: 0
+        assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+        assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+        assign aspect_ratio_mobile = section.settings.aspect_ratio_mobile | default: '4 / 5'
+        assign aspect_ratio_desktop = section.settings.aspect_ratio_desktop | default: '4 / 5'
+    -%}
+
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/columns.scss' -%}
+
+    <section id="section-{{- section.id -}}">
+        <div class="container">
+            <div 
+                class="columns"
+                style="--columns-amount: {{- section.blocks.size -}}; --columns-ar-mobile: {{- aspect_ratio_mobile -}}; --columns-ar-desktop: {{- aspect_ratio_desktop -}};"
+            >
+                {%- for block in section.blocks -%}
+                    {%- liquid
+                        assign video = block.settings.video
+                        assign image = block.settings.image 
+                        if image == blank and video == blank
+                            continue
+                        endif
+
+                        assign media_type = block.settings.media_type | default: 'image'
+                        assign text_color = block.settings.text_color | default: 'white'
+                        assign overlay_opacity = block.settings.overlay_opacity | default: 0 | divided_by: 100.0
+                        assign gradient_direction = block.settings.gradient_direction | default: 'gradient-b'
+                        assign gradient_percent = block.settings.gradient_percent | default: 25
+                        assign eyebrow = block.settings.eyebrow | escape | strip_html
+                        assign title = block.settings.title
+                        assign link_appearance = block.settings.link_appearance | default: 'link'
+                        assign link_text = block.settings.link_text | escape | strip_html
+                        assign link_url = block.settings.link_url
+                        assign link_target = block.settings.link_target
+                        assign link_whole_banner = block.settings.link_whole_banner | default: true, allow_false: true
+                        assign vertical_alignment = block.settings.vertical_alignment | default: 'bottom'
+                        assign horizontal_alignment = block.settings.horizontal_alignment | default: 'left'
+                    -%}
+
+                    <{% if link_whole_banner and link_url != blank %}a aria-label="{{- title | strip_html -}}" href="{{- link_url -}}"{% else %}div{% endif %} 
+                        class="column column--{{- gradient_direction }} column--y-{{ vertical_alignment }} column--x-{{ horizontal_alignment }} {% if link_whole_banner and link_url != blank %}scale-img{% endif %}" 
+                        style="--gradient-percent: {{- gradient_percent -}}%"
+                    >
+                        {%- if overlay_opacity > 0 -%}
+                            <div class="column__overlay" style="opacity: {{- overlay_opacity -}};"></div>
+                        {%- endif -%}
+
+                        {%- if media_type == 'image' -%}
+                            {%- if image -%}
+                                {%- render 'img', image: image -%}
+                            {%- endif -%}
+                        {%- elsif media_type == 'video' -%}
+                            {%- if video -%}
+                                {%- render 'video', 
+                                    video: video,
+                                    poster: image
+                                -%}
+                            {%- endif -%}
+                        {%- endif -%}
+
+                        {% if title != blank or link_text != blank %}
+                            <div class="column__content">
+                                {%- if eyebrow != blank -%}
+                                    <div class="column__eyebrow subheader-small" style="color: var(--{{- text_color -}});">{{- eyebrow -}}</div>
+                                {%- endif -%}
+
+                                {% if title != blank %}
+                                    <div class="rte rte--smaller" style="color: var(--{{- text_color -}});">{{- title -}}</div>
+                                {% endif %}
+
+                                {%- if link_text != blank and link_url != blank -%}
+                                    <{% if link_whole_banner %}div{% else %}a{% endif %}
+                                        class="column__cta hover-arrow {% if link_appearance == 'button' %}btn btn--center btn--w-min btn--{{ text_color }}-transparent{% else %}column__link column__link--{{ text_color }} cta-textlink{% endif %}"
+                                        href="{{- link_url -}}"
+                                        title="{{- link_text -}}"
+                                        {% if link_target != '_self' %}
+                                            target="{{- link_target -}}"
+                                        {% endif %}
+                                    >
+                                        {{- link_text -}}
+                                        {% render 'icon', name: 'arrow-right' %}
+                                    </{% if link_whole_banner %}div{% else %}a{% endif %}>
+                                {%- endif -%}
+                            </div>
+                        {%- endif -%}
+                    </{% if link_whole_banner and link_url != blank %}a{% else %}div{% endif %}>
+                {%- endfor -%}
+            </div>
+        </div>
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Columns | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "select",
+            "id": "aspect_ratio_mobile",
+            "label": "Aspect ratio (mobile)",
+            "default": "4 / 5",
+            "options": [
+                { "value": "4 / 5", "label": "4 / 5" },
+                { "value": "1 / 1", "label": "1 / 1" },
+                { "value": "1.625 / 1", "label": "1.625 / 1" },
+                { "value": "16 / 9", "label": "16 / 9" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "aspect_ratio_desktop",
+            "label": "Aspect ratio (desktop)",
+            "default": "4 / 5",
+            "options": [
+                { "value": "4 / 5", "label": "4 / 5" },
+                { "value": "1 / 1", "label": "1 / 1" },
+                { "value": "1.625 / 1", "label": "1.625 / 1" },
+                { "value": "16 / 9", "label": "16 / 9" }
+            ]
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Column",
+            "type": "column",
+            "settings": [
+                {
+                    "type": "select",
+                    "id": "media_type",
+                    "label": "Media type",
+                    "default": "image",
+                    "options": [
+                        { "value": "image", "label": "Image" },
+                        { "value": "video", "label": "Video" }
+                    ]
+                },
+                {
+                    "type": "video",
+                    "id": "video",
+                    "label": "Video",
+                    "info": "Format: .mp4;"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image",
+                    "info": "With the video type, the image is used as a poster (first frame);"
+                },
+                {
+                    "type": "text",
+                    "id": "eyebrow",
+                    "label": "Eyebrow",
+                    "info": "Keep it short. ~20 characters (2-5 words)"
+                },
+                {
+                    "type": "richtext",
+                    "id": "title",
+                    "label": "Title",
+                    "info": "Keep it short. ~50 characters (5-8 words)"
+                },
+                {
+                    "type": "select",
+                    "id": "link_appearance",
+                    "label": "Link appearance",
+                    "default": "link",
+                    "options": [
+                        { "value": "link", "label": "Link" },
+                        { "value": "button", "label": "Button" }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "id": "link_text",
+                    "label": "Link Text",
+                    "info": "Keep it short. ~15 characters (1-3 words)"
+                },
+                {
+                    "type": "url",
+                    "id": "link_url",
+                    "label": "Link URL"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "link_whole_banner",
+                    "label": "Link the whole banner",
+                    "default": true
+                },
+                {
+                    "type": "select",
+                    "id": "link_target",
+                    "label": "Link Target",
+                    "default": "_self",
+                    "options": [
+                        { "value": "_blank", "label": "Blank" },
+                        { "value": "_self", "label": "Self" }
+                    ],
+                    "info": "Blank opens in a new tab."
+                },
+                {
+                    "type": "select",
+                    "id": "vertical_alignment",
+                    "label": "Vertical alignment",
+                    "default": "bottom",
+                    "options": [
+                        { "value": "top", "label": "Top" },
+                        { "value": "center", "label": "Center" },
+                        { "value": "bottom", "label": "Bottom" }
+                    ]
+                },
+                {
+                    "type": "select",
+                    "id": "horizontal_alignment",
+                    "label": "Horizontal alignment",
+                    "default": "left",
+                    "options": [
+                        { "value": "left", "label": "Left" },
+                        { "value": "center", "label": "Center" },
+                        { "value": "right", "label": "Right" }
+                    ]
+                },
+                {
+                    "type": "select",
+                    "id": "text_color",
+                    "label": "Text Color",
+                    "default": "white",
+                    "options": [
+                        { "value": "ink", "label": "Ink" },
+                        { "value": "white", "label": "White"}
+                    ]
+                },
+                {
+                    "type": "range",
+                    "id": "overlay_opacity",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "%",
+                    "label": "Overlay opacity",
+                    "default": 0
+                },
+                {
+                    "type": "select",
+                    "id": "gradient_direction",
+                    "label": "Gradient direction",
+                    "default": "gradient-b",
+                    "options": [
+                        { "value": "gradient-t", "label": "To Top" },
+                        { "value": "gradient-b", "label": "To Bottom" },
+                        { "value": "gradient-y", "label": "Vertical Sides" },
+                        { "value": "gradient-none", "label": "Off" }
+                    ]
+                },
+                {
+                    "type": "range",
+                    "id": "gradient_percent",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "%",
+                    "label": "Gradient percent (height)",
+                    "default": 25
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Columns | AW"
+        }
+    ]
+}
+{% endschema %}

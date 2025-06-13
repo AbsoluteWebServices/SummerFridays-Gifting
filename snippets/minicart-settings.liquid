@@ -1,0 +1,73 @@
+{%- assign minicart_settings = shop.metaobjects.minicart_settings['minicart'] -%}
+{%- if minicart_settings != blank -%}
+    {%- liquid 
+        # Free shipping progress bar
+        assign free_shipping_progress_bar_enable = minicart_settings.free_shipping_progress_bar_enable | default: false
+        assign free_shipping_progress_bar_cost = minicart_settings.free_shipping_progress_bar_cost | default: 0
+        assign free_shipping_progress_bar_reached_text = minicart_settings.free_shipping_progress_bar_reached_text
+
+        # Footer note
+        assign footer_note_enable = minicart_settings.footer_note_enable | default: false
+        assign footer_note_text = minicart_settings.footer_note_text
+
+        # Free samples
+        assign free_samples_enable = minicart_settings.free_samples_enable | default: false
+        assign free_samples_title = minicart_settings.free_samples_title | default: 'Choose your free samples'
+        assign free_samples_products = minicart_settings.free_samples_products.value
+        assign free_samples_limit = minicart_settings.free_samples_limit | default: 1
+        assign free_samples_threshold = minicart_settings.free_samples_threshold | default: 7500
+
+        # Upsells
+        assign upsells_enable = minicart_settings.upsells_enable | default: false
+        assign upsells_title = minicart_settings.upsells_title | default: 'You Might Also Like'
+        assign upsells_products = minicart_settings.upsells_products.value
+
+        # Is a gift
+        assign is_a_gift_enable = minicart_settings.is_a_gift_enable | default: false
+        assign is_a_gift_title = minicart_settings.is_a_gift_title | default: 'Make this a gift!'
+        assign is_a_gift_placeholder = minicart_settings.is_a_gift_placeholder | default: 'Make this a gift!'
+
+        # Donations
+        assign donations_enable = minicart_settings.donations_enable | default: false
+        assign donations_title = minicart_settings.donations_title.value | strip_html | escape | trim
+        assign donations_products = minicart_settings.donations_products.value
+        assign donations_cta = minicart_settings.donations_cta.value | default: 'Donate to'
+    -%}
+
+    <script 
+        data-minicart-settings
+        type="application/json"
+    >
+        {
+            "free_shipping_progress_bar": {
+                "enable": {{- free_shipping_progress_bar_enable -}},
+                "cost": {{- free_shipping_progress_bar_cost -}}
+            },
+            "free_samples": {
+                "enable": {{- free_samples_enable -}},
+                "products": [
+                    {%- if free_samples_products != blank -%}
+                        {%- for prod in free_samples_products -%}
+                            {%- liquid 
+                                assign product_title = prod.title
+                                if prod.metafields.accentuate.plp_title != blank
+                                    assign product_title = prod.metafields.accentuate.plp_title | escape
+                                endif
+                                assign product_title = product_title | split: ' - ' | first | strip
+                                assign product_title_html = product_title | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>'
+                            -%}
+                            {
+                                "title": {{- product_title | json -}},
+                                "title_html": {{- product_title_html | json -}},
+                                "image_url": {%- if prod.featured_image -%}{{- prod.featured_image | image_url: width: 200 | json -}}{%- else -%}null{%- endif -%},
+                                "variant_id": {{- prod.selected_or_first_available_variant.id -}}
+                            }{%- unless forloop.last -%},{%- endunless -%}
+                        {%- endfor -%}
+                    {%- endif -%}
+                ],
+                "limit": {{- free_samples_limit -}},
+                "threshold": {{- free_samples_threshold -}}
+            }
+        }
+    </script>
+{%- endif -%}

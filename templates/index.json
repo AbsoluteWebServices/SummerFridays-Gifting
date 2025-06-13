@@ -1,0 +1,499 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "sticky_menu_ybPdGW": {
+      "type": "sticky-menu",
+      "blocks": {
+        "item_wJxapY": {
+          "type": "item",
+          "settings": {
+            "title": "New Arrivals",
+            "url": "#new-arrivals",
+            "active": false
+          }
+        },
+        "item_fNfLBt": {
+          "type": "item",
+          "settings": {
+            "title": "Best Sellers",
+            "url": "#best-sellers",
+            "active": false
+          }
+        },
+        "item_wfkQ7E": {
+          "type": "item",
+          "settings": {
+            "title": "Moisturizers",
+            "url": "#moisturizers",
+            "active": false
+          }
+        },
+        "item_6EtDNB": {
+          "type": "item",
+          "settings": {
+            "title": "Treatments + Serums",
+            "url": "#treatments-serums",
+            "active": false
+          }
+        },
+        "item_wjkgA8": {
+          "type": "item",
+          "settings": {
+            "title": "Makeup",
+            "url": "#makeup",
+            "active": false
+          }
+        },
+        "item_88JiPH": {
+          "type": "item",
+          "settings": {
+            "title": "Lip Care",
+            "url": "#lip-care",
+            "active": false
+          }
+        },
+        "item_ghX3hB": {
+          "type": "item",
+          "settings": {
+            "title": "Sunscreen",
+            "url": "#sunscreen",
+            "active": false
+          }
+        },
+        "item_MQtPrt": {
+          "type": "item",
+          "settings": {
+            "title": "Cleanser",
+            "url": "#cleanser",
+            "active": false
+          }
+        },
+        "item_hWnYgi": {
+          "type": "item",
+          "settings": {
+            "title": "Bodycare",
+            "url": "#bodycare",
+            "active": false
+          }
+        },
+        "item_4Dwczf": {
+          "type": "item",
+          "settings": {
+            "title": "Sets + Gifts",
+            "url": "#sets-gifts",
+            "active": false
+          }
+        },
+        "item_qFPa3e": {
+          "type": "item",
+          "settings": {
+            "title": "Apparel + Accessories",
+            "url": "#apparel-accessories",
+            "active": false
+          }
+        }
+      },
+      "block_order": [
+        "item_wJxapY",
+        "item_fNfLBt",
+        "item_wfkQ7E",
+        "item_6EtDNB",
+        "item_wjkgA8",
+        "item_88JiPH",
+        "item_ghX3hB",
+        "item_MQtPrt",
+        "item_hWnYgi",
+        "item_4Dwczf",
+        "item_qFPa3e"
+      ],
+      "custom_css": [],
+      "settings": {}
+    },
+    "recommendations_PU8itr": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 2.4,
+        "padding_bottom": 0,
+        "padding_top_desktop": 4.8,
+        "padding_bottom_desktop": 0,
+        "id": "new-arrivals",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>New Arrivals</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 10,
+        "products": [
+          "bronzing-drops",
+          "illuminating-drops",
+          "jet-lag™-eye-patches"
+        ]
+      }
+    },
+    "recommendations_7367ed": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
+        "id": "best-sellers",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Best Sellers</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "jumbo-jet-lag-mask",
+          "jet-lag-overnight-eye-serum",
+          "shadedrops-spf-30-mineral-milk-sunscreen",
+          "lip-butter-balm-iced-coffee",
+          "sheer-skin-tint",
+          "rich-cushion-cream",
+          "lip-butter-balm",
+          "dream-lip-oil-pink-cloud",
+          "cloud-dew-gel-cream",
+          "cc-me-serum",
+          "light-aura-vitamin-c-peptide-eye-cream",
+          "super-amino-gel-cleanser"
+        ]
+      }
+    },
+    "recommendations_QGDy9r": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
+        "id": "moisturizers",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Moisturizers</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "jet-lag-soothing-hydration-mist",
+          "jet-lag-deep-hydration-serum",
+          "jumbo-jet-lag-mask",
+          "rich-cushion-cream",
+          "cloud-dew-gel-cream",
+          "heavenly-sixteen-all-in-one-face-oil"
+        ]
+      }
+    },
+    "recommendations_hH4erC": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
+        "id": "treatments-serums",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Treatments + Serums</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "jet-lag-deep-hydration-serum",
+          "jet-lag-overnight-eye-serum",
+          "cc-me-serum",
+          "midnight-ritual-retinol-renewal-serum",
+          "light-aura-vitamin-c-peptide-eye-cream",
+          "heavenly-sixteen-all-in-one-face-oil"
+        ]
+      }
+    },
+    "recommendations_JrftXc": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
+        "id": "makeup",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Makeup</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "sheer-skin-tint",
+          "lip-butter-balm",
+          "dream-lip-oil-pink-cloud"
+        ]
+      }
+    },
+    "recommendations_wdRjWD": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
+        "id": "lip-care",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Lip Care</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "lip-butter-balm",
+          "lip-butter-balm-sweet-mint",
+          "lip-butter-balm-pink-sugar",
+          "lip-butter-balm-birthday-cake",
+          "lip-butter-balm-vanilla-beige",
+          "lip-butter-balm-iced-coffee",
+          "lip-butter-balm-brown-sugar",
+          "lip-butter-balm-cherry",
+          "lip-butter-balm-poppy",
+          "dream-lip-oil-bare-sand",
+          "dream-lip-oil-rose-bud",
+          "dream-lip-oil-soft-mauve",
+          "dream-lip-oil-midnight-berry",
+          "dream-lip-oil-pink-cloud",
+          "dream-lip-oil-blush-dreams",
+          "dream-lip-oil-mauve",
+          "dream-lip-oil-rosewood-nights",
+          "sephora-birthday-gift"
+        ]
+      }
+    },
+    "recommendations_4HmgHg": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
+        "id": "sunscreen",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Sunscreen</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "shadedrops-spf-30-mineral-milk-sunscreen"
+        ]
+      }
+    },
+    "recommendations_D96dTf": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
+        "id": "cleanser",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Cleanser</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "super-amino-gel-cleanser"
+        ]
+      }
+    },
+    "recommendations_gb4KeG": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
+        "id": "bodycare",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Bodycare</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "summer-silk-nourishing-body-lotion-1",
+          "babymoon-belly-balm"
+        ]
+      }
+    },
+    "recommendations_8adQXj": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
+        "id": "sets-gifts",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Sets + Gifts</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "jet-lag-on-the-go-set",
+          "mini-jet-lag-mask",
+          "mini-cloud-dew-gel-cream"
+        ]
+      }
+    },
+    "recommendations_kjtW9H": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4,
+        "id": "apparel-accessories",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Apparel + Accessories</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "self-care-daily-planner",
+          "tube-key",
+          "summer-fridays-gift-card"
+        ]
+      }
+    },
+    "image_gallery_JECmdJ": {
+      "type": "image-gallery",
+      "blocks": {
+        "image_fPbKXF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/13-1.jpg",
+            "url": "https://www.instagram.com/summerfridays/",
+            "open_in_new_tab": true
+          }
+        },
+        "image_T8FAhK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/JESSIKA_BARE_SAND_875.jpg",
+            "url": "https://www.instagram.com/summerfridays/",
+            "open_in_new_tab": true
+          }
+        },
+        "image_XaNWiR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_0018.jpg",
+            "url": "https://www.instagram.com/summerfridays/",
+            "open_in_new_tab": true
+          }
+        },
+        "image_fVhwhy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MONICA_MIDNIGHT_BERRY_1808.jpg",
+            "url": "https://www.instagram.com/summerfridays/",
+            "open_in_new_tab": true
+          }
+        },
+        "image_zVJiYB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/24_05_11_SummerFridays_LipOil0799.jpg",
+            "url": "https://www.instagram.com/summerfridays/",
+            "open_in_new_tab": true
+          }
+        },
+        "image_XkNCzn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Summer_Friday_s.jpg",
+            "url": "https://www.instagram.com/summerfridays/",
+            "open_in_new_tab": true
+          }
+        },
+        "image_DUK8r8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/41.jpg",
+            "url": "https://www.instagram.com/summerfridays/",
+            "open_in_new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "image_fPbKXF",
+        "image_T8FAhK",
+        "image_XaNWiR",
+        "image_fVhwhy",
+        "image_zVJiYB",
+        "image_XkNCzn",
+        "image_DUK8r8"
+      ],
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "background_color": "morning-sky",
+        "content": "<h2>Follow us <a href=\"https://www.instagram.com/summerfridays/\" title=\"https://www.instagram.com/summerfridays/\">@summerfridays</a></h2>",
+        "images_type": "shopify-images",
+        "embed": "",
+        "spirit_gallery_id": "62141",
+        "force": false,
+        "open_in_new_tab": true,
+        "limit": 8,
+        "spirit_gallery_image_url": "https://www.instagram.com/summerfridays/"
+      }
+    }
+  },
+  "order": [
+    "sticky_menu_ybPdGW",
+    "recommendations_PU8itr",
+    "recommendations_7367ed",
+    "recommendations_QGDy9r",
+    "recommendations_hH4erC",
+    "recommendations_JrftXc",
+    "recommendations_wdRjWD",
+    "recommendations_4HmgHg",
+    "recommendations_D96dTf",
+    "recommendations_gb4KeG",
+    "recommendations_8adQXj",
+    "recommendations_kjtW9H",
+    "image_gallery_JECmdJ"
+  ]
+}

@@ -1,0 +1,12 @@
+<button
+    id="{{- id -}}" 
+    class="header__mobile-menu-btn header__mobile-menu-btn--search"
+    type="button"
+    aria-controls="predictive-search"
+    :aria-expanded="searchOpen"
+    aria-label="Open predictive search form"
+    aria-haspopup="dialog"
+    @click.prevent="openSearch"
+>
+    {%- render 'icon', name: 'search' -%}
+</button>

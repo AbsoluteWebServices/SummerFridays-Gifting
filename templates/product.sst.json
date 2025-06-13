@@ -1,0 +1,511 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product-sf",
+      "settings": {}
+    },
+    "shade_carousel_9GLRcV": {
+      "type": "shade-carousel",
+      "blocks": {
+        "slider_6dk9M7": {
+          "type": "slider",
+          "settings": {
+            "slider_name": "",
+            "image_1": "shopify://shop_images/SST-ShadeHighlight-1.jpg",
+            "toggle_image_1": "shopify://shop_images/PDP-SST-Goop-Shade_1.jpg",
+            "hover_media_type_1": "video",
+            "title_1": "SHADE 1",
+            "text_1": "Fair with Neutral Peach Undertones",
+            "image_2": "shopify://shop_images/SST-ShadeHighlight-2.jpg",
+            "toggle_image_2": "shopify://shop_images/PDP-SST-Goop-Shade_2.jpg",
+            "hover_media_type_2": "image",
+            "title_2": "SHADE 2",
+            "text_2": "Light with Cool Undertones",
+            "image_3": "shopify://shop_images/SST-ShadeHighlight-2-5.jpg",
+            "toggle_image_3": "shopify://shop_images/PDP-SST-Goop-Shade_2.5.jpg",
+            "hover_media_type_3": "video",
+            "title_3": "SHADE 2.5",
+            "text_3": "Light with Cool Peach Undertones",
+            "image_4": "shopify://shop_images/SST-ShadeHighlight-3.jpg",
+            "toggle_image_4": "shopify://shop_images/PDP-SST-Goop-Shade_3.jpg",
+            "hover_media_type_4": "image",
+            "title_4": "SHADE 3",
+            "text_4": "Light with Golden Undertones",
+            "image_5": "shopify://shop_images/SST-ShadeHighlight-4.jpg",
+            "toggle_image_5": "shopify://shop_images/PDP-SST-Goop-Shade_4.jpg",
+            "hover_media_type_5": "image",
+            "title_5": "SHADE 4",
+            "text_5": "Light-medium with Neutral Olive Undertones",
+            "image_6": "shopify://shop_images/SST-ShadeHighlight-4-5.jpg",
+            "toggle_image_6": "shopify://shop_images/PDP-SST-Goop-Shade_4.5.jpg",
+            "hover_media_type_6": "image",
+            "title_6": "SHADE 4.5",
+            "text_6": "Medium with Cool Peach Undertones",
+            "image_7": "shopify://shop_images/SST-ShadeHighlight-5.jpg",
+            "toggle_image_7": "shopify://shop_images/PDP-SST-Goop-Shade_5.jpg",
+            "hover_media_type_7": "image",
+            "title_7": "SHADE 5",
+            "text_7": "Medium with Warm Neutral Undertones",
+            "image_8": "shopify://shop_images/SST-ShadeHighlight-6.jpg",
+            "toggle_image_8": "shopify://shop_images/PDP-SST-Goop-Shade_6.jpg",
+            "hover_media_type_8": "image",
+            "title_8": "SHADE 6",
+            "text_8": "Medium Tan with Warm Golden Undertones",
+            "image_9": "shopify://shop_images/SST-ShadeHighlight-7.jpg",
+            "toggle_image_9": "shopify://shop_images/PDP-SST-Goop-Shade_7.jpg",
+            "hover_media_type_9": "image",
+            "title_9": "SHADE 7",
+            "text_9": "Medium Deep with Golden Neutral Undertones",
+            "image_10": "shopify://shop_images/SST-ShadeHighlight-8.jpg",
+            "toggle_image_10": "shopify://shop_images/PDP-SST-Goop-Shade_8.jpg",
+            "hover_media_type_10": "image",
+            "title_10": "SHADE 8",
+            "text_10": "Medium Deep with Neutral Warm Undertones",
+            "image_11": "shopify://shop_images/SST-ShadeHighlight-9.jpg",
+            "toggle_image_11": "shopify://shop_images/PDP-SST-Goop-Shade_9.jpg",
+            "hover_media_type_11": "image",
+            "title_11": "SHADE 9",
+            "text_11": "Rich Deep with Neutral Cool Undertones",
+            "image_12": "shopify://shop_images/SST-ShadeHighlight-10.jpg",
+            "toggle_image_12": "shopify://shop_images/PDP-SST-Goop-Shade_10.jpg",
+            "hover_media_type_12": "image",
+            "title_12": "SHADE 10",
+            "text_12": "Rich-Deep with Neutral Undertones",
+            "hover_media_type_13": "image",
+            "title_13": "",
+            "text_13": "",
+            "hover_media_type_14": "image",
+            "title_14": "",
+            "text_14": ""
+          }
+        }
+      },
+      "block_order": [
+        "slider_6dk9M7"
+      ],
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "title": "12 Flexible Shades",
+        "show_dropdown": false,
+        "show_toggle": true
+      }
+    },
+    "how_to_use_R4qdic": {
+      "type": "how-to-use",
+      "blocks": {
+        "cards_dkQQUb": {
+          "type": "cards",
+          "settings": {
+            "main_media_type": "video",
+            "main_video": "shopify://files/videos/Sheer Skin Tint-HowToUse_v2.mp4",
+            "secondary_media_type": "image",
+            "secondary_image": "shopify://shop_images/Howto-SST.jpg",
+            "title": "<h2>How to Use<br/><em>Sheer Skin Tint</em></h2>",
+            "subtitle": "",
+            "content": "<p>Shake well before using. Smooth over skin in the AM after your daily skincare and SPF products. Lightweight formula can be layered if more coverage is desired.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "cards_dkQQUb"
+      ],
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "slider_type": "all",
+        "bg_color": "chalk"
+      }
+    },
+    "routine_timeline_f9TxwP": {
+      "type": "routine-timeline",
+      "blocks": {
+        "step_W369PX": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "step 1: Cleanse",
+            "content": "<p>Explore <a href=\"/products/super-amino-gel-cleanser\" title=\"Super Amino Gel Cleanser\">Super Amino Gel Cleanser</a></p>",
+            "product": "",
+            "width_desktop": 20
+          }
+        },
+        "step_7KzagL": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "step 2: Treat",
+            "content": "<p>Explore <a href=\"/products/cc-me-serum\" title=\"CC Me Serum with Vitamin C + Niacinamide\">CC Me Serum</a></p>",
+            "product": "",
+            "width_desktop": 20
+          }
+        },
+        "step_h7W3yP": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "step 3: Moisturize",
+            "content": "<p>Explore <a href=\"/products/cloud-dew-gel-cream\" title=\"Cloud Dew Gel Cream Moisturizer\">Cloud Dew Gel Cream</a></p>",
+            "product": "",
+            "width_desktop": 20
+          }
+        },
+        "step_eKKYdt": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "step 4: Protect",
+            "content": "<p>Explore <a href=\"/products/shadedrops-spf-30-mineral-milk-sunscreen\" title=\"ShadeDrops Broad Spectrum SPF 30 Mineral Milk Sunscreen\">ShadeDrops SPF 30 Mineral Milk Sunscreen</a></p>",
+            "product": "",
+            "width_desktop": 20
+          }
+        },
+        "step_tz4JTK": {
+          "type": "step",
+          "settings": {
+            "active": true,
+            "show_dot": true,
+            "title": "step 5: Cover",
+            "content": "<h2>Sheer Skin Tint</h2>",
+            "product": "",
+            "width_desktop": 12
+          }
+        }
+      },
+      "block_order": [
+        "step_W369PX",
+        "step_7KzagL",
+        "step_h7W3yP",
+        "step_eKKYdt",
+        "step_tz4JTK"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "content": "<h2>Adding <em>Sheer Skin Tint</em> to your <em>Routine</em></h2>",
+        "hide_last_step_on_mobile": false,
+        "hide_last_step_on_desktop": false
+      }
+    },
+    "media_accordions_cRnD8x": {
+      "type": "media-accordions",
+      "blocks": {
+        "accordion_custom_RFMpKE": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "TIGER GRASS",
+            "content": "<p>This antioxidant-rich ingredient, also known as centella asiatica, helps soothe the skin and reduce the look of redness.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_rVWCtc": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "HUMECTANT BLEND",
+            "content": "<p>This mix of glycerin and hyaluronic acid helps attract and hold water on skin's surface to plump fine lines and support a healthy moisture barrier.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_ym9MLV": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "RICH EMOLLIENTS",
+            "content": "<p>A lightweight blend of squalane, vitamin E, safflower and avocado oils locks in hydration and helps the formula glide evenly over skin.</p>",
+            "badge": ""
+          }
+        },
+        "accordion_custom_fMkr89": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "View full ingredient list",
+            "content": "<p>Water/Aqua/Eau, Ethylhexyl Palmitate, Glycerin, Isododecane, Diethylhexyl Carbonate, Isohexadecane, Polyglyceryl-4 Diisostearate/Polyhydroxystearate/Sebacate, Polymethylsilsesquioxane, Trimethylsiloxysilicate, Sodium Chloride, C13-15 Alkane, Sodium Hyaluronate, Squalane, Niacinamide, Centella Asiatica Leaf Extract, Tocopheryl Acetate, Tocopherol, Persea Gratissima (Avocado) Oil, Camellia Sinensis Leaf Extract, Carthamus Tinctorius (Safflower) Seed Oil, Glycine Soja (Soybean) Oil, Ethylhexylglycerin, Hydrogenated Vegetable Oil, Silica, Alumina, Disteardimonium Hectorite, Magnesium Oxide, Propylene Carbonate, Zinc Stearate, Boron Nitride, Sodium Benzoate, Potassium Sorbate, Caprylyl Glycol, Phenoxyethanol, May Contain / Peut Contenir (+/-) Titanium Dioxide (CI 77891), Iron Oxides (CI 77491, CI 77492, CI 77499).<br/><br/>Keep out of eyes. For external use only.</p>",
+            "badge": ""
+          }
+        }
+      },
+      "block_order": [
+        "accordion_custom_RFMpKE",
+        "accordion_custom_rVWCtc",
+        "accordion_custom_ym9MLV",
+        "accordion_custom_fMkr89"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "media_type": "image",
+        "image": "shopify://shop_images/Sheer_Skin_Tint_Models_-_Ingredients.jpg",
+        "media_aspect_ratio": "square",
+        "stripes": false,
+        "gradient_direction": "gradient-none",
+        "text_color": "black",
+        "content": "",
+        "content_2": "<h2>Key Ingredients </h2>",
+        "vertical_alignment": "center",
+        "accordions_bg_color": "white",
+        "open_first": true
+      }
+    },
+    "2_blocks_with_accordions_qjWTNX": {
+      "type": "2-blocks-with-accordions",
+      "blocks": {
+        "block_1_N4A4bY": {
+          "type": "block_1",
+          "settings": {
+            "title": "Recycle with us and receive a $25 E-Gift Card",
+            "content": "<p>Send back 5+ of your empty Summer Fridays products in exchange for a $25 e-gift card to be used on your next purchase on SummerFridays.com. Learn more <a href=\"https://summerfridays.com/pages/recycling-program\" target=\"_blank\" title=\"https://summerfridays.com/pages/recycling-program\">here.</a></p>",
+            "html": "",
+            "image": "shopify://shop_images/Jet-Lag-Mask-Empty_8df86097-7192-439b-9461-6691d9a503f0.jpg"
+          }
+        },
+        "block_1_AccMec": {
+          "type": "block_1",
+          "settings": {
+            "title": "Recycling Instructions",
+            "content": "",
+            "html": "<script src=\"https://app.bluebirdclimate.com/embed/summer-fridays?id=A52_QqNR_2XtSSEnAdwu-8pekgVh4DIrZQiHrRtgygWH_npzhylWF2ykXM0vSRPFyoFyWZUbeoq2VqHEOR_u1kY72mdyy5zHrehS0ar15v5TUFT-bgScQA\" async=\"\" type=\"text/javascript\"></script>"
+          }
+        },
+        "block_1_cLM8Eh": {
+          "type": "block_1",
+          "settings": {
+            "title": "Sustainability",
+            "content": "<p>Learn more about sustainability <a href=\"/pages/sustainability\" title=\"Sustainability\">here</a>.</p>",
+            "html": ""
+          }
+        },
+        "block_2_BgUpiW": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Sheer Skin Tint vegan and cruelty-free?",
+            "content": "<p>Yes, Summer Fridays products are not tested on animals or contain any animal by-products.</p>",
+            "html": ""
+          }
+        },
+        "block_2_nA8DDL": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Sheer Skin Tint gluten-free?",
+            "content": "<p>Sheer Skin Tint is formulated without gluten. It’s important to note that while all Summer Fridays products are formulated to be gluten-free, we cannot guarantee that they have been produced in a gluten-free facility. However, The National Celiac Association has stated that unless cosmetic products are ingested, there should not be an issue with gluten in topical products.</p><p>Please see <a href=\"https://nationalceliac.org/celiac-disease-questions/using-gluten-free-skin-body-products-someone-celiac-disease/\">here</a> for additional information. As always, if there is concern, we recommend that you consult with your physician/healthcare provider prior to use.</p>",
+            "html": ""
+          }
+        },
+        "block_2_hCYxfB": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Sheer Skin Tint non-comedogenic?",
+            "content": "<p>Yes, Sheer Skin Tint is non-comedogenic, which means it will not clog pores.</p>",
+            "html": ""
+          }
+        },
+        "block_2_nR4nxm": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Sheer Skin Tint suitable for all skin types?",
+            "content": "<p>Yes, Sheer Skin Tint is suitable for all skin types, including sensitive skin.</p>",
+            "html": ""
+          }
+        },
+        "block_2_XwrpUn": {
+          "type": "block_2",
+          "settings": {
+            "title": "Is Sheer Skin Tint fragrance-free?",
+            "content": "<p>Yes, Sheer Skin Tint is formulated without fragrance.</p>",
+            "html": ""
+          }
+        },
+        "block_2_Qy6Bzc": {
+          "type": "block_2",
+          "settings": {
+            "title": "Can I use Sheer Skin Tint every day?",
+            "content": "<p>Yes, Sheer Skin Tint can be used everyday. We recommend applying after your morning skin care routine, directly following SPF.</p>",
+            "html": ""
+          }
+        },
+        "block_2_d3W6Fb": {
+          "type": "block_2",
+          "settings": {
+            "title": "How do I know which shade of Sheer Skin Tint is best for me?",
+            "content": "<p>We recommend using the Shade Finder on SummerFridays.com or on Sephora.com to determine the best shade for you.<br/>Sheer Skin Tint features “flexible” shades, meaning that they are forgiving and for many skin tones, it’s possible that more than one shade will work.</p>",
+            "html": ""
+          }
+        },
+        "block_2_DjY4Cw": {
+          "type": "block_2",
+          "settings": {
+            "title": "Will Sheer Skin oxidize and change color once on my skin?",
+            "content": "<p>Sheer Skin Tint should stay true to the shade that you see in the bottle.</p>",
+            "html": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_1_N4A4bY",
+        "block_1_AccMec",
+        "block_1_cLM8Eh",
+        "block_2_BgUpiW",
+        "block_2_nA8DDL",
+        "block_2_hCYxfB",
+        "block_2_nR4nxm",
+        "block_2_XwrpUn",
+        "block_2_Qy6Bzc",
+        "block_2_d3W6Fb",
+        "block_2_DjY4Cw"
+      ],
+      "settings": {
+        "padding_top": 3,
+        "padding_bottom": 3,
+        "padding_top_desktop": 6,
+        "padding_bottom_desktop": 6,
+        "block_1_type": "accordions",
+        "block_1_accordion_open": true,
+        "block_1_background_color": "morning-sky",
+        "block_1_background_color_opacity": 100,
+        "block_1_title_top": "How to recycle",
+        "block_1_title": "<h2>We Love Our Planet.<br/>Help us keep our home a little cleaner.</h2>",
+        "block_2_type": "accordions",
+        "block_2_accordion_open": false,
+        "block_2_background_color": "chalk",
+        "block_2_background_color_opacity": 100,
+        "block_2_title_top": "FAQ.",
+        "block_2_title": "<h2>For the Curious.<br/>You Asked, We Answered.</h2>"
+      }
+    },
+    "content_eCjVmx": {
+      "type": "content",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 3,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 4.2,
+        "content": "<p>For more information, please see <a href=\"https://summerfridays.com/pages/faqs?hcUrl=%2Fen-US%2Farticles%2Fself-care-club-165598\" target=\"_blank\"><span style=\"text-decoration:underline\">here</span></a>.</p>",
+        "font_size": "normal",
+        "container": "page",
+        "paragraph_margins": "normal",
+        "heading_alignment": "center",
+        "text_alignment": "center",
+        "text_wrap": "normal"
+      }
+    },
+    "recommendations_tJFiNh": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "id": "",
+        "layout": "slider",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>You May Also Like</h2>",
+        "content_related": "<h2>You May Also Like</h2>",
+        "button_label": "",
+        "button_url": "",
+        "limit": 10,
+        "products": [
+          "jet-lag-soothing-hydration-mist",
+          "rich-cushion-cream",
+          "dream-lip-oil-blush-dreams",
+          "lip-butter-balm-vanilla-beige",
+          "jet-lag-mask",
+          "cc-me-serum"
+        ]
+      }
+    },
+    "product_reviews_cbD7zb": {
+      "type": "product-reviews",
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "content": "<h2>Reviews</h2>"
+      }
+    },
+    "media_accordions_dp7Qt4": {
+      "type": "media-accordions",
+      "blocks": {
+        "accordion_custom_DixCf8": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Join the Self-Care Club",
+            "content": "<p>Earn points every time you shop when you join our rewards program. Redeem points for exclusive discounts, early access to sales and free products. <a href=\"/pages/rewards\" title=\"Summer Fridays Self-Care Club & Rewards\">Learn more.</a></p>",
+            "badge": "Rewards"
+          }
+        },
+        "accordion_custom_baBWmD": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Subscribe & Save",
+            "content": "<p>Enjoy 15% off and free shipping when you subscribe to your favorite skincare and hybrid-makeup essentials. Cancel, pause or edit any time. <a href=\"/pages/subscription\" title=\"Subscribe + Save\">Learn more.</a></p>",
+            "badge": "Get 15% Off"
+          }
+        },
+        "accordion_custom_mTAw7D": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Recycle with Us",
+            "content": "<p>Send back five or more empties for recycling, and you'll receive a $25 e-gift card to use on your next SummerFridays.com purchase. <a href=\"/pages/recycling-program\" title=\"Recycling Program\">Learn more.</a></p>",
+            "badge": "Get $25 back"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_custom_DixCf8",
+        "accordion_custom_baBWmD",
+        "accordion_custom_mTAw7D"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "media_type": "image",
+        "image": "shopify://shop_images/HP-Footer.jpg",
+        "media_aspect_ratio": "square",
+        "stripes": true,
+        "gradient_direction": "gradient-none",
+        "text_color": "white",
+        "content": "<h2>Essential beauty formulations from California.</h2><h3>For the skin and senses.</h3>",
+        "content_2": "",
+        "vertical_alignment": "center",
+        "accordions_bg_color": "white",
+        "open_first": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "shade_carousel_9GLRcV",
+    "how_to_use_R4qdic",
+    "routine_timeline_f9TxwP",
+    "media_accordions_cRnD8x",
+    "2_blocks_with_accordions_qjWTNX",
+    "content_eCjVmx",
+    "recommendations_tJFiNh",
+    "product_reviews_cbD7zb",
+    "media_accordions_dp7Qt4"
+  ]
+}

@@ -1,0 +1,122 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "bundle-main": {
+      "type": "bundle-main",
+      "blocks": {
+        "765e2373-1563-4149-976f-906fc2687e00": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/Danis-On-The-Go-Bundle.jpg"
+          }
+        },
+        "fa48fb7d-d127-4e28-954c-e4b5c3835d4e": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/Overnight-Duo-Goop.jpg"
+          }
+        },
+        "751658a7-8c1c-4ddf-b5a1-3490e42f6a0d": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/DLO-Danis-Bundle.jpg"
+          }
+        },
+        "f31eb85a-33d9-49ae-8df8-a4c4176b21c8": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/Dream-Lip-Set-Model.jpg"
+          }
+        },
+        "25bd3483-2c33-43e0-8505-3cc3586fd17e": {
+          "type": "Image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Dream-Lip-Set-Goop.jpg"
+          }
+        },
+        "16f21883-e087-407a-9413-2087eeea335c": {
+          "type": "Image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/BYOB-DLO-SST-Goop.jpg"
+          }
+        },
+        "af640f7d-3724-4c59-9e52-2850ddff647d": {
+          "type": "step",
+          "settings": {
+            "collection": "bundle-step-1-mini-cloud",
+            "select_your_text": "",
+            "custom_link_title": "Not sure? Learn more.",
+            "custom_link": ""
+          }
+        },
+        "b8d94a1f-c1ae-48d6-8da8-543ddf5c8b07": {
+          "type": "step",
+          "settings": {
+            "collection": "bundle-step-2-moisturizer",
+            "select_your_text": "Select Your Shade",
+            "custom_link_title": "",
+            "custom_link": ""
+          }
+        },
+        "a3ef30c9-dda7-46c5-8e52-3b193a63646e": {
+          "type": "step",
+          "settings": {
+            "collection": "bundle-step-3-sheer-skin-tint",
+            "select_your_text": "Select Your Shade",
+            "custom_link_title": "Not sure? Learn more.",
+            "custom_link": ""
+          }
+        },
+        "step_wzkwmd": {
+          "type": "step",
+          "settings": {
+            "collection": "bundle-step-4-bonus-sample",
+            "select_your_text": "Select Your Shade",
+            "custom_link_title": "Not sure? Learn more.",
+            "custom_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "765e2373-1563-4149-976f-906fc2687e00",
+        "fa48fb7d-d127-4e28-954c-e4b5c3835d4e",
+        "751658a7-8c1c-4ddf-b5a1-3490e42f6a0d",
+        "f31eb85a-33d9-49ae-8df8-a4c4176b21c8",
+        "25bd3483-2c33-43e0-8505-3cc3586fd17e",
+        "16f21883-e087-407a-9413-2087eeea335c",
+        "af640f7d-3724-4c59-9e52-2850ddff647d",
+        "b8d94a1f-c1ae-48d6-8da8-543ddf5c8b07",
+        "a3ef30c9-dda7-46c5-8e52-3b193a63646e",
+        "step_wzkwmd"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "available": true,
+        "badge": "BUILD YOUR BUNDLE",
+        "title": "Dani’s On The Go Favorites Bundle",
+        "description": "<p>For a limited-time, shop Dani’s On The Go must haves. Select your shade of Sheer Skin Tint and favorite Dream Lip Oil paired with our award-winning Jet Lag essentials.</p><p><em>$140 value.</em></p><p><em>Excluded from promotions and discounts.</em></p>",
+        "custom_link_label": "Not sure which shade to select? Click here to take our skincare quiz",
+        "custom_link_url": "shopify://pages/skincare-quiz",
+        "footer_text": "<p><em>*Excluded from promotions and discounts. See our return policy </em><a href=\"https://summerfridays.com/pages/returns-exchanges\" target=\"_blank\" title=\"https://summerfridays.com/pages/returns-exchanges\"><em>here</em></a><em>.</em></p>",
+        "bundle_discount_text": "Discount Applied",
+        "product": "mini-jet-lag-mask"
+      }
+    }
+  },
+  "order": [
+    "bundle-main"
+  ]
+}

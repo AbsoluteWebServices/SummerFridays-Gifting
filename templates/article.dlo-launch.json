@@ -1,0 +1,367 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_split_4hp6Rw": {
+      "type": "hero-split",
+      "blocks": {
+        "media_i9J8t4": {
+          "type": "media",
+          "settings": {
+            "media_type": "video",
+            "video_desktop": "shopify://files/videos/Dream Lip Oil Homepage - Desktop.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "media_i9J8t4"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "height_type": "percentage",
+        "height": 100,
+        "deduct_header_height": true,
+        "deduct_announcement_bar_height": true,
+        "aspect_ratio_width": 1,
+        "aspect_ratio_height": 1,
+        "height_type_tablet": "percentage",
+        "height_tablet": 100,
+        "deduct_header_height_tablet": false,
+        "deduct_announcement_bar_height_tablet": true,
+        "aspect_ratio_width_tablet": 16,
+        "aspect_ratio_height_tablet": 9,
+        "height_type_desktop": "percentage",
+        "height_desktop": 100,
+        "deduct_header_height_desktop": false,
+        "deduct_announcement_bar_height_destop": true,
+        "aspect_ratio_width_desktop": 16,
+        "aspect_ratio_height_desktop": 9,
+        "text_color": "white",
+        "title_color": "white",
+        "content_color": "white",
+        "title_font": "pinyon",
+        "title_tag": "h1",
+        "overlay_opacity": 20,
+        "gradient_direction": "gradient-none",
+        "gradient_percent": 25,
+        "vertical_alignment": "center",
+        "horizontal_alignment": "center",
+        "vertical_alignment_desktop": "center",
+        "horizontal_alignment_desktop": "center",
+        "alignment_container": "full",
+        "alignment_container_desktop": "full",
+        "eyebrow": "Products",
+        "eyebrow_margin": "normal",
+        "content_above_title": "",
+        "title": "",
+        "title_custom_line_1": "Enter the World of",
+        "title_custom_line_2": "Dream Lip Oil",
+        "title_font_size": 3,
+        "title_font_size_tablet": 3,
+        "title_font_size_desktop": 3,
+        "content": "",
+        "content_font_size": 1,
+        "content_font_size_tablet": 1,
+        "content_font_size_desktop": 1,
+        "button_label": "",
+        "button_url": "",
+        "button_margin": "normal",
+        "btn_style": "regular"
+      }
+    },
+    "image_split_6gWxjf": {
+      "type": "image-split",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/r.jpg",
+        "media_aspect_ratio_mobile": "square",
+        "media_aspect_ratio_desktop": "taller",
+        "media_fullwidth_mobile": false,
+        "media_caption": "",
+        "content": "<h2>The Making of Dream Lip Oil</h2><p>Introducing the newest addition to our skincare-meets-makeup product lineup, Dream Lip Oil.</p>",
+        "content_smaller": "<p>This plush and silky-smooth lip oil delivers a high-gloss, lasting hydration and a gorgeous hint of color. Packed full of nourishing ingredients that apply like a dream to leave lips soft and shiny, you’re never going to want to leave the house without your favorite shade.</p><p>It comes with a wide, cushy doe foot applicator for easy one-swipe application on-the-go.</p><p>Marianna and Lauren came to our product development team with the idea of a product named “Dream Lip Oil” when we only had two shades of Lip Butter Balm available — having the name before we even started formulating a product became our north star because it evoked the emotion of exactly how we wanted the product experience to be.</p><p>As we built the formula, applicator, and overall product experience, everything needed to feel like a dream: a dream to apply, a dream on the lips, comfortable and never sticky as you wear it, leaving your lips feeling dreamy and soft after use.</p>",
+        "content_left": "",
+        "content_right": "",
+        "content_bottom": "",
+        "products": [
+          "dream-lip-oil-pink-cloud"
+        ],
+        "content_justify_on_desktop": "space-between",
+        "content_secondary": "",
+        "content_secondary_position_desktop": "bottom",
+        "content_secondary_layout": "text_media",
+        "vertical_alignment": "top",
+        "layout_desktop": "text_media",
+        "layout_mobile": "text_media"
+      }
+    },
+    "small_banners_gB3Lqr": {
+      "type": "small-banners",
+      "blocks": {
+        "banner_yiCUch": {
+          "type": "banner",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/1.png",
+            "title": "Pink Cloud",
+            "content": "<p>Sheer Soft Pink</p>",
+            "url": "#"
+          }
+        },
+        "banner_rFjMrW": {
+          "type": "banner",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/2.png",
+            "title": "Blush Dreams",
+            "content": "<p>Sheer Blush</p>",
+            "url": "#"
+          }
+        },
+        "banner_9DEybE": {
+          "type": "banner",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/3.png",
+            "title": "Soft Mauve",
+            "content": "<p>Sheer Cool Mauve</p>",
+            "url": "#"
+          }
+        },
+        "banner_wgGk6k": {
+          "type": "banner",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/4.png",
+            "title": "Rosewood Nights",
+            "content": "<p>Sheer Rosy Brown</p>",
+            "url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "banner_yiCUch",
+        "banner_rFjMrW",
+        "banner_9DEybE",
+        "banner_wgGk6k"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4
+      }
+    },
+    "media_with_caption_7irLaT": {
+      "type": "media-with-caption",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "image",
+        "lazyload": false,
+        "video": "shopify://files/videos/Beach-Sunset.mp4",
+        "autoplay": false,
+        "show_big_play_button": true,
+        "play_control": true,
+        "sound_control": true,
+        "image": "shopify://shop_images/df.jpg",
+        "content": ""
+      }
+    },
+    "content_mXUFDG": {
+      "type": "content",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 12.6,
+        "content": "<h2>Find Your Perfect Lip</h2><p>You’ve made Lip Butter Balm an Allure Best of Beauty Award-winner and Sephora best-seller so you’re probably wondering if you need both Dream Lip Oil and Lip Butter Balm. The answer is YES! </p><p>Oils feel light and airy on the lips and are great for regular use, layered with lipstick, and reapplication throughout the day for a hint of color. Lip Butter Balm has a thicker consistency and is a powerful lip treatment that can be worn both during the day or overnight as a mask. What makes Dream Lip Oil so dreamy? </p><p>Dream Lip Oil has a silky smooth, buildable formula with nine oils that glide on the lip for ultra-shine and a hint of color.<br/>Dream Lip Oil does not have flavor, although it does have a hint of sweetness from Monk Fruit.</p><p>As the names suggest, Dream Lip Oil’s formulation concentrates on the inclusion of nourishing oils that give your lips a high-definition shine and hydration.</p><p>Dream Lip Oil is your new go-to companion for daily wear, whether you need to top off your lips or just need a lightweight feel throughout the day.</p>",
+        "font_size": "normal",
+        "container": "small",
+        "paragraph_margins": "normal",
+        "heading_alignment": "left",
+        "text_alignment": "left",
+        "text_wrap": "normal"
+      }
+    },
+    "image_gallery_BrXVHH": {
+      "type": "image-gallery",
+      "blocks": {
+        "image_49myHe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DLO-Blog-LBB.jpg",
+            "url": "#",
+            "open_in_new_tab": true
+          }
+        },
+        "image_MbjefF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Dream-Lip-Set-Model.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_wfrXYM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DLO-Blog-Carousel-1.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_jTiiqz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DLO-Blog-Carousel-2.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "image_49myHe",
+        "image_MbjefF",
+        "image_wfrXYM",
+        "image_jTiiqz"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "background_color": "transparent",
+        "content": "",
+        "images_type": "shopify-images",
+        "embed": "",
+        "spirit_gallery_id": "",
+        "force": false,
+        "open_in_new_tab": true,
+        "limit": 8,
+        "spirit_gallery_image_url": ""
+      }
+    },
+    "results_tT3Hp6": {
+      "type": "results",
+      "blocks": {
+        "result_VFX4wy": {
+          "type": "result",
+          "settings": {
+            "result": 100,
+            "fact": "<p>said their lips felt softer after applying this product**</p>"
+          }
+        },
+        "result_8CFYmC": {
+          "type": "result",
+          "settings": {
+            "result": 98,
+            "fact": "<p>said this formula made their lips appear/look more hydrated.**</p>"
+          }
+        },
+        "ingredient_8LKpEA": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Vegan Lip Oil Complex",
+            "content": "<p>Our ultra-rich blend of nine plant-based oils delivers a surge of deep moisture for softer lips.</p>"
+          }
+        },
+        "ingredient_ghJhFi": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Vitamin E",
+            "content": "<p>This oil-soluble antioxidant works to protect, nourish and soften dryness-prone lips.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "result_VFX4wy",
+        "result_8CFYmC",
+        "ingredient_8LKpEA",
+        "ingredient_ghJhFi"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content_mobile": "",
+        "content": "<h2>The Results</h2>",
+        "note": "<p>**In an independent consumer use study, with 31 participants aged 32 – 60</p>",
+        "key_ingredients_title": "<h2>Key Ingredients</h2>",
+        "content_below_results": "",
+        "media_type": "image",
+        "image": "shopify://shop_images/b5c169cba6387ed127ada2d1584213fa_1.jpg",
+        "media_fit": "cover"
+      }
+    },
+    "content_qAQYrr": {
+      "type": "content",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Shea Butter vs. Shea Oil</h2><p>One of Dream Lip Oil’s key ingredients is Shea Oil. By formulating the liquid oil form of this powerful ingredient, we were able to achieve a thin-yet-emollient texture to deliver lasting moisture and the perfect amount of milky, sheer color.</p><p>In this silky texture, using the oil form of Shea — a super moisturizing ingredient rich in essential fatty acids — ensures you never have any grittiness.</p><p>We’ve been working hard on bringing you skincare-meets-makeup hybrid products that you’ll reach for in your beauty arsenal time and time again, and can’t wait to hear what you think of Dream Lip Oil.</p>",
+        "font_size": "normal",
+        "container": "medium",
+        "paragraph_margins": "normal",
+        "heading_alignment": "left",
+        "text_alignment": "left",
+        "text_wrap": "normal"
+      }
+    },
+    "recommendations_qj337L": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "id": "",
+        "layout": "slider",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Dream Lip Oil</h2>",
+        "content_related": "<h2>Dream Lip Oil</h2>",
+        "button_label": "",
+        "button_url": "",
+        "limit": 8,
+        "products": [
+          "dream-lip-oil-pink-cloud",
+          "dream-lip-oil-blush-dreams",
+          "dream-lip-oil-rosewood-nights",
+          "dream-lip-oil-mauve"
+        ]
+      }
+    }
+  },
+  "order": [
+    "hero_split_4hp6Rw",
+    "image_split_6gWxjf",
+    "small_banners_gB3Lqr",
+    "media_with_caption_7irLaT",
+    "content_mXUFDG",
+    "image_gallery_BrXVHH",
+    "results_tT3Hp6",
+    "content_qAQYrr",
+    "recommendations_qj337L"
+  ]
+}

@@ -1,0 +1,110 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "font_body_size": 16,
+    "font_body_line_height": 20,
+    "font_cta_textlink_size": 13,
+    "font_cta_textlink_line_height": 18,
+    "font_p_small_size": 12,
+    "font_p_small_line_height": 15,
+    "font_p_normal_size": 16,
+    "font_p_normal_line_height": 20,
+    "font_p_large_size": 18,
+    "font_p_large_line_height": 24,
+    "font_subheader_large_size": 19,
+    "font_subheader_large_line_height": 24,
+    "font_subheader_small_size": 16,
+    "font_subheader_small_line_height": 20,
+    "font_superscript_normal_size": 13,
+    "font_superscript_normal_line_height": 15,
+    "font_input_size_desktop": 13,
+    "font_button_size": 13,
+    "font_button_line_height": 17,
+    "color_morning_sky": "#5e82ab",
+    "color_accent_blue": "#7da1c4",
+    "sections": {
+      "announcement": {
+        "type": "announcement",
+        "blocks": {
+          "announcement_cUhLLF": {
+            "type": "announcement",
+            "settings": {
+              "announcement": "<p>FREE STANDARD SHIPPING ON US ORDERS $35+<a href=\"https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fsummerfridays.com%2Fpages%2Ffree-standard-shipping&data=05%7C01%7Channah.harris%40summerfridays.com%7C272a4229880f4b69585608dab85561a9%7C5c95f68a6594444da932880a29ac1421%7C0%7C0%7C638024974125500944%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=dEHFjpzVMHbl1uWCcuMiKtoQyvKRQWFy8uPNq0pbIAI%3D&reserved=0\" title=\"Original URL:\nhttps://summerfridays.com/pages/free-standard-shipping\n\nClick to follow link.\">LEARN MORE</a></p>",
+              "background_color": "morning-sky",
+              "text_color": "white"
+            }
+          }
+        },
+        "block_order": [
+          "announcement_cUhLLF"
+        ],
+        "settings": {}
+      },
+      "header": {
+        "type": "header",
+        "custom_css": [
+          "@media only screen and (min-width: 1280px) {.header__inner {min-height: 5.6rem; }}"
+        ],
+        "settings": {
+          "handles_header_cover_hero": "",
+          "menu_right_desktop": "",
+          "search_enable": false
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "custom_title": "Éte Eternal",
+          "linklist_title_1": "Shop",
+          "linklist_1": "",
+          "linklist_title_2": "About",
+          "linklist_2": "",
+          "linklist_title_3": "Information",
+          "linklist_3": "",
+          "linklist_title_4": "Account",
+          "linklist_4": "",
+          "linklist_copyright": "",
+          "media_type": "video",
+          "newsletter_title": "Stay up to date",
+          "list_id": "Xcp8cA",
+          "custom_source": "Coming Soon",
+          "signup_unit_id": "73377"
+        }
+      },
+      "minicart": {
+        "type": "minicart",
+        "settings": {}
+      },
+      "newsletter-popup": {
+        "type": "newsletter-popup",
+        "settings": {
+          "enable": false,
+          "logo": "",
+          "title": "",
+          "subtitle": "",
+          "content": "",
+          "media_type": "video",
+          "delay": 5,
+          "hide_days": 7,
+          "list_id": "Xcp8cA",
+          "custom_source": "Newsletter Popup",
+          "signup_unit_id": "73377"
+        }
+      }
+    },
+    "content_for_index": []
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".template-index .sticky-menu-wrapper {position: initial;}"
+    ]
+  }
+}

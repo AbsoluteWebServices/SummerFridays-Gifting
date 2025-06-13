@@ -1,0 +1,26 @@
+#MainContent {
+    .wonderment-ab-container {
+        margin-bottom: 4.2rem;
+
+        @media only screen and (min-width: 1280px) {
+            margin-bottom: 8.4rem;
+        }
+
+        .tp-btn-show-history {
+            position: relative;
+            padding: .6rem 1.2rem;
+            height: 3rem;
+            width: 12rem;
+
+            &::after {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                width: max-content;
+                max-width: 100%;
+                transform: translate(-50%, -50%);
+                font-size: var(--font-button-size);
+            }
+        }
+    }
+}

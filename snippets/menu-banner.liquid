@@ -1,0 +1,44 @@
+{%- liquid 
+    assign banner_image = block.settings.banner_image
+    assign banner_title_top = block.settings.banner_title_top | escape 
+    assign banner_title = block.settings.banner_title    
+-%}
+
+<div class="mobile-menu__banner">
+    {%- render 'img', image: banner_image -%}
+
+    <div class="mobile-menu__banner-content">
+        {%- if banner_title_top != blank -%}
+            <p class="subheader-small mobile-menu__banner-title-top">{{- banner_title_top -}}</p>
+        {%- endif -%}
+
+        {%- if banner_title != blank -%}
+            <h2 class="mobile-menu__banner-title">{{- banner_title -}}</h2>
+        {%- endif -%}
+
+        {%- if block.settings.banner_button_1_label != blank 
+            and block.settings.banner_button_1_url != blank -%}
+            <div class="mobile-menu__banner-buttons">
+                {%- for i in (1..2) -%}
+                    {%- capture banner_button_i_label -%}banner_button_{{ i }}_label{%- endcapture -%}
+                    {%- capture banner_button_i_url -%}banner_button_{{ i }}_url{%- endcapture -%}
+                    {%- liquid 
+                        assign button_label = block.settings[banner_button_i_label]
+                        assign button_url = block.settings[banner_button_i_url]
+                        if button_label == blank or button_url == blank
+                            continue
+                        endif
+                    -%}
+                    <a 
+                        href="{{- button_url -}}" 
+                        class="btn btn--white-transparent btn--center mobile-menu__banner-button"
+                        aria-label="Go to {{ button_label }}"
+                    >
+                        {{- button_label -}}
+                        {%- render 'icon', name: 'arrow-right' -%}
+                    </a>
+                {%- endfor -%}
+            </div>
+        {%- endif -%}
+    </div>
+</div>

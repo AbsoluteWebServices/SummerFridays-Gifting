@@ -1,0 +1,41 @@
+{%- liquid
+    assign settings = shop.metaobjects.global_settings['global-settings']
+    if settings != blank
+        assign schema_logo = settings.logo.value
+        assign sameAs_links = settings.social_links.value
+    endif
+-%}
+<script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": {{ shop.name | json }},
+      {% if schema_logo != blank %} 
+    	"logo": {{ schema_logo | image_url: width: 500 | prepend: "https:" | json }},
+      {% endif %}
+      {% if sameAs_links != blank %}
+    	"sameAs": [
+    	  {% for link in sameAs_links %}
+    		{{ link | json }}{% unless forloop.last %},{% endunless %}
+    	  {% endfor %}
+    	],
+      {% endif %}
+      "url": {{ request.origin | append: page.url | json }}
+    }
+</script>
+
+{%- case request.page_type -%}
+    {%- when 'index' -%}
+        {%- render 'schema-index' -%}
+
+    {%- when 'product' -%}
+        {%- render 'schema-product' -%}
+
+    {%- when 'article' -%}
+        {%- render 'schema-article' -%}
+
+        {%- comment -%}
+            {%- when 'collection' -%}
+                {%- render 'schema-collection' -%}
+        {%- endcomment -%}
+{%- endcase -%}

@@ -1,0 +1,408 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4
+      }
+    },
+    "rewards_hero_P6Ahrk": {
+      "type": "rewards-hero",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "image": "shopify://shop_images/Rewards-Hero-Desktop.jpg",
+        "image_mobile": "shopify://shop_images/Rewards-Hero-Mobile.jpg",
+        "image_min_height": 300,
+        "image_alt": "",
+        "title": "<p>Self-Care Club</p>",
+        "message": "",
+        "message_bottom": "<p>By creating an account, you accept the <a href=\"/pages/terms-and-conditions\" title=\"Terms of Service\">Terms of Service</a> and <a href=\"/pages/privacy-policy\" title=\"Privacy Policy\">Privacy Policy</a>.</p>",
+        "opacity": 0,
+        "overlay_background_color": "#2b2b2b",
+        "color": "#000418",
+        "logged_in_widget_id": "1019844"
+      }
+    },
+    "yotpo_widget_hpLQP4": {
+      "type": "yotpo-widget",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
+        "widget_id": "166038",
+        "class": "",
+        "hide_for_registered_customer": true,
+        "container": false,
+        "yotpo_script_needed": false
+      }
+    },
+    "rewards_steps_BEDqhq": {
+      "type": "rewards-steps",
+      "blocks": {
+        "step_EnNTHV": {
+          "type": "step",
+          "settings": {
+            "color": "#d1eefe",
+            "title": "SELF-CARE MODE",
+            "subtitle": "Free to Join"
+          }
+        },
+        "step_8cWMmg": {
+          "type": "step",
+          "settings": {
+            "color": "#acd5e9",
+            "title": "VACATION MODE",
+            "subtitle": "Spend $200+ Per Year"
+          }
+        },
+        "step_gMQjjX": {
+          "type": "step",
+          "disabled": true,
+          "settings": {
+            "color": "#83b6d2",
+            "title": "Round-Trip",
+            "subtitle": "Spend $200+ Per Year"
+          }
+        },
+        "step_hQGDqj": {
+          "type": "step",
+          "settings": {
+            "color": "#719fb9",
+            "title": "GOLDEN HOUR MODE",
+            "subtitle": "Spend $400+ Per Year"
+          }
+        }
+      },
+      "block_order": [
+        "step_EnNTHV",
+        "step_8cWMmg",
+        "step_gMQjjX",
+        "step_hQGDqj"
+      ],
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
+        "content": "<h2>Unlock Rewards as you Shop</h2>",
+        "text_alignment": "center",
+        "max_width_desktop": 110.4
+      }
+    },
+    "yotpo_widget_nU4LBC": {
+      "type": "yotpo-widget",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
+        "widget_id": "639012",
+        "class": "",
+        "hide_for_registered_customer": false,
+        "container": false,
+        "yotpo_script_needed": false
+      }
+    },
+    "rewards_tiers_bR79g7": {
+      "type": "rewards-tiers",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
+        "title": "Self-Care Club Loyalty Tiers",
+        "subtitle": "Earn More Perks as you Shop"
+      }
+    },
+    "yotpo_widget_UeqAPf": {
+      "type": "yotpo-widget",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
+        "widget_id": "28710",
+        "class": "",
+        "hide_for_registered_customer": false,
+        "container": false,
+        "yotpo_script_needed": false
+      }
+    },
+    "yotpo_widget_VpyyqR": {
+      "type": "yotpo-widget",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
+        "widget_id": "421531",
+        "class": "rewards-ways-to-earn",
+        "hide_for_registered_customer": false,
+        "container": false,
+        "yotpo_script_needed": false
+      }
+    },
+    "yotpo_widget_MX3iEM": {
+      "type": "yotpo-widget",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 0,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 0,
+        "widget_id": "166040",
+        "class": "",
+        "hide_for_registered_customer": false,
+        "container": true,
+        "yotpo_script_needed": false
+      }
+    },
+    "accordions_NNGTrm": {
+      "type": "accordions",
+      "blocks": {
+        "accordion_C3mtja": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I join?",
+            "content": "<p>To join, click the Sign Up button at the top of the page to get started. You will then be prompted to login to your Summer Fridays Account or create an Account. </p><p>Membership is 100% free, and there is no additional cost for earning or redeeming rewards. You may earn points purchasing Summer Fridays products on our site or through the other actions listed.</p><p>By signing up for the Self-Care Club you accept the <a href=\"https://summerfridays.com/pages/terms-and-conditions\"><span style=\"text-decoration:underline\">Terms of Service</span></a> and <a href=\"https://summerfridays.com/pages/privacy-policy\"><span style=\"text-decoration:underline\">Privacy Policy</span></a>.</p>"
+          }
+        },
+        "accordion_bLJ99L": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I earn/redeem points?",
+            "content": "<p><strong>How can I earn points?</strong></p><p>We've listed all of the possible ways to earn points above in the Ways to Earn Points section. It takes 30 days for points to be deposited into your account after you place an order (i.e. If you place an order on January 1st, the points will be reflected in your account on February 1st).</p><p>You can also earn a $10 credit each time someone makes a first-time summerfridays.com purchase using your unique URL! For more information, review our Refer A Friend section of the FAQs page <a href=\"https://summerfridays.com/pages/refer-a-friend\" target=\"_blank\">here</a>.</p><p><strong>Is it possible I already have points? </strong></p><p>Yes! If you placed an order on SummerFridays.com within the last year, it is likely you have a point balance waiting for you once you verify your email address and set up your loyalty account. Points expire after 365 days of inactivity.</p><p><strong>Can I earn points for buying Summer Fridays in store?</strong></p><p>Yes! You can earn points for any Summer Fridays purchases you make in-store at one of our authorized retailers. Simply submit the in-store receipt to us within 30 days of making your purchase.</p><p>You can upload your receipt in the Ways to Earn Points section above and our team will get back to you in 72 hours (Monday-Friday) via email. You'll receive an automated email when your receipt is approved. Please check that the store details, date and timestamp and line items on receipt are legible. We reserve the right to deny any receipt if not clear in photo and will ask you to reupload.</p><p><strong>Can I buy extra points?</strong></p><p>Sorry, no. But you can always continue to earn points through purchases and partaking in the actions listed in the “Ways to Earn Points” section of this page. </p><p><strong>Do my points expire?</strong></p><p>Your points expire after 365 days of inactivity. In this context, inactivity refers to customers who have not earned or redeemed any points within the selected time frame.</p><p><strong>How do I check my points balance? </strong></p><p>Make sure you're logged into My Account. Your balance is always displayed on your Account page, and on this page when you're logged in.</p><p><strong>How do I redeem points?</strong></p><p>You can redeem points for product and cash off on the My Account Page and Rewards page. You can also apply points to redeem for cash off during checkout pending you have enough points for this feature. </p>"
+          }
+        },
+        "accordion_PDF8wd": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do the Loyalty Tiers work?",
+            "content": "<p>Our Self-Care Club program has three Loyalty Tiers: Self-Care Mode, Vacation Mode and Golden Hour Mode. The Self-Care Mode Tier is free to join by creating an account on SummerFridays.com. Membership within other tiers is based on your annual spend on SummerFridays.com. </p><p>Once you’ve spent $200 within 365 days, you will automatically be upgraded to the Vacation Mode Tier and receive an email with a 15% off coupon. Once you’ve spent $400 within 365 days, you will automatically be upgraded to the Golden Hour Mode Tier and receive an email with a 20% off coupon. In order to remain in your tier, you must spend the required minimum within the subsequent annual period.</p><p>Once you enter a tier, it is valid for 365 days. For example, if you meet a tier entry threshold on March 3, 2024 you will remain in that tier until March 2nd, 2025 (assuming all other requirements are met).</p>"
+          }
+        },
+        "accordion_HTpAjB": {
+          "type": "accordion",
+          "settings": {
+            "title": "How does Refer A Friend Work?",
+            "content": "<p>Referring a friend is easy! Simply input your friend's email address so we can send them their first time offer. Once your friend places a successful order, you will be awarded points.*</p><p>Please note: referring yourself, creating fake email addresses or circular referrals is considered fraudulent behavior. Summer Fridays reserves the right to deactivate any loyalty account for suspicion of fraud. </p>"
+          }
+        },
+        "accordion_rd6qf3": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "How do I earn points for leaving a review?",
+            "content": "<p>Two weeks after you purchase a product, you will receive an automated email asking for you to leave a review. Click through that email, log into your account, and leave a review! Once your review is submitted, you will receive 5 points.</p>"
+          }
+        },
+        "accordion_WrJrA9": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "How do the Loyalty Tiers work?",
+            "content": "<p>Our Self-Care Club program has three Loyalty Tiers: Self-Care Mode, Vacation Mode, and Golden Hour Mode that are based on your annual spend on SummerFridays.com. Our Self-Care Mode tier is free to join by making an account on SummerFridays.com.</p><p>Once you create your account, you will receive a welcome email with your 10% off coupon. Once you’ve spent $200/year, you will automatically be upgraded to the Vacation Mode Tier and receive an email with your 15% off coupon. Once you’ve spent $400/year, you will automatically be upgraded to the Golden Hour Mode Tier and receive an email with your 20% off coupon.In order to remain in your tier, you must continue to spend the minimum entry threshold to remain in your tier.</p><p>Once you enter a tier, it is valid for 12 months. For example, if you meet a tier entry threshold on March 3, 2024 you will remain in that tier until March 3rd, 2025 (assuming all other requirements are met).</p>"
+          }
+        },
+        "accordion_RyY3z8": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "Are points and promo codes transferrable?",
+            "content": "<p>Unfortunately, no. All loyalty activity is tied to the member's email address and activity. Points, promo codes, and products for redemption are non-transferrable.</p>"
+          }
+        },
+        "accordion_LCywGV": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "Can I buy extra points?",
+            "content": "<p>Sorry, no. But you can always continue to earn points for doing fun things.</p>"
+          }
+        },
+        "accordion_Ei6kwH": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "What can points be redeemed for?",
+            "content": "<p>For discounts on your<a href=\"http://summerfridays.com/\">summerfridays.com</a>purchase or products! The savings you can receive are listed above in redeem points for savings at checkout. Points for savings cannot be combined with gift card codes. The products you can redeem points for are shown above on the Self-Care Club page. Products are subject to change at any time and without notice.</p>"
+          }
+        },
+        "accordion_UAc9iq": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "How do I redeem points?",
+            "content": "<p>To redeem points for a saving off your order, you can redeem at checkout or on the<a href=\"https://summerfridays.com/account\" target=\"_blank\" title=\"https://summerfridays.com/account\">My Account Page </a>To redeem your points for products, you can redeem them on the<a href=\"https://summerfridays.com/pages/rewards\" target=\"_blank\" title=\"https://summerfridays.com/pages/rewards\">Rewards Page</a>or on the<a href=\"https://summerfridays.com/account\" target=\"_blank\" title=\"https://summerfridays.com/account\">My Account Page</a>.</p>"
+          }
+        },
+        "accordion_C6gaRA": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "How do I check my points balance?",
+            "content": "<p>Simple: Make sure you're logged into<a href=\"https://summerfridays.com/pages/my-account\"><span style=\"text-decoration:underline\">My Account</span></a>. Your balance is always displayed on your Account page, and on this page when you're logged in.</p>"
+          }
+        },
+        "accordion_KyF8bU": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "When do new points post to my account?",
+            "content": "<p>As soon as you complete a points-eligible action or purchase, the points will magically appear in your account.</p>"
+          }
+        },
+        "accordion_MybQA8": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "How do I get my shipping offer?",
+            "content": "<p>Once logged into your account, your shipping discount will apply to our standard shipping rate when selected at checkout.</p><p>Domestic Orders:<br/>• Self-Care Mode: Free on Orders $35+<br/>• Vacation Mode: Free on Orders $25+<br/>• Golden Hour Mode: Free on All Orders</p><p>International Orders:<br/>• Self-Care Mode: Free on Orders $99+<br/>• Vacation Mode: Free on Orders $89+<br/>• Golden Hour Mode: Free on All Orders</p>"
+          }
+        },
+        "accordion_KAXptx": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "How do I get my birthday and tier entry gifts?",
+            "content": "<p>For your birthday gift, you will receive an email on your birthday with a link to your gift, to add to your cart, and a coupon code to apply at checkout. For your tier entry gift, you will receive an email after you place the purchase that qualifies you for that tier! It will include a unique coupon code that you can apply to your cart. Both the birthday and tier entry gift coupons will expire 14 days after they are issued.</p>"
+          }
+        },
+        "accordion_KapkjE": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "How can I get early access to sales + new products?",
+            "content": "<p>We will email our Vacation Mode and Golden Hour Mode loyalty members with early access opportunities throughout the year, so keep an eye on your inbox!</p>"
+          }
+        },
+        "accordion_Yiwtqz": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "I’m in the Golden Hour Mode Tier. How can I get my exclusive reward?",
+            "content": "<p>Golden Hour Mode loyalty members will be emailed once per year with an exclusive reward and instructions on how to redeem, so keep an eye on your inbox!</p>"
+          }
+        },
+        "accordion_kGNXNn": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "Can I combine points with an additional discount code?",
+            "content": "<p>Sorry, no. But you are really smart for asking.</p>"
+          }
+        },
+        "accordion_LQh6RJ": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "Do my points expire?",
+            "content": "<p>Your points expire after 1 year of inactivity. In this context, inactivity refers to customers who have not earned or redeemed any points within the selected time frame.</p>"
+          }
+        },
+        "accordion_CbdcGQ": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "What happens to my points if I return a purchase?",
+            "content": "<p>The points value of the returned product will be debited from your overall balance (as if you hadn't made the purchase at all).</p>"
+          }
+        },
+        "accordion_gPe8Nb": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "What if I have questions about my rewards?",
+            "content": "<p>Contact us<a href=\"https://summerfridays.gorgias.help/en-US/contact\" title=\"https://summerfridays.gorgias.help/en-US/contact\"><span style=\"text-decoration:underline\">here</span></a>and we'll get you answers asap.</p>"
+          }
+        },
+        "accordion_6CC9KY": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "title": "Important Note",
+            "content": "<p>Summer Fridays reserves the right to deactivate any loyalty account for suspicion of fraud. Selling points, circular referrals and/or fake referrals to accumulate points outside the parameters of the program framework are considered fraud. There is a zero tolerance policy. Any member suspected of partaking in activities such as these will be deactivated and blocked from the program indefinitely.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_C3mtja",
+        "accordion_bLJ99L",
+        "accordion_PDF8wd",
+        "accordion_HTpAjB",
+        "accordion_rd6qf3",
+        "accordion_WrJrA9",
+        "accordion_RyY3z8",
+        "accordion_LCywGV",
+        "accordion_Ei6kwH",
+        "accordion_UAc9iq",
+        "accordion_C6gaRA",
+        "accordion_KyF8bU",
+        "accordion_MybQA8",
+        "accordion_KAXptx",
+        "accordion_KapkjE",
+        "accordion_Yiwtqz",
+        "accordion_kGNXNn",
+        "accordion_LQh6RJ",
+        "accordion_CbdcGQ",
+        "accordion_gPe8Nb",
+        "accordion_6CC9KY"
+      ],
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4,
+        "content": "<p>FAQ.</p><h2>For the Curious.<br/>You Asked, We Answered.</h2>",
+        "open_first": false,
+        "bg_color": "chalk",
+        "container": "page"
+      }
+    },
+    "content_RVbrHE": {
+      "type": "content",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 3,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 6,
+        "content": "<h3>IMPORTANT NOTE:</h3><h4>Summer Fridays reserves the right to deactivate any loyalty account for suspicion of fraud. Selling points, circular referrals and/or fake referrals to accumulate points outside the parameters of the program framework are considered fraud. There is a zero tolerance policy. Any member suspected of partaking in activities such as these will be deactivated and blocked from the program indefinitely.</h4><p></p><p><em>*It may take up to 60 days to receive points from a friend referral.</em></p><h3>For more information, please see <a href=\"https://summerfridays.com/pages/faqs?hcUrl=%2Fen-US%2Farticles%2Fself-care-club-165598\" target=\"_blank\" title=\"https://summerfridays.com/pages/faqs?hcUrl=%2Fen-US%2Farticles%2Fself-care-club-165598\">here</a>.</h3><p></p>",
+        "font_size": "normal",
+        "container": "page",
+        "paragraph_margins": "normal",
+        "heading_alignment": "center",
+        "text_alignment": "center",
+        "text_wrap": "normal"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rewards_hero_P6Ahrk",
+    "yotpo_widget_hpLQP4",
+    "rewards_steps_BEDqhq",
+    "yotpo_widget_nU4LBC",
+    "rewards_tiers_bR79g7",
+    "yotpo_widget_UeqAPf",
+    "yotpo_widget_VpyyqR",
+    "yotpo_widget_MX3iEM",
+    "accordions_NNGTrm",
+    "content_RVbrHE"
+  ]
+}

@@ -1,0 +1,180 @@
+<div 
+    x-data="giftCard"
+    data-split-load-section
+    class="product__gift-card-form"
+>
+    <input type="hidden" name="gift_card" value="true">
+    <input 
+        type="hidden" 
+        name="gift_card_value" 
+        value="{{- current_variant.price | money_without_currency | replace: '.00', '' -}}"
+        :value="price() ? (price() / 100) : {{ current_variant.price | money_without_currency }}"
+    >
+    <input 
+        type="hidden" 
+        name="sending_method" 
+        value="email"
+        :value="tab === 1 ? 'email' : 'print'"
+    >
+
+    <div class="product__gift-card-form-tabs">
+        <button
+            type="button"
+            class="btn btn--ink-transparent btn--center"
+            data-active="true"
+            :data-active="tab === 1"
+            @click.prevent="tab = 1"
+        >{{- 'products.product.email' | t -}}</button>
+
+        <button
+            type="button"
+            class="btn btn--ink-transparent btn--center"
+            data-active="false"
+            :data-active="tab === 2"
+            @click.prevent="tab = 2"
+        >{{- 'products.product.print' | t -}}</button>
+    </div>
+
+    <div class="product__gift-card-form-text-wrapper">
+        <p 
+            x-show="tab === 1"
+            x-transition:enter="default-transition"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="no-transition"
+            x-transition:leave-start="opacity-0"
+            x-transition:leave-end="opacity-0"
+        >
+            {{- 'products.product.email_text' | t -}}
+        </p>
+
+        <p 
+            x-show="tab === 2"
+            x-transition:enter="default-transition"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="no-transition"
+            x-transition:leave-start="opacity-0"
+            x-transition:leave-end="opacity-0"
+            style="display: none;"
+        >
+            {{- 'products.product.print_text' | t -}}
+        </p>
+    </div>
+
+    <div class="product__gift-card-form-fields">
+        <div class="form__group">
+            <input 
+                x-ref="giftName"
+                type="text" 
+                placeholder="{{- 'products.product.gift_name' | t -}}"
+                aria-label="{{- 'products.product.gift_name' | t -}}"
+                name="properties[Name]"
+                required
+                @input.debounce.300ms="validateInputs"
+            >
+        </div>
+        
+        <div 
+            x-show="tab === 1"
+            class="form__group"
+            x-transition:enter="default-transition"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="no-transition"
+            x-transition:leave-start="opacity-0"
+            x-transition:leave-end="opacity-0"
+        >
+            <input 
+                x-ref="giftEmail"
+                type="email" 
+                placeholder="{{- 'products.product.gift_email' | t -}}"
+                aria-label="{{- 'products.product.gift_email' | t -}}"
+                name="properties[Email]"
+                required
+                :required="tab === 1"
+                @input.debounce.300ms="validateInputs"
+            >
+        </div>
+
+        <div class="form__group">
+            <input 
+                x-ref="giftMessage"
+                type="text" 
+                placeholder="{{- 'products.product.gift_note' | t -}}"
+                aria-label="{{- 'products.product.gift_note' | t -}}"
+                name="properties[Message]"
+                @input.debounce.300ms="validateInputs"
+            >
+        </div>
+
+        <div 
+            x-show="tab === 1"
+            class="form__group form__group--2"
+            x-transition:enter="default-transition"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="no-transition"
+            x-transition:leave-start="opacity-0"
+            x-transition:leave-end="opacity-0"
+        >
+            <div>
+                <input 
+                    x-model="send_at"
+                    id="product-gift-card-send-at-now"
+                    type="radio" 
+                    class="visually-hidden product__gift-card-form-send-at-now" 
+                    aria-label="Send the gift card now"
+                    name="send_at_now" 
+                    value="now"
+                    checked
+                >
+                <label 
+                    for="product-gift-card-send-at-now"
+                    class="btn btn--transparent btn--center btn--full"
+                >{{ 'products.product.gift_now' | t }}</label>
+            </div>
+
+            <div class="product__gift-card-form-send-at-wrapper">
+                <input 
+                    x-model="send_at"
+                    id="product-gift-card-send-at-schedule"
+                    type="radio" 
+                    class="visually-hidden product__gift-card-form-send-at-now product__gift-card-form-send-at-schedule" 
+                    name="send_at_now" 
+                    value="schedule"
+                >
+
+                <label 
+                    for="product-gift-card-send-at-schedule"
+                    class="btn btn--transparent btn--center btn--full"
+                >{{ 'products.product.gift_schedule' | t }}</label>
+
+                <input 
+                    x-ref="giftCardDateInput"
+                    x-model="date"
+                    class="btn btn--clay btn--center product__gift-card-form-send-at"
+                    type="date"
+                    name="send_at"
+                >
+
+                <button 
+                    type="button"
+                    x-text="date ? formattedDate : '{{ 'products.product.gift_schedule' | t }}'"
+                    class="btn btn--clay btn--center product__gift-card-form-send-at-value"
+                    @click.prevent="$refs.giftCardDateInput.showPicker();"
+                ></button>
+            </div>
+        </div>
+    </div>
+
+    <div
+        x-show="!!validationError"
+        x-text="validationError"
+        class="product__gift-card-form__error alert-message alert-message--error"
+        aria-role="alert"
+        style="display: none;"
+        x-transition.duration.300ms
+        x-transition
+    ></div>
+</div>

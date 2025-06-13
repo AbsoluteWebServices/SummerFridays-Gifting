@@ -1,0 +1,160 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product-sf",
+      "settings": {}
+    },
+    "routine_timeline_TMqq6y": {
+      "type": "routine-timeline",
+      "blocks": {
+        "step_YGL6xK": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "Step 1: Cleanser",
+            "content": "",
+            "product": "super-amino-gel-cleanser",
+            "width_desktop": 0
+          }
+        },
+        "step_dcLiwg": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "Step 2: Serum",
+            "content": "",
+            "product": "cc-me-serum",
+            "width_desktop": 0
+          }
+        },
+        "step_w9FQ8T": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "Step 3: Eye Cream",
+            "content": "",
+            "product": "light-aura-vitamin-c-peptide-eye-cream",
+            "width_desktop": 0
+          }
+        },
+        "step_Mz7RhP": {
+          "type": "step",
+          "settings": {
+            "active": true,
+            "show_dot": true,
+            "title": "Step 4:  Sun Protection",
+            "content": "",
+            "product": "shadedrops-spf-30-mineral-milk-sunscreen",
+            "width_desktop": 0
+          }
+        },
+        "step_hwDKVC": {
+          "type": "step",
+          "settings": {
+            "active": false,
+            "show_dot": true,
+            "title": "",
+            "content": "",
+            "product": "",
+            "width_desktop": 0
+          }
+        }
+      },
+      "block_order": [
+        "step_YGL6xK",
+        "step_dcLiwg",
+        "step_w9FQ8T",
+        "step_Mz7RhP",
+        "step_hwDKVC"
+      ],
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "content": "<h2>Expand Your Daily Routine</h2>",
+        "hide_last_step_on_mobile": false,
+        "hide_last_step_on_desktop": true
+      }
+    },
+    "product_reviews_KXKNcg": {
+      "type": "product-reviews",
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "content": "<h2>Reviews</h2>"
+      }
+    },
+    "media_accordions_L9J4V8": {
+      "type": "media-accordions",
+      "blocks": {
+        "accordion_custom_VjXHnx": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Join the Self-Care Club",
+            "content": "<p>Earn points every time you shop when you join our rewards program. Redeem points for exclusive discounts, early access to sales and free products.</p>",
+            "badge": "Rewards"
+          }
+        },
+        "accordion_custom_64ntxD": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Subscribe & Save",
+            "content": "<p>Enjoy 15% off and free shipping when you subscribe to your favorite skincare and hybrid-makeup essentials. Cancel, pause or edit any time.</p>",
+            "badge": "Get 15% Off"
+          }
+        },
+        "accordion_custom_zd7b4P": {
+          "type": "accordion_custom",
+          "settings": {
+            "title": "Recycle with Us",
+            "content": "<p>Send back five or more empties for recycling, and you'll receive a $25 e-gift card to use on your next SummerFridays.com purchase.</p>",
+            "badge": "Get $25 back"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_custom_VjXHnx",
+        "accordion_custom_64ntxD",
+        "accordion_custom_zd7b4P"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "media_type": "image",
+        "image": "shopify://shop_images/HP-Footer.jpg",
+        "media_aspect_ratio": "square",
+        "stripes": true,
+        "gradient_direction": "gradient-none",
+        "text_color": "white",
+        "content": "<h2>Essential beauty formulations from California.</h2><h3>For the skin and senses.</h3>",
+        "content_2": "",
+        "vertical_alignment": "center",
+        "accordions_bg_color": "white",
+        "open_first": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "routine_timeline_TMqq6y",
+    "product_reviews_KXKNcg",
+    "media_accordions_L9J4V8"
+  ]
+}

@@ -1,0 +1,27 @@
+.terms-conditions {
+    .terms-conditions__subtitle {
+        margin-top: 4.8rem;
+
+        @media screen and (min-width: 1280px) {
+            margin-top: 8.4rem;
+        }
+    }
+
+    .terms-conditions__items {
+        margin-top: 1.8rem;
+
+        @media screen and (min-width: 768px) {
+            margin-top: 4rem;
+        }
+
+        @media screen and (min-width: 1280px) {
+            margin-top: 4.2rem;
+        }
+    }
+
+    .terms-conditions__item {
+        &:not(:last-child) {
+            margin-bottom: 1.8rem;
+        }
+    }
+}

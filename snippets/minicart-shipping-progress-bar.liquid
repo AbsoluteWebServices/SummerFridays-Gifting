@@ -1,0 +1,28 @@
+{%- if enable == true and localization.country.iso_code == 'US' -%}
+    <div class="minicart__free-shipping-progress-bar">
+        <template
+            x-if="$store.Cart.freeShippingProgressBarRemainingSum() > 0"
+        >
+            <div>
+                <p>You are <span x-text="window.Shopify.formatMoney($store.Cart.freeShippingProgressBarRemainingSum())"></span> away from <strong>Free</strong> Shipping!</p>
+
+                <div class="minicart__free-shipping-progress-bar-bar">
+                    <div 
+                        class="minicart__free-shipping-progress-bar-bar-inner"
+                        :style="`width: ${ $store.Cart.freeShippingProgressBarProgress() }%`"
+                    ></div>
+                </div>
+            </div>
+        </template>
+
+        {%- if reached_text != blank -%}
+            <template
+                x-if="$store.Cart.freeShippingProgressBarRemainingSum() <= 0"
+            >
+                <div class="rte">
+                    {{- reached_text | metafield_tag -}}
+                </div>
+            </template>
+        {%- endif -%}
+    </div>
+{%- endif -%}

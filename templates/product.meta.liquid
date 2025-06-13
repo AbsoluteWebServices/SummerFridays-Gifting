@@ -1,0 +1,33 @@
+{% layout none %}
+{% assign accentuate = product.metafields.accentuate %}
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% if current_variant.price == 0 %}
+  {% for variant in product.variants %}
+    {% if variant.price > 0 %}
+      {% assign current_variant = variant %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{
+  "current_variant": {{ current_variant | json }},
+  "product": {{ product | json }},
+  "title": {{ product.metafields.accentuate.plp_title | default: product.title | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>' | json }},
+  "product_has_only_default_variant": {{ product.has_only_default_variant | json }},
+  "product_url": {{ product.url | json }},
+  "ignore_inventory_qty": {{ product.metafields.product.ignore_inventory_qty | default: false }},
+  "enable_coming_soon": {{ product.metafields.product.enable_coming_soon | default: false }},
+  "enable_notify_me": {{ product.metafields.product.enable_notify_me | default: false }},
+  "product_weight": {{ product.variants.first.weight_in_unit | json }},
+  "metafields": {{ accentuate | json }}
+}
+{% comment %} Example usage in js:
+<script>
+productHandle = 'product-handle'
+jQuery.get(`/products/${productHandle}?view=meta`, data => {
+  data = JSON.parse(data)
+  data.inventory = data.inventory.reduce((obj, item) => (obj[item.id] = item.quantity, obj) ,{})
+  console.log('data', data)
+})
+</script>
+{% endcomment %}

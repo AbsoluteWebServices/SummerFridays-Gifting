@@ -1,0 +1,152 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "2-cols-media-text",
+      "blocks": {
+        "table_row_zQcakT": {
+          "type": "table_row",
+          "settings": {
+            "title": "Name",
+            "content": "<p>Vanessa Nicole Stern</p>"
+          }
+        },
+        "table_row_KXKWR4": {
+          "type": "table_row",
+          "settings": {
+            "title": "Occupation",
+            "content": "<p>Makeup Artist, Nail Artist, Influencer</p>"
+          }
+        },
+        "table_row_fDEgYh": {
+          "type": "table_row",
+          "settings": {
+            "title": "Based in",
+            "content": "<p>LA %arrow% NYC</p>"
+          }
+        },
+        "table_row_wKJPxf": {
+          "type": "table_row",
+          "settings": {
+            "title": "Star Sign",
+            "content": "<p>Aquarius</p>"
+          }
+        },
+        "table_row_6xRLnh": {
+          "type": "table_row",
+          "settings": {
+            "title": "Can’t Live W/O",
+            "content": "<p>My Vintage Saint Laurent Heels<br/><a href=\"/products/lip-butter-balm-pink-sugar\" title=\"Lip Butter Balm Pink Sugar\">Lip Butter Balm in Pink Cloud<br/></a><a href=\"/products/sheer-skin-tint\" title=\"Sheer Skin Tint\">Sheer Skin Tint<br/></a>Coffee every morning</p>"
+          }
+        },
+        "table_row_with_socials_HM3GyD": {
+          "type": "table_row_with_socials",
+          "settings": {
+            "title": "Handle",
+            "content": "<p>@vanessanicolestern</p>",
+            "tiktok_url": "#",
+            "instagram_url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "table_row_zQcakT",
+        "table_row_KXKWR4",
+        "table_row_fDEgYh",
+        "table_row_wKJPxf",
+        "table_row_6xRLnh",
+        "table_row_with_socials_HM3GyD"
+      ],
+      "settings": {
+        "padding_top": 2,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 2.4,
+        "padding_bottom_desktop": 2.4,
+        "container": "blog",
+        "paddings_tablet": true,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/vanessa-stern.jpg",
+        "eyebrow": "",
+        "bg_color": "white",
+        "content": "<h1>Getting Ready With</h1>",
+        "font_size": "larger",
+        "signature": "shopify://shop_images/vanessa-stern.svg",
+        "custom_signature": "",
+        "text_alignment": "left",
+        "button_label": "",
+        "button_url": "",
+        "html": ""
+      }
+    },
+    "video_cross_sell_4EkQw6": {
+      "type": "video-cross-sell",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Vanessa shares her favorite no-makeup essentials</h2><p><strong>Step 1</strong> Apply Sheer Skin Tint for lightweight coverage and healthy, more even looking skin.</p><p><strong>Step 2</strong> Finish your look with a flush of dreamy, high-shine color that nourishes lips with 9 ultra-moisturizing oils.</p>",
+        "font_size": "larger",
+        "button_label": "",
+        "button_url": "",
+        "media_type": "video",
+        "lazyload": true,
+        "video": "shopify://files/videos/Jet Lag Deep Hydration Serum - Christine  (1).mp4",
+        "autoplay": true,
+        "play_control": true,
+        "sound_control": true,
+        "content_secondary": "",
+        "font_size_secondary": "larger",
+        "products": [
+          "sheer-skin-tint",
+          "dream-lip-oil-pink-cloud"
+        ]
+      }
+    },
+    "image_split_QdViVM": {
+      "type": "image-split",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "image",
+        "lazyload": true,
+        "image": "shopify://shop_images/317446c1f2d6910860733d637f829c31.jpg",
+        "media_aspect_ratio_mobile": "square",
+        "media_aspect_ratio_desktop": "taller",
+        "media_fullwidth_mobile": false,
+        "media_caption": "",
+        "content": "<h2>“For the girlies that hate wearing lipstick, this combos for you&lt;3 Sheer Skin Tint, Dream Lip Oil in Pink Cloud, and Summer Fridays in Vanilla Beige.”</h2>",
+        "content_smaller": "",
+        "content_left": "",
+        "content_right": "",
+        "content_bottom": "",
+        "products": [
+
+        ],
+        "content_justify_on_desktop": "top",
+        "image_secondary": "shopify://shop_images/stick.jpg",
+        "content_secondary": "<p>Dream Lip Oil is designedto deliver a high-shine tintwith deep hydration and a flush of color from four flexible shades.</p>",
+        "content_secondary_position_desktop": "top",
+        "vertical_alignment": "top",
+        "layout_desktop": "media_text",
+        "layout_mobile": "media_text"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "video_cross_sell_4EkQw6",
+    "image_split_QdViVM"
+  ]
+}

@@ -1,0 +1,66 @@
+{%- liquid
+  assign ns = 'account-menu'
+  assign active = template.name
+-%}
+
+<nav class="{{ ns }}" data-account-menu="{{ active }}" aria-label="Account menu">
+  <h3 class="{{ ns }}__title">Hi, {{ customer.first_name }}</h3>
+
+  <div class="{{ ns }}__links" x-data="{ expanded: false }" :class="{ '{{ ns }}__links--expanded': expanded }" data-account-menu-links>
+    <a href="/account" class="{{ ns }}__link{% if active == 'order' or active == 'account' %}{% unless template contains 'account.subscriptions' %} {{ ns }}__link--active{% endunless %}{% endif %} cta-textlink"
+      {% if active == 'order' or active == 'account' %}
+        {% unless template contains 'account.subscriptions' %}
+          @click.prevent="expanded = !expanded"
+        {% endunless %}
+      {% endif %}
+    >
+      My Orders
+      {%- if active == 'order' or active == 'account' -%}
+        {%- unless template contains 'account.subscriptions' -%}
+          {%- render 'icon', name: 'chevron-down' -%}
+        {%- endunless -%}
+      {%- endif -%}
+    </a>
+
+    <a href="/account?view=subscriptions" class="{{ ns }}__link{% if template contains 'account.subscriptions' %} {{ ns }}__link--active{% endif %} cta-textlink"
+      {% if template contains 'account.subscriptions' %}
+        @click.prevent="expanded = !expanded"
+      {% endif %}
+    >
+      My Subscriptions
+      {%- if template contains 'account.subscriptions' -%}
+        {%- render 'icon', name: 'chevron-down' -%}
+      {%- endif -%}
+    </a>
+
+    <a href="/account/addresses" class="{{ ns }}__link{% if active == 'addresses' %} {{ ns }}__link--active{% endif %} cta-textlink"
+      {% if active == 'addresses' %}
+        @click.prevent="expanded = !expanded"
+      {% endif %}
+    >
+      My Address Book
+      {%- if active == 'addresses' -%}
+        {%- render 'icon', name: 'chevron-down' -%}
+      {%- endif -%}
+    </a>
+
+    <a href="/pages/rewards-history" class="{{ ns }}__link{% if template contains 'rewards' %} {{ ns }}__link--active{% endif %} cta-textlink"
+      {% if template contains 'rewards' %}
+        @click.prevent="expanded = !expanded"
+      {% endif %}
+    >
+      Rewards
+      {%- if template contains 'rewards' -%}
+        {%- render 'icon', name: 'chevron-down' -%}
+      {%- endif -%}
+    </a>
+
+    <a href="/account/login#recover" class="{{ ns }}__link cta-textlink">
+      {{ 'customer.reset_password.menu_link' | t }}
+    </a>
+
+    <a href="/account/logout" class="{{ ns }}__link cta-textlink">
+      Log Out
+    </a>
+  </div>
+</nav>

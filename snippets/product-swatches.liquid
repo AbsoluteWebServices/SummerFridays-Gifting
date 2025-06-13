@@ -1,0 +1,160 @@
+{%- liquid 
+    assign swatch_products = nil 
+    for tag in product.tags
+        if tag contains 'swatches-' or tag contains 'Swatches -'
+            assign tag_handle = tag | handleize
+            assign swatch_products = collections[tag_handle].products
+            break
+        endif
+    endfor
+
+    assign has_color_options = false
+    assign color_options = product.options_with_values | where: 'name', 'Color'
+    assign color_options_values = color_options[0].values
+    if color_options_values.size > 0
+        assign has_color_options = true
+    endif
+
+    if has_color_options == false
+        assign color_options = product.options_with_values | where: 'name', 'Shade'
+        assign color_options_values = color_options[0].values
+        if color_options_values.size > 0
+            assign has_color_options = true
+        endif
+    endif
+
+    assign color_position = product.options_by_name.Color.position | minus: 1
+    assign label = 'Color'
+    if product.options_by_name.Shade
+        assign color_position = product.options_by_name.Shade.position | minus: 1
+        assign label = 'Shade'
+    endif
+-%}
+
+{%- if swatch_products and swatch_products.size > 0 -%}
+    <div class="product__swatches-wrapper">
+        <p class="product__swatches-selected-value subheader-small">
+            {{ current_variant.options[color_position] }}
+        </p>
+
+        <ul class="list-reset product__swatches">
+            {%- for swatch_product in swatch_products -%}
+                {%- liquid 
+                    assign colors_name = swatch_product.variants[0].options[color_position]
+                    assign colors_thumbnail = 'swatch-' | append: colors_name | handleize | append: '.png'  
+                    assign custom_product_thumbnail = swatch_product.metafields.product.thumbnail  
+                    assign thumbnail_src = colors_thumbnail | file_img_url: '72x'
+                    if custom_product_thumbnail
+                        assign thumbnail_src = custom_product_thumbnail | image_url: width: 72
+                    endif
+                    assign new = swatch_product.metafields.product.new | default: false
+                -%}
+                <li class="product__swatch">
+                    <a 
+                        href="{{ swatch_product.url }}"
+                        class="product__swatch-btn"
+                        aria-label="{{ colors_name | escape }} Thumbnail"
+                        title="{{ colors_name | escape }}"
+                        {% if swatch_product.handle == product.handle %}
+                            data-active="true"
+                        {% endif %}
+                    >
+                        <div class="product__swatch-btn-inner">
+                            <img
+                                src="{{- thumbnail_src -}}"
+                                class="absolute-img"
+                                alt="{{ colors_name | escape }} Thumbnail"
+                                width="36"
+                                height="36"
+                            >
+                        </div>
+                        
+                        {%- if new -%}
+                            <span class="superscript-normal product__swatch-btn-inner-label">{{- 'products.product.new' | t -}}</span>
+                        {%- endif -%}
+                    </a>
+                </li>
+            {%- endfor -%}
+        </ul>
+    </div>
+{%- elsif has_color_options -%}
+    <div class="product__swatches-wrapper">
+        <p class="product__swatches-selected-value">
+            <span class="subheader-small">{{- label -}}</span> <span x-text="variant ? optionValueByPosition({{ color_position }}) : '{{ current_variant.options[color_position] }}'">{{ current_variant.options[color_position] }}</span>
+        </p>
+
+        <ul class="list-reset product__swatches">
+            {%- for color in color_options[0].values -%}
+                {%- liquid 
+                    assign custom_thumbnail = ''
+
+                    for v in product.variants
+                        if v.options[color_position] == color
+                            assign variant = v
+                            assign custom_thumbnail = variant.metafields.custom.thumbnail
+                            break
+                        endif
+                    endfor
+                    
+                    assign variant_draft = variant.metafields.variant.draft | default: false
+                    if variant_draft
+                        continue
+                    endif  
+
+                    assign color_handle = color | handleize
+                    assign colors_thumbnail = 'swatch-' | append: color_handle | append: '.png'
+                    assign thumbnail_src = colors_thumbnail | file_img_url: '72x'
+                    if custom_thumbnail
+                        assign thumbnail_src = custom_thumbnail | image_url: width: 72
+                    endif
+
+                    assign new = variant.metafields.variant.new | default: false
+                -%}
+                <li class="product__swatch">
+                    <button 
+                        type="button"
+                        class="product__swatch-btn"
+                        title="{{ color | escape }}"
+                        aria-label="{{ color | escape }} Thumbnail"
+                        data-active="{%- if current_variant.id == variant.id -%}true{%- else -%}false{%- endif -%}"
+                        :data-active="(variantId || {{ current_variant.id }}) === {{ variant.id }}"
+                        @click.prevent="setVariant({{ variant.id }})"
+                    >
+                        <div class="product__swatch-btn-inner">
+                            <img
+                                src="{{- thumbnail_src -}}"
+                                class="absolute-img"
+                                alt="{{ color | escape }} Thumbnail"
+                                width="36"
+                                height="36"
+                            >
+                        </div>
+
+                        {%- if new -%}
+                            <span class="superscript-normal product__swatch-btn-inner-label">{{- 'products.product.new' | t -}}</span>
+                        {%- endif -%}
+                    </button>
+                </li>
+            {%- endfor -%}
+        </ul>
+    </div>
+{%- elsif product.variants.size > 1 -%}
+    <div class="product__swatches-wrapper">
+        <ul class="list-reset product-info__custom-variants">
+            {%- for variant in product.variants -%}
+                <li>
+                    <button 
+                        type="button"
+                        class="superscript-normal product-info__custom-variant"
+                        aria-label="Option title: {{ variant.title | escape -}}"
+                        data-active="{%- if current_variant.id == variant.id -%}true{%- else -%}false{%- endif -%}"
+                        :data-active="(variantId || {{ current_variant.id }}) === {{ variant.id }}"
+                        @click.prevent="setVariant({{ variant.id }})"
+                    >
+                        {{- variant.title -}}
+                    </button>
+                </li>
+            {%- endfor -%}
+        </ul>
+    </div>
+{%- endif -%}

@@ -1,0 +1,149 @@
+<template id="shopify_body_scripts">
+    <body></body>
+</template>
+
+<script>
+    (() => {
+        const shopify_body_scripts = document?.getElementById('shopify_body_scripts');
+        if (!shopify_body_scripts) {
+            return;
+        }
+
+        const innerText = shopify_body_scripts?.innerText?.trim();
+        if (!innerText) {
+            return;
+        }
+
+        if (!innerText?.length) {
+            return;
+        }
+
+        const body_temp = document.createElement('div');
+        if (!body_temp) {
+            return;
+        }
+
+        body_temp.innerHTML = shopify_body_scripts
+            ?.innerHTML
+            ?.replaceAll('<body>', '')
+            ?.replaceAll('<\/body>', '') || "";
+
+            const assets = Array.from(body_temp.querySelectorAll('script, link, style')) || [];
+
+        let body_elements = body_temp.children;
+        for (let asset of assets) {
+            body_elements = [
+                ...body_elements,
+                asset.cloneNode(true),
+            ];
+
+            asset?.remove();
+        }
+
+        if (!body_elements) {
+            return;
+        }
+
+        if (!body_elements?.length) {
+            return;
+        }
+
+        let bodyLazyElements = []
+
+        // Loop through each element
+        for (let i = 0; i < body_elements.length; i++) {
+            const body_element = body_elements[i];
+            if (!body_element) {
+                continue;
+            }
+
+            // Create a new element
+            const newElement = document.createElement(body_element.tagName)
+            // Get all the attributes of the element
+            const attributes = body_element?.attributes || []
+
+            // Insert the innerHTML of the element
+            if (!!body_element?.textContent) {
+                newElement.innerHTML = body_element?.innerHTML  || '';
+            }
+
+            // Loop through each attribute
+            for (let j = 0; j < attributes.length; j++) {
+                let attribute = attributes[j];
+
+                newElement.setAttribute(attribute.name, attribute.value)
+            }
+
+            let immediate = [
+                newElement?.innerText?.includes('var __st = '),
+                (window.location.href.includes('/pages/skincare-quiz') || window.location.href.includes('/pages/shade-finder') || window.location.href.includes('quiz')) && newElement?.src?.includes('okendo'),
+            ]?.includes(true);
+
+            switch (newElement.tagName) {
+                case "SCRIPT": {
+                    if (newElement.tagName === 'SCRIPT' && !immediate) {
+                        bodyLazyElements.push(newElement)
+                    } else {
+                        document.body.appendChild(newElement)
+                    }
+                }
+                break;
+                case "LINK": {
+                    document.body.appendChild(newElement);
+                }
+                break;
+                default: {
+                    document.body.appendChild(newElement);
+                }
+            }
+        }
+
+        setTimeout(() => {
+            window.dispatchEvent(new Event('body-sync-scripts-loaded'));
+            document.dispatchEvent(new Event('body-sync-scripts-loaded'));
+        }, 3000);
+
+        let body_scripts_loaded = false
+        const lazyLoadShopifyBodyScripts = function () {
+            if (!!body_scripts_loaded) {
+                return;
+            }
+
+            body_scripts_loaded = true
+            bodyLazyElements?.forEach(function (element) {
+                document?.body?.appendChild(element);
+            });
+
+            setTimeout(function () {
+                window.dispatchEvent(new Event('body-lazy-scripts-loaded'))
+                document.dispatchEvent(new Event('body-lazy-scripts-loaded'))
+            }, 1000)
+        }
+
+        window.addEventListener('scroll', lazyLoadShopifyBodyScripts, {
+            once: true,
+            passive: true,
+        });
+
+        const eventNames = [
+            'keydown',
+            'touchstart',
+            'mouseover',
+        ];
+
+        if (!eventNames) {
+            return;
+        }
+
+        if (!eventNames?.length) {
+            return;
+        }
+
+        eventNames?.forEach((eventName) => {
+            document.addEventListener(eventName, lazyLoadShopifyBodyScripts, {
+                once: true,
+                passive: true,
+            })
+        });
+    })()
+</script>

@@ -1,0 +1,28 @@
+{%- liquid
+  render 'adastra' with 'styles/sections/account/login.scss'
+-%}
+{% assign image_alt = settings.account_image.alt | default: 'Login Image' %}
+
+{%- capture account_image -%}
+  {%- if settings.account_image_login != blank -%}
+    {{ settings.account_image_login | image_url }}
+  {%- elsif settings.account_image != blank -%}
+    {{ settings.account_image | image_url }}
+  {%- endif -%}
+{%- endcapture -%}
+
+<div class="login-wrapper">
+  <div class="container container--smaller-tablet container--padding-tablet">
+    <div class="two-cols-wrapper">
+      {%- if account_image != blank -%}
+        <div class="media-col">
+          <img class="main-image" src="{{ account_image }}" alt="{{ image_alt }}" />
+        </div>
+      {%- endif -%}
+
+      <div class="content-col">
+        {%- render 'account-login' -%}
+      </div>
+    </div>
+  </div>
+</div>

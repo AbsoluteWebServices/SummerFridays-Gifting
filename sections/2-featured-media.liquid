@@ -1,0 +1,170 @@
+{%- liquid
+    assign padding_top = section.settings.padding_top | default: 0
+    assign padding_bottom = section.settings.padding_bottom | default: 0
+    assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+    assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+-%}
+
+{%- render 'offset',
+    id: section.id,
+    padding_top: padding_top,
+    padding_bottom: padding_bottom,
+    padding_top_desktop: padding_top_desktop,
+    padding_bottom_desktop: padding_bottom_desktop
+-%}
+
+{%- render 'adastra' with 'styles/sections/2-featured-media.scss' -%}
+
+<section id="section-{{- section.id -}}">
+    <div class="container">
+        <div class="two-featured-media__wrapper">
+            {%- for i in (1..2) -%}
+                {%- capture orientation_key -%}orientation_{{ i }}{%- endcapture -%}
+                {%- capture media_type_key -%}media_type_{{ i }}{%- endcapture -%}
+                {%- capture video_key -%}video_{{ i }}{%- endcapture -%}
+                {%- capture image_key -%}image_{{ i }}{%- endcapture -%}
+                {%- liquid 
+                    assign orientation = section.settings[orientation_key] | default: 'portrait'
+                    assign media_type = section.settings[media_type_key] | default: 'image'
+                    assign video = section.settings[video_key]
+                    assign image = section.settings[image_key]
+
+                    if video == blank and image == blank
+                        continue
+                    endif
+                -%}
+                <div class="two-featured-media__media two-featured-media__media--{{ orientation }}">
+                    {%- if media_type == 'image' -%}
+                        {%- if image -%}
+                            {%- render 'img', image: image -%}
+                        {%- endif -%}
+                    {%- elsif media_type == 'video' -%}
+                        {%- if video -%}
+                            {%- render 'video', 
+                                video: video,
+                                poster: image
+                            -%}
+                        {%- endif -%}
+                    {%- endif -%}
+                </div>
+            {%- endfor -%}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "2 Featured Media | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Media 1 Settings"
+        },
+        {
+            "type": "select",
+            "id": "orientation_1",
+            "label": "Orientation",
+            "default": "portrait",
+            "options": [
+                { "value": "portrait", "label": "Portrait" },
+                { "value": "landscape", "label": "Landscape" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "media_type_1",
+            "label": "Media type",
+            "default": "video",
+            "options": [
+                { "value": "image", "label": "Image" },
+                { "value": "video", "label": "Video" }
+            ]
+        },
+        {
+            "type": "video",
+            "id": "video_1",
+            "label": "Video",
+            "info": "Format: .mp4"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_1",
+            "label": "Image",
+            "info": "With the video type, the image is used as a poster (first frame)"
+        },
+        {
+            "type": "header",
+            "content": "Media 2 Settings"
+        },
+        {
+            "type": "select",
+            "id": "orientation_2",
+            "label": "Orientation",
+            "default": "portrait",
+            "options": [
+                { "value": "portrait", "label": "Portrait" },
+                { "value": "landscape", "label": "Landscape" }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "media_type_2",
+            "label": "Media type",
+            "default": "video",
+            "options": [
+                { "value": "image", "label": "Image" },
+                { "value": "video", "label": "Video" }
+            ]
+        },
+        {
+            "type": "video",
+            "id": "video_2",
+            "label": "Video",
+            "info": "Format: .mp4"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_2",
+            "label": "Image",
+            "info": "With the video type, the image is used as a poster (first frame)"
+        }
+    ],
+    "presets": [
+        {
+            "name": "2 Featured Media | AW"
+        }
+    ]
+}
+{% endschema %}

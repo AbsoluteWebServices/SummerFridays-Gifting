@@ -1,0 +1,17 @@
+{%- liquid 
+    assign custom_button_label = product.metafields.product.custom_button_label | strip_html | escape | strip
+    assign custom_button_url = product.metafields.product.custom_button_url | strip_html | escape | strip
+-%}
+
+{%- if custom_button_label != blank and custom_button_url != blank -%}
+    <div class="product__custom-button-wrapper">
+        <a 
+            href="{{- custom_button_url -}}" 
+            aria-label="{{- custom_button_label -}}" 
+            class="product__custom-button cta-textlink cta-link-with-arrow cta-link-with-arrow--right"
+        >
+            {{- custom_button_label -}}
+            {%- render 'icon', name: 'arrow-right' -%}
+        </a>
+    </div>
+{%- endif -%}

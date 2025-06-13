@@ -1,0 +1,146 @@
+<script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/hAnCQ8TdC1im1AlyOrM2vMEn3Fdg8zmmdzJ4M32n" async></script>
+
+<div id="recover" class="form form--recover">
+  {% form 'recover_customer_password' %}
+    {{ form.errors | default_errors }}
+
+    {% if form.posted_successfully? %}
+      <div class="form-success" id="ResetSuccess">
+        {{ 'customer.recover_password.success' | t }}
+      </div>
+    {% endif %}
+
+    <h2 class="form__title">
+      {{ 'customer.recover_password.title' | t }}
+    </h2>
+
+    <p class="form__copy">
+      {{ 'customer.recover_password.subtext' | t }}
+    </p>
+
+    <div class="form__group">
+      <input
+        type="email"
+        name="email"
+        id="RecoverEmail"
+        class="form__field"
+        spellcheck="false"
+        autocomplete="off"
+        autocapitalize="off"
+        placeholder="{{ 'customer.recover_password.email' | t }}"
+        aria-label="{{ 'customer.recover_password.email' | t }}"
+        autofocus
+        required
+      >
+    </div>
+
+    <button class="form__button btn btn--full btn--chalk btn--center">
+      {{ 'customer.recover_password.submit' | t }}
+    </button>
+
+    <div class="form__return">
+      <a href="#" class="back-to-login cta-textlink hover-opacity" title="{{- 'customer.register.back_to_login' | t -}}" data-recover-toggle>
+        {% render 'icon', name: 'swiper-arrow-left' %}
+        {{- 'customer.register.back_to_login' | t -}}
+      </a>
+    </div>
+  {% endform %}
+</div>
+
+<div id="login" class="form form--login">
+  {% form 'customer_login' %}
+    <div class="account-login">
+      <h1 class="form__title h2">
+        {{ 'customer.login.title' | t }}
+      </h1>
+
+      {{ form.errors | default_errors }}
+
+      <div class="form__group">
+        <input
+          type="email"
+          name="customer[email]"
+          id="CustomerEmail"
+          class="form__field {% if form.errors contains 'email' %}input-error{% endif %}"
+          placeholder="{{ 'customer.login.email' | t }}"
+          aria-label="{{ 'customer.login.email' | t }}"
+          spellcheck="false"
+          autocomplete="off"
+          autocapitalize="off"
+          autofocus
+          required
+        >
+      </div>
+
+      {%- if form.password_needed -%}
+        <div class="form__group" data-form-password>
+          <input
+            type="password"
+            name="customer[password]"
+            id="CustomerPassword"
+            class="form__field {% if form.errors contains 'password' %}input-error{% endif %}"
+            placeholder="{{ 'customer.login.password' | t }}"
+            aria-label="{{ 'customer.login.password' | t }}"
+            data-form-password-input
+            required
+          >
+        </div>
+
+        <div class="form__recover a-underline-wrapper a-underline-style-2">
+          <a
+            href="#recover"
+            id="RecoverPassword"
+            class="form__link"
+            title="{{ 'customer.login.forgot_password' | t }}"
+            data-recover-toggle
+          >
+            {{ 'customer.login.forgot_password' | t }}
+          </a>
+        </div>
+      {%- endif -%}
+
+      <button class="form__button btn btn--chalk btn--full btn--center">
+        {{ 'customer.login.sign_in' | t }}
+      </button>
+
+      {% comment %} <a href="/">{{ 'customer.login.cancel' | t }}</a> {% endcomment %}
+    </div>
+
+    <div class="account-social-login">
+      <div class="one-click-social-login"></div>
+    </div>
+
+    <div class="account-create">
+      <h2 class="form__title">
+        {{ 'customer.login.create_title' | t }}
+      </h2>
+
+      <p class="form__copy">
+        {{ 'customer.login.create_copy' | t }}
+      </p>
+
+      <a href="/account/register" class="form__button btn btn--chalk btn--full btn--center hover-arrow">
+        {{ 'customer.login.create_button' | t }}
+        {% render 'icon', name: 'swiper-arrow-right' %}
+      </a>
+    </div>
+  {% endform %}
+
+  {% if shop.checkout.guest_login %}
+    <div class="account-guest">
+      <h2 class="form__title">
+        {{ 'customer.login.guest_title' | t }}
+      </h2>
+
+      {% form 'guest_login' %}
+        <button id="HideRecoverPasswordLink" class="form__button button button--fill">
+          {{ 'customer.login.guest_continue' | t }}
+        </button>
+      {% endform %}
+    </div>
+  {% endif %}
+
+  <div class="account__passwordless-login-btn-wrapper">
+    <div class="yotpo-widget-instance" data-yotpo-instance-id="393070" widget-type="SubscriptionsCustomerPortal" mode-send-link=true></div>
+  </div>
+</div>

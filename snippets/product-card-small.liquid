@@ -1,0 +1,106 @@
+{%- liquid 
+    assign id = id | default: section.id
+    assign featuredProduct = featuredProduct | default: false
+    assign inHiddenOverflow = inHiddenOverflow | default: false
+    assign style = style | default: 1
+    assign top = top | default: false
+    assign current_variant = product.selected_or_first_available_variant
+    assign btnColor = btnColor | default: 'clay'
+    assign hide_variant_selectors = hide_variant_selectors | default: false
+
+    if hide_variant_selectors == false and featuredProduct == true
+        assign hide_variant_selector_in_featured_products = product.metafields.product.hide_variant_selector_in_featured_products | default: false
+        if hide_variant_selector_in_featured_products
+            assign hide_variant_selectors = true
+        endif
+    endif
+
+    # Product Media
+    assign main_media = product.media | first
+    if product.metafields.custom.main_image_on_plp != blank
+        assign main_media = product.metafields.custom.main_image_on_plp.value
+    endif
+ 
+    # Product Title
+    assign product_title = product.metafields.accentuate.plp_title | default: product.title
+    assign product_title_html = product_title | split: ' - ' | first | strip | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>'
+
+    # Variant Title
+    assign variant_title = ''
+    assign hide_variant_title = current_variant.metafields.variant.hide_variant_title | default: false
+    if current_variant.title != 'Default Title' and hide_variant_title == false
+        assign variant_title = current_variant.title
+
+        assign variant_title_override = current_variant.metafields.variant.variant_title_override | escape 
+        if variant_title_override != blank 
+            assign variant_title = variant_title_override
+        endif
+    endif
+-%}
+
+<div 
+    x-data="productCardSmall({{ current_variant.id }})"
+    class="product-card-small"
+    data-split-load-section
+>
+    <a 
+        x-ref="mainMedia"
+        href="{{- product.url -}}"
+        :href="data?.url ? data.url : '{{ product.url }}'"
+        :aria-label="`Go to ${ data?.title || '{{ product_title }}' }`"
+        class="product-card-small__media scale-img"
+    >
+        {%- if main_media != blank -%}
+            {%- if main_media.media_type == 'video' -%}
+                {%- render 'video', video: main_media -%}
+            {%- else -%}
+                <img
+                    class="absolute-img"
+                    src="{{ main_media | image_url: width: 200 }}"
+                    height="100"
+                    width="100"
+                    loading="lazy"
+                    alt="{{ main_media.alt | default: product.title }}"
+                >
+            {%- endif -%}
+        {%- endif -%}
+    </a>
+
+    <div class="product-card-small__body">
+        <h4 class="product-card-small__title-wrapper">
+            <a 
+                href="{{- product.url -}}" 
+                :href="data?.url ? data.url : '{{ product.url }}'"
+                class="hover-opacity product-card-small__title" 
+                aria-label="Go to {{ product_title }}" 
+                :aria-label="`Go to ${ data?.title || '{{ product_title }}' }`"
+                x-html="data ? (data.title_html ? data.title_html : '') : '{{ product_title_html }}'"
+            >
+                {{- product_title_html -}}
+            </a>
+
+            {%- if style == 2 -%}
+                <p 
+                    x-show="data?.variant_title || Boolean('{{ variant_title }}')"
+                    class="product-card-small__variant-title superscript-normal"
+                    {% if variant_title == blank %}
+                        style="display: none;"
+                    {% endif %}
+                    x-text="data ? (data.variant_title ? data.variant_title : '') : '{{ variant_title }}'"
+                >
+                    {{- variant_title -}}
+                </p>
+            {%- endif -%}
+        </h4>
+
+        {%- render 'product-card-small-form', 
+            id: id,
+            product: product, 
+            inHiddenOverflow: inHiddenOverflow,
+            style: style,
+            top: top,
+            btnColor: btnColor,
+            hide_variant_selectors: hide_variant_selectors
+        -%}
+    </div>
+</div>

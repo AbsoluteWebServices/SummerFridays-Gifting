@@ -1,0 +1,43 @@
+.gift__card-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100svh;
+    padding: 4.8rem 0;
+    text-align: center;
+    text-wrap: balance;
+
+    header {
+        margin-bottom: 2.4rem;
+    }
+}
+
+.header__logo.gift-card__logo {
+    color: var(--ink);
+    margin-bottom: 4.8rem;
+
+    .icon {
+        height: 1.5rem;
+
+        @media only screen and (min-width: 768px) {
+            height: 1.9rem;
+        }
+    }
+}
+
+.gift-card__image-wrapper {
+    width: 100%;
+    max-width: 75rem;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: .3rem;
+    margin: 0 auto;
+    margin-bottom: 2.4rem;
+}
+
+.gift-card__qr-code {
+    display: flex;
+    justify-content: center;
+    margin: 2.4rem 0;
+}

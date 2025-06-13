@@ -1,0 +1,184 @@
+{%- assign enable = section.settings.enable | default: false -%}
+{%- if enable -%}
+    {%- liquid 
+        assign delay = section.settings.delay | default: 5
+        assign logo = section.settings.logo 
+        assign title = section.settings.title | escape | strip_html
+        assign subtitle = section.settings.subtitle | escape | strip_html
+        assign content = section.settings.content
+        assign media_type = section.settings.media_type | default: 'image'
+        assign image = section.settings.image 
+        assign video = section.settings.video
+        assign list_id = section.settings.list_id | default: 'Xcp8cA'
+        assign custom_source = section.settings.custom_source | default: 'Newsletter Popup'
+        assign signup_unit_id = section.settings.signup_unit_id | default: '73377'
+        assign hide_days = section.settings.hide_days | default: 5
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/newsletter-popup.scss' -%}
+
+    {%- capture modal_content -%}
+        <div 
+            x-data="newsletterPopup('{{- section.id -}}', {{- delay -}}, {{- hide_days -}})"
+            data-split-load-section
+            class="newsletter-popup"
+        >
+            <div class="newsletter-popup__media">
+                {%- if media_type == 'image' -%}
+                    {%- if image -%}
+                        {%- render 'img', image: image, loading: 'eager' -%}
+                    {%- endif -%}
+                {%- elsif media_type == 'video' -%}
+                    {%- if video -%}
+                        {%- render 'video', video: video, poster: image -%}
+                    {%- endif -%}
+                {%- endif -%}
+            </div>
+
+            <div class="newsletter-popup__body">
+                {%- if logo != blank -%}
+                    <div class="newsletter-popup__logo">
+                        {{- logo -}}
+                    </div>
+                {%- endif -%}
+
+                <div class="newsletter-popup__main">
+                    {%- if title != blank -%}
+                        <h2 class="newsletter-popup__title h1">
+                            {{- title -}}
+                        </h2>
+                    {%- endif -%}
+
+                    {%- if subtitle != blank -%}
+                        <p class="newsletter-popup__subtitle subheader-small">{{- subtitle -}}</p>
+                    {%- endif -%}
+
+                    {%- if content != blank -%}
+                        <div class="newsletter-popup__content rte">
+                            {{- content -}}
+                        </div>
+                    {%- endif -%}
+
+                    <div class="newsletter-popup__newsletter">
+                        {%- render 'newsletter', 
+                            id: section.id,
+                            list_id: list_id,
+                            custom_source: custom_source,
+                            text_color: 'white',
+                            btnTransparent: false,
+                            signup_unit_id: signup_unit_id
+                        -%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {%- endcapture -%}
+
+    {%- render 'modal', 
+        id: section.id,
+        content: modal_content,
+        style: 'ink'
+    -%}
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Newsletter Popup | AW",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "enable",
+            "label": "Enable",
+            "default": true
+        },
+        {
+            "type": "html",
+            "id": "logo",
+            "label": "Logo (SVG)"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle"
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content"
+        },
+        {
+            "type": "select",
+            "id": "media_type",
+            "label": "Media type",
+            "default": "video",
+            "options": [
+                {
+                    "value": "image",
+                    "label": "Image"
+                },
+                {
+                    "value": "video",
+                    "label": "Video"
+                }
+            ]
+        },
+        {
+            "type": "video",
+            "id": "video",
+            "label": "Video",
+            "info": "Format: .mp4"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "With the video type, the image is used as a poster (first frame)"
+        },
+        {
+            "type": "range",
+            "id": "delay",
+            "label": "Delay",
+            "min": 0,
+            "max": 60,
+            "step": 1,
+            "unit": "sec",
+            "default": 5,
+            "info": "Recommended: 4-10 sec."
+        },
+        {
+            "type": "range",
+            "id": "hide_days",
+            "label": "Never show again for ... days.",
+            "min": 1,
+            "max": 14,
+            "step": 1,
+            "unit": "DD",
+            "default": 7
+        },
+        {
+            "type": "text",
+            "id": "list_id",
+            "label": "Klaviyo list ID",
+            "default": "Xcp8cA"
+        },
+        {
+            "type": "text",
+            "id": "custom_source",
+            "label": "Custom source in Klaviyo",
+            "default": "Newsletter Popup"
+        },
+        {
+            "type": "text",
+            "id": "signup_unit_id",
+            "label": "Sign-Up Unit ID (Attentive)",
+            "default": "73377",
+            "info": "The unit must be of type 'INTEGRATION'"
+        }
+    ]
+}
+{% endschema %}

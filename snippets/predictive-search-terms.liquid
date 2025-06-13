@@ -1,0 +1,18 @@
+<template x-if="($store.Search.searchResults?.suggestions || []).length">
+    <div class="predictive-search__main-block">
+        <div class="predictive-search__block-title">
+            <span class="subheader-small">{{- 'general.search.related_searches' | t -}}</span>
+        </div>
+
+        <div class="predictive-search__suggestions a-underline-wrapper a-underline-style-2">
+            <template
+                x-for="(suggestion, index) in $store.Search.searchResults.suggestions.slice(0,3)"
+                :key="`search-result-suggestion-${ index }`"
+            >
+                <div class="predictive-search__suggestion">
+                    <a :href="`/search?q=${suggestion.suggest.replaceAll('<b>', '').replaceAll('</b>', '')}`" class="p-normal" x-html="suggestion.suggest"></a>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,211 @@
+{%- liquid
+    assign padding_top = section.settings.padding_top | default: 0
+    assign padding_bottom = section.settings.padding_bottom | default: 0
+    assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+    assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+    assign media_type = section.settings.media_type | default: 'image'
+    assign video = section.settings.video
+    assign image = section.settings.image 
+    assign text_color = section.settings.text_color | default: '#fff'
+    assign eyebrow = section.settings.eyebrow
+    assign content = section.settings.content 
+    assign title = section.settings.title
+    assign list_id = section.settings.list_id
+    assign custom_source = section.settings.custom_source | default: 'Coming Soon'
+    assign signup_unit_id = section.settings.signup_unit_id
+-%}
+
+{%- if content != blank and list_id != blank -%}
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/coming-soon-hero.scss' -%}
+    
+    <section id="section-{{- section.id -}}">
+        <div class="coming-soon-hero__wrapper">
+            {%- if image != blank or video != blank -%}
+                <div class="coming-soon-hero__media">
+                    {%- if media_type == 'image' -%}
+                        {%- if image -%}
+                            {%- render 'img', image: image -%}
+                        {%- endif -%}
+                    {%- elsif media_type == 'video' -%}
+                        {%- if video -%}
+                            {%- render 'video', 
+                                video: video,
+                                poster: image
+                            -%}
+                        {%- endif -%}
+                    {%- endif -%}
+                </div>
+            {%- endif -%}
+
+            <div class="coming-soon-hero__blocks">
+                <div class="coming-soon-hero__block coming-soon-hero__block-content">
+                    <div class="coming-soon-hero__content rte" {% if text_color != 'black' %}style="color:var(--{{- text_color -}});{% endif %}">
+                        {%- if eyebrow != blank -%}
+                            <p class="subheader-small">{{- eyebrow -}}</p>
+                        {%- endif -%}
+
+                        {{- content -}}
+                    </div>
+
+                    <a 
+                        href="#coming-soon-subscribe"
+                        class="coming-soon-hero__block-content-btn hover-opacity"
+                        aria-label="Scroll down to subscribe"
+                    >
+                        {%- render 'icon', name: 'arrow-down-thin' -%}
+                    </a>
+                </div>
+
+                <div id="coming-soon-subscribe" class="coming-soon-hero__block coming-soon-hero__block-form">
+                    <div class="coming-soon-hero__form">
+                        {%- render 'newsletter',
+                            id: section.id,
+                            title: title,
+                            list_id: list_id,
+                            custom_source: custom_source,
+                            signup_unit_id: signup_unit_id,
+                            text_color: text_color,
+                            coming_soon: true,
+                            columns: 2
+                        -%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Coming Soon: Hero | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 3,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 6,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Media Settings"
+        },
+        {
+            "type": "select",
+            "id": "media_type",
+            "label": "Media type",
+            "default": "video",
+            "options": [
+                { "value": "image", "label": "Image" },
+                { "value": "video", "label": "Video" }
+            ]
+        },
+        {
+            "type": "video",
+            "id": "video",
+            "label": "Video",
+            "info": "Format: .mp4"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "With the video type, the image is used as a poster (first frame)"
+        },
+        {
+            "type": "header",
+            "content": "Text Settings"
+        },
+        {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "white",
+            "options": [
+                { "value": "black", "label": "Black" },
+                { "value": "white", "label": "White"}
+            ]
+        },
+        {
+            "type": "text",
+            "id": "eyebrow",
+            "label": "Eyebrow",
+            "default": "Coming soon"
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content",
+            "info": "Hint: use Heading 2 for title, and paragraph for body"
+        },
+        {
+            "type": "header",
+            "content": "Form Settings"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Notify me when available"
+        },
+        {
+            "type": "text",
+            "id": "list_id",
+            "label": "Klaviyo list ID",
+            "default": "Xcp8cA"
+        },
+        {
+            "type": "text",
+            "id": "custom_source",
+            "label": "Custom source in Klaviyo",
+            "default": "Coming Soon"
+        },
+        {
+            "type": "text",
+            "id": "signup_unit_id",
+            "label": "Sign-Up Unit ID (Attentive)",
+            "default": "73377",
+            "info": "The unit must be of type 'INTEGRATION'"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Coming Soon: Hero | AW"
+        }
+    ]
+}
+{% endschema %}

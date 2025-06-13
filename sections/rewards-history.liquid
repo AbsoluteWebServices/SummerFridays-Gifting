@@ -1,0 +1,28 @@
+{%- liquid
+  render 'adastra' with 'styles/sections/account.scss'
+-%}
+
+<div class="container">
+  <section class="account account--logged-{% if customer %}in{% else %}out{% endif %}">
+    {%- if customer -%}
+      {%- render 'account-menu' -%}
+    {%- endif -%}
+
+    <div class="account__content">
+      <div class="account-rewards">
+        <div class="yotpo-widget-instance" data-yotpo-instance-id="54905"></div>
+        <div class="yotpo-widget-instance" data-yotpo-instance-id="28710"></div>
+
+        <div id="swell-customer-identification"
+          data-authenticated="true"
+          data-email="{{ customer.email }}"
+          data-id="{{ customer.id }}"
+          data-tags="{{ customer.tags | json }}"
+          style="display: none;">
+        </div>
+
+        <div class="yotpo-widget-instance" data-yotpo-instance-id="639012"></div>
+      </div>
+    </div>
+  </section>
+</div>

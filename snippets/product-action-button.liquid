@@ -1,0 +1,96 @@
+{%- liquid 
+    assign default_price = current_variant.price | money_without_trailing_zeros
+    assign price = price | default: default_price
+    assign coming_soon = product.metafields.product.enable_coming_soon | default: false
+    assign notify_me = product.metafields.product.enable_notify_me | default: false
+
+    assign popup = ''
+    assign button_type = 'submit' 
+    assign button_disabled = false
+    assign button_label = 'products.product.add_to_cart' | t
+    unless current_variant.available 
+        assign button_type = 'button'
+        if coming_soon
+            assign button_label = 'products.product.coming_soon' | t
+            assign popup = 'coming-soon'
+        elsif notify_me
+            assign button_label = 'products.product.notify_me' | t
+            assign popup = 'notify-me'
+        else 
+            assign button_label = 'products.product.sold_out' | t
+            assign button_disabled = true
+        endif
+    endunless
+-%}
+
+<div id="stickyATCBar" class="product__actions-container">
+    <div 
+        class="product__actions-wrapper"
+        :class="showStickyATCBar && 'product__actions-wrapper--sticky'"
+    >
+        <div class="product__actions-inner">
+            <div class="qty-selector">
+                <button
+                    class="qty-btn qty-btn--minus hover-opacity"
+                    type="button"
+                    aria-label="Decrease the quanity by 1"
+                    @click.prevent="--quantity"
+                    disabled="disabled"
+                    :disabled="quantity <= 1"
+                >
+                    {%- render 'icon', name: 'minus' -%}
+                </button>
+
+                <input 
+                    x-model="quantity"
+                    class="qty-input"
+                    type="number" 
+                    name="quantity" 
+                    value="1"
+                    aria-label="Change quantity"
+                >
+
+                <button
+                    class="qty-btn qty-btn--plus hover-opacity"
+                    type="button"
+                    aria-label="Increase the quanity by 1"
+                    @click.prevent="++quantity"
+                >
+                    {%- render 'icon', name: 'plus' -%}
+                </button>
+            </div>
+
+            <button
+                type="{{- button_type -}}"
+                :type="product && variant ? !variant.available ? 'button' : 'submit' : '{{- button_type -}}'"
+                class="btn btn--full btn--between btn--morning-sky"
+                {% if popup != blank %}
+                    data-product-popup="{{- popup -}}"
+                {% endif %} 
+                :data-product-popup="product && variant ? (!variant.available && [product.metafields?.enable_coming_soon, product.metafields?.enable_notify_me].includes(true) ? (product.metafields?.enable_coming_soon ? 'coming-soon' : 'notify-me') : false) : '{{- popup -}}'"
+                {% if button_disabled %}
+                    disabled="disabled"
+                {% endif %} 
+                :disabled="product && variant && $store?.Cart?.cart ? (validationError || (variant.available ? quantity > maxQty() : ![product.metafields?.enable_coming_soon, product.metafields?.enable_notify_me].includes(true))) : {{ button_disabled }}"
+                aria-label="{{- button_label -}}"
+                :aria-label="product && variant && $store?.Cart?.cart ? (variant.available ? (quantity > maxQty() ? '{{ 'products.product.limit' | t }}' : '{{ 'products.product.add_to_cart' | t }}') : product.metafields?.enable_coming_soon ? '{{ 'products.product.coming_soon' | t }}' : product.metafields?.enable_notify_me ? '{{ 'products.product.notify_me' | t }}' : '{{ 'products.product.sold_out' | t }}') : '{{- button_label -}}'"
+            >
+                <span
+                    class="btn__inner-default"
+                    x-text="product && variant && $store?.Cart?.cart ? (variant.available ? (quantity > maxQty() ? '{{ 'products.product.limit' | t }}' : '{{ 'products.product.add_to_cart' | t }}') : product.metafields?.enable_coming_soon ? '{{ 'products.product.coming_soon' | t }}' : product.metafields?.enable_notify_me ? '{{ 'products.product.notify_me' | t }}' : '{{ 'products.product.sold_out' | t }}') : '{{- button_label -}}'"
+                >
+                    {{- button_label -}}
+                </span>
+
+                <span class="btn__inner-loading">
+                    {{ 'products.product.adding' | t }}
+                </span>
+
+                <span x-text="price() !== null ? window.Shopify.formatMoney(price()) : '{{- price | money_without_trailing_zeros -}}'">
+                    {{- price | money_without_trailing_zeros -}}
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+

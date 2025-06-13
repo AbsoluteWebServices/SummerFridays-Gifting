@@ -1,0 +1,106 @@
+{%- render 'adastra' with 'styles/sections/predictive-search.scss' -%}
+
+<div
+    x-ref="predictiveSearch"
+    id="predictive-search"
+    x-show="searchOpen"
+    x-trap="searchOpen"
+    class="predictive-search__wrapper"
+    x-transition:enter="default-transition"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-1"
+    x-transition:leave="default-transition"
+    x-transition:leave-start="opacity-1"
+    x-transition:leave-end="opacity-0"
+    style="display: none;"
+    role="dialog"
+    aria-labelledby="open-search-drawer-btn"
+    aria-describedby="predictive-search-description"
+>
+    <div 
+        class="predictive-search__overlay"
+    ></div>
+
+    <div 
+        x-show="searchOpen"
+        class="predictive-search__body"
+        style="display: none;"
+        @click.outside="closeSearch"
+        x-transition:enter="default-transition"
+        x-transition:enter-start="predictive-search__body--hidden"
+        x-transition:enter-end="predictive-search__body--opened"
+        x-transition:leave="default-transition"
+        x-transition:leave-start="predictive-search__body--opened"
+        x-transition:leave-end="predictive-search__body--hidden"
+    >
+        <div class="predictive-search__header">
+            <form 
+                class="predictive-search__form"
+                action="/search"
+                method="GET"
+                role="search"
+                autocomplete="off"
+            >
+                <div class="predictive-search__form-inner">
+                    <button
+                        class="predictive-search__btn hover-opacity"
+                        type="submit"
+                        aria-label="Submit predictive search form"
+                    >
+                        {%- render 'icon', name: 'search' -%}
+                    </button>
+
+                    <input 
+                        type="search" 
+                        name="q" 
+                        id="search" 
+                        class="predictive-search__input"
+                        placeholder="Search our store"  
+                        autocomplete="off" 
+                        aria-label="Search"
+                        :value="$store.Search.q"
+                        @input.debounce.500ms="$store.Search.q = $event.target.value; $store.Search.search(); $store.Search.updateURL()"
+                    >
+
+                    <button
+                        class="predictive-search__btn hover-opacity"
+                        type="button"
+                        aria-controls="predictive-search"
+                        aria-label="Close predictive search form"
+                        @click.prevent="closeSearch"
+                    >
+                        {%- render 'icon', name: 'times' -%}
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div 
+            x-show="
+                ($store.Search.searchResults?.products || []).length 
+                || ($store.Search.searchResults?.cms || []).length 
+                || ($store.Search.searchResults?.suggestions || []).length
+            "
+            class="predictive-search__main scrollbar" 
+            x-transition:enter="default-transition"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-1"
+            x-transition:leave="default-transition"
+            x-transition:leave-start="opacity-1"
+            x-transition:leave-end="opacity-0"
+            style="display: none;"
+            data-allow-scroll
+        >
+            {%- render 'predictive-search-products' -%}
+            {%- render 'predictive-search-cms' -%}
+            {%- render 'predictive-search-terms' -%}
+        </div>
+
+        <div id="predictive-search-description" class="visually-hidden">Review the search results and find what you have been looking for.</div>
+
+        <div 
+            aria-live="assertive" 
+            class="visually-hidden"
+        >Search performed.</div>
+    </div>
+</div>

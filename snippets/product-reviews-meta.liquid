@@ -1,0 +1,42 @@
+{%- assign reviews_count = product.metafields.yotpo.reviews_count -%}
+{%- if reviews_count != blank -%}
+    {%- liquid 
+        assign rating = product.metafields.yotpo.reviews_average | times: 1.00
+    -%}
+    <div class="product__info-reviews-wrapper">
+        <a 
+            href="#section-reviews"
+            class="product__info-reviews superscript-normal"
+        >
+            <div class="product__info-reviews-stars-wrapper">
+                <ul class="product__info-reviews-stars product__info-reviews-stars--empty list-reset">
+                    {%- for i in (1..5) -%}
+                        <li class="product__info-reviews-star">
+                            {%- render 'icon', name: 'star' -%}
+
+                            {%- liquid 
+                                assign width = 100
+                                if rating < i
+                                    assign width_minus = i | minus: rating | times: 100.0
+                                    assign width = width | minus: width_minus
+                                endif
+
+                                assign width = width | plus: 5
+                                if width > 100
+                                    assign width = 100
+                                elsif width < 0
+                                    assign width = 0
+                                endif
+                            -%}
+
+                            <div class="product__info-reviews-star product__info-reviews-star--full" style="width: {{- width -}}%">
+                                {%- render 'icon', name: 'star' -%}
+                            </div>
+                        </li>
+                    {%- endfor -%}
+                </ul>
+            </div>
+            <span>{{ reviews_count }} {{ 'products.product.reviews' | t }}</span>
+        </a>
+    </div>
+{%- endif -%}

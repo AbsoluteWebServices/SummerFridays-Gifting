@@ -1,0 +1,213 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_split_4hp6Rw": {
+      "type": "hero-split",
+      "blocks": {
+        "media_i9J8t4": {
+          "type": "media",
+          "settings": {
+            "media_type": "image",
+            "image_desktop": "shopify://shop_images/TheNow_JetLagMassage_Desktop_02_1.jpg",
+            "image_mobile": "shopify://shop_images/TheNow_JetLagMassage_Mobile.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "media_i9J8t4"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "height_type": "percentage",
+        "height": 40,
+        "deduct_header_height": true,
+        "deduct_announcement_bar_height": true,
+        "aspect_ratio_width": 1,
+        "aspect_ratio_height": 1,
+        "height_type_tablet": "percentage",
+        "height_tablet": 30,
+        "deduct_header_height_tablet": false,
+        "deduct_announcement_bar_height_tablet": true,
+        "aspect_ratio_width_tablet": 16,
+        "aspect_ratio_height_tablet": 9,
+        "height_type_desktop": "percentage",
+        "height_desktop": 40,
+        "deduct_header_height_desktop": false,
+        "deduct_announcement_bar_height_destop": true,
+        "aspect_ratio_width_desktop": 16,
+        "aspect_ratio_height_desktop": 9,
+        "text_color": "white",
+        "title_color": "white",
+        "content_color": "white",
+        "title_font": "primary",
+        "title_tag": "h1",
+        "overlay_opacity": 20,
+        "gradient_direction": "gradient-none",
+        "gradient_percent": 25,
+        "vertical_alignment": "center",
+        "horizontal_alignment": "center",
+        "vertical_alignment_desktop": "center",
+        "horizontal_alignment_desktop": "center",
+        "alignment_container": "full",
+        "alignment_container_desktop": "full",
+        "eyebrow": "",
+        "eyebrow_margin": "normal",
+        "content_above_title": "",
+        "title": "",
+        "title_custom_line_1": "",
+        "title_custom_line_2": "",
+        "title_font_size": 3,
+        "title_font_size_tablet": 3,
+        "title_font_size_desktop": 3,
+        "content": "",
+        "content_font_size": 1,
+        "content_font_size_tablet": 1,
+        "content_font_size_desktop": 1,
+        "button_label": "",
+        "button_url": "",
+        "button_margin": "normal",
+        "btn_style": "regular"
+      }
+    },
+    "image_split_6gWxjf": {
+      "type": "image-split",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/The-Now-Blog-Collage-V2.png",
+        "media_aspect_ratio_mobile": "square",
+        "media_aspect_ratio_desktop": "taller",
+        "media_fullwidth_mobile": false,
+        "media_caption": "",
+        "content": "<p>We’re excited to announce that we’ve partnered with The NOW to create the new, limited-edition JET LAG massage—a full-body Swedish-inspired massage featuring a custom Gua Sha enhancement for the hands and feet using our award-winning <a href=\"/products/jet-lag-mask\" target=\"_blank\" title=\"Jet Lag Mask\">Jet Lag Mask</a> and moisturizer.</p><h2>What is the JET LAG massage?</h2><p>Created with summer travel in mind, this 50 or 80-minute NOW massage is perfect pre-flight, post-travel, or for anyone in need of a hydrating, full-body reset. Your massage therapist will soothe tired legs and treat neck and shoulder tension, promoting total relaxation. </p><p>For added relief, the JET LAG massage includes a custom Gua Sha treatment for hands and feet using our best-selling <a href=\"/products/jet-lag-mask\" target=\"_blank\" title=\"Jet Lag Mask\">Jet Lag Mask</a> and moisturizer, known for its ultra-hydrating formula and ability to calm tired, dull skin. The multi-tasking combination of niacinamide, glycerin, hyaluronic acid and antioxidants work together to deliver deep, soothing hydration. Used with The NOW’s Rose Quartz Gua Sha tool, it can help reduce inflammation, improve circulation and promote lymphatic drainage. </p>",
+        "content_smaller": "",
+        "content_left": "",
+        "content_right": "",
+        "content_bottom": "",
+        "products": [
+          "jet-lag-mask"
+        ],
+        "content_justify_on_desktop": "space-between",
+        "content_secondary": "",
+        "content_secondary_position_desktop": "bottom",
+        "content_secondary_layout": "text_media",
+        "vertical_alignment": "center",
+        "layout_desktop": "text_media",
+        "layout_mobile": "text_media"
+      }
+    },
+    "content_mXUFDG": {
+      "type": "content",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Find Your Eye Product</h2><p>If you already swear by our award-winning<a href=\"/products/light-aura-vitamin-c-peptide-eye-cream\" title=\"Light Aura Vitamin C + Peptide Eye Cream\"> Light Aura Vitamin C + Peptide Eye Cream</a>, you may be wondering how Jet Lag Overnight Eye Serum is different, and if you actually need both in your routine.</p><p>Light Aura Eye Cream was formulated to brighten and depuff the eye area, leaving it perfectly primed for makeup or concealer, and an essential step for your morning routine. Powered by a vitamin C and peptide blend, it visibly brightens the entire eye area, while caffeine helps de-puff, for a refreshed and replenished look.</p><p>Jet Lag Overnight Eye Serum was formulated to be used only at night due to its gentle-yet-effective retinol blend, that helps to improve the appearance of wrinkles. Over time, the skin around the eye area will appear less crepey and more even.<br/>Add both products to your AM and PM routines for your brightest, most-hydrated eyes yet.</p>",
+        "font_size": "normal",
+        "container": "small",
+        "paragraph_margins": "normal",
+        "heading_alignment": "center",
+        "text_alignment": "left",
+        "text_wrap": "normal"
+      }
+    },
+    "media_with_caption_7irLaT": {
+      "type": "media-with-caption",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "video",
+        "lazyload": false,
+        "video": "shopify://files/videos/Beach-Sunset.mp4",
+        "autoplay": false,
+        "show_big_play_button": true,
+        "play_control": true,
+        "sound_control": true,
+        "image": "shopify://shop_images/Dream_Oasis_-_Model_1.png",
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur <a href=\"#\" title=\"#\">adipiscing elit</a>.</p>"
+      }
+    },
+    "image_split_3CBnQp": {
+      "type": "image-split",
+      "settings": {
+        "padding_top": 3,
+        "padding_bottom": 3,
+        "padding_top_desktop": 6,
+        "padding_bottom_desktop": 6,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/the-now-blog-2.png",
+        "media_aspect_ratio_mobile": "square",
+        "media_aspect_ratio_desktop": "taller",
+        "media_fullwidth_mobile": true,
+        "media_caption": "",
+        "content": "",
+        "content_smaller": "<h2>What are the benefits?</h2><p>By targeting areas of the body that are prone to stress and tension, the JET LAG massage works to ease travel fatigue, enhance the quality of sleep, and promote lymphatic detox. It also helps to flush out toxins and reduce inflammation by manipulating tissue with the use of the Gua Sha.</p><p>If you’re in search of a service that helps you relax, de-stress and unwind, you won’t be disappointed with this treatment.</p><h2>When and where can I book the JET LAG massage?</h2><p>The JET LAG Massage is available at all of The NOW's boutiques nationwide for a limited time only—today through July 31, 2024. You’ll also receive a complimentary Jet Lag Mask Deluxe Sample when you book your JET LAG massage, so the benefits will last long after your relaxing, Swedish-inspired treatment. Make the most of your summer travel plans and book the JET LAG massage now.</p>",
+        "content_left": "",
+        "content_right": "",
+        "content_bottom": "",
+        "products": [],
+        "content_justify_on_desktop": "space-between",
+        "content_secondary": "",
+        "content_secondary_position_desktop": "bottom",
+        "content_secondary_layout": "media_text",
+        "vertical_alignment": "center",
+        "layout_desktop": "media_text",
+        "layout_mobile": "media_text"
+      }
+    },
+    "recommendations_qj337L": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "id": "",
+        "layout": "slider",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Related Products</h2>",
+        "content_related": "<h2>Related Products</h2>",
+        "button_label": "",
+        "button_url": "",
+        "limit": 8,
+        "products": [
+          "jet-lag-soothing-hydration-mist",
+          "jet-lag-deep-hydration-serum",
+          "jet-lag-overnight-eye-serum",
+          "jet-lag-mask",
+          "jet-lag-on-the-go-set"
+        ]
+      }
+    }
+  },
+  "order": [
+    "hero_split_4hp6Rw",
+    "image_split_6gWxjf",
+    "content_mXUFDG",
+    "media_with_caption_7irLaT",
+    "image_split_3CBnQp",
+    "recommendations_qj337L"
+  ]
+}

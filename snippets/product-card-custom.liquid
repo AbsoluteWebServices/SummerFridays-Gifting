@@ -1,0 +1,92 @@
+{%- liquid
+    assign url = product.url.value
+    assign main_image = product.main_image.value
+    assign hover_image = product.hover_image.value
+    assign title = product.title.value | escape
+    assign badge = product.badge.value | escape
+    assign short_description = product.short_description.value | escape
+    assign price = product.price.value 
+    assign button_label = product.button_label.value | escape
+-%}
+
+<div 
+    class="product-card"
+    data-product-card-remove
+>
+    <div class="product-card__top">
+        <a 
+            href="{{- url -}}" 
+            class="product-card__media-wrapper {% if hover_image != blank %}product-card__media-wrapper--with-hover{% endif %}" 
+            aria-label="Go to {{ title }}"
+        >
+            {%- render 'badge', badge: badge -%}
+
+            <div class="product-card__media-main">
+                {%- if main_image != blank -%}
+                    <picture>
+                        <source srcset="{{ main_image | image_url: width: 1000 }}" media="(min-width: 1024px)" data-source-desktop>
+                        <source srcset="{{ main_image | image_url: width: 658 }}" media="(min-width: 576px)" data-source-tablet>
+                        <source srcset="{{ main_image | image_url: width: 568 }}" data-source-mobile>
+                        
+                        <img
+                            class="absolute-img"
+                            src="{{ main_image | image_url: width: 568 }}"
+                            height="300"
+                            width="300"
+                            loading="{%- if lazyload -%}lazy{%- else -%}eager{%- endif -%}"
+                            alt="{{ main_image.alt | default: title }}">
+                    </picture>
+                {%- endif -%}
+            </div>
+
+            <div class="product-card__media-hover">
+                {%- if hover_image != blank -%}
+                    <picture>
+                        <source srcset="{{ hover_image | image_url: width: 1000 }}" media="(min-width: 1024px)">
+                        <source srcset="{{ hover_image | image_url: width: 658 }}" media="(min-width: 576px)">
+                        <source srcset="{{ hover_image | image_url: width: 568 }}">
+                        
+                        <img
+                            class="absolute-img"
+                            src="{{ hover_image | image_url: width: 568 }}"
+                            height="300"
+                            width="300"
+                            loading="{%- if lazyload -%}lazy{%- else -%}eager{%- endif -%}"
+                            alt="{{ hover_image.alt | default: title }}">
+                    </picture>
+                {%- endif -%}
+            </div>
+        </a>
+
+        <div class="product-card__title-wrapper">
+            <h3 class="product-card__title">
+                <a 
+                    href="{{- url -}}" 
+                    class="hover-opacity" 
+                    aria-label="Go to {{ title }}"
+                >
+                    {{- title -}}
+                </a>
+            </h3>
+        </div>
+                
+        {%- if short_description != blank -%}
+            <p 
+                class="product-card__subtitle"
+            >
+                {{- short_description -}}
+            </p>
+        {%- endif -%}
+    </div>
+
+    <div class="product-card__bottom">
+        <a 
+            href="{{- url -}}" 
+            aria-label="Go to {{ title }}"
+            class="btn btn--full btn--between btn--chalk"
+        >
+            <span class="btn__inner-default">{{- button_label -}}</span>
+            <span>{{- price | money_without_trailing_zeros -}}</span>
+        </a>
+    </div>
+</div>

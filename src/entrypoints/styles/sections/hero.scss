@@ -1,0 +1,106 @@
+.aw-hero {
+    position: relative;
+    height: calc(var(--aw-hero-min-height) - var(--header-height-mobile) - var(--announcement-height, 0px));
+    min-height: 46rem;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+
+    @media only screen and (min-width: 1280px) {
+        min-height: calc(var(--aw-hero-min-height) - var(--header-height-desktop) - var(--announcement-height, 0px));
+
+        .video__controls {
+            display: none;
+        }
+    }
+
+    &.aw-hero--gradient-b {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 25%);
+    }
+
+    &.aw-hero--gradient-t {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 25%);
+    }
+
+    &.aw-hero--gradient-y {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 25%), linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 25%);
+    }
+}
+
+.aw-hero__image {
+    width: 100%;
+}
+
+.aw-hero__video {
+    width: 100%;
+}
+
+.aw-hero__title {
+    transform: translateY(-50%);
+
+    @media only screen and (min-width: 1280px) {
+        transform: initial;
+    }
+
+    @media only screen and (max-height: 699px) {
+        transform: initial;
+    }
+}
+
+.aw-hero__video-wrapper--mobile {
+    @media screen and (min-width: 768px) {
+        display: none;
+    }
+}
+
+.aw-hero__video-wrapper--desktop {
+    display: none;
+
+    @media screen and (min-width: 768px) {
+        display: block;
+    }
+}
+
+.aw-hero__container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 0 1.8rem;
+    bottom: 4rem;
+    height: calc(50% - 4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.8rem;
+
+    @media only screen and (max-height: 699px) {
+        height: calc(66.666666% - 4rem);
+    }
+
+    @media only screen and (min-width: 1280px) {
+        height: auto;
+        bottom: 6rem;
+        padding: 0 6rem;
+    }
+}
+
+.aw-hero__content {
+    @media only screen and (min-width: 1280px) {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 1.8rem;
+    }
+}
+
+.aw-hero__text { 
+    max-width: 62rem;
+}
+
+.aw-hero__link {
+    margin-top: 2.4rem;
+
+    @media only screen and (min-width: 1280px) {
+        margin-top: 0;
+    }
+}

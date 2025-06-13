@@ -1,0 +1,310 @@
+{%- if section.blocks.size > 0 -%}
+    {%- liquid
+        assign padding_top = section.settings.padding_top | default: 0
+        assign padding_bottom = section.settings.padding_bottom | default: 0
+        assign padding_top_desktop = section.settings.padding_top_desktop | default: 0
+        assign padding_bottom_desktop = section.settings.padding_bottom_desktop | default: 0
+
+        assign content = section.settings.content
+        assign background_color = section.settings.background_color | default: 'transparent'
+        assign images_type = section.settings.images_type
+        assign instagram_embed = section.settings.embed
+        assign spirit_gallery_id = section.settings.spirit_gallery_id | escape 
+        assign force = section.settings.force | default: false
+        assign limit = section.settings.limit | default: 10
+        assign spirit_gallery_image_url = section.settings.spirit_gallery_image_url
+        assign open_in_new_tab = section.settings.open_in_new_tab | default: true, allow_false: true
+    -%}
+
+    {%- render 'offset',
+        id: section.id,
+        padding_top: padding_top,
+        padding_bottom: padding_bottom,
+        padding_top_desktop: padding_top_desktop,
+        padding_bottom_desktop: padding_bottom_desktop
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/image-gallery.scss' -%}
+
+    <section 
+        id="section-{{- section.id -}}"
+        x-data="imageGallery"
+        data-split-load-section
+        {% if background_color != 'transparent' %}
+            style="background-color: var(--{{- background_color -}});"
+        {% endif %}
+    >
+        {%- if content != blank -%}
+            <div class="container">
+                <div class="rte image-gallery__content">{{- content -}}</div>
+            </div>
+        {%- endif -%}
+
+        {%- case images_type -%}
+            {%- when 'shopify-images' -%}
+                <div 
+                    class="swiper image-gallery__slider"
+                    x-ref="slider"
+                    x-intersect.once="initSlider"
+                >
+                    <ul class="swiper-wrapper list-reset">
+                        {%- for block in section.blocks -%}
+                            {%- liquid 
+                                assign image = block.settings.image
+                                unless image 
+                                    continue
+                                endunless
+    
+                                assign url = block.settings.url
+                                assign open_in_new_tab = block.settings.open_in_new_tab | default: true, allow_false: true
+                                assign default_alt = 'SummerFridays beauty gallery ' | append: forloop.index 
+                            -%}
+    
+                            <li class="swiper-slide">
+                                {%- if url != blank -%}
+                                <a href="{{- url -}}" class="image-gallery__image scale-img" {% if open_in_new_tab %}target="_blank"{% endif %} aria-label="{{- image.alt | default: default_alt -}}">
+                                {%- else -%}
+                                    <div class="image-gallery__image">
+                                {%- endif -%}
+    
+                                <img 
+                                    src="{{- image | image_url: width: 700 -}}"
+                                    width="300"
+                                    height="300"
+                                    alt="{{- image.alt | default: default_alt -}}"
+                                    class="absolute-img"
+                                    loading="lazy"
+                                >
+    
+                                {%- if url != blank -%}
+                                    </a>
+                                {%- else -%}
+                                    </div>
+                                {%- endif -%}
+                            </li>
+                        {%- endfor -%}
+                    </ul>
+    
+                    <button
+                        class="swiper-nav-btn swiper-nav-btn--prev hover-opacity"
+                        type="button"
+                        aria-label="Go to the previous slide"
+                        data-swiper-prev
+                    >
+                        {%- render 'icon', name: 'swiper-chevron' -%}
+                    </button>
+    
+                    <button
+                        class="swiper-nav-btn swiper-nav-btn--next hover-opacity"
+                        type="button"
+                        aria-label="Go to the next slide"
+                        data-swiper-next
+                    >
+                        {%- render 'icon', name: 'swiper-chevron' -%}
+                    </button>
+                </div>
+
+            {%- when 'spirit-gallery' -%}
+                {%- if instagram_embed != blank -%}
+                    <div
+                        class="image-gallery__spirit skeleton"
+                        x-intersect.once="initSpirit('{{ instagram_embed | escape }}')">
+                    </div>
+                {%- endif -%}
+            
+            {%- when 'spirit-gallery-api' -%}
+                {%- if spirit_gallery_id != blank -%}
+                    <div
+                        x-ref="slider"
+                        class="swiper image-gallery__slider"
+                        x-intersect.once="initSpiritAPI('{{ spirit_gallery_id }}', {{ limit }}, {{ force }})">
+                        <ul class="swiper-wrapper list-reset">
+                            {%- for i in (1..limit) -%}
+                                <li class="swiper-slide">
+                                    {%- if spirit_gallery_image_url != blank -%}
+                                        <a href="{{- spirit_gallery_image_url -}}" class="image-gallery__image scale-img skeleton" {% if open_in_new_tab %}target="_blank"{% endif %} aria-label="SummerFridays beauty gallery skeleton {{ i }} {% if open_in_new_tab %} - Open in a new tab{% endif %}"  data-spirit-image-container>
+                                    {%- else -%}
+                                        <div class="image-gallery__image skeleton" data-spirit-image-container>
+                                    {%- endif -%}
+
+                                    {%- if spirit_gallery_image_url != blank -%}
+                                        </a>
+                                    {%- else -%}
+                                        </div>
+                                    {%- endif -%}
+                                </li>
+                            {%- endfor -%}
+                        </ul>
+
+                        <button
+                            class="swiper-nav-btn swiper-button-disabled swiper-nav-btn--prev hover-opacity"
+                            type="button"
+                            aria-label="Go to the previous slide"
+                            data-swiper-prev
+                        >
+                            {%- render 'icon', name: 'swiper-chevron' -%}
+                        </button>
+        
+                        <button
+                            class="swiper-nav-btn swiper-button-disabled swiper-nav-btn--next hover-opacity"
+                            type="button"
+                            aria-label="Go to the next slide"
+                            data-swiper-next
+                        >
+                            {%- render 'icon', name: 'swiper-chevron' -%}
+                        </button>
+                    </div>
+                {%- endif -%}
+        {%- endcase -%}
+    </section>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Image Gallery | AW",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Paddings"
+        },
+        {
+            "type": "number",
+            "id": "padding_top",
+            "label": "Padding top (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom",
+            "label": "Padding bottom (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_top_desktop",
+            "label": "Padding top desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "number",
+            "id": "padding_bottom_desktop",
+            "label": "Padding bottom desktop (rem)",
+            "default": 0,
+            "info": "1rem = 10px"
+        },
+        {
+            "type": "header",
+            "content": "Main Settings"
+        },
+        {
+            "type": "select",
+            "id": "background_color",
+            "label": "Background Color",
+            "default": "transparent",
+            "options": [
+                { "value": "transparent", "label": "Transparent" },
+                { "value": "morning-sky", "label": "Morning Sky" }
+            ]
+        },
+        {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content",
+            "info": "Hint: use Heading 2 for title, and paragraph for body"
+        },
+        {
+            "type": "select",
+            "id": "images_type",
+            "label": "Images Type",
+            "default": "shopify-images",
+            "options": [
+                { "value": "shopify-images", "label": "Shopify Images" },
+                { "value": "spirit-gallery", "label": "Spirit Gallery" },
+                { "value": "spirit-gallery-api", "label": "Spirit Gallery API" }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Spirit Gallery Settings"
+        },
+        {
+            "id": "embed",
+            "label": "Spirit Gallery Embed Code",
+            "type": "textarea"
+        },
+        {
+            "type": "header",
+            "content": "Spirit Gallery API Settings"
+        },
+        {
+            "id": "spirit_gallery_id",
+            "label": "Spirit Gallery ID",
+            "type": "text",
+            "info": "E. g., 3794955"
+        },
+        {
+            "id": "force",
+            "label": "Spirit Gallery ID: force",
+            "type": "checkbox",
+            "info": "If the gallery does not update, enable force, and then disabled it the correct gallery has been loaded."
+        },
+        {
+            "type": "checkbox",
+            "id": "open_in_new_tab",
+            "label": "Spirit Gallery: open links in a new tab",
+            "default": true,
+            "info": "If the URL is external."
+        },
+        {
+            "id": "limit",
+            "label": "The maximum amount of images.",
+            "type": "range",
+            "info": "Recommended amount: 6-10",
+            "min": 1,
+            "max": 14,
+            "step": 1,
+            "default": 8
+        },
+        {
+            "id": "spirit_gallery_image_url",
+            "label": "Spirit Gallery Image URL",
+            "type": "url",
+            "info": "E. g., https://www.instagram.com/summerfridays/"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Image",
+            "type": "image",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image",
+                    "info": "Aspect ration: square."
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "URL"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "open_in_new_tab",
+                    "label": "Open in a new tab",
+                    "default": true,
+                    "info": "If the URL is external."
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Image Gallery | AW"
+        }
+    ]
+}
+{% endschema %}

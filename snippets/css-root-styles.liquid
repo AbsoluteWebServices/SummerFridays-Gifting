@@ -1,0 +1,73 @@
+<style>
+    :root {
+        --font-primary: {% if settings.font_primary != blank %}{{ settings.font_primary }},{% endif %} sans-serif;
+        --font-secondary: {% if settings.font_secondary != blank %}{{ settings.font_secondary }},{% endif %} sans-serif;
+        --font-body: {% if settings.font_body != blank %}{{ settings.font_body }},{% endif %} sans-serif;
+        --font-pinyon: "Pinyon Script", cursive, sans-serif;
+
+        --font-body-size: {{- settings.font_body_size | default: 13.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-body-line-height: {{- settings.font_body_line_height | default: 18.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-h1-size: {{- settings.font_h1_size | default: 30.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-h1-line-height: {{- settings.font_h1_line_height | default: 36.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-h1-larger-size-mobile: {{- settings.font_h1_larger_size_mobile | default: 38.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-h1-larger-line-height-mobile: {{- settings.font_h1_larger_line_height_mobile | default: 45.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-h1-larger-size-desktop: {{- settings.font_h1_larger_size_desktop | default: 45.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-h1-larger-line-height-desktop: {{- settings.font_h1_larger_line_height_desktop | default: 52.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-h2-larger-size-mobile: {{- settings.font_h2_larger_size_mobile | default: 38.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-h2-larger-line-height-mobile: {{- settings.font_h2_larger_line_height_mobile | default: 45.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-h2-larger-size-desktop: {{- settings.font_h2_larger_size_desktop | default: 45.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-h2-larger-line-height-desktop: {{- settings.font_h2_larger_line_height_desktop | default: 52.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-h2-size: {{- settings.font_h2_size | default: 26.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-h2-line-height: {{- settings.font_h2_line_height | default: 30.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-hero-title-size-mobile: {{- settings.font_hero_title_size_mobile | default: 38.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-hero-title-line-height-mobile: {{- settings.font_hero_title_line_height_mobile | default: 45.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-hero-title-size-desktop: {{- settings.font_hero_title_size_desktop | default: 45.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-hero-title-line-height-desktop: {{- settings.font_hero_title_line_height_desktop | default: 52.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-pinyon-title-size-mobile: {{- settings.font_pinyon_title_size_mobile | default: 55.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-pinyon-title-line-height-mobile: {{- settings.font_pinyon_title_line_height_mobile | default: 55.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-pinyon-title-size-desktop: {{- settings.font_pinyon_title_size_desktop | default: 80.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-pinyon-title-line-height-desktop: {{- settings.font_pinyon_title_line_height_desktop | default: 86.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-h3-size: {{- settings.font_h3_size | default: 18.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-h3-line-height: {{- settings.font_h3_line_height | default: 23.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-h4-size: {{- settings.font_h4_size | default: 14.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-h4-line-height: {{- settings.font_h4_line_height | default: 17.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-cta-textlink-size: {{- settings.font_cta_textlink_size | default: 11.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-cta-textlink-line-height: {{- settings.font_cta_textlink_line_height | default: 16.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-p-small-size: {{- settings.font_p_small_size | default: 10.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-p-small-line-height: {{- settings.font_p_small_line_height | default: 13.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-p-normal-size: {{- settings.font_p_normal_size | default: 13.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-p-normal-line-height: {{- settings.font_p_normal_line_height | default: 18.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-p-large-size: {{- settings.font_p_large_size | default: 16.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-p-large-line-height: {{- settings.font_p_large_line_height | default: 22.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-subheader-large-size: {{- settings.font_subheader_large_size | default: 17.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-subheader-large-line-height: {{- settings.font_subheader_large_line_height | default: 22.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-subheader-small-size: {{- settings.font_subheader_small_size | default: 13.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-subheader-small-line-height: {{- settings.font_subheader_small_line_height | default: 17.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-superscript-normal-size: {{- settings.font_superscript_normal_size | default: 11.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-superscript-normal-line-height: {{- settings.font_superscript_normal_line_height | default: 13.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-input-size-desktop: {{- settings.font_input_size_desktop | default: 11.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-footer-custom-title-size: {{- settings.font_footer_custom_title_size | default: 45.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-footer-custom-title-line-height: {{- settings.font_footer_custom_title_line_height | default: 45.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-button-size: {{- settings.font_button_size | default: 11.0 | divided_by: 10.0 | append: 'rem' -}};
+        --font-button-line-height: {{- settings.font_button_line_height | default: 16.0 | divided_by: 10.0 | append: 'rem' -}};
+
+        --white: {{ settings.color_white | default: '#fff' }}; 
+        --ink: {{ settings.color_black | default: '#000418' }};
+        --chalk: {{ settings.color_chalk | default: '#EEEDEC' }};
+        --morning-sky: {{ settings.color_morning_sky | default: '#D1EEFE' }};
+        --clay: {{ settings.color_clay | default: '#D5D1CA' }};
+        --ink-40: {{ settings.color_ink_40 | default: 'rgba(0, 4, 24, 0.30)' }};
+        --chalk-40: {{ settings.color_chalk_40 | default: 'rgba(238, 237, 236, 0.40)' }};
+        --accent-blue: {{ settings.color_accent_blue | default: '#41B7FF' }};
+        --orange: {{ settings.color_orange | default: '#FD6210' }};
+        --yellow: {{ settings.color_yellow | default: '#EEEB7B' }};
+        --red: {{ settings.color_red | default: '#EA3333' }};
+        --afternoon-sky: {{ settings.color_afternoon_sky | default: '#ACD5E9' }};
+        --skeleton-1: {{ settings.color_skeleton_1 | default: '#F6F7F8' }};
+        --skeleton-2: {{ settings.color_skeleton_2 | default: '#EDEEF1' }};
+
+        --transition-all: all .3s linear;
+        --transition-duration: .3s;
+        --transition-timing-function: linear;
+    }
+</style>

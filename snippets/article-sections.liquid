@@ -1,0 +1,161 @@
+{% assign size0 = accentuate.text_image.size | minus : 1 %}
+
+{% assign html = accentuate.html[index] %}
+{% assign text = accentuate.text[index] %}
+{% assign text_image = accentuate.text_image[index] %}
+{% assign text_image_url = accentuate.text_image_url[index] %}
+{% assign text_image_mobile = accentuate.text_image_mobile[index] %}
+{% assign text_image_cation = accentuate.text_image_cation[index] %}
+{% assign text_image_position = accentuate.text_image_position[index] %}
+{% assign text_image_product_handle = accentuate.text_image_product[index] %}
+{% assign text_image_product = all_products[text_image_product_handle] %}
+
+{% if text != blank or html != blank %}
+  <div class="article-text-image">
+    {% assign image_url = text_image_url %}
+    {% assign image = text_image[0] | where: "media_type", "image" %}
+    {% assign image_mobile = text_image_mobile[0] | where: "media_type", "image" | default: image %}
+    {% assign image_alt = image.alt | default: image_mobile.alt | default: "Blog Image" %}
+
+    <div data-img-url="{{ image_url }}" class="article-text-image__list {% if text_image_position == 'right' %}article-text-image__list--right{% else %}article-text-image__list--left{% endif %}">
+      <div class="article-text-image__item article-text-image__item--image">
+        <a
+          {% if text_image_product != blank %}
+            href="{{ text_image_product.url }}"
+          {% endif %} 
+          class="article-text-image__link"
+        >
+          {% if image_url != blank %}
+            <img src="{{ image_url }}" width="1200" height="1200" loading="lazy" alt="Blog Image">
+          {% else %}
+            {% if image[0] != blank %}
+              <picture class="article-text-image__picture">
+                <source srcset="{{ image[0].cloudinary_src | append: 'w_1200' }}" media="(min-width: 768px)">
+                <img src="{{ image_mobile[0].cloudinary_src | append: 'w_767' }}" alt="{{ image_alt | escape }}">
+              </picture>
+            {% endif %}
+          {% endif %}
+          {% if text_image_product != blank %}
+            <div class="article-text-image__product-info">
+              <h2 class="article-text-image__product-title" aria-label="{{ text_image_product.title | strip_html | downcase | escape }}">{{ text_image_product.title | upcase }}</h2>
+              <p class="article-text-image__product-price">{{ text_image_product.price | money_without_trailing_zeros }}</p>
+            </div>
+          {% elsif text_image_cation != blank %}
+            <p class="article-sections__caption subheader-small">{{ text_image_cation }}</p>
+          {% endif %}
+        </a>
+      </div>
+      <div class="article-text-image__item article-text-image__item--content rte p-large rte--larger">
+        {% if html != blank %}
+          {{ html }}
+        {% else %}
+          {% if text.html != blank %}
+            {{ text.html }}
+          {% endif %}
+        {% endif %}
+
+        {% if social and size0 == index %}
+          {% render 'social-sharing' %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% assign double_image_1 = accentuate.double_image_1[index] %}
+{% assign double_image_2 = accentuate.double_image_2[index] %}
+{% assign double_image_1_url = accentuate.double_image_1_url[index] %}
+{% assign double_image_2_url = accentuate.double_image_2_url[index] %}
+{% assign double_image_caption = accentuate.double_image_caption[index] %}
+
+{%- liquid
+    assign show_double_img_section = false
+    if double_image_1 != blank and double_image_2 != blank
+        assign show_double_img_section = true
+    endif
+    if double_image_1_url != blank and double_image_2_url != blank
+        assign show_double_img_section = true
+    endif
+-%}
+
+{% if show_double_img_section %}
+  <div class="article-double-image">
+    {% assign image_1 = double_image_1[0] | where: "media_type", "image" %}
+    {% assign image_1_alt = image_1.alt | default: "Blog Image" %}
+    {% assign image_2 = double_image_2[0] | where: "media_type", "image" %}
+    {% assign image_2_alt = image_2.alt | default: "Blog Image" %}
+
+    <div class="article-double-image__list">
+      <div class="article-double-image__item">
+        {%- if double_image_1_url != blank -%}
+            <picture class="article-double-image__picture">
+                <img src="{{ double_image_1_url }}" alt="{{ image_1_alt | escape }}">
+            </picture>
+        {%- else -%}
+            {% if image_1[0] != blank %}
+            <picture class="article-double-image__picture">
+                <source srcset="{{ image_1[0].cloudinary_src | append: 'w_1400' }}" media="(min-width: 768px)">
+                <img src="{{ image_1[0].cloudinary_src | append: 'w_767' }}" alt="{{ image_1_alt | escape }}">
+            </picture>
+            {% endif %}
+        {%- endif -%}
+      </div>
+      <div class="article-double-image__item">
+        {%- if double_image_2_url != blank -%}
+            <picture class="article-double-image__picture">
+                <img src="{{ double_image_2_url }}" alt="{{ image_2_alt | escape }}">
+            </picture>
+        {%- else -%}
+            {% if image_2[0] != blank %}
+                <picture class="article-double-image__picture">
+                    <source srcset="{{ image_2[0].cloudinary_src | append: 'w_1400' }}" media="(min-width: 768px)">
+                    <img src="{{ image_2[0].cloudinary_src | append: 'w_767' }}" alt="{{ image_2_alt | escape }}">
+                </picture>
+            {% endif %}
+        {%- endif -%}
+      </div>
+    </div>
+
+    {% if double_image_caption != blank %}
+      <p class="article-sections__caption subheader-small">{{ double_image_caption }}</p>
+    {% endif %}
+
+    {% if social and size0 == index %}
+      {% render 'social-sharing' %}
+    {% endif %}
+  </div>
+{% endif %}
+
+{% assign single_image = accentuate.single_image[index] %}
+{% assign single_image_url = accentuate.single_image_url[index] %}
+{% assign single_image_mobile = accentuate.single_image_mobile[index] %}
+{% assign single_image_caption = accentuate.single_image_caption[index] %}
+
+{% if single_image != blank or single_image_url != blank %}
+  <div class="article-single-image">
+    {% assign image = single_image[0] | where: "media_type", "image" %}
+    {% assign image_mobile = single_image_mobile[0] | where: "media_type", "image" | default: image %}
+    {% assign image_alt = image.alt | default: image_mobile.alt | default: "Blog Image" %}
+
+    {%- if single_image_url != blank -%}
+        <picture class="article-single-image__picture">
+            <img src="{{ single_image_url }}" alt="{{ image_alt | escape }}">
+        </picture>
+    {%- else -%}
+        {% if image[0] != blank %}
+            <picture class="article-single-image__picture">
+                <source srcset="{{ image[0].cloudinary_src | append: 'w_1400' }}" media="(min-width: 768px)">
+                <img src="{{ image_mobile[0].cloudinary_src | append: 'w_767' }}" alt="{{ image_alt | escape }}">
+            </picture>
+        {% endif %}
+    {%- endif -%}
+
+    {% if single_image_caption != blank %}
+      <p class="article-sections__caption subheader-small">{{ single_image_caption }}</p>
+    {% endif %}
+
+    {% if social and size0 == index %}
+      {% render 'social-sharing' %}
+    {% endif %}
+  </div>
+{% endif %}

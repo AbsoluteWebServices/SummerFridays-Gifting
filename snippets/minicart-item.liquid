@@ -1,0 +1,170 @@
+<div 
+    x-show="item.quantity"
+    class="minicart__item"
+    x-transition:leave="default-transition"
+    x-transition:leave-start="opacity-1"
+    x-transition:leave-end="opacity-0 scale-0"
+>
+    <a 
+        :href="item.url" 
+        class="minicart__item-image scale-img"
+        :title="item.title"
+        :aria-label="`Go to ${ item.title }`"
+    >
+        <img
+            :src="`${ item.image }&width=200`"
+            width="100"
+            height="100"
+            loading="lazy"
+            :alt="`${ item.title } image`"
+            class="absolute-img"
+        >
+    </a>
+
+    <div class="minicart__item-main">
+        <div class="minicart__item-main-left">
+            <h4>
+                <a 
+                    :href="item.url" 
+                    class="hover-opacity"
+                    :title="item.title"
+                    :aria-label="`Go to ${ item.title }`"
+                    x-html="item.title_html"
+                ></a>
+                
+                <template x-if="item.variant?.title">
+                    <div class="minicart__item-variant-title">
+                        <span x-text="item.variant.title" class="superscript-normal"></span>
+                    </div>
+                </template>
+
+                <template x-if="$store.Cart?.properties(item)?.length">
+                    <ul class="minicart__item-properties list-reset">
+                        <template 
+                            x-for="(property, index) in $store.Cart.properties(item)"
+                            :key="`item-${ item.key }-prop-${ index }`"
+                        >
+                            <li x-text="`${ property.key }: ${ property.value }`" class="superscript-normal"></li>
+                        </template>
+                    </ul>
+                </template>
+            </h4>
+
+            <template x-if="item.product?.selling_plans?.length">
+                <div
+                    x-data="{
+                        open: false
+                    }"
+                    class="select-wrapper select-wrapper--absolute minicart__item-selling-plans-selector-wrapper"
+                    @click.outside="open = false"
+                >
+                    <button
+                        :id="`item-selling-plans-toggle-btn-${ item.key }`"
+                        class="minicart__item-selling-plans-selector-toggle-btn superscript-normal select-toggle-btn select-toggle-btn--borderless"
+                        type="button"
+                        aria-haspopup="true"
+                        :aria-controls="`item-selling-plans-dropdown-${ item.key }`"
+                        :aria-expanded="open"
+                        @click.prevent="open = ! open"
+                    >
+                        <span x-text="item?.selling_plan ? item.selling_plan.name : '{{- 'minicart.general.subscribe_and_save' | t -}}'"></span> 
+                        {%- render 'icon', name: 'chevron-down' -%}
+                    </button>
+
+                    <ul 
+                        :id="`item-selling-plans-dropdown-${ item.key }`"
+                        class="dropdown-content list-reset"
+                        :data-open="open"
+                        aria-labelledby="`item-selling-plans-toggle-btn-${ item.key }`"
+                        :style="open && { height: $el.scrollHeight + 'px' }"
+                        @resize.window="if (!open) { return; } $el.style.height = 'auto'"
+                    >
+                        <template x-if="item.selling_plan">
+                            <li>
+                                <button
+                                    class="superscript-normal minicart__item-selling-plan-btn"
+                                    type="button"
+                                    aria-label="{{- 'minicart.general.buy_once' | t -}}"
+                                    @click.prevent="$store.Cart.change({
+                                        id: item.key,
+                                        selling_plan: null
+                                    }); open = false; ariaLiveText = 'Selling plan changed to one-time.'"
+                                >{{- 'minicart.general.buy_once' | t -}}</button>
+                            </li>
+                        </template>
+
+                        <template x-for="selling_plan in item.product.selling_plans" :key="`${ selling_plan.id }-${ item.key }`">
+                            <template x-if="selling_plan.id !== item.selling_plan?.id">
+                                <li>
+                                    <button
+                                        x-text="selling_plan.name"
+                                        class="superscript-normal minicart__item-selling-plan-btn"
+                                        type="button"
+                                        :aria-label="selling_plan.name"
+                                        @click.prevent="$store.Cart.change({
+                                            id: item.key,
+                                            selling_plan: selling_plan.id
+                                        }); open = false; ariaLiveText = `Selling plan changed to subscription: ${selling_plan.name}.`"
+                                    ></button>
+                                </li>
+                            </template>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+        </div>
+
+        <div class="minicart__item-main-right">
+            <div class="minicart__item-prices">
+                <template x-if="item.original_price > item.final_price">
+                    <s x-text="window.Shopify.formatMoney(item.original_price)" class="cta-textlink minicart__item-price-compare-at"></s>
+                </template>
+
+                <span x-text="window.Shopify.formatMoney(item.final_price)" class="cta-textlink"></span>
+            </div>
+
+            <template x-if="![item.free_sample].includes(true)">
+                <div class="qty-selector">
+                    <button
+                        class="qty-btn qty-btn--minus hover-opacity"
+                        type="button"
+                        aria-label="Decrease the quanity by 1"
+                        @click.prevent="$store.Cart.change({
+                            id: item.key, 
+                            quantity: --item.quantity
+                        }); ariaLiveText = 'Quantity decreased by one.'"
+                    >
+                        {%- render 'icon', name: 'minus' -%}
+                    </button>
+
+                    <span x-text="item.quantity" class="qty-input"></span>
+
+                    <button
+                        class="qty-btn qty-btn--plus hover-opacity"
+                        type="button"
+                        aria-label="Increase the quanity by 1"
+                        @click.prevent="$store.Cart.change({
+                            id: item.key, 
+                            quantity: ++item.quantity
+                        }); ariaLiveText = 'Quantity increased by one.'"
+                    >
+                        {%- render 'icon', name: 'plus' -%}
+                    </button>
+                </div>
+            </template>
+
+            <template x-if="[item.free_sample].includes(true)">
+                <button
+                    class="superscript-normal minicart__item-remove-btn"
+                    type="button"
+                    @click.prevent="item.quantity = 0; $store.Cart.change({
+                        id: item.key, 
+                        quantity: item.quantity
+                    }); ariaLiveText = 'Product removed from cart.'"
+                >
+                    {{- 'minicart.general.remove' | t -}}
+                </button>
+            </template>
+        </div>
+    </div>
+</div>

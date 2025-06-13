@@ -1,0 +1,462 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_split_4hp6Rw": {
+      "type": "hero-split",
+      "blocks": {
+        "media_i9J8t4": {
+          "type": "media",
+          "settings": {
+            "media_type": "video",
+            "video_desktop": "shopify://files/videos/Jet Lag Mist and Serum Teaser.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "media_i9J8t4"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "height_type": "percentage",
+        "height": 100,
+        "deduct_header_height": true,
+        "deduct_announcement_bar_height": true,
+        "aspect_ratio_width": 1,
+        "aspect_ratio_height": 1,
+        "height_type_tablet": "percentage",
+        "height_tablet": 100,
+        "deduct_header_height_tablet": false,
+        "deduct_announcement_bar_height_tablet": true,
+        "aspect_ratio_width_tablet": 16,
+        "aspect_ratio_height_tablet": 9,
+        "height_type_desktop": "percentage",
+        "height_desktop": 100,
+        "deduct_header_height_desktop": false,
+        "deduct_announcement_bar_height_destop": true,
+        "aspect_ratio_width_desktop": 16,
+        "aspect_ratio_height_desktop": 9,
+        "text_color": "white",
+        "title_color": "white",
+        "content_color": "white",
+        "title_font": "primary",
+        "title_tag": "h1",
+        "overlay_opacity": 20,
+        "gradient_direction": "gradient-none",
+        "gradient_percent": 25,
+        "vertical_alignment": "center",
+        "horizontal_alignment": "center",
+        "vertical_alignment_desktop": "center",
+        "horizontal_alignment_desktop": "center",
+        "alignment_container": "full",
+        "alignment_container_desktop": "full",
+        "eyebrow": "Products",
+        "eyebrow_margin": "normal",
+        "content_above_title": "",
+        "title": "Dive into deep hydration with our new Jet Lag Collection",
+        "title_custom_line_1": "",
+        "title_custom_line_2": "",
+        "title_font_size": 3,
+        "title_font_size_tablet": 3,
+        "title_font_size_desktop": 3,
+        "content": "",
+        "content_font_size": 1,
+        "content_font_size_tablet": 1,
+        "content_font_size_desktop": 1,
+        "button_label": "",
+        "button_url": "",
+        "button_margin": "normal",
+        "btn_style": "regular"
+      }
+    },
+    "image_split_6gWxjf": {
+      "type": "image-split",
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/Jet-Lag-Mist-Model_c9fb2fa7-45f5-4739-a5c0-3f573d74480a.jpg",
+        "media_aspect_ratio_mobile": "square",
+        "media_aspect_ratio_desktop": "taller",
+        "media_fullwidth_mobile": false,
+        "media_caption": "",
+        "content": "<p>Two new Jet Lag essentials just landed—we’re so excited to introduce Jet Lag Skin Soothing Hydration Mist and Jet Lag Deep Hydration Serum. Your new go-to skincare products for instant, on-the-go hydration—anytime, anywhere.</p><h2><strong>Jet Lag Skin Soothing Hydration Mist</strong></h2><p>What is Jet Lag Skin Soothing Hydration Mist?</p>",
+        "content_smaller": "<p>This refreshing, ultra-fine mist soothes, comforts and provides moisture barrier support—leaving the skin dewy and hydrated. Effortlessly lock in moisture, relieve dryness and soothe skin with every spray. Keep it in your bag to refresh makeup on the go or whenever your skin feels irritated and dry.<br/><br/>Its weightless formula is non-comedogenic, fragrance-free, and has received the National Eczema Association Seal of Acceptance™.</p>",
+        "content_left": "",
+        "content_right": "",
+        "content_bottom": "",
+        "products": [
+          "jet-lag-soothing-hydration-mist",
+          "jet-lag-deep-hydration-serum"
+        ],
+        "content_justify_on_desktop": "space-between",
+        "content_secondary": "",
+        "content_secondary_position_desktop": "bottom",
+        "content_secondary_layout": "text_media",
+        "vertical_alignment": "top",
+        "layout_desktop": "text_media",
+        "layout_mobile": "text_media"
+      }
+    },
+    "content_mXUFDG": {
+      "type": "content",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Find Your Eye Product</h2><p>If you already swear by our award-winning<a href=\"/products/light-aura-vitamin-c-peptide-eye-cream\" title=\"Light Aura Vitamin C + Peptide Eye Cream\"> Light Aura Vitamin C + Peptide Eye Cream</a>, you may be wondering how Jet Lag Overnight Eye Serum is different, and if you actually need both in your routine.</p><p>Light Aura Eye Cream was formulated to brighten and depuff the eye area, leaving it perfectly primed for makeup or concealer, and an essential step for your morning routine. Powered by a vitamin C and peptide blend, it visibly brightens the entire eye area, while caffeine helps de-puff, for a refreshed and replenished look.</p><p>Jet Lag Overnight Eye Serum was formulated to be used only at night due to its gentle-yet-effective retinol blend, that helps to improve the appearance of wrinkles. Over time, the skin around the eye area will appear less crepey and more even.<br/>Add both products to your AM and PM routines for your brightest, most-hydrated eyes yet.</p>",
+        "font_size": "normal",
+        "container": "small",
+        "paragraph_margins": "normal",
+        "heading_alignment": "center",
+        "text_alignment": "left",
+        "text_wrap": "normal"
+      }
+    },
+    "media_with_caption_7irLaT": {
+      "type": "media-with-caption",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "video",
+        "lazyload": false,
+        "video": "shopify://files/videos/Beach-Sunset.mp4",
+        "autoplay": false,
+        "show_big_play_button": true,
+        "play_control": true,
+        "sound_control": true,
+        "image": "shopify://shop_images/Dream_Oasis_-_Model_1.png",
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur <a href=\"#\" title=\"#\">adipiscing elit</a>.</p>"
+      }
+    },
+    "results_tT3Hp6": {
+      "type": "results",
+      "blocks": {
+        "ingredient_8LKpEA": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Glycerin",
+            "content": "<p>Attracts and locks in moisture, providing lasting dryness relief that helps skin feel soft and supple.</p>"
+          }
+        },
+        "ingredient_ghJhFi": {
+          "type": "ingredient",
+          "settings": {
+            "title": "SKIN SOOTHING COMPLEX",
+            "content": "<p>Aloe Extract, Bisabolol, Centella Asiatica Extract, Allantoin, Cucumber Extract, and Panthenol work together to calm, comfort, and soothe the skin. </p>"
+          }
+        },
+        "ingredient_9iUqrT": {
+          "type": "ingredient",
+          "settings": {
+            "title": "SKIN BARRIER SUPPORT COMPLEX",
+            "content": "<p>Ceramide NP – Essential components of healthy skin cells that help keep the skin’s barrier intact.<br/>Squalane – Helps naturally protect the healthy functioning of the moisture barrier.</p>"
+          }
+        },
+        "ingredient_4bV3ig": {
+          "type": "ingredient",
+          "settings": {
+            "title": "ANTIOXIDANT COMPLEX",
+            "content": "<p>Green Tea Extract + Vitamin E – Help protect the skin against environmental damage.<br/>Ectoin – An amino acid derivative which helps to support and maintain the water balance in skin and protect against dehydration caused by environmental exposure.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_8LKpEA",
+        "ingredient_ghJhFi",
+        "ingredient_9iUqrT",
+        "ingredient_4bV3ig"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content_mobile": "",
+        "content": "",
+        "note": "",
+        "key_ingredients_title": "<h2>Key Ingredients</h2>",
+        "content_below_results": "<h2>How to Use</h2><p>Shake before using, and with eyes closed, gently mist holding the product 12 inches away from your face. Use it as the first step in your skincare routine before serums, after makeup application, or as needed throughout the day to refresh on the go.</p>",
+        "media_type": "image",
+        "image": "shopify://shop_images/JL-Collection-Mist-Blog.jpg",
+        "media_fit": "contain"
+      }
+    },
+    "image_split_3CBnQp": {
+      "type": "image-split",
+      "settings": {
+        "padding_top": 3,
+        "padding_bottom": 3,
+        "padding_top_desktop": 6,
+        "padding_bottom_desktop": 6,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/Jet-Lag-Duo-Model.jpg",
+        "media_aspect_ratio_mobile": "square",
+        "media_aspect_ratio_desktop": "taller",
+        "media_fullwidth_mobile": true,
+        "media_caption": "",
+        "content": "<h2>Jet Lag Deep Hydration Serum</h2>",
+        "content_smaller": "<p>What is Jet Lag Deep Hydration Serum?<br/><br/>The award-winning Dream Oasis Deep Hydration Serum has officially joined the Jet Lag Collection as Jet Lag Deep Hydration Serum. It’s the same formula you know and love, but with a brand new name and look.<br/><br/>This lightweight jelly-serum instantly absorbs to deliver immediate, skin-soothing hydration, while helping to reduce the look of redness. It provides all-day hydration and increases suppleness. Formulated for sensitive skin, its gentle-yet-effective formula is non-comedogenic, fragrance-free, and has received the National Eczema Association Seal of Acceptance™.</p>",
+        "content_left": "",
+        "content_right": "",
+        "content_bottom": "",
+        "products": [],
+        "content_justify_on_desktop": "space-between",
+        "content_secondary": "",
+        "content_secondary_position_desktop": "bottom",
+        "content_secondary_layout": "text_media",
+        "vertical_alignment": "center",
+        "layout_desktop": "text_media",
+        "layout_mobile": "media_text"
+      }
+    },
+    "image_gallery_BrXVHH": {
+      "type": "image-gallery",
+      "blocks": {
+        "image_49myHe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i6.jpg",
+            "url": "#",
+            "open_in_new_tab": true
+          }
+        },
+        "image_MbjefF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i7.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_wfrXYM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i8.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_jTiiqz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i9.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_bKEkN7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i10.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_ft6HBF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i1.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        },
+        "image_NyBWi8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/i4.jpg",
+            "url": "",
+            "open_in_new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "image_49myHe",
+        "image_MbjefF",
+        "image_wfrXYM",
+        "image_jTiiqz",
+        "image_bKEkN7",
+        "image_ft6HBF",
+        "image_NyBWi8"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "background_color": "transparent",
+        "content": "",
+        "images_type": "shopify-images",
+        "embed": "",
+        "spirit_gallery_id": "",
+        "force": false,
+        "open_in_new_tab": true,
+        "limit": 8,
+        "spirit_gallery_image_url": ""
+      }
+    },
+    "results_DFxKjC": {
+      "type": "results",
+      "blocks": {
+        "result_CwxUTc": {
+          "type": "result",
+          "settings": {
+            "result": 100,
+            "fact": "<p>showed a significant increase in skin hydration both immediately after application and after 24 hours*</p>"
+          }
+        },
+        "result_rpf9fq": {
+          "type": "result",
+          "settings": {
+            "result": 100,
+            "fact": "<p>agreed their skin felt more hydrated**</p>"
+          }
+        },
+        "result_Ai3kaL": {
+          "type": "result",
+          "settings": {
+            "result": 97,
+            "fact": "<p>said their skin felt more hydrated all day long**</p>"
+          }
+        },
+        "result_hCBh7j": {
+          "type": "result",
+          "settings": {
+            "result": 91,
+            "fact": "<p>noticed their skin felt soothed**</p>"
+          }
+        },
+        "ingredient_xpmP9H": {
+          "type": "ingredient",
+          "settings": {
+            "title": "SQUALANE",
+            "content": "<p>This plant-derived super hydrator infuses skin with deep, weightless moisture while helping support a healthy moisture barrier.</p>"
+          }
+        },
+        "ingredient_HM7L66": {
+          "type": "ingredient",
+          "settings": {
+            "title": "GLYCERIN",
+            "content": "<p>This powerful humectant is able to attract and hold water in even the driest skin, and also helps protect against environmental aggressors.</p>"
+          }
+        },
+        "ingredient_j6txEM": {
+          "type": "ingredient",
+          "settings": {
+            "title": "SKIN-CALMING BLEND",
+            "content": "<p>Potent skin-soothing ingredients—including colloidal oatmeal, aloe and arnica—help improve skin's comfort and diminish the look of redness.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "result_CwxUTc",
+        "result_rpf9fq",
+        "result_Ai3kaL",
+        "result_hCBh7j",
+        "ingredient_xpmP9H",
+        "ingredient_HM7L66",
+        "ingredient_j6txEM"
+      ],
+      "settings": {
+        "padding_top": 3,
+        "padding_bottom": 3,
+        "padding_top_desktop": 6,
+        "padding_bottom_desktop": 6,
+        "content_mobile": "",
+        "content": "<h2>Results</h2>",
+        "note": "<p>*In an independent clinical study, with 34 participants aged 18 to 55<br/>**In a consumer use study after four weeks, with 34 participants aged 25 to 55</p>",
+        "key_ingredients_title": "<h2>Key Ingredients</h2>",
+        "content_below_results": "<h2>How to Use</h2><p>Apply after cleansing and misting the skin. Follow with your favorite serums, go-to moisturizer, SPF and makeup routine. Use morning and night for long-lasting hydration.</p>",
+        "media_type": "image",
+        "image": "shopify://shop_images/Jet-Lag-Serum-3.jpg",
+        "media_fit": "contain"
+      }
+    },
+    "image_split_8Jrptn": {
+      "type": "image-split",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/Jet-Lag-Collection-Pool.png",
+        "media_aspect_ratio_mobile": "square",
+        "media_aspect_ratio_desktop": "taller",
+        "media_fullwidth_mobile": false,
+        "media_caption": "",
+        "content": "",
+        "content_smaller": "<h2>Four Ways To Use The Jet Lag Collection</h2>",
+        "content_left": "",
+        "content_right": "",
+        "content_bottom": "<p>1. Instantly refresh with Jet Lag Skin Soothing Hydration Mist<br/><br/>2. Smooth under eyes with Jet Lag Overnight Eye Serum<br/><br/>3. Soothe and hydrate with Jet Lag Deep Hydration Serum<br/><br/>4. Nourish with Jet Lag Mask<br/><br/>We can’t wait for you to experience the refreshing, comforting hydration of Jet Lag Skin Soothing Hydration Mist and  Jet Lag Deep Hydration Serum. They will quickly become your go-to travel essentials and favorite everyday products.</p>",
+        "products": [],
+        "content_justify_on_desktop": "space-between",
+        "content_secondary": "",
+        "content_secondary_position_desktop": "bottom",
+        "content_secondary_layout": "text_media",
+        "vertical_alignment": "center",
+        "layout_desktop": "text_media",
+        "layout_mobile": "media_text"
+      }
+    },
+    "recommendations_qj337L": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "id": "",
+        "layout": "slider",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Related Products</h2>",
+        "content_related": "<h2>Related Products</h2>",
+        "button_label": "",
+        "button_url": "",
+        "limit": 8,
+        "products": [
+          "jet-lag-soothing-hydration-mist",
+          "jet-lag-deep-hydration-serum",
+          "jet-lag-overnight-eye-serum",
+          "jet-lag-mask",
+          "jet-lag-on-the-go-set"
+        ]
+      }
+    }
+  },
+  "order": [
+    "hero_split_4hp6Rw",
+    "image_split_6gWxjf",
+    "content_mXUFDG",
+    "media_with_caption_7irLaT",
+    "results_tT3Hp6",
+    "image_split_3CBnQp",
+    "image_gallery_BrXVHH",
+    "results_DFxKjC",
+    "image_split_8Jrptn",
+    "recommendations_qj337L"
+  ]
+}

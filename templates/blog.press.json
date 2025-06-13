@@ -1,0 +1,42 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "content_F4ebhp": {
+      "type": "content",
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 0,
+        "padding_top_desktop": 6,
+        "padding_bottom_desktop": 0,
+        "content": "<h1>In the Press</h1><p>Read what everyone is saying about Summer Fridays</p>",
+        "font_size": "larger",
+        "container": "blog",
+        "paragraph_margins": "smaller",
+        "heading_alignment": "left",
+        "text_alignment": "left",
+        "text_wrap": "normal"
+      }
+    },
+    "main": {
+      "type": "articles",
+      "settings": {
+        "padding_top": 2.4,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 6,
+        "padding_bottom_desktop": 8.4
+      }
+    }
+  },
+  "order": [
+    "content_F4ebhp",
+    "main"
+  ]
+}

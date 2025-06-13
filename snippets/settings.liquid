@@ -1,0 +1,90 @@
+{%- liquid 
+    assign settings = shop.metaobjects.global_settings['global-settings']
+    unless settings != blank 
+        break
+    endunless
+
+    assign discount_campaigns = settings.discount_campaigns.value 
+
+    assign rise_gifting_api_key = settings.rise_gifting_api_key.value
+    assign rise_default_message = settings.rise_default_message.value | default: 'Enjoy your gift!'
+    assign rise_image = settings.rise_image.value
+
+    assign dashhudson_brand_id = settings.dashhudson_brand_id.value | escape | default: '1145'
+
+    assign attentive_sign_up_unit_id = settings.attentive_sign_up_unit_id | escape | default: '73377'
+    
+    assign klaviyo_company_id = settings.klaviyo_company_id.value 
+    assign klaviyo_revision = settings.klaviyo_revision.value
+
+    assign subscription_success_message = settings.subscription_success_message.value
+    assign subscription_error_message = settings.subscription_error_message.value
+-%}
+
+<script 
+    data-sf-settings
+    type="application/json"
+>
+    {
+        "template": "{{- template.name -}}",
+        "customer_email": {%- if customer and customer.email != blank -%}"{{- customer.email -}}"{% else %}null{% endif %},
+        "customer_tags": [
+            {%- if customer -%}
+                {%- if customer.tags.size > 0 -%}
+                    {%- for tag in customer.tags -%}
+                        {{- tag | json -}}{%- unless forloop.last -%},{%- endunless -%}
+                    {%- endfor -%}
+                {%- endif -%}
+            {%- endif -%}
+        ],
+        "discount_campaigns": [
+            {%- if discount_campaigns != blank -%}
+                {%- for discount_campaign in discount_campaigns -%}
+                    {
+                        "name": {{- discount_campaign.name.value | json -}},
+                        "start_date": {{- discount_campaign.start_date.value | json -}},
+                        "end_date": {{- discount_campaign.end_date.value | json -}},
+                        "x_products": [
+                            {%- for product in discount_campaign.x_products.value -%}
+                                {{- product.id | json -}}{%- unless forloop.last -%},{%- endunless -%}
+                            {%- endfor -%}
+                            {%- if discount_campaign.x_collections.value -%}
+                                {% if discount_campaign.x_products.value %},{% endif %}
+                                {%- for collection in discount_campaign.x_collections.value -%}
+                                    {%- for product in collection.products -%}
+                                        {{- product.id | json -}}{%- unless forloop.last -%},{%- endunless -%}
+                                    {%- endfor -%}
+                                {%- endfor -%}
+                            {%- endif -%}
+                        ],
+                        "customer_tags": [
+                            {%- for customer_tag in discount_campaign.customer_tags.value -%}
+                                {{- customer_tag | json -}}{%- unless forloop.last -%},{%- endunless -%}
+                            {%- endfor -%}
+                        ],
+                        "minimum_x_qty": {{- discount_campaign.minimum_x_qty.value | default: 0 | json -}},
+                        "all_x_products_must_be_in_cart": {{- discount_campaign.all_x_products_must_be_in_cart | default: false -}},
+                        "minimum_cart_amount": {{- discount_campaign.minimum_cart_amount.value | default: 0 | json -}},
+                        "code": {{- discount_campaign.code.value | default: '' | json -}},
+                        "y_products": [
+                            {%- for product in discount_campaign.y_products.value -%}
+                                {{- product.selected_or_first_available_variant.id | default: '' | json -}}{%- unless forloop.last -%},{%- endunless -%}
+                            {%- endfor -%}
+                        ]
+                    }{%- unless forloop.last -%},{%- endunless -%}
+                {%- endfor -%}
+            {%- endif -%}
+        ],
+        {%- if rise_gifting_api_key != blank -%}
+            "rise_gifting_api_key": {{- rise_gifting_api_key | json -}},
+        {%- endif -%}
+        "rise_image": {{- rise_image | image_url: width: 1024 | prepend: 'https:' | json -}},
+        "rise_default_message": {{- rise_default_message | json -}},
+        "dashhudson_brand_id": {{- dashhudson_brand_id | json -}},
+        "attentive_sign_up_unit_id": {{- attentive_sign_up_unit_id | json -}},
+        "klaviyo_company_id": {{- klaviyo_company_id | json -}},
+        "klaviyo_revision": {{- klaviyo_revision | json -}},
+        "subscription_success_message": {{- subscription_success_message | json -}},
+        "subscription_error_message": {{- subscription_error_message | json -}}
+    }
+</script>

@@ -1,0 +1,266 @@
+{%- liquid
+    render 'adastra' with 'styles/sections/footer.scss'
+    assign linklist_copyright_handle = section.settings.linklist_copyright
+    assign media_type = section.settings.media_type | default: 'image'
+    assign image = section.settings.image
+    assign video = section.settings.video
+    assign newsletter_title = section.settings.newsletter_title
+    assign list_id = section.settings.list_id
+    assign custom_source = section.settings.custom_source | default: 'Newsletter form in footer'
+    assign signup_unit_id = section.settings.signup_unit_id
+    assign custom_title = section.settings.custom_title
+-%}
+
+<footer class="footer">
+    <div class="footer__top">
+        <div class="footer__newsletter">
+            {%- if media_type == 'image' -%}
+                {%- if image -%}
+                    <div class="footer__newsletter-bg-media">
+                        {%- render 'img', image: image -%}
+                    </div>
+                {%- endif -%}
+            {%- elsif media_type == 'video' -%}
+                {%- if video -%}
+                    <div class="footer__newsletter-bg-media">
+                        {%- render 'video', 
+                            video: video,
+                            poster: image
+                        -%}
+                    </div>
+                {%- endif -%}
+            {%- endif -%}
+
+            {%- render 'newsletter',
+                id: section.id,
+                title: newsletter_title,
+                list_id: list_id,
+                custom_source: custom_source,
+                signup_unit_id: signup_unit_id,
+                btnTransparent: false
+            -%}
+        </div>
+
+        <div class="footer__menus a-underline-wrapper a-underline-style-1">
+            {%- for i in (1..4) -%}
+                {%- capture linklist_title_i -%}linklist_title_{{ i }}{%- endcapture -%}
+                {%- capture linklist_i -%}linklist_{{ i }}{%- endcapture -%}
+                {%- liquid
+                    assign linklist_title = section.settings[linklist_title_i]
+                    assign linklist_handle = section.settings[linklist_i]
+                -%}
+                <div
+                    x-data="{ open: false }"
+                    class="footer__menu"
+                >
+                    {%- if linklist_title != blank and linklist_handle != blank -%}
+                        {%- assign linklist = linklists[linklist_handle] -%}
+                        {%- if linklist.links.size > 0 -%}
+                            <button
+                                id="footer-submenu-toggle-btn-{{ i }}"
+                                class="cta-textlink footer__menu-btn"
+                                type="button"
+                                aria-haspopup="true"
+                                aria-controls="footer-submenu-{{ i }}"
+                                :aria-expanded="open"
+                                @click.prevent="open = ! open"
+                            >
+                                {{- linklist_title -}}
+
+                                {%- render 'plus-icon' -%}
+                            </button>
+
+                            <ul
+                                id="footer-submenu-{{ i }}"
+                                class="footer__menu-submenu dropdown-content list-reset"
+                                :data-open="open"
+                                aria-labelledby="footer-submenu-toggle-btn-{{ i }}"
+                                :style="open && { height: $el.scrollHeight + 'px' }"
+                                @resize.window="if (!open) { return; } $el.style.height = 'auto'"
+                            >
+                                {%- for link in linklist.links -%}
+                                    <li>
+                                        <a
+                                            href="{{- link.url -}}"
+                                            class="footer__menu-submenu-link"
+                                            aria-label="Go to {{ link.title }}"
+                                        >
+                                            {{- link.title -}}
+                                        </a>
+                                    </li>
+                                {%- endfor -%}
+                            </ul>
+                        {%- endif -%}
+                    {%- endif -%}
+                </div>
+            {%- endfor -%}
+        </div>
+    </div>
+
+    {%- if custom_title != blank -%}
+        <div class="footer__custom-title">{{- custom_title -}}</div>
+    {%- endif -%}
+
+    <div class="footer__middle">
+        <div class="container">
+            {%- render 'social-links', classes: 'footer__social-links' -%}
+        </div>
+    </div>
+
+    <div class="footer__bottom">
+        <div class="container">
+            <div class="footer__bottom-inner">
+                <p class="superscript-normal footer__copyright">
+                    &copy; {{ 'now' | date: '%Y' }}
+                    {{ 'layout.footer.copyright' | t }}
+                </p>
+
+                {%- if linklist_copyright_handle != blank -%}
+                    {%- assign linklist_copyright = linklists[linklist_copyright_handle] -%}
+                    {%- if linklist_copyright.links.size > 0 -%}
+                        <ul class="list-reset footer__copyright-menu a-underline-wrapper a-underline-style-2">
+                            {%- for link in linklist_copyright.links -%}
+                                {%- if link.url == blank or link.title == blank -%}
+                                    {%- continue -%}
+                                {%- endif -%}
+
+                                <li>
+                                    <a
+                                        href="{{- link.url -}}"
+                                        class="superscript-normal footer__copyright-menu-link"
+                                        aria-label="Go to {{ link.title }}"
+                                    >
+                                        {{- link.title -}}
+                                    </a>
+                                </li>
+                            {%- endfor -%}
+                        </ul>
+                    {%- endif -%}
+                {%- endif -%}
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% schema %}
+{
+    "name": "Footer",
+    "settings": [
+        {
+            "default": "Éte Eternal",
+            "id": "custom_title",
+            "label": "Custom title",
+            "type": "text"
+        },
+        {
+            "type": "header",
+            "content": "Navigation"
+        },
+        {
+            "default": "Shop",
+            "id": "linklist_title_1",
+            "label": "Menu Title 1",
+            "type": "text"
+        },
+        {
+            "default": "footer",
+            "id": "linklist_1",
+            "label": "Menu 1",
+            "type": "link_list"
+        },
+        {
+            "default": "About",
+            "id": "linklist_title_2",
+            "label": "Menu Title 2",
+            "type": "text"
+        },
+        {
+            "id": "linklist_2",
+            "label": "Menu 2",
+            "type": "link_list"
+        },
+        {
+            "default": "Information",
+            "id": "linklist_title_3",
+            "label": "Menu Title 3",
+            "type": "text"
+        },
+        {
+            "id": "linklist_3",
+            "label": "Menu 3",
+            "type": "link_list"
+        },
+        {
+            "default": "Account",
+            "id": "linklist_title_4",
+            "label": "Menu Title 4",
+            "type": "text"
+        },
+        {
+            "id": "linklist_4",
+            "label": "Menu 4",
+            "type": "link_list"
+        },
+        {
+            "type": "header",
+            "content": "Copyright Navigation"
+        },
+        {
+            "id": "linklist_copyright",
+            "label": "Menu Copyright",
+            "type": "link_list"
+        },
+        {
+            "type": "header",
+            "content": "Newsletter"
+        },
+        {
+            "type": "select",
+            "id": "media_type",
+            "label": "Media type",
+            "default": "video",
+            "options": [
+                { "value": "image", "label": "Image" },
+                { "value": "video", "label": "Video" }
+            ]
+        },
+        {
+            "type": "video",
+            "id": "video",
+            "label": "Video",
+            "info": "Format: .mp4"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "With the video type, the image is used as a poster (first frame)"
+        },
+        {
+            "default": "Stay up to date",
+            "id": "newsletter_title",
+            "label": "Title",
+            "type": "textarea"
+        },
+        {
+            "type": "text",
+            "id": "list_id",
+            "label": "Klaviyo list ID",
+            "default": "Xcp8cA"
+        },
+        {
+            "type": "text",
+            "id": "custom_source",
+            "label": "Custom source in Klaviyo",
+            "default": "Coming Soon"
+        },
+        {
+            "type": "text",
+            "id": "signup_unit_id",
+            "label": "Sign-Up Unit ID (Attentive)",
+            "default": "73377",
+            "info": "The unit must be of type 'INTEGRATION'"
+        }
+    ]
+}
+{% endschema %}

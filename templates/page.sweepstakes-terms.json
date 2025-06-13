@@ -1,0 +1,240 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "terms_conditions_c8iCcV": {
+      "type": "terms-conditions",
+      "blocks": {
+        "link_AwQ6eG": {
+          "type": "link",
+          "settings": {
+            "text": "OUAI x Summer Fridays (July 2023)",
+            "url": "https://summerfridays.com/pages/ouai-x-summer-fridays-july-2023",
+            "target": "_self"
+          }
+        },
+        "link_Qw3WYK": {
+          "type": "link",
+          "settings": {
+            "text": "Summer Fridays Merchandise Survey Sweepstakes Official Rules (September 2022)",
+            "url": "https://summerfridays.com/pages/summer-fridays-merchandise-survey-sweepstakes-official-rules-september-2022",
+            "target": "_self"
+          }
+        },
+        "link_JrCHQQ": {
+          "type": "link",
+          "settings": {
+            "text": "Summer Fridays x Intermix Sweepstakes Official Rules (July 2022)",
+            "url": "https://summerfridays.com/pages/summer-fridays-x-intermix-sweepstakes-official-rules-july-2022",
+            "target": "_self"
+          }
+        },
+        "link_nqcdaG": {
+          "type": "link",
+          "settings": {
+            "text": "Summer Fridays x APL x Fabletics Sweepstakes Official Rules (May 2022)",
+            "url": "https://summerfridays.com/pages/summer-fridays-x-apl-x-fabletics-sweepstakes-official-rules-may-2022",
+            "target": "_self"
+          }
+        },
+        "link_jnazzb": {
+          "type": "link",
+          "settings": {
+            "text": "Summer Fridays x The Mayfair Group x Beis Sweepstakes Official Rules (March 2022)",
+            "url": "https://summerfridays.com/pages/summer-fridays-x-the-mayfair-group-x-beis-sweepstakes-official-rules-march-2022",
+            "target": "_self"
+          }
+        },
+        "link_fY9ETg": {
+          "type": "link",
+          "settings": {
+            "text": "Glamnetic x Summer Fridays Sweepstakes Official Rules (November 2021)",
+            "url": "https://summerfridays.com/pages/glamnetic-x-summer-fridays-sweepstakes-official-rules-november-2021",
+            "target": "_self"
+          }
+        },
+        "link_BVpdGh": {
+          "type": "link",
+          "settings": {
+            "text": "SMS Sign Up Sweepstakes Terms & Conditions (November 2021)",
+            "url": "https://summerfridays.com/pages/sms-sign-up-sweepstakes-terms-conditions-november-2021",
+            "target": "_self"
+          }
+        },
+        "link_W6wWAV": {
+          "type": "link",
+          "settings": {
+            "text": "437 x Summer Fridays Sweepstakes Official Rules (October 2021)",
+            "url": "https://summerfridays.com/pages/summer-fridays-x-437-sweepstakes-official-rules-october-2021",
+            "target": "_self"
+          }
+        },
+        "link_Rf3RVX": {
+          "type": "link",
+          "settings": {
+            "text": "Jet Lag Mask + Exclusive Hoodie SMS Sign Up Giveaway Sweepstakes Terms & Conditions (October 2021) ",
+            "url": "https://summerfridays.com/pages/jet-lag-mask-exclusive-hoodie-sms-sign-up-giveaway-sweepstakes-terms-conditions-october-2021",
+            "target": "_self"
+          }
+        },
+        "link_37WefE": {
+          "type": "link",
+          "settings": {
+            "text": "Ratings & Reviews Sweepstakes Terms & Conditions (September 2021)",
+            "url": "https://summerfridays.com/pages/ratings-reviews-sweepstakes-terms-conditions-september-2021",
+            "target": "_self"
+          }
+        },
+        "link_3z9kXA": {
+          "type": "link",
+          "settings": {
+            "text": "Jet Lag Mask + Exclusive Hoodie SMS Sign Up Giveaway Sweepstakes Terms & Conditions (September 2021)",
+            "url": "https://summerfridays.com/pages/jet-lag-mask-exclusive-hoodie-sms-sign-up-giveaway-sweepstakes-terms-conditions-september-2021",
+            "target": "_self"
+          }
+        },
+        "link_dQRKCT": {
+          "type": "link",
+          "settings": {
+            "text": "Summer Fridays x Briogeo Sweepstakes Terms & Conditions (August 2021)",
+            "url": "https://summerfridays.com/pages/summer-fridays-x-briogeo-sweepstakes-terms-conditions-august-2021",
+            "target": "_self"
+          }
+        },
+        "link_dn47hr": {
+          "type": "link",
+          "settings": {
+            "text": "Jet Lag Mask + Exclusive Hoodie SMS Sign Up Giveaway Sweepstakes Terms & Conditions (August 2021)",
+            "url": "https://summerfridays.com/pages/jet-lag-mask-exclusive-hoodie-sms-sign-up-giveaway-sweepstakes-terms-conditions-august-2021",
+            "target": "_self"
+          }
+        },
+        "link_yHnTgn": {
+          "type": "link",
+          "settings": {
+            "text": "SMS Sign Up Gift Card Giveaway Sweepstakes Terms & Conditions (April 2021)",
+            "url": "https://summerfridays.com/pages/sms-sign-up-gift-card-giveaway-sweepstakes-terms-conditions-august-2021",
+            "target": "_self"
+          }
+        },
+        "link_hTpnCY": {
+          "type": "link",
+          "settings": {
+            "text": "Earth Day Giveaway Sweepstakes Official Rules (April 2021)",
+            "url": "https://summerfridays.com/pages/earth-day-giveaway-sweepstakes-official-rules-april-2021",
+            "target": "_self"
+          }
+        },
+        "link_dAEkqi": {
+          "type": "link",
+          "settings": {
+            "text": "Sweet Dreams Giveaway Sweepstakes Terms & Conditions (Sept 2020)",
+            "url": "https://summerfridays.com/pages/sweet-dreams-giveaway-sweepstakes-terms-conditions-sept-2020",
+            "target": "_self"
+          }
+        },
+        "link_h7FVQD": {
+          "type": "link",
+          "settings": {
+            "text": "Good Summer Sweepstakes Terms & Conditions (July 2020)",
+            "url": "https://summerfridays.com/pages/good-summer-sweepstakes-terms-conditions-july-2020",
+            "target": "_self"
+          }
+        },
+        "link_GYr97X": {
+          "type": "link",
+          "settings": {
+            "text": "Start of Summer Sweepstakes Terms & Conditions (June 2020)",
+            "url": "https://summerfridays.com/pages/start-of-summer-sweepstakes-terms-conditions-june-2020",
+            "target": "_self"
+          }
+        },
+        "link_i4H94U": {
+          "type": "link",
+          "settings": {
+            "text": "Summer Fridays x Moon Juice Sweepstakes Terms & Conditions (September 2019)",
+            "url": "https://summerfridays.com/pages/summer-fridays-x-moon-juice-sweepstakes-terms-conditions-september-2019",
+            "target": "_self"
+          }
+        },
+        "link_H6AbQw": {
+          "type": "link",
+          "settings": {
+            "text": "SUMMER FRIDAYS R+R AT HOME (REFINE YOUR WILD) Sweepstakes Terms & Conditions (January 2019)",
+            "url": "https://summerfridays.com/pages/summer-fridays-r-r-at-home-refine-your-wild-sweepstakes-terms-conditions-january-2019",
+            "target": "_self"
+          }
+        },
+        "link_jW36Np": {
+          "type": "link",
+          "settings": {
+            "text": "SUMMER FRIDAYS R+R (ROMANCE THE GLOW) Sweepstakes Terms & Conditions (January 2019)",
+            "url": "https://summerfridays.com/pages/summer-fridays-r-r-romance-the-glow-sweepstakes-terms-conditions-january-2019",
+            "target": "_self"
+          }
+        },
+        "link_HT9hDw": {
+          "type": "link",
+          "settings": {
+            "text": "SUMMER FRIDAYS YOU DESERVE SOME R+R (REFINE YOUR WILD) Sweepstakes Terms & Conditions (January 2019)",
+            "url": "https://summerfridays.com/pages/summer-fridays-you-deserve-some-r-r-refine-your-wild-sweepstakes-terms-conditions-january-2019",
+            "target": "_self"
+          }
+        }
+      },
+      "block_order": [
+        "link_AwQ6eG",
+        "link_Qw3WYK",
+        "link_JrCHQQ",
+        "link_nqcdaG",
+        "link_jnazzb",
+        "link_fY9ETg",
+        "link_BVpdGh",
+        "link_W6wWAV",
+        "link_Rf3RVX",
+        "link_37WefE",
+        "link_3z9kXA",
+        "link_dQRKCT",
+        "link_dn47hr",
+        "link_yHnTgn",
+        "link_hTpnCY",
+        "link_dAEkqi",
+        "link_h7FVQD",
+        "link_GYr97X",
+        "link_i4H94U",
+        "link_H6AbQw",
+        "link_jW36Np",
+        "link_HT9hDw"
+      ],
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4,
+        "title": "<h1>Sweepstakes Terms & Conditions</h1>",
+        "subtitle": "<h2>Please click on a Sweepstakes for complete Sweepstakes Terms & Conditions </h2>"
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4
+      }
+    }
+  },
+  "order": [
+    "terms_conditions_c8iCcV",
+    "main"
+  ]
+}

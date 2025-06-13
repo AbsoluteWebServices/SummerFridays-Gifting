@@ -1,0 +1,278 @@
+<div class="container container--collection-header">
+    <form
+        x-ref="filtersForm"
+        :class="loading && 'loading'"
+    >
+        <div class="collection-filters__wrapper">
+            <div class="collection-filters__filters-wrapper">
+                {%- if show_filters and collection.filters.size > 0 -%}
+                    {%- liquid 
+                        assign filters_active_html = ''
+                        assign filters_by_category_html = ''
+                        assign filters_by_target_html = ''
+                        assign filters_ingredient_html = ''
+                        assign filters_by_category = collection.filters | where: 'label', 'Categories' | first
+                        assign filters_by_skin_type = collection.filters | where: 'label', 'Skin Types' | first
+                        assign filters_by_target = collection.filters | where: 'label', 'Targets' | first
+                        assign filters_by_ingredient = collection.filters | where: 'label', 'Ingredients' | first
+                    -%}
+
+                    {%- if filters_by_category.values.size > 0 -%}
+                        {%- for filter in filters_by_category.values -%}
+                            {%- capture filter_value -%}
+                                {%- render 'collection-filter-value', index: forloop.index, filter: filter -%}
+                            {%- endcapture -%}
+                            {%- assign filters_by_category_html = filters_by_category_html | append: filter_value -%}
+
+                            {%- if filter.active -%}
+                                {%- capture filter_value_active -%}
+                                    {%- render 'collection-filter-value', 
+                                        index: forloop.index, 
+                                        filter: filter, 
+                                        without_input: true 
+                                    -%}
+                                {%- endcapture -%}
+                                {%- assign filters_active_html = filters_active_html | append: filter_value_active -%}
+                            {%- endif -%}
+                        {%- endfor -%}
+                    {%- endif -%}
+
+                    {%- if filters_by_skin_type.values.size > 0 or filters_by_target.values.size > 0 -%}
+                        {%- assign all_skin_types = shop.metaobjects.skin_type.values -%}
+                        {%- assign all_targets = shop.metaobjects.target.values -%}
+                        {%- if all_skin_types != blank or all_targets != blank -%}
+                            {%- if all_skin_types != blank and filters_by_skin_type.values.size > 0 -%}
+                                {%- for skin_type in all_skin_types -%}
+                                    {%- liquid 
+                                        assign skin_type_filter = filters_by_skin_type.values | where: 'label', skin_type.short_name.value | first
+                                        if skin_type_filter == blank
+                                            continue
+                                        endif
+
+                                        assign icon = skin_type.icon.value
+                                    -%}
+
+                                    {%- capture filter_value -%}
+                                        {%- render 'collection-filter-value', index: forloop.index, filter: skin_type_filter, icon: icon -%}
+                                    {%- endcapture -%}
+                                    {%- assign filters_by_target_html = filters_by_target_html | append: filter_value -%}
+
+                                    {%- if skin_type_filter.active -%}
+                                        {%- capture filter_value_active -%}
+                                            {%- render 'collection-filter-value', 
+                                                index: forloop.index, 
+                                                filter: skin_type_filter, 
+                                                icon: icon,
+                                                without_input: true 
+                                            -%}
+                                        {%- endcapture -%}
+                                        {%- assign filters_active_html = filters_active_html | append: filter_value_active -%}
+                                    {%- endif -%}
+                                {%- endfor -%}
+                            {%- endif -%}
+
+                            {%- if all_targets != blank and filters_by_target.values.size > 0 -%}
+                                {%- for target in all_targets -%}
+                                    {%- liquid 
+                                        assign target_filter = filters_by_target.values | where: 'label', target.short_name.value | first
+                                        if target_filter == blank
+                                            continue
+                                        endif
+
+                                        assign icon = target.icon.value
+                                    -%}
+
+                                    {%- capture filter_value -%}
+                                        {%- render 'collection-filter-value', index: forloop.index, filter: target_filter, icon: icon -%}
+                                    {%- endcapture -%}
+                                    {%- assign filters_by_target_html = filters_by_target_html | append: filter_value -%}
+
+                                    {%- if target_filter.active -%}
+                                        {%- capture filter_value_active -%}
+                                            {%- render 'collection-filter-value', 
+                                                index: forloop.index, 
+                                                filter: target_filter, 
+                                                icon: icon,
+                                                without_input: true 
+                                            -%}
+                                        {%- endcapture -%}
+                                        {%- assign filters_active_html = filters_active_html | append: filter_value_active -%}
+                                    {%- endif -%}
+                                {%- endfor -%}
+                            {%- endif -%}
+                        {%- endif -%}
+                    {%- endif -%}
+
+                    {%- if filters_by_ingredient.values.size > 0 -%}
+                        {%- assign all_ingredients = shop.metaobjects.ingredient.values -%}
+                        {%- if all_ingredients != blank -%}
+                            {%- for ingredient in all_ingredients -%}
+                                {%- liquid 
+                                    assign ingredient_filter = filters_by_ingredient.values | where: 'label', ingredient.short_name.value | first
+                                    if ingredient_filter == blank
+                                        continue
+                                    endif
+
+                                    assign icon = ingredient.icon.value
+                                -%}
+
+                                {%- capture filter_value -%}
+                                    {%- render 'collection-filter-value', index: forloop.index, filter: ingredient_filter, icon: icon -%}
+                                {%- endcapture -%}
+                                {%- assign filters_ingredient_html = filters_ingredient_html | append: filter_value -%}
+
+                                {%- if ingredient_filter.active -%}
+                                    {%- capture filter_value_active -%}
+                                        {%- render 'collection-filter-value', 
+                                            index: forloop.index, 
+                                            filter: ingredient_filter, 
+                                            icon: icon,
+                                            without_input: true 
+                                        -%}
+                                    {%- endcapture -%}
+                                    {%- assign filters_active_html = filters_active_html | append: filter_value_active -%}
+                                {%- endif -%}
+                            {%- endfor -%}
+                        {%- endif -%}
+                    {%- endif -%}
+
+                    <div x-data="{ open: false }" class="collection-filters__filters">
+                        <div class="collection-filters__buttons-wrapper a-underline-wrapper a-underline-style-2">
+                            <button 
+                                class="collection-filters__filters-toggle superscript-normal dropdown-button hover-opacity"
+                                :class="open && 'is-open'"
+                                type="button"
+                                aria-controls="filters-dropwdown-{{ collection.id }}"
+                                :aria-expanded="open"
+                                aria-label="Toggle filter options dropdown"
+                                @click.prevent="open = ! open"
+                            >
+                                {{- 'collections.general.filter' | t -}}
+
+                                {%- render 'icon', name: 'arrow-down' -%} 
+                            </button>
+
+                            <ul 
+                                x-show="!open"
+                                x-transition
+                                class="list-reset collection-filters__filter-options" 
+                                data-js-replace
+                            >
+                                {%- if filters_active_html != blank -%}
+                                    {{ filters_active_html }}
+
+                                    <li>
+                                        <a 
+                                            href="{{- collection.url -}}{% if collection.sort_by != blank %}?sort_by={{- collection.sort_by -}}{% endif %}"
+                                            role="button"
+                                            class="collection-filters__clear"
+                                            @click.prevent="fetchAndRender('{{- request.origin -}}{{- collection.url -}}{% if collection.sort_by != blank %}?sort_by={{- collection.sort_by -}}{% endif %}')"
+                                        >
+                                            {{- 'collections.general.clear_all' | t -}}
+                                        </a>
+                                    </li>
+                                {%- endif -%}
+                            </ul>
+                        </div>
+
+                        <div id="filters-dropwdown-{{ collection.id }}"
+                            class="collection-filters__filters-dropdown dropdown-content list-reset"
+                            :data-open="open"
+                            :style="open && { height: $el.scrollHeight + 'px' }"
+                            @resize.window="if (!open) { return; } $el.style.height = 'auto'"
+                            data-js-replace
+                        >
+                            {%- if filters_by_category_html != blank -%}
+                                <div class="collection-filters__filter">
+                                    <span class="superscript-normal">{{- 'collections.general.by_category' | t -}}:</span>
+                                    <ul class="list-reset collection-filters__filter-options">
+                                        {{- filters_by_category_html -}}
+                                    </ul>
+                                </div>
+                            {%- endif -%}
+
+                            {%- if filters_by_target_html != blank -%}
+                                <div class="collection-filters__filter">
+                                    <span class="superscript-normal">{{- 'collections.general.by_target' | t -}}:</span>
+                                    <ul class="list-reset collection-filters__filter-options">
+                                        {{- filters_by_target_html -}}
+                                    </ul>
+                                </div>
+                            {%- endif -%}
+
+                            {%- if filters_ingredient_html != blank -%}
+                                <div class="collection-filters__filter">
+                                    <span class="superscript-normal">{{- 'collections.general.by_ingredient' | t -}}:</span>
+                                    <ul class="list-reset collection-filters__filter-options">
+                                        {{- filters_ingredient_html -}}
+                                    </ul>
+                                </div>
+                            {%- endif -%}
+                        </div>
+                    </div>
+                {%- endif -%}
+            </div>
+
+            <div class="collection-filters__sort-by-wrapper a-underline-wrapper a-underline-style-2">
+                <div data-js-replace>
+                    {%- if filters_active_html != blank -%}
+                        <a 
+                            href="{{- collection.url -}}{% if collection.sort_by != blank %}?sort_by={{- collection.sort_by -}}{% endif %}"
+                            role="button"
+                            class="collection-filters__clear"
+                            @click.prevent="fetchAndRender('{{- request.origin -}}{{- collection.url -}}{% if collection.sort_by != blank %}?sort_by={{- collection.sort_by -}}{% endif %}')"
+                        >
+                            {{- 'collections.general.clear_all' | t -}}
+                        </a>
+                    {%- endif -%}
+                </div>
+
+                {%- if show_sort_by -%}
+                    <div x-data="{ open: false }" class="collection-filters__sort-by" @click.outside="open = false">
+                        <button 
+                            class="collection-filters__sort-by-toggle dropdown-button hover-opacity"
+                            :class="open && 'is-open'"
+                            type="button"
+                            aria-controls="sort-by-dropwdown-{{ collection.id }}"
+                            :aria-expanded="open"
+                            aria-label="Toggle sort by options dropdown"
+                            @click.prevent="open = ! open"
+                        >
+                            {{- 'collections.general.sort_by' | t -}}
+
+                            {%- render 'icon', name: 'chevron-down' -%}
+                        </button>
+
+                        <ul
+                            id="sort-by-dropwdown-{{ collection.id }}"
+                            class="collection-filters__sort-by-dropdown dropdown-content list-reset"
+                            :data-open="open"
+                            :style="open && { height: $el.scrollHeight + 'px' }"
+                            @resize.window="if (!open) { return; } $el.style.height = 'auto'"
+                        >
+                            {%- for option in collection.sort_options -%}
+                                <li class="collection-filters__sort-by-option">
+                                    <input 
+                                        id="sort-by-{{- option.value -}}" 
+                                        class="visually-hidden"
+                                        type="radio" 
+                                        name="sort_by" 
+                                        value="{{- option.value -}}"
+                                        {% if collection.sort_by != blank and option.value == collection.sort_by %}
+                                            checked
+                                        {% endif %}
+                                        @change="fetchAndRender(null); open = false"
+                                    >
+
+                                    <label for="sort-by-{{- option.value -}}" class="collection-filters__sort-by-option-label hover-opacity">
+                                        {{- option.name -}}
+                                    </label>
+                                </li>
+                            {%- endfor -%}
+                        </ul>
+                    </div>
+                {%- endif -%}
+            </div>
+        </div>
+    </form>
+</div>

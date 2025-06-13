@@ -1,0 +1,233 @@
+<div class="page">
+  <div class="">
+    <div oke-quiz oke-channel-quiz-id="611304fe-77fb-4b44-b991-cbcd49bfc26d" oke-subscriber-id="d2933a4a-cd2c-4bae-a62d-5f9225f6a5eb"></div>
+  </div>
+</div>
+
+<style>
+/* Shade Finder */
+div.okeConnect.okeQuizzes.okeQuizzes .c-tagInput-label {
+    padding: 0;
+    background-color: #fff;
+    border-color: #EEEDEC;
+    min-width: 233px;
+    min-height: 81px;
+    border-width: 2px;
+}  
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-tagInput-container--stacked span {
+    padding: 7px 0 17px;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-tagInput-label-image {
+    border-radius: 0 !important;
+}
+  
+/* Skincare Quiz */
+div.okeConnect.okeQuizzes.okeQuizzes .c-header-image {
+    object-position: 50% 85%;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-title.c-questions-header-title, 
+div.okeConnect.okeQuizzes.okeQuizzes .c-title.c-startPanel-title {
+    font-size: 26px;
+    color: #000418;
+    font-weight: 500;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.okeConnect .c-tagInput-container--stacked {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-tagInput-input:checked+.c-tagInput-label,
+div.okeConnect.okeQuizzes.okeQuizzes .c-tagInput-input:checked:focus+.c-tagInput-label {
+    border-color: #000418;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-questionsForm .l-button-center--showBackButton .c-button {
+    padding: 7px 15px;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 2px;
+    box-shadow: none;
+    color: #000418;
+    background-color: #fff;
+    border-radius: 0;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-questionsForm .l-button-center--showBackButton .c-button:hover {
+    box-shadow: none;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-questionsForm .l-button-center--showBackButton button.c-questionsForm-next.c-button {
+    background-color: #EEEDEC;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-questionsForm .l-button-center--showBackButton .c-questionsForm-back::before,
+div.okeConnect.okeQuizzes.okeQuizzes .c-questionsForm .l-button-center--showBackButton .c-questionsForm-next::after {
+    content: "";
+    width: 15px;
+    display: inline-block;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-questionsForm .l-button-center--showBackButton .c-questionsForm-back::before {
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='6' viewBox='0 0 14 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.70833 0.5L1 3M1 3L3.70833 5.5M1 3L13 3' stroke='%23000418' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    margin-right: 15px;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-questionsForm .l-button-center--showBackButton .c-questionsForm-next::after {
+    background-image: url("data:image/svg+xml,%3Csvg width='15' height='6' viewBox='0 0 15 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.2917 0.5L14 3L11.2917 0.5ZM14 3L11.2917 5.5L14 3ZM14 3L1 3L14 3Z' fill='%23000418'/%3E%3Cpath d='M11.2917 0.5L14 3M14 3L11.2917 5.5M14 3L1 3' stroke='%23000418' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    margin-left: 15px;
+}
+
+div.okeConnect .c-questionNavigationButtons-content .c-progressText {
+    display: none;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-tagInput-label:hover {
+    color: #000418;
+}
+
+div.okeConnect .l-button-center--withDivider {
+    border: 0;
+    padding-top: 15px;
+}
+
+div.okeConnect.okeQuizzes .l-productRow {
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+div.okeConnect.okeQuizzes .l-productRow-item {
+    width: 316px !important;
+    margin: 0;
+}
+
+.okeConnect.okeQuizzes .c-recommendedProduct-image, 
+.okeConnect.okeQuizzes .c-recommendedProduct-imagePlaceholder {
+    width: 316px;
+    height: 316px;
+}
+
+div.okeConnect.okeQuizzes .c-recommendedProduct--stacked .c-recommendedProduct-nameAndPrice--withoutVariantSelector {
+    margin-bottom: 0;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-coupon-reward-title, 
+div.okeConnect.okeQuizzes.okeQuizzes .c-resultBlock-title {
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+div.okeConnect.okeQuizzes .c-recommendedProduct-name a {
+    font-size: 18px;
+}
+
+div.okeConnect.okeQuizzes .c-recommendedProduct--stacked {
+    align-items: flex-start;
+    text-align: left;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-recommendedProduct--stacked .c-recommendedProduct-price {
+    font-size: 13px;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-resultButton.c-resultButton-secondary {
+    justify-content: flex-start;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-resultButton.c-resultButton-primary {
+    padding-left: 15px;
+    padding-right: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 316px !important;
+}
+
+div.okeConnect.okeQuizzes .c-resultPanel-section {
+    border: 0;
+    padding-bottom: 10px;
+}
+
+div.okeConnect.okeQuizzes .c-resultPanel-section:not(:last-child) {
+    padding-bottom: 10px;
+}
+
+div.okeConnect.okeQuizzes .c-resultPanel-footer {
+    padding-top: 0;
+}
+
+div.c-pageContent.c-pageContent--result.c-resultPanel {
+    padding-bottom: 70px;
+}
+
+.c-recommendedProduct-rating--stacked.c-recommendedProduct-rating {
+    display: none;
+}
+  
+@media all and (min-width: 1024px) {
+	div.okeConnect.okeQuizzes .l-headerAlignedContent--stacked {
+	    flex-direction: row;
+	    align-items: center;
+	    height: 600px;
+	}
+
+	div.okeConnect.okeQuizzes .l-headerAlignedContent--stacked > div {
+	    width: 50%;
+	    height: 100%;
+	}
+
+	div.okeConnect.okeQuizzes .l-headerAlignedContent--stacked .l-headerImage {
+	    position: relative;
+	    z-index: 2;
+	}
+
+	div.okeConnect .c-pageContent {
+	    height: 100%;
+	}
+}
+
+@media all and (max-width: 480px) {
+    div.okeConnect.okeQuizzes .c-header {
+        display: none;
+    }
+    
+    .okeConnect.okeQuizzes .c-recommendedProduct-image, 
+    .okeConnect.okeQuizzes .c-recommendedProduct-imagePlaceholder {
+        width: 100%;
+        height: 180px;
+    }
+    
+    div.okeConnect.okeQuizzes .l-productRow-item {
+        width: 45% !important;
+        margin: 0;
+    }
+    
+    div.okeConnect.okeQuizzes.okeQuizzes .c-tagInput-label {
+        min-height: 64px;
+    }
+  
+    div.okeConnect.okeQuizzes.okeQuizzes .c-tagInput-label-image {
+        height: unset !important;
+    }
+    
+    div.okeConnect.okeQuizzes.okeQuizzes .c-questionsForm .l-button-center--showBackButton .c-questionsForm-back::before, 
+      div.okeConnect.okeQuizzes.okeQuizzes .c-questionsForm .l-button-center--showBackButton .c-questionsForm-next::after {
+        height: 10px;
+    }
+}
+</style>

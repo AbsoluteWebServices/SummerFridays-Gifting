@@ -1,0 +1,172 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "quiz",
+      "blocks": {
+        "7b84fbc2-64bd-40ee-8d7c-4d6e20401602": {
+          "type": "question",
+          "settings": {
+            "max_answers": 1,
+            "q": "What is your skin type?",
+            "option_1": "Normal",
+            "progress_text_1": "I have normal skin.",
+            "option_2": "Combination",
+            "progress_text_2": "I have combination skin.",
+            "option_3": "Oily",
+            "progress_text_3": "I have oily skin.",
+            "option_4": "Dry",
+            "progress_text_4": "I have dry skin.",
+            "option_5": "",
+            "progress_text_5": "",
+            "option_6": "",
+            "progress_text_6": "",
+            "option_7": "",
+            "progress_text_7": "",
+            "option_8": "",
+            "progress_text_8": ""
+          }
+        },
+        "45b1a54b-d57e-4e91-b367-ffd1e69228da": {
+          "type": "question",
+          "settings": {
+            "max_answers": 1,
+            "q": "Do you have sensitive skin?",
+            "option_1": "Yes",
+            "progress_text_1": "My skin is sensitive.",
+            "option_2": "No",
+            "progress_text_2": "My skin is not sensitive.",
+            "option_3": "",
+            "progress_text_3": "",
+            "option_4": "",
+            "progress_text_4": "",
+            "option_5": "",
+            "progress_text_5": "",
+            "option_6": "",
+            "progress_text_6": "",
+            "option_7": "",
+            "progress_text_7": "",
+            "option_8": "",
+            "progress_text_8": ""
+          }
+        },
+        "b1334d52-c753-4dd4-85be-99fee6980766": {
+          "type": "question",
+          "settings": {
+            "max_answers": 2,
+            "q": "What are your skin goals? (Please select two)",
+            "option_1": "Calm and reduce redness",
+            "progress_text_1": "I want to calm and reduce redness.",
+            "option_2": "Improve texture and reduce pore size",
+            "progress_text_2": "I want to improve texture and reduce pore size.",
+            "option_3": "Plump fine lines and wrinkles",
+            "progress_text_3": "I want to plump fine lines and wrinkles.",
+            "option_4": "Reduce dark circles under the eyes",
+            "progress_text_4": "I want to reduce dark circles under the eyes.",
+            "option_5": "Brighten skin and reduce dark spots",
+            "progress_text_5": "I want to brighten skin and reduce dark spots.",
+            "option_6": "Soften and hydrate skin",
+            "progress_text_6": "I want to soften and hydrate skin.",
+            "option_7": "",
+            "progress_text_7": "",
+            "option_8": "",
+            "progress_text_8": ""
+          }
+        },
+        "eac2c4b3-ccd9-44ac-8860-ab48d508ec68": {
+          "type": "question",
+          "settings": {
+            "max_answers": 1,
+            "q": "What is your age?",
+            "option_1": "18-24",
+            "progress_text_1": "I am 18-24 years old.",
+            "option_2": "25-34",
+            "progress_text_2": "I am 25-34 years old.",
+            "option_3": "35-44",
+            "progress_text_3": "I am 35-44 years old.",
+            "option_4": "45-54",
+            "progress_text_4": "I am 45-54 years old.",
+            "option_5": "55+",
+            "progress_text_5": "I am 55+ years old.",
+            "option_6": "Prefer not to answer",
+            "progress_text_6": "I prefer not to specify my age.",
+            "option_7": "",
+            "progress_text_7": "",
+            "option_8": "",
+            "progress_text_8": ""
+          }
+        },
+        "2a3269c6-ab48-4f3a-b143-a1d99b05fa99": {
+          "type": "form",
+          "settings": {
+            "title": "Please share your contact information for your recommended daily skincare routine and to receive email + text alerts.",
+            "first_name_label": "First name",
+            "last_name_label": "Last name",
+            "skip_button_label": "Skip this step - take me to the results",
+            "klaviyo_list_id": "UGbv9e",
+            "klaviyo_account_id": "V8hxbH",
+            "attentive_unit_id": "367553",
+            "legal": "<p>By submitting this form, you agree to receive recurring automated promotional and personalized marketing text messages (e.g. cart reminders) from Summer Fridays at the mobile number above. Consent is not a condition of any purchase. Reply HELP for help and STOP to cancel. Msg frequency varies. Msg and data rates may apply. View <a href=\"/pages/terms-and-conditions\" title=\"/pages/terms-and-conditions\">Terms</a> & <a href=\"/pages/privacy-policy\" title=\"/pages/privacy-policy\">Privacy</a>.</p>",
+            "show_agreement_checkbox": false
+          }
+        },
+        "c0952f55-f5ab-4d91-b460-1a43650b6eb1": {
+          "type": "results",
+          "settings": {
+            "title": "Based on your answers, we found the best routine for your skin",
+            "title_treatments": "Treatments",
+            "routine_treatments": "Build Your Daily Routine",
+            "add_to_bag_label": "Add To Bag",
+            "enable_add_all_to_bag": true,
+            "add_all_to_bag_label": "Add All To Bag"
+          }
+        }
+      },
+      "block_order": [
+        "7b84fbc2-64bd-40ee-8d7c-4d6e20401602",
+        "45b1a54b-d57e-4e91-b367-ffd1e69228da",
+        "b1334d52-c753-4dd4-85be-99fee6980766",
+        "eac2c4b3-ccd9-44ac-8860-ab48d508ec68",
+        "2a3269c6-ab48-4f3a-b143-a1d99b05fa99",
+        "c0952f55-f5ab-4d91-b460-1a43650b6eb1"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Skincare Quiz",
+        "title_progress": "Your progress",
+        "retake_quiz_label": "Retake the Quiz",
+        "routine_collection": "build-your-daily-routine",
+        "treatment_collection": "treatment-quiz"
+      }
+    },
+    "17362813530b11a5b2": {
+      "type": "apps",
+      "blocks": {
+        "okendo_quizzes_widget_nVXfQP": {
+          "type": "shopify://apps/okendo/blocks/quizzes-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "channel_quiz_id": "611304fe-77fb-4b44-b991-cbcd49bfc26d",
+            "full_screen": false,
+            "header_offset": 0
+          }
+        }
+      },
+      "block_order": [
+        "okendo_quizzes_widget_nVXfQP"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "17362813530b11a5b2"
+  ]
+}

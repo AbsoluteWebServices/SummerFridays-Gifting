@@ -1,0 +1,508 @@
+{%- if section.blocks.size > 0 -%}
+    {%- liquid 
+        assign title = section.settings.title | escape | strip_html | default: 'Skincare Quiz'
+        assign first_step = section.blocks[0] 
+        assign image = first_step.settings.image
+        assign progressBarWidthPercent = 1.00 | divided_by: section.blocks.size | times: 100.00
+    -%}
+
+    {%- render 'adastra' with 'styles/sections/quiz.scss' -%}
+
+    <div 
+        x-data="quiz"
+        data-split-load-section
+        class="quiz"
+    >
+        <div class="quiz__header">
+            <h1 class="h3">{{- title -}}</h1>
+
+            <a
+                href="{{- routes.root_url -}}"
+                class="quiz__close hover-opacity"
+                aria-label="Close quiz"
+            >
+                {%- render 'icon', name: 'times'-%}
+            </a>    
+        </div>
+
+        <div class="quiz__body">
+            <div class="quiz__media">
+                <img 
+                    x-show="current_step.image"
+                    x-ref="stepImage"
+                    src="{{- image |  image_url: width: 1600 -}}" 
+                    :src="current_step.image"
+                    width="1600"
+                    height="1600"
+                    class="absolute-img"
+                    alt="{{- image.alt | default: 'Quiz step image' -}}"
+                    {% unless image %}
+                        style="display: none;"
+                    {% endunless %}
+                >
+            </div>
+
+            <div class="quiz__main">
+                <div class="quiz__progress-bar">
+                    <div 
+                        class="quiz__progress-bar-inner" 
+                        style="width: {{- progressBarWidthPercent -}}%;"
+                        :style="{ width: progressBar }"></div>
+                </div>
+
+                <div class="quiz__main-inner scrollbar" data-allow-scroll>
+                    <div class="quiz__main-steps">
+                        <template x-for="(step, i) in settings.steps" :key="`quiz-step-${i}`">
+                            <template x-if="index === ++i">
+                                <template x-if="step.type === 'question'">
+                                    <div class="quiz__step">
+                                        <h2 class="quiz__question" x-text="step.question"></h2>
+
+                                        <ul class="quiz__options">
+                                            <template x-for="(option, ii) in step.options" :key="`quiz-option-${ii}`">
+                                                <template x-if="option.option">
+                                                    <li class="quiz__option">
+                                                        <label class="quiz__label" :class="{ 'quiz__label--selected' : selectedOptions.includes(option.option) }">
+                                                            <input type="checkbox" 
+                                                                class="quiz__checkbox" 
+                                                                :value="option.option" 
+                                                                x-model="selectedOptions"
+                                                                @change="handleAnswer">
+                                                            <span x-text="option.option"></span>
+                                                        </label>
+                                                    </li>
+                                                </template>
+                                            </template>
+                                        </ul>
+                                    </div>
+                                </template>
+                            </template>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script x-ref="settings" type="application/json">
+            {
+                "steps": [
+                    {% for block in section.blocks %}
+                        {
+                            "type": {{ block.type | json }},
+                            {% if block.settings.image %}
+                                "image": {{ block.settings.image | image_url: width: 1600 | json }},
+                            {% endif %}
+                            "question": {{ block.settings.q | json }},
+                            "title": {{ block.settings.title | json }},
+                            "index": {{ forloop.index | json }},
+                            "max_answers": {{ block.settings.max_answers | json }},
+                            {% if section.settings.routine_collection != blank %}
+                                {% assign collection = collections[section.settings.routine_collection] %}
+                                {% if collection.products_count > 0 %}
+                                    "routine_products": [
+                                        {% for product in collection.products %}
+                                            {% assign benefit = product.metafields.accentuate.benefit | escape | default: '' %}
+                                            {% assign usage = product.metafields.accentuate.usage | escape | default: '' %}
+                                            {% assign type = product.metafields.accentuate.product_type | escape | default: '' %}
+                                            {% assign product_title = product.metafields.accentuate.plp_title | escape | default: product.title %}
+                                            {% assign product_title_html = product_title | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>' %}
+                                            {
+                                                "variant_id": {{ product.selected_or_first_available_variant.id | json }},
+                                                "title": {{ product_title | json }},
+                                                "title_html": {{ product_title_html | json }},
+                                                "url": {{ product.url | json }},
+                                                "image": {{ product.featured_image | image_url: height: 752 | json }},
+                                                "benefit": {{ benefit | json }},
+                                                "usage": {{ usage | json }},
+                                                "type": {{ type | json }},
+                                                "available": {{ product.selected_or_first_available_variant.available }},
+                                                "ignore_inventory_qty": {{ product.metafields.product.ignore_inventory_qty | default: false }},
+                                                "enable_coming_soon": {{ product.metafields.product.enable_coming_soon | default: false }},
+                                                "enable_notify_me": {{ product.metafields.product.enable_notify_me | default: false }},
+                                                "price": {{ product.selected_or_first_available_variant.price | money_without_trailing_zeros | json }}
+                                                {% if product.images[1] %}
+                                                    ,"image_hover": {{ product.images[1] | image_url: height: 752 | json }}
+                                                {% endif %}
+                                            }{% unless forloop.last %},{% endunless %}
+                                        {% endfor %}
+                                    ],
+                                {% endif %}
+                            {% endif %}
+                            {% if section.settings.treatment_collection != blank %}
+                                {% assign collection = collections[section.settings.treatment_collection] %}
+                                {% if collection.products_count > 0 %}
+                                    "treatment_products": [
+                                        {% for product in collection.products %}
+                                            {% assign benefit = product.metafields.accentuate.benefit | escape | default: '' %}
+                                            {% assign usage = product.metafields.accentuate.usage | escape | default: '' %}
+                                            {% assign type = product.metafields.accentuate.product_type | escape | default: '' %}
+                                            {% assign compatible_with_all_answers = product.metafields.accentuate.compatible_with_all_answers | default: false %}
+                                            {% assign product_title = product.metafields.accentuate.plp_title | escape | default: product.title %}
+                                            {% assign product_title_html = product_title | replace: '®', '<sup>®</sup>' | replace: '™', '<sup>™</sup>' %}
+                                            {
+                                                "variant_id": {{ product.selected_or_first_available_variant.id | json }},
+                                                "title": {{ product_title | json }},
+                                                "title_html": {{ product_title_html | json }},
+                                                "url": {{ product.url | json }},
+                                                "image": {{ product.featured_image | image_url: height: 752 | json }},
+                                                "benefit": {{ benefit | json }},
+                                                "usage": {{ usage | json }},
+                                                "type": {{ type | json }},
+                                                "compatible_with_all_answers": {{ compatible_with_all_answers }},
+                                                "available": {{ product.selected_or_first_available_variant.available }},
+                                                "ignore_inventory_qty": {{ product.metafields.product.ignore_inventory_qty | default: false }},
+                                                "enable_coming_soon": {{ product.metafields.product.enable_coming_soon | default: false }},
+                                                "enable_notify_me": {{ product.metafields.product.enable_notify_me | default: false }},
+                                                "price": {{ product.selected_or_first_available_variant.price | money_without_trailing_zeros | json }},
+                                                "answer_combinations": [
+                                                    {% assign answer_combinations = product.metafields.accentuate.answer_combinations | newline_to_br %}
+                                                    {% if answer_combinations != blank %}
+                                                        {% assign answer_combinations = answer_combinations | split: '<br />' %}
+                                                        {% for answer_combination in answer_combinations %}
+                                                            [
+                                                                {% assign _a_q = answer_combination | split: '|' %}
+                                                                {% for a_q in _a_q %}
+                                                                    {% assign question = a_q | split: ':' | first | strip_newlines %}
+                                                                    {% assign answer = a_q | split: ':' | last | strip_newlines %}
+                                                                    {
+                                                                        "question": {{ question | json }},
+                                                                        "answer": {{ answer | json }}
+                                                                    }{% unless forloop.last %},{% endunless %}
+                                                                {% endfor %}
+                                                            ]{% unless forloop.last %},{% endunless %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                ]
+                                                {% if product.images[1] %}
+                                                    ,"image_hover": {{ product.images[1] | image_url: height: 752 | json }}
+                                                {% endif %}
+                                            }{% unless forloop.last %},{% endunless %}
+                                        {% endfor %}
+                                    ],
+                                {% endif %}
+                            {% endif %}
+                            {% if block.type == 'form' %}
+                                {% assign first_name_label = block.settings.first_name_label | escape | default: 'First name' %}
+                                {% assign last_name_label = block.settings.last_name_label | escape | default: 'Last name' %}
+                                {% assign email_label = settings.nm_email_label | escape | default: 'Email' %}
+                                {% assign phone_label = settings.nm_phone_label | escape | default: 'Phone' %}
+                                {% assign legal = block.settings.legal | default: settings.nm_legal %}
+                                {% assign submit_label = settings.nm_submit_label | escape | default: 'Submit' %}
+                                {% assign show_agreement_checkbox = block.settings.show_agreement_checkbox | default: false %}
+                                {% assign agreement_label = settings.nm_checkbox_label | escape | default: "Yes, I'd like to receive emails and text from Summer Fridays about product launches, promos, and offers." %}
+                                {% assign skip_button_label = block.settings.skip_button_label | escape | default: 'Skip this step - take me to the results' %}
+                                {% assign klaviyo_list_id = block.settings.klaviyo_list_id | escape %}
+                                {% assign klaviyo_account_id = block.settings.klaviyo_account_id | escape %}
+                                {% assign attentive_id = block.settings.attentive_unit_id | escape %}
+                                "form":  
+                                    {
+                                        "first_name_label": {{ first_name_label | json }},
+                                        "last_name_label": {{ last_name_label | json }},
+                                        "email_label": {{ email_label | json }},
+                                        "phone_label": {{ phone_label | json }},
+                                        "legal": {{ legal | json }},
+                                        "submit_label": {{ submit_label | json }},
+                                        "skip_button_label": {{ skip_button_label | json }},
+                                        "klaviyo_list_id": {{ klaviyo_list_id | json }},
+                                        "show_agreement_checkbox": {{ show_agreement_checkbox }},
+                                        "agreement_label": {{ agreement_label | json }},
+                                        "attentive_id": {{ attentive_id | json }},
+                                        "klaviyo_account_id": {{ klaviyo_account_id | json }}
+                                    },
+                            {% endif %}
+                            {% if block.type == 'results' %}
+                                {% assign title_treatments = block.settings.title_treatments | escape | default: 'Treatments' %}
+                                {% assign title_routine = block.settings.routine_treatments | escape | default: 'Build Your Daily Routine' %}
+                                {% assign add_to_bag_label = block.settings.add_to_bag_label | escape | default: 'Add To Bag' %}
+                                {% assign add_all_to_bag_label = block.settings.add_all_to_bag_label | escape | default: 'Add All To Bag' %}
+                                {% assign enable_add_all_to_bag = block.settings.enable_add_all_to_bag | default: false %}
+                                "results":  
+                                    {
+                                        "enable_add_all_to_bag": {{ enable_add_all_to_bag }},
+                                        "title_treatments": {{ title_treatments | json }},
+                                        "title_routine": {{ title_routine | json }},
+                                        "add_to_bag_label": {{ add_to_bag_label | json }},
+                                        "add_all_to_bag_label": {{ add_all_to_bag_label | json }}
+                                    },
+                            {% endif %}
+                            "options": [
+                                {% for i in (1..8) %}
+                                    {% capture option_i %}option_{{ i }}{% endcapture %}
+                                    {% capture progress_text_i %}progress_text_{{ i }}{% endcapture %}
+                                    {% assign option = block.settings[option_i] %}
+                                    {% assign progress_text = block.settings[progress_text_i] %}
+                                    {
+                                        "option": {{ option | json }},
+                                        "progress_text": {{ progress_text | json }}
+                                    }{% unless forloop.last %},{% endunless %}
+                                {% endfor %}
+                            ]
+                        }{% unless forloop.last %},{% endunless %}
+                    {% endfor %}
+                ]
+            }
+        </script>
+    </div>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Quiz",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Quiz"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Skincare Quiz"
+        },
+        {
+            "type": "header",
+            "content": "Progress"
+        },
+        {
+            "type": "text",
+            "id": "title_progress",
+            "label": "Title",
+            "default": "Your progress"
+        },
+        {
+            "type": "text",
+            "id": "retake_quiz_label",
+            "label": "Retake quiz label",
+            "default": "Retake the Quiz"
+        },
+        {
+            "type": "header",
+            "content": "Results"
+        },
+        {
+            "type": "collection",
+            "id": "routine_collection",
+            "label": "Build your daily routine collection"
+        },
+        {
+            "type": "collection",
+            "id": "treatment_collection",
+            "label": "Treatment collection"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "question",
+            "name": "Question",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "number",
+                    "id": "max_answers",
+                    "label": "Maximum answers allowed",
+                    "default": 1
+                },
+                {
+                    "type": "text",
+                    "id": "q",
+                    "label": "Question"
+                },
+                {
+                    "type": "text",
+                    "id": "option_1",
+                    "label": "Option 1"
+                },
+                {
+                    "type": "text",
+                    "id": "progress_text_1",
+                    "label": "Progress text 1"
+                },
+                {
+                    "type": "text",
+                    "id": "option_2",
+                    "label": "Option 2"
+                },
+                {
+                    "type": "text",
+                    "id": "progress_text_2",
+                    "label": "Progress text 2"
+                },
+                {
+                    "type": "text",
+                    "id": "option_3",
+                    "label": "Option 3"
+                },
+                {
+                    "type": "text",
+                    "id": "progress_text_3",
+                    "label": "Progress text 3"
+                },
+                {
+                    "type": "text",
+                    "id": "option_4",
+                    "label": "Option 4"
+                },
+                {
+                    "type": "text",
+                    "id": "progress_text_4",
+                    "label": "Progress text 4"
+                },
+                {
+                    "type": "text",
+                    "id": "option_5",
+                    "label": "Option 5"
+                },
+                {
+                    "type": "text",
+                    "id": "progress_text_5",
+                    "label": "Progress text 5"
+                },
+                {
+                    "type": "text",
+                    "id": "option_6",
+                    "label": "Option 6"
+                },
+                {
+                    "type": "text",
+                    "id": "progress_text_6",
+                    "label": "Progress text 6"
+                },
+                {
+                    "type": "text",
+                    "id": "option_7",
+                    "label": "Option 7"
+                },
+                {
+                    "type": "text",
+                    "id": "progress_text_7",
+                    "label": "Progress text 7"
+                },
+                {
+                    "type": "text",
+                    "id": "option_8",
+                    "label": "Option 8"
+                },
+                {
+                    "type": "text",
+                    "id": "progress_text_8",
+                    "label": "Progress text 8"
+                }
+            ]
+        },
+        {
+            "type": "form",
+            "name": "Form",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "first_name_label",
+                    "label": "First name label",
+                    "default": "First name"
+                },
+                {
+                    "type": "text",
+                    "id": "last_name_label",
+                    "label": "Last name label",
+                    "default": "Last name"
+                },
+                {
+                    "type": "text",
+                    "id": "skip_button_label",
+                    "label": "Skip button label",
+                    "default": "Skip this step - take me to the results"
+                },
+                {
+                    "type": "text",
+                    "id": "klaviyo_list_id",
+                    "label": "List ID",
+                    "default": "Xcp8cA"
+                },
+                {
+                    "type": "text",
+                    "id": "klaviyo_account_id",
+                    "label": "Account ID",
+                    "default": "V8hxbH"
+                },
+                {
+                    "type": "text",
+                    "id": "attentive_unit_id",
+                    "label": "Sign-Up Unit ID",
+                    "default": "73377",
+                    "info": "The unit must be of type 'INTEGRATION'"
+                },
+                {
+                    "type": "richtext",
+                    "id": "legal",
+                    "label": "Legal text"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "show_agreement_checkbox",
+                    "label": "Show the 'Agreement' checkbox"
+                }
+            ]
+        },
+        {
+            "type": "results",
+            "name": "Results",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "title_treatments",
+                    "label": "Treatments title",
+                    "default": "Treatments"
+                },
+                {
+                    "type": "text",
+                    "id": "routine_treatments",
+                    "label": "Routine title",
+                    "default": "Build Your Daily Routine"
+                },
+                {
+                    "type": "text",
+                    "id": "add_to_bag_label",
+                    "label": "Add to bag label",
+                    "default": "Add To Bag"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "enable_add_all_to_bag",
+                    "label": "Enable 'Add All To Bag'"
+                },
+                {
+                    "type": "text",
+                    "id": "add_all_to_bag_label",
+                    "label": "Add all to bag label",
+                    "default": "Add All To Bag"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

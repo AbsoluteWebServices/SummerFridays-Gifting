@@ -1,0 +1,388 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "sticky_menu_DtYDcD": {
+      "type": "sticky-menu",
+      "blocks": {
+        "item_czzPGn": {
+          "type": "item",
+          "settings": {
+            "title": "The Brand",
+            "url": "",
+            "active": true
+          }
+        },
+        "item_ddn9Gt": {
+          "type": "item",
+          "settings": {
+            "title": "Sustainability",
+            "url": "shopify://pages/sustainability",
+            "active": false
+          }
+        },
+        "item_fTiCh7": {
+          "type": "item",
+          "settings": {
+            "title": "Recycle with Us",
+            "url": "shopify://pages/recycling-program",
+            "active": false
+          }
+        }
+      },
+      "block_order": [
+        "item_czzPGn",
+        "item_ddn9Gt",
+        "item_fTiCh7"
+      ],
+      "settings": {}
+    },
+    "page_header_cGCNUj": {
+      "type": "page-header",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/AboutUs-Header.jpg",
+        "overlay_opacity": 0,
+        "gradient_direction": "gradient-none",
+        "gradient_percent": 25,
+        "content": "<h1>Our Story</h1>",
+        "vertical_alignment": "center",
+        "horizontal_alignment": "center",
+        "container": "none",
+        "button_label": "",
+        "button_url": "",
+        "link_appearance": "button",
+        "arrow_direction": "right"
+      }
+    },
+    "image_split_LTzETx": {
+      "type": "image-split",
+      "settings": {
+        "padding_top": 3,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4,
+        "media_type": "image",
+        "lazyload": false,
+        "image": "shopify://shop_images/Marianna-and-Lauren-headshot.jpg",
+        "media_aspect_ratio_mobile": "square",
+        "media_aspect_ratio_desktop": "taller",
+        "media_fullwidth_mobile": true,
+        "media_caption": "",
+        "content": "<h2>ESSENTIAL BEAUTY FORMULATIONS<br/>FROM CALIFORNIA.<br/>FOR THE SKIN AND SENSES.</h2><p></p><p>On the coast of Southern California, known for its perfect weather, ease of living and natural beauty, two friends with a common obsession for skincare and makeup (and over 20 years of collective experience in the industry) set off to reimagine what their daily routines could look and feel like.<br/><br/>Lauren as a busy mother, and Marianna with her jet-set schedule, identified a need for beauty that did more without overdoing it.<br/><br/>Their first product, Jet Lag Mask, embodied efficacy and simplicity.<br/>It was versatile.<br/>It was clean.<br/>It was multi-purpose.<br/>It sold out instantly.<br/><br/>Today the vision has grown into a carefully curated assortment of powerful-yet-gentle skincare products and hybrid makeup to make routines feel effortless and skin look luminous so every day feels like a Summer Friday.</p>",
+        "content_smaller": "",
+        "content_left": "",
+        "content_right": "",
+        "content_bottom": "",
+        "products": [],
+        "content_justify_on_desktop": "space-between",
+        "content_secondary": "",
+        "content_secondary_position_desktop": "bottom",
+        "content_secondary_layout": "text_media",
+        "vertical_alignment": "center",
+        "layout_desktop": "media_text",
+        "layout_mobile": "media_text"
+      }
+    },
+    "hero_split_EKPe4c": {
+      "type": "hero-split",
+      "blocks": {
+        "media_mtpcnK": {
+          "type": "media",
+          "settings": {
+            "media_type": "image",
+            "image_desktop": "shopify://shop_images/AboutUs-Full-Endless-Summer.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "media_mtpcnK"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "height_type": "aspect_ratio",
+        "height": 70,
+        "deduct_header_height": true,
+        "deduct_announcement_bar_height": false,
+        "aspect_ratio_width": 1,
+        "aspect_ratio_height": 1,
+        "height_type_tablet": "percentage",
+        "height_tablet": 70,
+        "deduct_header_height_tablet": true,
+        "deduct_announcement_bar_height_tablet": false,
+        "aspect_ratio_width_tablet": 16,
+        "aspect_ratio_height_tablet": 9,
+        "height_type_desktop": "percentage",
+        "height_desktop": 70,
+        "deduct_header_height_desktop": true,
+        "deduct_announcement_bar_height_destop": false,
+        "aspect_ratio_width_desktop": 16,
+        "aspect_ratio_height_desktop": 9,
+        "text_color": "white",
+        "title_color": "white",
+        "content_color": "white",
+        "title_font": "primary",
+        "title_tag": "h1",
+        "overlay_opacity": 10,
+        "gradient_direction": "gradient-none",
+        "gradient_percent": 25,
+        "vertical_alignment": "center",
+        "horizontal_alignment": "center",
+        "vertical_alignment_desktop": "center",
+        "horizontal_alignment_desktop": "center",
+        "alignment_container": "full",
+        "alignment_container_desktop": "full",
+        "eyebrow": "",
+        "eyebrow_margin": "normal",
+        "content_above_title": "",
+        "title": "",
+        "title_custom_line_1": "",
+        "title_custom_line_2": "",
+        "title_font_size": 3,
+        "title_font_size_tablet": 3,
+        "title_font_size_desktop": 3,
+        "content": "",
+        "content_font_size": 1,
+        "content_font_size_tablet": 1,
+        "content_font_size_desktop": 1,
+        "button_label": "",
+        "button_url": "",
+        "button_margin": "normal",
+        "btn_style": "regular"
+      }
+    },
+    "marquee_MfYhQD": {
+      "type": "marquee",
+      "blocks": {
+        "item_7G8V7V": {
+          "type": "item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/Jet-Lag-Mist-Serum-Teaser-Mobile.jpg",
+            "title": "",
+            "subtitle": "",
+            "badge": "",
+            "url": "shopify://products/jet-lag-soothing-hydration-mist"
+          }
+        },
+        "item_PDiQxw": {
+          "type": "item",
+          "settings": {
+            "media_type": "video",
+            "video": "shopify://files/videos/Lauren BFCM- PPage - 1000x1000 (1).mp4",
+            "title": "",
+            "subtitle": "",
+            "badge": "",
+            "url": "shopify://products/rich-cushion-cream"
+          }
+        },
+        "item_ViBnmr": {
+          "type": "item",
+          "settings": {
+            "media_type": "video",
+            "image": "shopify://shop_images/AboutUs-Carousel-2.jpg",
+            "title": "",
+            "subtitle": "",
+            "badge": "",
+            "url": ""
+          }
+        },
+        "item_CqXHcL": {
+          "type": "item",
+          "settings": {
+            "media_type": "video",
+            "image": "shopify://shop_images/AboutUs-Carousel-4.jpg",
+            "title": "",
+            "subtitle": "",
+            "badge": "",
+            "url": "shopify://products/jet-lag-deep-hydration-serum"
+          }
+        },
+        "item_qazB4c": {
+          "type": "item",
+          "settings": {
+            "media_type": "video",
+            "image": "shopify://shop_images/AboutUs-Carousel-3.jpg",
+            "title": "",
+            "subtitle": "",
+            "badge": "AWARD WINNER",
+            "url": "shopify://products/lip-butter-balm"
+          }
+        },
+        "item_FBgJBR": {
+          "type": "item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/AboutUs-Carousel-1.jpg",
+            "title": "",
+            "subtitle": "",
+            "badge": "",
+            "url": "shopify://products/dream-lip-oil-mauve"
+          }
+        },
+        "item_XwGdm3": {
+          "type": "item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/Empties-1.jpg",
+            "title": "",
+            "subtitle": "",
+            "badge": "",
+            "url": "shopify://products/jet-lag-mask"
+          }
+        },
+        "item_8Jkd9M": {
+          "type": "item",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/PDP-Clinicals-JLM.jpg",
+            "title": "",
+            "subtitle": "",
+            "badge": "",
+            "url": "shopify://products/jet-lag-mask"
+          }
+        },
+        "item_LiBVVT": {
+          "type": "item",
+          "settings": {
+            "media_type": "video",
+            "video": "shopify://files/videos/JetLagMist-NikkiCruz-Video3_dd488cab-2f09-4708-a85e-06441a0717dc.mp4",
+            "title": "",
+            "subtitle": "",
+            "badge": "",
+            "url": "shopify://products/jet-lag-soothing-hydration-mist"
+          }
+        }
+      },
+      "block_order": [
+        "item_7G8V7V",
+        "item_PDiQxw",
+        "item_ViBnmr",
+        "item_CqXHcL",
+        "item_qazB4c",
+        "item_FBgJBR",
+        "item_XwGdm3",
+        "item_8Jkd9M",
+        "item_LiBVVT"
+      ],
+      "settings": {
+        "padding_top": 4.8,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Our Vision</h2><p>In a world of over-stimulating, over-complicated and over-active beauty routines, Summer Fridays creates effective skincare and hybrid makeup that work without overworking the skin. </p><p>Summer Fridays’ intelligent formulas effortlessly optimize skin and beauty, please the mind, and bring ease and softness to everyday life.</p>",
+        "text_alignment": "center",
+        "font_size": "normal",
+        "font_p_size": "larger"
+      }
+    },
+    "3_pillars_ebyi93": {
+      "type": "3-pillars",
+      "blocks": {
+        "pillar_mijJLR": {
+          "type": "pillar",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/AboutUs-Our-Values-Gently-Effective.jpg",
+            "title": "Gently Effective",
+            "subtitle": "<p>Inspired by California, Summer Fridays contains perfected levels of active ingredients for highly efficacious results, without the downtime, to build that everyday glow.</p>"
+          }
+        },
+        "pillar_QzJzQX": {
+          "type": "pillar",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/AboutUs-Our-Values-Everyday-Intuitive.jpg",
+            "title": "EVERYDAY INTUITIVE",
+            "subtitle": "<p>Summer Fridays is formulated for everyday life with a range of products that build an effective skincare and makeup routine, without overthinking it. Made to be used alone or intuitively layered, always easy, never fussy.</p>"
+          }
+        },
+        "pillar_UUCnp8": {
+          "type": "pillar",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/AboutUs-Our-Values-Community-Born.jpg",
+            "title": "COMMUNITY BORN",
+            "subtitle": "<p>Born from the enthusiasm of our growing community, Summer Fridays provides experiences and products that lift the mood, foster togetherness and inspire self-care rituals — making everyday moments a little more beautiful, together.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "pillar_mijJLR",
+        "pillar_QzJzQX",
+        "pillar_UUCnp8"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Our Values</h2>",
+        "text_alignment": "center",
+        "font_size": "normal"
+      }
+    },
+    "featured_articles_jAD9mt": {
+      "type": "featured-articles",
+      "blocks": {
+        "article_jcTqyE": {
+          "type": "article",
+          "settings": {
+            "article": "press/popsugar-3"
+          }
+        },
+        "article_jrcGnw": {
+          "type": "article",
+          "settings": {
+            "article": "press/wwd-5"
+          }
+        },
+        "article_TdnAcp": {
+          "type": "article",
+          "settings": {
+            "article": "press/marie-claire-skin-awards-best-spf-for-sensitive-skin"
+          }
+        }
+      },
+      "block_order": [
+        "article_jcTqyE",
+        "article_jrcGnw",
+        "article_TdnAcp"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 4.8,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 8.4,
+        "content": "<h2>Featured In The Press</h2>",
+        "text_alignment": "center",
+        "button_label": "",
+        "button_url": ""
+      }
+    }
+  },
+  "order": [
+    "sticky_menu_DtYDcD",
+    "page_header_cGCNUj",
+    "image_split_LTzETx",
+    "hero_split_EKPe4c",
+    "marquee_MfYhQD",
+    "3_pillars_ebyi93",
+    "featured_articles_jAD9mt"
+  ]
+}

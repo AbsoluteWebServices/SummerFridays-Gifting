@@ -1,0 +1,66 @@
+{%- if section.blocks.size > 0 -%}
+    {%- render 'adastra' with 'styles/sections/sticky-menu.scss' -%}
+
+    <nav aria-label="Sticky navigation">
+        <ul class="sticky-menu__items list-reset">
+            {%- for block in section.blocks -%}
+                {%- liquid 
+                    assign title = block.settings.title | escape | strip_html
+                    if title == blank
+                        continue 
+                    endif
+
+                    assign url = block.settings.url
+                    assign active = block.settings.active | default: false
+
+                    if active == false and url == blank
+                        continue
+                    endif
+                -%}
+                <li>
+                    <{% if active %}span{% else %}a href="{{- url -}}" aria-label="{{- title -}}"{% endif %} class="sticky-menu__item superscript-normal">
+                        {{- title -}}
+                    </{% if active %}span{% else %}a{% endif %}>
+                </li>
+            {%- endfor -%}
+        </ul>
+    </nav>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Sticky Menu | AW",
+    "class": "sticky-menu-wrapper",
+    "settings": [
+    ],
+    "presets": [
+        {
+            "name": "Sticky Menu | AW"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Item",
+            "type": "item",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "URL"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "active",
+                    "label": "Active",
+                    "default": false
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

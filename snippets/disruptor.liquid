@@ -1,0 +1,69 @@
+{%- liquid
+    assign media_type = block.settings.media_type | default: 'video'
+    assign video = block.settings.video
+    assign image = block.settings.image 
+    assign dark_overlay_opacity = block.settings.dark_overlay_opacity | default: 20 | times: 1.00 | divided_by: 100.00
+    assign eyebrow = block.settings.eyebrow | escape
+    assign title = block.settings.title
+    assign button_label = block.settings.button_label | escape
+    assign button_url = block.settings.button_url
+    assign link_whole_disruptor = block.settings.link_whole_disruptor | default: false
+-%}
+
+<div 
+    x-show="!filtersApplied"
+    class="disruptor"
+    data-aaaa="{{ dfkdf }}"
+>
+    {%- if media_type == 'image' -%}
+        {%- if image -%}
+            <img
+                src="{{ image | image_url: width: 768 }}"
+                width="300"
+                height="300"
+                alt="{{ image.alt | default: 'Disruptor image' }}"
+                class="absolute-img"
+                {% if lazyload %}
+                    loading="lazy"
+                {% endif %}
+            >
+        {%- endif -%}
+    {%- elsif media_type == 'video' -%}
+        {%- if video -%}
+            {%- render 'video', 
+                video: video,
+                poster: image
+            -%}
+        {%- endif -%}
+    {%- endif -%}
+
+    {%- if dark_overlay_opacity > 0 -%}
+        <div class="disruptor__overlay" style="opacity: {{- dark_overlay_opacity -}};"></div>
+    {%- endif -%}
+
+    {%- if title != blank -%}
+        <div class="disruptor__content rte rte--white">
+            {%- if eyebrow != blank -%}
+                <p class="subheader-small">
+                    {{- eyebrow -}}
+                </p>
+            {%- endif -%}
+
+            {{- title -}}
+
+            {%- if button_label != blank and button_url != blank -%}
+                <p>
+                    <a 
+                        href="{{- button_url -}}" 
+                        class="btn btn--white-transparent btn--center"
+                        aria-label="Go to {{ button_label -}}" 
+                        title="{{- button_label -}}"
+                    >
+                        {{- button_label -}}
+                        {%- render 'icon', name: 'arrow-right' -%}
+                    </a>
+                </p>
+            {%- endif -%}
+        </div>
+    {%- endif -%}
+</div>

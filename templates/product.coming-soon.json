@@ -1,0 +1,115 @@
+{
+  "sections": {
+    "main": {
+      "type": "coming-soon-hero",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "media_type": "video",
+        "video": "shopify:\/\/files\/videos\/-2b9e-4bb9-ab64-b8e3a07aa550 (1).mp4",
+        "text_color": "white",
+        "eyebrow": "Coming January 18th",
+        "content": "<h2>Our Dreamiest Launch Yet - <br\/><em>The Dream Lip Oil<\/em><\/h2>",
+        "title": "Notify me when available",
+        "list_id": "Xcp8cA",
+        "custom_source": "Coming Soon",
+        "signup_unit_id": "73377"
+      }
+    },
+    "title_cTDJtf": {
+      "type": "title",
+      "custom_css": [
+        "h2 {max-width: 660px; margin-left: auto; margin-right: auto; text-align: center;}"
+      ],
+      "settings": {
+        "padding_top": 8.4,
+        "padding_bottom": 8.4,
+        "padding_top_desktop": 8.4,
+        "padding_bottom_desktop": 8.4,
+        "title": "<h2>This plush lip oil glides on like a dream to deliver a high-shine tint and deep hydration. Its non-sticky formula nourishes lips with a blend of nine moisturizing oils for long-lasting softness and shine.<\/h2>"
+      }
+    },
+    "shade_carousel_9rW8jq": {
+      "type": "shade-carousel",
+      "blocks": {
+        "slider_kTzb6Y": {
+          "type": "slider",
+          "settings": {
+            "slider_name": "",
+            "image_1": "shopify:\/\/shop_images\/Dream-Lip-Oil-Model-Blush-Dreams_1200x_2.jpg",
+            "toggle_image_1": "shopify:\/\/shop_images\/SST_Shade_1_-_Goop_1.jpg",
+            "hover_media_type_1": "video",
+            "hover_video_1": "shopify:\/\/files\/videos\/-4405-4b10-a0d7-fd8afebdee80.mov",
+            "title_1": "Pink Cloud",
+            "text_1": "",
+            "image_2": "shopify:\/\/shop_images\/Dream-Lip-Oil-Model-Pink-Cloud_1200x_2.jpg",
+            "toggle_image_2": "shopify:\/\/shop_images\/SST_Shade_1_-_Goop_1_06181a3b-721c-4317-91d8-c95f222e1a02.jpg",
+            "hover_media_type_2": "video",
+            "hover_video_2": "shopify:\/\/files\/videos\/-8498-42c2-8a25-49363d1a5c6f.mov",
+            "title_2": "Blush Dreams",
+            "text_2": "",
+            "image_3": "shopify:\/\/shop_images\/Dream-Lip-Oil-Model-Soft-Mauve_1200x_2.jpg",
+            "toggle_image_3": "shopify:\/\/shop_images\/SOFT_MAUVE_1.jpg",
+            "hover_media_type_3": "video",
+            "hover_video_3": "shopify:\/\/files\/videos\/-7360-4ab0-aa16-f7582e971d64.mov",
+            "title_3": "Soft Mauve",
+            "text_3": "",
+            "image_4": "shopify:\/\/shop_images\/Dream-Lip-Oil-Rosewood-Nights-Model_1200x_3.jpg",
+            "toggle_image_4": "shopify:\/\/shop_images\/image_2.jpg",
+            "hover_media_type_4": "video",
+            "hover_video_4": "shopify:\/\/files\/videos\/-7b9a-4264-b4d8-4f34824b3760.mov",
+            "title_4": "Rosewood-Nights",
+            "text_4": "",
+            "hover_media_type_5": "image",
+            "title_5": "",
+            "text_5": "",
+            "hover_media_type_6": "image",
+            "title_6": "",
+            "text_6": "",
+            "hover_media_type_7": "image",
+            "title_7": "",
+            "text_7": "",
+            "hover_media_type_8": "image",
+            "title_8": "",
+            "text_8": ""
+          }
+        }
+      },
+      "block_order": [
+        "slider_kTzb6Y"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "title": "4 Plush Shades",
+        "show_dropdown": false,
+        "show_toggle": true
+      }
+    },
+    "2_featured_media_6LWKVX": {
+      "type": "2-featured-media",
+      "settings": {
+        "padding_top": 4.2,
+        "padding_bottom": 4.2,
+        "padding_top_desktop": 4.2,
+        "padding_bottom_desktop": 4.2,
+        "orientation_1": "landscape",
+        "media_type_1": "image",
+        "image_1": "shopify:\/\/shop_images\/i1_93d19251-874c-4e31-82aa-107961db68ed.jpg",
+        "orientation_2": "portrait",
+        "media_type_2": "image",
+        "image_2": "shopify:\/\/shop_images\/i2_73403f12-545c-41b6-bb7c-223c42727c25.jpg"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "title_cTDJtf",
+    "shade_carousel_9rW8jq",
+    "2_featured_media_6LWKVX"
+  ]
+}

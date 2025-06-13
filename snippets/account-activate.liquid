@@ -1,0 +1,43 @@
+<div class="form form--activate">
+  {% form 'activate_customer_password' %}
+    <h1 class="form__title h2">
+      {{ 'customer.activate_account.title' | t }}
+    </h1>
+
+    <p class="form__copy">
+      {{ 'customer.activate_account.subtext' | t }}
+    </p>
+
+    {{ form.errors | default_errors }}
+
+    <div class="form__group" data-form-password>
+      <input
+        type="password"
+        name="customer[password]"
+        id="CustomerPassword"
+        class="form__field {% if form.errors contains 'password' %}input-error{% endif %}"
+        placeholder="{{ 'customer.activate_account.password' | t }}"
+        aria-label="{{ 'customer.activate_account.password' | t }}"
+        data-form-password-input
+        required
+      >
+    </div>
+
+    <div class="form__group" data-form-password>
+      <input
+        type="password"
+        name="customer[password_confirmation]"
+        id="CustomerPasswordConfirmation"
+        class="form__field"
+        placeholder="{{ 'customer.activate_account.password_confirm' | t }}"
+        aria-label="{{ 'customer.activate_account.password_confirm' | t }}"
+        data-form-password-input
+        required
+      >
+    </div>
+
+    <button class="form__button btn btn--chalk btn--full btn--center">
+      {{ 'customer.activate_account.submit' | t }}
+    </button>
+  {% endform %}
+</div>

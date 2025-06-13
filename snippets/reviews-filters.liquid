@@ -1,0 +1,165 @@
+<div class="reviews__actions" x-data="{ filtersVisible: false }">
+    <div class="reviews__filters" :class="{ 'reviews__filters--active': filtersVisible }">
+        <div class="reviews__dropdown select-wrapper select-wrapper--absolute select-wrapper--bordered" @reset-filters.window="selected = 'All Ratings'" x-data="{ selected: 'All Ratings', active: false }">
+            <button 
+                id="ratings-dropdown-toggle-btn"
+                class="reviews__dropdown-title p-normal select-toggle-btn" 
+                @click="active = !active" 
+                @click.stop.outside="active = false"
+                aria-haspopup="true"
+                aria-expanded="false"
+                :aria-expanded="active"
+                aria-controls="ratings-dropdown"
+            >
+                <template x-if="selected === 'All Ratings'">
+                    <span x-text="selected"></span>
+                </template>
+                <template x-if="selected !== 'All Ratings'">
+                    <div class="reviews__icons reviews__icons--small">
+                        {% render 'icon', name: 'stars' %}
+                        <div :class="`reviews__icons-percent--${ selected }`" class="reviews__icons-percent">
+                            {% render 'icon', name: 'stars' %}
+                        </div>
+                    </div>
+                </template>
+                <span :class="{ 'reviews__dropdown-icon--active': active }" class="reviews__dropdown-icon">
+                    {% render 'icon', name: 'chevron-down' %}
+                </span>
+            </button>
+            <div 
+                id="ratings-dropdown"
+                aria-labelledby="ratings-dropdown-toggle-btn"
+                class="reviews__dropdown-options dropdown-content"
+                :data-open="active"
+                :style="active && { height: $el.scrollHeight + 'px' }"
+                @resize.window="if (!active) { return; } $el.style.height = 'auto'"
+            >
+                <button
+                    :class="{ 'reviews__dropdown-option--active': selected === 'All Ratings' }"
+                    class="reviews__dropdown-option select-option p-normal"
+                    @click.prevent="selected = 'All Ratings'; $nextTick(() => applyFilters('scores', ''))"
+                    type="button"
+                >
+                    {{- 'products.product.rating' | t -}}
+                </button>
+                <button
+                    :class="{ 'reviews__dropdown-option--active': selected === 5 }"
+                    class="reviews__dropdown-option select-option p-normal"
+                    @click.prevent="selected = 5; $nextTick(() => applyFilters('scores', 5))"
+                    type="button"
+                >
+                    <div class="reviews__icons reviews__icons--small">
+                        {% render 'icon', name: 'stars' %}
+                        <div class="reviews__icons-percent reviews__icons-percent--5">
+                            {% render 'icon', name: 'stars' %}
+                        </div>
+                    </div>
+                </button>
+                <button
+                    :class="{ 'reviews__dropdown-option--active': selected === 4 }"
+                    class="reviews__dropdown-option select-option p-normal"
+                    @click.prevent="selected = 4; $nextTick(() => applyFilters('scores', 4))"
+                    type="button"
+                >
+                    <div class="reviews__icons reviews__icons--small">
+                        {% render 'icon', name: 'stars' %}
+                        <div class="reviews__icons-percent reviews__icons-percent--4">
+                            {% render 'icon', name: 'stars' %}
+                        </div>
+                    </div>
+                </button>
+                <button
+                    :class="{ 'reviews__dropdown-option--active': selected === 3 }"
+                    class="reviews__dropdown-option select-option p-normal"
+                    @click="selected = 3; $nextTick(() => applyFilters('scores', 3))"
+                    type.prevent="button"
+                >
+                    <div class="reviews__icons reviews__icons--small">
+                        {% render 'icon', name: 'stars' %}
+                        <div class="reviews__icons-percent reviews__icons-percent--3">
+                            {% render 'icon', name: 'stars' %}
+                        </div>
+                    </div>
+                </button>
+                <button
+                    :class="{ 'reviews__dropdown-option--active': selected === 2 }"
+                    class="reviews__dropdown-option select-option p-normal"
+                    @click.prevent="selected = 2; $nextTick(() => applyFilters('scores', 2))"
+                    type="button"
+                >
+                    <div class="reviews__icons reviews__icons--small">
+                        {% render 'icon', name: 'stars' %}
+                        <div class="reviews__icons-percent reviews__icons-percent--2">
+                            {% render 'icon', name: 'stars' %}
+                        </div>
+                    </div>
+                </button>
+                <button
+                    :class="{ 'reviews__dropdown-option--active': selected === 1 }"
+                    class="reviews__dropdown-option select-option p-normal"
+                    @click.prevent="selected = 1; $nextTick(() => applyFilters('scores', 1))"
+                    type="button"
+                >
+                    <div class="reviews__icons reviews__icons--small">
+                        {% render 'icon', name: 'stars' %}
+                        <div class="reviews__icons-percent reviews__icons-percent--1">
+                            {% render 'icon', name: 'stars' %}
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <template x-for="(filter, i) in filters">
+            <div class="reviews__dropdown select-wrapper select-wrapper--absolute select-wrapper--bordered"  @reset-filters.window="selected = filter.title" x-data="{ selected: filter.title, active: false }">
+                <button 
+                    :id="`filter-options-dropdown-toggle-btn-${ i }`"
+                    class="reviews__dropdown-title p-normal select-toggle-btn" 
+                    type="button"
+                    @click="active = !active" 
+                    @click.stop.outside="active = false"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    :aria-expanded="active"
+                    :aria-controls="`filter-options-dropdown-${ i }`"
+                >
+                    <span x-text="selected"></span>
+                    <span :class="{ 'reviews__dropdown-icon--active': active }" class="reviews__dropdown-icon">
+                        {% render 'icon', name: 'chevron-down' %}
+                    </span>
+                </button>
+                <div 
+                    :id="`filter-options-dropdown-${ i }`"
+                    :aria-labelledby="`filter-options-dropdown-toggle-btn-${ i }`"
+                    class="reviews__dropdown-options dropdown-content"
+                    :data-open="active"
+                    :style="active && { height: $el.scrollHeight + 'px' }"
+                    @resize.window="if (!active) { return; } $el.style.height = 'auto'"
+                >
+                    <button
+                        :class="{ 'reviews__dropdown-option--active': selected === filter.title }"
+                        class="reviews__dropdown-option select-option p-normal"
+                        @click.prevent="selected = filter.title; $nextTick(() => applyFilters('crfs', '', filter))"
+                        type="button"
+                        x-text="filter.title">
+                    </button>
+                    <template x-for="option in filter.options">
+                        <button
+                            :class="{ 'reviews__dropdown-option--active': selected === option }"
+                            class="reviews__dropdown-option select-option p-normal"
+                            @click.prevent="selected = option; $nextTick(() => applyFilters('crfs', option, filter))"
+                            type="button"
+                            x-text="option">
+                        </button>
+                    </template>
+                </div>
+            </div>
+        </template>
+    </div>
+    <button @click.prevent="filtersVisible = !filtersVisible" class="reviews__filters-trigger" title="{{ filters_text }}" type="button">
+        <span>{{ filters_text }}</span>
+        <span>
+            {% render 'icon', name: 'arrow-right' %}
+        </span>
+    </button>
+    <button @click.prevent="alert('Coming soon...')" class="btn btn--full btn--center btn--chalk reviews__cta" title="{{ filters_text }}" type="button">{{ cta_text }}</button>
+</div>

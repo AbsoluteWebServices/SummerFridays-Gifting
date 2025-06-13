@@ -1,0 +1,124 @@
+{%- liquid 
+    assign current_variant = product.selected_or_first_available_variant
+    assign subscription_mode = subscription_mode | default: false
+    assign current_variant_price = current_variant.price
+    assign priceModifier = priceModifier | default: 1
+    assign current_variant_price = current_variant_price | times: priceModifier
+    assign default_price = current_variant_price | money_without_trailing_zeros
+    assign price = price | default: default_price
+    assign coming_soon = product.metafields.product.enable_coming_soon | default: false
+    assign notify_me = product.metafields.product.enable_notify_me | default: false
+    
+    assign button_type = 'submit' 
+    assign button_disabled = false
+    assign button_label = 'products.product.add_to_cart' | t
+    unless current_variant.available 
+        assign button_type = 'button'
+        if coming_soon
+            assign button_label = 'products.product.coming_soon' | t
+        elsif notify_me
+            assign button_label = 'products.product.notify_me' | t
+        else 
+            assign button_label = 'products.product.sold_out' | t
+            assign button_disabled = true
+        endif
+    endunless
+
+    assign button_color = button_color | default: 'chalk'
+-%}
+
+{%- capture price_html -%}
+    <span x-text="data?.price ? window.Shopify.formatMoney(data.price * priceModifier) : initialized ? '{{- default_price -}}' : '{{- price -}}'">
+        {{- price -}}
+    </span>
+{%- endcapture -%}
+
+{%- if variant_selector_type == 'no-selector' -%}
+    {%- if current_variant.available -%}
+        <button
+            class="btn btn--full btn--between btn--{{- button_color -}}"
+            type="submit"
+            aria-label="{{- 'products.product.add_to_cart' | t -}}"
+        >
+            <span class="btn__inner-default">{{- 'products.product.add_to_cart' | t -}}</span>
+            <span class="btn__inner-loading">
+                {{ 'products.product.adding' | t }}
+            </span>
+            <span x-text="data?.price ? window.Shopify.formatMoney(data.price * priceModifier) : initialized ? '{{- default_price -}}' : '{{- price -}}'">
+                {{- price -}}
+            </span>
+        </button>
+    {%- else -%}
+        {%- if coming_soon or notify_me -%}
+            <a
+                href="{{- product.url -}}"
+                class="btn btn--full btn--between btn--{{- button_color -}}"
+                aria-label="Go to {{ product.title }}"
+            >
+                <span>{{- button_label -}}</span>
+                <span x-text="data?.price ? window.Shopify.formatMoney(data.price * priceModifier) : initialized ? '{{- default_price -}}' : '{{- price -}}'">
+                    {{- price -}}
+                </span>
+            </a>
+        {%- else -%}
+            <button
+                class="btn btn--full btn--between btn--{{- button_color -}}"
+                type="button"
+                aria-label="{{- button_label -}}"
+                disabled="true"
+            >
+                <span>{{- button_label -}}</span>
+                <span x-text="data?.price ? window.Shopify.formatMoney(data.price * priceModifier) : initialized ? '{{- default_price -}}' : '{{- price -}}'">
+                    {{- price -}}
+                </span>
+            </button>
+        {%- endif -%}
+    {%- endif -%}
+{%- else -%}
+    <button
+        x-show="data !== null ? (data.available || ![data.available, data.coming_soon, data.notify_me].includes(true)) : ({{ current_variant.available }} || {{ button_disabled }})"
+        class="btn btn--full btn--between btn--{{- button_color -}}"
+        type="{{- button_type -}}"
+        :type="data !== null ? (data.available ? 'submit' : 'button') : '{{ button_type }}'"
+        {% if button_disabled %}
+            disabled="true"
+        {% endif %}
+        :disabled="data !== null ? ![data.available, data.coming_soon, data.notify_me].includes(true) : {{ button_disabled }}"
+        aria-label="{{ button_label }}"
+        :aria-label="data !== null ? (data.available ? '{{ 'products.product.add_to_cart' | t }}' : data.coming_soon ? '{{ 'products.product.coming_soon' | t }}' : data.notify_me ? '{{ 'products.product.notify_me' | t }}' : '{{ 'products.product.sold_out' | t }}') : '{{ button_label }}'"
+        {% unless current_variant.available %}
+            style="display: none;"
+        {%- else -%}
+            {% unless button_disabled %}
+                style="display: none;"
+            {% endunless %}
+        {% endunless %}
+    >
+        <span class="btn__inner-default" x-text="data !== null ? (data.available ? '{{ 'products.product.add_to_cart' | t }}' : data.coming_soon ? '{{ 'products.product.coming_soon' | t }}' : data.notify_me ? '{{ 'products.product.notify_me' | t }}' : '{{ 'products.product.sold_out' | t }}') : '{{ button_label }}'">{{ 'products.product.add_to_cart' | t }}</span>
+
+        <span class="btn__inner-loading">
+            {{ 'products.product.adding' | t }}
+        </span>
+
+        <span x-text="data?.price ? window.Shopify.formatMoney(data.price * priceModifier) : initialized ? '{{- default_price -}}' : '{{- price -}}'">
+            {{- price -}}
+        </span>
+    </button>
+
+    <a
+        x-show="data !== null ? (!data.available && [data.coming_soon, data.notify_me].includes(true)) : ({{ current_variant.available }} === false && {{ button_disabled }} === false)"
+        href="{{- product.url -}}"
+        :href="data?.url ? data.url : '{{ product.url }}'"
+        class="btn btn--full btn--between btn--{{- button_color -}}"
+        aria-label="Go to {{ product.title }}"
+        {% if button_disabled == true %}
+            style="display: none;"
+        {% endif %}
+    >
+        <span x-text="data !== null ? (data.available ? '{{ 'products.product.add_to_cart' | t }}' : data.coming_soon ? '{{ 'products.product.coming_soon' | t }}' : data.notify_me ? '{{ 'products.product.notify_me' | t }}' : '{{ 'products.product.sold_out' | t }}') : '{{ button_label }}'">{{- button_label -}}</span>
+
+        <span x-text="data?.price ? window.Shopify.formatMoney(data.price * priceModifier) : initialized ? '{{- default_price -}}' : '{{- price -}}'">
+            {{- price -}}
+        </span>
+    </a>
+{%- endif -%}
