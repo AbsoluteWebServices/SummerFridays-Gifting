@@ -1,0 +1,676 @@
+{
+  "_sf-chunk-attentive-2daebf3a.js": {
+    "file": "sf-chunk-attentive-2daebf3a.js",
+    "imports": [
+      "_sf-chunk-main-179c6691.js"
+    ]
+  },
+  "_sf-chunk-klaviyo-210bc1c5.js": {
+    "file": "sf-chunk-klaviyo-210bc1c5.js",
+    "imports": [
+      "_sf-chunk-main-179c6691.js"
+    ]
+  },
+  "_sf-chunk-main-179c6691.js": {
+    "dynamicImports": [
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs",
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/modules/index.mjs",
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs",
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/modules/index.mjs",
+      "src/scripts/components/sections/article.js",
+      "src/scripts/components/sections/articles.js",
+      "src/scripts/components/sections/bundle.js",
+      "src/scripts/components/sections/collection.js",
+      "src/scripts/components/sections/comparison.js",
+      "src/scripts/components/sections/countrySelector.js",
+      "src/scripts/components/sections/featuredProducts.js",
+      "src/scripts/components/sections/giftCard.js",
+      "src/scripts/components/sections/header.js",
+      "src/scripts/components/sections/howToUse.js",
+      "src/scripts/components/sections/imageGallery.js",
+      "src/scripts/components/sections/jetLagCarousel.js",
+      "src/scripts/components/sections/lipButterCarousel.js",
+      "src/scripts/components/sections/marquee.js",
+      "src/scripts/components/sections/newsletter.js",
+      "src/scripts/components/sections/newsletterPopup.js",
+      "src/scripts/components/sections/nmCSForm.js",
+      "src/scripts/components/sections/pairsWellWith.js",
+      "src/scripts/components/sections/product.js",
+      "src/scripts/components/sections/productCardSmall.js",
+      "src/scripts/components/sections/productSliderAndImage.js",
+      "src/scripts/components/sections/quiz.js",
+      "src/scripts/components/sections/search.js",
+      "src/scripts/components/sections/shadeCarousel.js",
+      "src/scripts/components/sections/subscriptionsProducts.js",
+      "src/scripts/components/sections/sustainabilityReports.js"
+    ],
+    "file": "sf-chunk-main-179c6691.js",
+    "imports": [
+      "src/entrypoints/index.js"
+    ],
+    "isDynamicEntry": true
+  },
+  "_sf-chunk-utils-a346f4ef.js": {
+    "file": "sf-chunk-utils-a346f4ef.js"
+  },
+  "assets/icon-chevron-down.svg": {
+    "file": "sf-icon-chevron-down-21910b38.svg",
+    "src": "assets/icon-chevron-down.svg"
+  },
+  "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/modules/index.mjs": {
+    "file": "sf-chunk-index-2e390332.js",
+    "imports": [
+      "_sf-chunk-utils-a346f4ef.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/modules/index.mjs"
+  },
+  "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs": {
+    "file": "sf-chunk-swiper-39539a76.js",
+    "imports": [
+      "_sf-chunk-utils-a346f4ef.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs"
+  },
+  "sprite.liquid": {
+    "file": "sf-sprite-c56b1c7b.liquid",
+    "src": "sprite.liquid"
+  },
+  "src/entrypoints/index.js": {
+    "dynamicImports": [
+      "_sf-chunk-main-179c6691.js"
+    ],
+    "file": "sf-index-c0d09c9b.js",
+    "isEntry": true,
+    "src": "src/entrypoints/index.js"
+  },
+  "src/entrypoints/main.scss": {
+    "file": "sf-main-75c7dcc2.css",
+    "isEntry": true,
+    "src": "src/entrypoints/main.scss"
+  },
+  "src/entrypoints/styles/sections/2-blocks-with-accordions.scss": {
+    "file": "sf-2-blocks-with-accordions-1b11fde9.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/2-blocks-with-accordions.scss"
+  },
+  "src/entrypoints/styles/sections/2-featured-media.scss": {
+    "file": "sf-2-featured-media-449271cc.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/2-featured-media.scss"
+  },
+  "src/entrypoints/styles/sections/3-pillars.scss": {
+    "file": "sf-3-pillars-c7bcd03a.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/3-pillars.scss"
+  },
+  "src/entrypoints/styles/sections/404.scss": {
+    "file": "sf-404-204b4bb8.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/404.scss"
+  },
+  "src/entrypoints/styles/sections/accordions.scss": {
+    "file": "sf-accordions-5e666ffd.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/accordions.scss"
+  },
+  "src/entrypoints/styles/sections/account.scss": {
+    "file": "sf-account-30431c23.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/account.scss"
+  },
+  "src/entrypoints/styles/sections/account/addresses.scss": {
+    "file": "sf-addresses-c7a35d57.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/account/addresses.scss"
+  },
+  "src/entrypoints/styles/sections/account/login.scss": {
+    "file": "sf-login-e63f3347.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/account/login.scss"
+  },
+  "src/entrypoints/styles/sections/account/menu.scss": {
+    "file": "sf-menu-f88fb25f.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/account/menu.scss"
+  },
+  "src/entrypoints/styles/sections/account/orders.scss": {
+    "file": "sf-orders-0fbc592b.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/account/orders.scss"
+  },
+  "src/entrypoints/styles/sections/account/register.scss": {
+    "file": "sf-register-63da439e.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/account/register.scss"
+  },
+  "src/entrypoints/styles/sections/account/reset-password.scss": {
+    "file": "sf-reset-password-5d974a31.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/account/reset-password.scss"
+  },
+  "src/entrypoints/styles/sections/account/rewards.scss": {
+    "file": "sf-rewards-72d7e6da.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/account/rewards.scss"
+  },
+  "src/entrypoints/styles/sections/account/subscriptions.scss": {
+    "file": "sf-subscriptions-4407c41f.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/account/subscriptions.scss"
+  },
+  "src/entrypoints/styles/sections/article.scss": {
+    "file": "sf-article-79c186fb.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/article.scss"
+  },
+  "src/entrypoints/styles/sections/articles.scss": {
+    "file": "sf-articles-aadba3f3.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/articles.scss"
+  },
+  "src/entrypoints/styles/sections/before-after.scss": {
+    "file": "sf-before-after-78ef5989.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/before-after.scss"
+  },
+  "src/entrypoints/styles/sections/bundle.scss": {
+    "file": "sf-bundle-4b8c2864.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/bundle.scss"
+  },
+  "src/entrypoints/styles/sections/collection.scss": {
+    "file": "sf-collection-6f8f7a4f.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/collection.scss"
+  },
+  "src/entrypoints/styles/sections/columns.scss": {
+    "file": "sf-columns-77ae768b.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/columns.scss"
+  },
+  "src/entrypoints/styles/sections/coming-soon-hero.scss": {
+    "file": "sf-coming-soon-hero-b5a72596.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/coming-soon-hero.scss"
+  },
+  "src/entrypoints/styles/sections/contact.scss": {
+    "file": "sf-contact-d4f67609.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/contact.scss"
+  },
+  "src/entrypoints/styles/sections/featured-articles.scss": {
+    "file": "sf-featured-articles-c64ce998.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/featured-articles.scss"
+  },
+  "src/entrypoints/styles/sections/featured-products.scss": {
+    "file": "sf-featured-products-41f5c6e3.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/featured-products.scss"
+  },
+  "src/entrypoints/styles/sections/footer.scss": {
+    "file": "sf-footer-b3ad9cf1.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/footer.scss"
+  },
+  "src/entrypoints/styles/sections/gift-card.scss": {
+    "file": "sf-gift-card-f6e3a4e9.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/gift-card.scss"
+  },
+  "src/entrypoints/styles/sections/header-not-critical.scss": {
+    "file": "sf-header-not-critical-420a4dc8.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/header-not-critical.scss"
+  },
+  "src/entrypoints/styles/sections/hero-split.scss": {
+    "file": "sf-hero-split-872c02bf.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/hero-split.scss"
+  },
+  "src/entrypoints/styles/sections/hero.scss": {
+    "file": "sf-hero-3e9dea18.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/hero.scss"
+  },
+  "src/entrypoints/styles/sections/how-it-works.scss": {
+    "file": "sf-how-it-works-9d1532d7.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/how-it-works.scss"
+  },
+  "src/entrypoints/styles/sections/how-to-use.scss": {
+    "file": "sf-how-to-use-f61a84b6.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/how-to-use.scss"
+  },
+  "src/entrypoints/styles/sections/image-gallery.scss": {
+    "file": "sf-image-gallery-83f295a8.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/image-gallery.scss"
+  },
+  "src/entrypoints/styles/sections/image-split.scss": {
+    "file": "sf-image-split-377060dc.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/image-split.scss"
+  },
+  "src/entrypoints/styles/sections/jet-lag-carousel.scss": {
+    "file": "sf-jet-lag-carousel-9c1f9cb4.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/jet-lag-carousel.scss"
+  },
+  "src/entrypoints/styles/sections/jobs.scss": {
+    "file": "sf-jobs-204972f3.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/jobs.scss"
+  },
+  "src/entrypoints/styles/sections/lip-butter-carousel.scss": {
+    "file": "sf-lip-butter-carousel-47434623.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/lip-butter-carousel.scss"
+  },
+  "src/entrypoints/styles/sections/marquee.scss": {
+    "file": "sf-marquee-da5e9752.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/marquee.scss"
+  },
+  "src/entrypoints/styles/sections/media-accordions.scss": {
+    "file": "sf-media-accordions-7b8f9ec4.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/media-accordions.scss"
+  },
+  "src/entrypoints/styles/sections/media-html.scss": {
+    "file": "sf-media-html-21d7be8c.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/media-html.scss"
+  },
+  "src/entrypoints/styles/sections/media-with-caption.scss": {
+    "file": "sf-media-with-caption-a05b17f5.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/media-with-caption.scss"
+  },
+  "src/entrypoints/styles/sections/minicart.scss": {
+    "file": "sf-minicart-aec57e98.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/minicart.scss"
+  },
+  "src/entrypoints/styles/sections/newsletter-popup.scss": {
+    "file": "sf-newsletter-popup-1cbab678.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/newsletter-popup.scss"
+  },
+  "src/entrypoints/styles/sections/page-header.scss": {
+    "file": "sf-page-header-694c0da1.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/page-header.scss"
+  },
+  "src/entrypoints/styles/sections/pairs-well-with.scss": {
+    "file": "sf-pairs-well-with-a74eb8f1.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/pairs-well-with.scss"
+  },
+  "src/entrypoints/styles/sections/password.scss": {
+    "file": "sf-password-391464fb.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/password.scss"
+  },
+  "src/entrypoints/styles/sections/predictive-search.scss": {
+    "file": "sf-predictive-search-fcdfb3c0.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/predictive-search.scss"
+  },
+  "src/entrypoints/styles/sections/product-nm-cs.scss": {
+    "file": "sf-product-nm-cs-d1a016b1.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/product-nm-cs.scss"
+  },
+  "src/entrypoints/styles/sections/product-slider-and-image.scss": {
+    "file": "sf-product-slider-and-image-8fd27858.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/product-slider-and-image.scss"
+  },
+  "src/entrypoints/styles/sections/product.scss": {
+    "file": "sf-product-8a3f4879.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/product.scss"
+  },
+  "src/entrypoints/styles/sections/quiz.scss": {
+    "file": "sf-quiz-226cf11f.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/quiz.scss"
+  },
+  "src/entrypoints/styles/sections/results.scss": {
+    "file": "sf-results-d47a2adc.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/results.scss"
+  },
+  "src/entrypoints/styles/sections/reviews.scss": {
+    "file": "sf-reviews-66334771.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/reviews.scss"
+  },
+  "src/entrypoints/styles/sections/rewards-hero.scss": {
+    "file": "sf-rewards-hero-29b7a4c1.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/rewards-hero.scss"
+  },
+  "src/entrypoints/styles/sections/rewards-history-popup.scss": {
+    "file": "sf-rewards-history-popup-7cc17fc7.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/rewards-history-popup.scss"
+  },
+  "src/entrypoints/styles/sections/rewards-steps.scss": {
+    "file": "sf-rewards-steps-1451ef0e.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/rewards-steps.scss"
+  },
+  "src/entrypoints/styles/sections/rewards-tiers.scss": {
+    "file": "sf-rewards-tiers-706d4cee.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/rewards-tiers.scss"
+  },
+  "src/entrypoints/styles/sections/routine-timeline.scss": {
+    "file": "sf-routine-timeline-d05ab846.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/routine-timeline.scss"
+  },
+  "src/entrypoints/styles/sections/search.scss": {
+    "file": "sf-search-4aca4fa1.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/search.scss"
+  },
+  "src/entrypoints/styles/sections/shade-carousel.scss": {
+    "file": "sf-shade-carousel-6387a3c4.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/shade-carousel.scss"
+  },
+  "src/entrypoints/styles/sections/small-banners.scss": {
+    "file": "sf-small-banners-76dc93d7.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/small-banners.scss"
+  },
+  "src/entrypoints/styles/sections/sticky-menu.scss": {
+    "file": "sf-sticky-menu-563ea436.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/sticky-menu.scss"
+  },
+  "src/entrypoints/styles/sections/sustaibability-reports.scss": {
+    "file": "sf-sustaibability-reports-5fbc4e74.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/sustaibability-reports.scss"
+  },
+  "src/entrypoints/styles/sections/terms-conditions.scss": {
+    "file": "sf-terms-conditions-8722c064.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/terms-conditions.scss"
+  },
+  "src/entrypoints/styles/sections/two-cols-media-text.scss": {
+    "file": "sf-two-cols-media-text-0d8d86fc.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/two-cols-media-text.scss"
+  },
+  "src/entrypoints/styles/sections/video-cross-sell.scss": {
+    "file": "sf-video-cross-sell-b8b612fc.css",
+    "isEntry": true,
+    "src": "src/entrypoints/styles/sections/video-cross-sell.scss"
+  },
+  "src/scripts/components/sections/article.js": {
+    "file": "sf-chunk-article-fdfcbf86.js",
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/article.js"
+  },
+  "src/scripts/components/sections/articles.js": {
+    "file": "sf-chunk-articles-026072a9.js",
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/articles.js"
+  },
+  "src/scripts/components/sections/bundle.js": {
+    "dynamicImports": [
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs",
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/modules/index.mjs"
+    ],
+    "file": "sf-chunk-bundle-f1b62454.js",
+    "imports": [
+      "src/entrypoints/index.js",
+      "_sf-chunk-klaviyo-210bc1c5.js",
+      "_sf-chunk-main-179c6691.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/bundle.js"
+  },
+  "src/scripts/components/sections/collection.js": {
+    "file": "sf-chunk-collection-50b5939b.js",
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/collection.js"
+  },
+  "src/scripts/components/sections/comparison.js": {
+    "file": "sf-chunk-comparison-53a3ee2f.js",
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/comparison.js"
+  },
+  "src/scripts/components/sections/countrySelector.js": {
+    "file": "sf-chunk-countrySelector-953ddb5e.js",
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/countrySelector.js"
+  },
+  "src/scripts/components/sections/featuredProducts.js": {
+    "dynamicImports": [
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs",
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/modules/index.mjs"
+    ],
+    "file": "sf-chunk-featuredProducts-e528d6bc.js",
+    "imports": [
+      "src/entrypoints/index.js",
+      "_sf-chunk-main-179c6691.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/featuredProducts.js"
+  },
+  "src/scripts/components/sections/giftCard.js": {
+    "file": "sf-chunk-giftCard-e0dfd82d.js",
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/giftCard.js"
+  },
+  "src/scripts/components/sections/header.js": {
+    "dynamicImports": [
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs"
+    ],
+    "file": "sf-chunk-header-e9c53933.js",
+    "imports": [
+      "src/entrypoints/index.js",
+      "_sf-chunk-main-179c6691.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/header.js"
+  },
+  "src/scripts/components/sections/howToUse.js": {
+    "dynamicImports": [
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs",
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/modules/index.mjs"
+    ],
+    "file": "sf-chunk-howToUse-37fa2b61.js",
+    "imports": [
+      "src/entrypoints/index.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/howToUse.js"
+  },
+  "src/scripts/components/sections/imageGallery.js": {
+    "dynamicImports": [
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs",
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/modules/index.mjs"
+    ],
+    "file": "sf-chunk-imageGallery-4af996db.js",
+    "imports": [
+      "src/entrypoints/index.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/imageGallery.js"
+  },
+  "src/scripts/components/sections/jetLagCarousel.js": {
+    "dynamicImports": [
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs"
+    ],
+    "file": "sf-chunk-jetLagCarousel-ae1f536b.js",
+    "imports": [
+      "src/entrypoints/index.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/jetLagCarousel.js"
+  },
+  "src/scripts/components/sections/lipButterCarousel.js": {
+    "dynamicImports": [
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs"
+    ],
+    "file": "sf-chunk-lipButterCarousel-f90400cd.js",
+    "imports": [
+      "src/entrypoints/index.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/lipButterCarousel.js"
+  },
+  "src/scripts/components/sections/marquee.js": {
+    "file": "sf-chunk-marquee-168c3097.js",
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/marquee.js"
+  },
+  "src/scripts/components/sections/newsletter.js": {
+    "file": "sf-chunk-newsletter-9eaef0a1.js",
+    "imports": [
+      "_sf-chunk-attentive-2daebf3a.js",
+      "_sf-chunk-main-179c6691.js",
+      "src/entrypoints/index.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/newsletter.js"
+  },
+  "src/scripts/components/sections/newsletterPopup.js": {
+    "file": "sf-chunk-newsletterPopup-f5d27317.js",
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/newsletterPopup.js"
+  },
+  "src/scripts/components/sections/nmCSForm.js": {
+    "file": "sf-chunk-nmCSForm-2c61e284.js",
+    "imports": [
+      "_sf-chunk-attentive-2daebf3a.js",
+      "_sf-chunk-main-179c6691.js",
+      "src/entrypoints/index.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/nmCSForm.js"
+  },
+  "src/scripts/components/sections/pairsWellWith.js": {
+    "dynamicImports": [
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs",
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/modules/index.mjs"
+    ],
+    "file": "sf-chunk-pairsWellWith-3d34fb94.js",
+    "imports": [
+      "src/entrypoints/index.js",
+      "_sf-chunk-main-179c6691.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/pairsWellWith.js"
+  },
+  "src/scripts/components/sections/product.js": {
+    "dynamicImports": [
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs",
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/modules/index.mjs"
+    ],
+    "file": "sf-chunk-product-2a71f985.js",
+    "imports": [
+      "src/entrypoints/index.js",
+      "_sf-chunk-klaviyo-210bc1c5.js",
+      "_sf-chunk-main-179c6691.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/product.js"
+  },
+  "src/scripts/components/sections/productCardSmall.js": {
+    "dynamicImports": [
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs"
+    ],
+    "file": "sf-chunk-productCardSmall-1a8608dc.js",
+    "imports": [
+      "src/entrypoints/index.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/productCardSmall.js"
+  },
+  "src/scripts/components/sections/productSliderAndImage.js": {
+    "dynamicImports": [
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs",
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/modules/index.mjs"
+    ],
+    "file": "sf-chunk-productSliderAndImage-3e205532.js",
+    "imports": [
+      "src/entrypoints/index.js",
+      "_sf-chunk-main-179c6691.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/productSliderAndImage.js"
+  },
+  "src/scripts/components/sections/quiz.js": {
+    "file": "sf-chunk-quiz-fde25d6e.js",
+    "imports": [
+      "_sf-chunk-main-179c6691.js",
+      "src/entrypoints/index.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/quiz.js"
+  },
+  "src/scripts/components/sections/search.js": {
+    "dynamicImports": [
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs",
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/modules/index.mjs",
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs",
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/modules/index.mjs"
+    ],
+    "file": "sf-chunk-search-3fc28ffb.js",
+    "imports": [
+      "src/entrypoints/index.js",
+      "_sf-chunk-main-179c6691.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/search.js"
+  },
+  "src/scripts/components/sections/shadeCarousel.js": {
+    "dynamicImports": [
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs",
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/modules/index.mjs"
+    ],
+    "file": "sf-chunk-shadeCarousel-52b0911d.js",
+    "imports": [
+      "src/entrypoints/index.js",
+      "_sf-chunk-main-179c6691.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/shadeCarousel.js"
+  },
+  "src/scripts/components/sections/subscriptionsProducts.js": {
+    "dynamicImports": [
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs",
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/modules/index.mjs"
+    ],
+    "file": "sf-chunk-subscriptionsProducts-73bcac97.js",
+    "imports": [
+      "src/entrypoints/index.js",
+      "_sf-chunk-main-179c6691.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/subscriptionsProducts.js"
+  },
+  "src/scripts/components/sections/sustainabilityReports.js": {
+    "dynamicImports": [
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/swiper.mjs",
+      "node_modules/.pnpm/swiper@11.2.8/node_modules/swiper/modules/index.mjs"
+    ],
+    "file": "sf-chunk-sustainabilityReports-6e3521af.js",
+    "imports": [
+      "src/entrypoints/index.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/scripts/components/sections/sustainabilityReports.js"
+  }
+}

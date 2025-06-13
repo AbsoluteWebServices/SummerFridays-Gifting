@@ -1,0 +1,1 @@
+const c=async r=>{r.data("countrySelector",()=>({open:!1,init(){},selectCountry(t){if(!t)return;const e=document.querySelector(".shopify-localization-form");if(!e)return;const o=e.querySelector('select[name="country_code"]');o&&(o.value=t,e.submit())}}))};export{c as default};

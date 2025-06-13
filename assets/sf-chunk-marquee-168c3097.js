@@ -1,0 +1,1 @@
+const i=async l=>{l.data("marquee",()=>({isScrollingHover:!0,isScrolling:!0,init(){document.addEventListener("mouseover",o=>{this.isScrollingHover=!(o!=null&&o.target.closest("[data-autoplay-pause]"))})},toggleScroll(){this.isScrolling=!this.isScrolling}}))};export{i as default};

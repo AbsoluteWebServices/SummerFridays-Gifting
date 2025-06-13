@@ -1,0 +1,1 @@
+import{l as a}from"./sf-chunk-main-179c6691.js";const r="https://a.klaviyo.com/media/js/onsite/onsite.js",t=async()=>{try{await a(r)}catch(o){console.error(`Error loading Klaviyo: ${o}`)}};export{t as l};
