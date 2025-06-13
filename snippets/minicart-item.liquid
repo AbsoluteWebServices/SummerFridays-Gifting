@@ -147,7 +147,6 @@
                             id: item.key, 
                             quantity: ++item.quantity
                         }); ariaLiveText = 'Quantity increased by one.'"
-                        :disabled="item.quantity >= (item.max_qty || 6)"
                     >
                         {%- render 'icon', name: 'plus' -%}
                     </button>

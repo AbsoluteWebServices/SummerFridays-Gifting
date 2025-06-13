@@ -20,23 +20,7 @@
         assign product_title = item.product.metafields.accentuate.plp_title | escape
     endif
 
-    assign tags = item.product.tags | join: '%%%'
-
-    assign max_qty = 6 
-    if product.tags.size > 0
-        for tag in product.tags
-            unless tag contains 'max_qty:'
-                continue
-            endunless
-
-            assign tagArr = tag | split: ':'
-            unless tagArr.size == 2
-                continue
-            endunless
-
-            assign max_qty = tagArr[1] | times: 1
-        endfor
-    endif  
+    assign tags = item.product.tags | join: '%%%' 
 -%}
 "id": {{- item.variant_id | json -}},
 "image": {%- if product_image -%}{{- product_image | image_url | json -}}{%- else -%}null{%- endif -%},
@@ -95,5 +79,4 @@
         {%- else -%}
             null
         {%- endif -%}
-},
-"max_qty": {{- max_qty -}}
+}

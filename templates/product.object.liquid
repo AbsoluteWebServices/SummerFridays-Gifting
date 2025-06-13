@@ -1,21 +1,5 @@
 {%- layout none -%}
 {%- liquid 
-    assign max_qty = 6 
-    if product.tags.size > 0
-        for tag in product.tags
-            unless tag contains 'max_qty:'
-                continue
-            endunless
-
-            assign tagArr = tag | split: ':'
-            unless tagArr.size == 2
-                continue
-            endunless
-
-            assign max_qty = tagArr[1] | times: 1
-        endfor
-    endif  
-    
     assign image_url = product.featured_image | image_url: width: product.featured_image.width
     unless image_url contains 'https:'
       assign image_url = 'https:' | append: image_url
@@ -69,7 +53,6 @@
             {%- endfor -%}
         {%- endif -%}
     ]
-    ,"max_qty": {{- max_qty -}}
     {% assign custom_media = product.metafields.product.custom_media.value %}
     {%- if custom_media != blank -%}
         ,"custom_media": [

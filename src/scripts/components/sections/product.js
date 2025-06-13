@@ -278,22 +278,6 @@ export default async (Alpine) => {
             }
         },
 
-        maxQty() {
-            const max_default_qty = this.product?.max_qty || 6;
-
-            const items = (Alpine.store('Cart')?.cart?.items || []).filter((item) => item.id === this.variantId);
-
-            if (!items?.length) {
-                return max_default_qty;
-            }
-
-            const qty_in_cart = items.reduce((acc, item) => {
-                return acc + item.quantity;
-            }, 0);
-
-            return max_default_qty - qty_in_cart;
-        },
-
         optionValueByPosition(position) {
             if (!this.variant) {
                 return;

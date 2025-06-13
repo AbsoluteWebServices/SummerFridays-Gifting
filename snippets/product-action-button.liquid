@@ -1,32 +1,4 @@
 {%- liquid 
-    assign max_qty = 6 
-    if product.tags.size > 0
-        for tag in product.tags
-            unless tag contains 'max_qty:'
-                continue
-            endunless
-
-            assign tagArr = tag | split: ':'
-            unless tagArr.size == 2
-                continue
-            endunless
-
-            assign max_qty = tagArr[1] | times: 1
-        endfor
-    endif
-
-    if cart.item_count > 0
-        assign items_in_cart = cart.items | where: 'id', current_variant.id 
-        if items_in_cart.size > 0
-            assign items_in_cart_qty = 0
-            for item in items_in_cart
-                assign items_in_cart_qty = items_in_cart_qty | plus: item.quantity
-            endfor
-
-            assign max_qty = max_qty | minus: items_in_cart_qty
-        endif
-    endif
-
     assign default_price = current_variant.price | money_without_trailing_zeros
     assign price = price | default: default_price
     assign coming_soon = product.metafields.product.enable_coming_soon | default: false
@@ -36,10 +8,6 @@
     assign button_type = 'submit' 
     assign button_disabled = false
     assign button_label = 'products.product.add_to_cart' | t
-    if 1 > max_qty
-        assign button_label = 'products.product.limit' | t
-        assign button_disabled = true
-    endif
     unless current_variant.available 
         assign button_type = 'button'
         if coming_soon
@@ -80,10 +48,6 @@
                     name="quantity" 
                     value="1"
                     aria-label="Change quantity"
-                    {% if 1 > max_qty %}
-                        disabled="disabled"
-                    {% endif %}
-                    :disabled="product && $store?.Cart?.cart ? quantity > maxQty() : 1 > {{ max_qty }}"
                 >
 
                 <button
@@ -91,10 +55,6 @@
                     type="button"
                     aria-label="Increase the quanity by 1"
                     @click.prevent="++quantity"
-                    {% if 1 >= max_qty %}
-                        disabled="disabled"
-                    {% endif %}
-                    :disabled="product && $store?.Cart?.cart ? quantity >= maxQty() : 1 >= {{ max_qty }}" 
                 >
                     {%- render 'icon', name: 'plus' -%}
                 </button>
