@@ -132,7 +132,7 @@
         "content_related": "",
         "button_label": "",
         "button_url": "",
-        "limit": 23,
+        "limit": 50,
         "products": [
           "sunlit-vanilla™-eau-de-parfum",
           "sunlit-vanilla™-travel-holder",
@@ -170,16 +170,15 @@
           "jet-lag™-essentials-set",
           "jet-lag™-eye-patches",
           "jet-lag-overnight-eye-serum",
-          "shadedrops-spf-30-mineral-milk-sunscreen",
-          "lip-butter-balm-iced-coffee",
+          "bronzing-drops",
+          "illuminating-drops",
           "sheer-skin-tint",
           "rich-cushion-cream",
           "lip-butter-balm",
           "dream-lip-oil-pink-cloud",
           "cloud-dew-gel-cream",
           "cc-me-serum",
-          "light-aura-vitamin-c-peptide-eye-cream",
-          "super-amino-gel-cleanser"
+          "light-aura-vitamin-c-peptide-eye-cream"
         ]
       }
     },
