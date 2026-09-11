@@ -128,7 +128,29 @@
         "layout": "grid",
         "source": "custom",
         "subscription_mode": false,
-        "content": "<h2>All</h2>",
+        "content": "<h2>HOL26</h2>",
+        "content_related": "",
+        "button_label": "",
+        "button_url": "",
+        "limit": 50,
+        "products": [
+          "marshmallow-minis",
+          "the-lip-butter-balm-minis"
+        ]
+      }
+    },
+    "recommendations_gFc4zp": {
+      "type": "recommendations",
+      "settings": {
+        "padding_top": 2.4,
+        "padding_bottom": 0,
+        "padding_top_desktop": 4.8,
+        "padding_bottom_desktop": 0,
+        "id": "new-arrivals",
+        "layout": "grid",
+        "source": "custom",
+        "subscription_mode": false,
+        "content": "<h2>Shop All</h2>",
         "content_related": "",
         "button_label": "",
         "button_url": "",
@@ -511,6 +533,7 @@
   "order": [
     "sticky_menu_ybPdGW",
     "recommendations_PU8itr",
+    "recommendations_gFc4zp",
     "recommendations_7367ed",
     "recommendations_QGDy9r",
     "recommendations_hH4erC",
