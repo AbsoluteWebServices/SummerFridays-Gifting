@@ -128,7 +128,7 @@
         "layout": "grid",
         "source": "custom",
         "subscription_mode": false,
-        "content": "<h2>New Arrivals</h2>",
+        "content": "<h2>All</h2>",
         "content_related": "",
         "button_label": "",
         "button_url": "",
